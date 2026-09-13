@@ -1,0 +1,10 @@
+# d is open to everyone; s2 and b1 are banned
+doc:d#everyone@user:*
+doc:d#staff@user:s1
+doc:d#staff@user:s2
+doc:d#banned@user:s2
+doc:d#banned@user:b1
+
+# e names its readers one by one
+doc:e#everyone@user:e1
+doc:e#staff@user:s1

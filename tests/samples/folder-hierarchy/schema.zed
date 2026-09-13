@@ -1,0 +1,16 @@
+// Arrows that recurse: a folder inherits from its parent, however deep.
+definition user {}
+
+definition folder {
+    relation parent: folder
+    relation owner: user
+    relation viewer: user
+    permission view = viewer + owner + parent->view
+    permission edit = owner + parent->edit
+}
+
+definition document {
+    relation parent: folder
+    relation viewer: user
+    permission view = viewer + parent->view
+}

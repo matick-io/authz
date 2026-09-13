@@ -1,0 +1,10 @@
+folder:root#owner@user:root_owner
+folder:root#viewer@user:root_viewer
+folder:a#parent@folder:root
+folder:a#viewer@user:a_viewer
+folder:b#parent@folder:a
+folder:c#parent@folder:b
+folder:c#owner@user:c_owner
+document:deep#parent@folder:c
+document:deep#viewer@user:doc_viewer
+document:loose#viewer@user:doc_viewer

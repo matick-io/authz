@@ -1,0 +1,28 @@
+check project:chain#view@user:deep true
+check team:t1#member@user:deep true
+check team:t3#member@user:deep true
+check project:chain#view@user:b false
+check project:diamond#view@user:b true
+check team:left#member@user:b true
+check project:cycle#view@user:cyc true
+check team:x#member@user:cyc true
+check project:cycle#view@user:deep false
+check team:top#member@team:base#member true
+check team:x#member@team:y#member true
+check team:x#member@team:x#member true
+
+resources project#view@user:deep chain
+resources project#view@user:b diamond,direct
+resources project#view@user:cyc cycle
+resources team#member@user:b base,left,right,top
+resources team#member@user:deep t1,t2,t3
+resources team#member@user:cyc x,y
+resources team#member@team:base#member base,left,right,top
+resources project#member@team:t3#member chain
+
+subjects project:diamond#view user b
+subjects team:top#member team#member base,left,right,top
+subjects project:cycle#view user cyc
+subjects team:x#member team#member x,y
+subjects project:chain#view team#member t1,t2,t3
+subjects project:direct#view team#member none

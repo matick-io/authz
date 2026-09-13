@@ -1,0 +1,26 @@
+check document:plan#can_view@user:anne true
+check document:plan#can_view@user:vic true
+check document:plan#can_view@user:owen true
+check document:plan#can_view@user:sec false
+check document:plan#can_share@user:owen true
+check document:plan#can_share@user:anne false
+check document:memo#can_view@user:sec true
+check document:memo#can_share@user:owen true
+check document:secret#can_view@user:anne false
+check organization:acme#can_admin@user:beth true
+check organization:acme#can_admin@user:anne false
+
+resources document#can_view@user:anne memo,plan
+resources document#can_view@user:sec memo,secret
+resources document#can_share@user:owen memo,plan
+resources folder#can_view@user:anne public,shared,sub
+resources folder#can_view@user:owen public,shared,sub
+resources folder#can_share@user:owen shared,sub
+# a wildcard admits users, never a userset: public is not reachable as a set
+resources folder#can_view@organization:acme#member shared,sub
+
+subjects document:plan#can_view user anne,beth,owen,vic
+subjects document:memo#can_view user *
+subjects document:plan#can_view organization#member acme
+subjects folder:sub#can_share user owen
+subjects document:secret#can_view user sec

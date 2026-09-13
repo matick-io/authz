@@ -1,0 +1,33 @@
+// The product's collaboration graph: nested teams, organisations that reach
+// projects through an arrow, a public wildcard, an exclusion, and reviews
+// that inherit from their project.
+definition user {}
+
+definition team {
+    relation member: user | team#member
+}
+
+definition organization {
+    relation admin: user
+    relation member: user | team#member
+    permission view = member + admin
+    permission manage = admin
+}
+
+definition project {
+    relation organization: organization
+    relation owner: user
+    relation member: user | team#member
+    relation viewer: user | user:*
+    relation banned: user
+    permission view = (member + owner + viewer + organization->view) - banned
+    permission edit = owner + organization->manage
+    permission manage_members = owner & member
+}
+
+definition review {
+    relation project: project
+    relation recipient: user | team#member
+    permission view = recipient + project->view
+    permission comment = recipient
+}

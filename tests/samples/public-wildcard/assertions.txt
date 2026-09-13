@@ -1,0 +1,26 @@
+check doc:d#everyone_but_banned@user:anyone true
+check doc:d#everyone_but_banned@user:s2 false
+check doc:d#everyone_but_banned@user:b1 false
+check doc:d#staff_only@user:s1 true
+check doc:d#staff_only@user:anyone false
+check doc:d#not_everyone@user:s1 false
+check doc:e#not_everyone@user:s1 true
+check doc:e#everyone_but_banned@user:e1 true
+check doc:e#everyone_but_banned@user:anyone false
+check doc:e#staff_only@user:s1 false
+
+resources doc#everyone_but_banned@user:anyone d
+resources doc#everyone_but_banned@user:s2 none
+resources doc#everyone_but_banned@user:e1 d,e
+resources doc#staff_only@user:s1 d
+resources doc#not_everyone@user:s1 e
+resources doc#union@user:s1 d,e
+
+subjects doc:d#everyone_but_banned user *-b1,s2
+subjects doc:d#staff_only user s1,s2
+subjects doc:d#not_everyone user none
+subjects doc:d#union user *
+subjects doc:e#everyone_but_banned user e1
+subjects doc:e#not_everyone user s1
+subjects doc:e#union user e1,s1
+subjects doc:e#staff_only user none

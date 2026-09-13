@@ -1,0 +1,24 @@
+// The classic document-sharing model: organisations, folders, documents.
+definition user {}
+
+definition organization {
+    relation member: user
+    relation admin: user
+    permission can_admin = admin
+}
+
+definition folder {
+    relation owner: user
+    relation parent: folder
+    relation viewer: user | user:* | organization#member
+    permission can_view = viewer + owner + parent->can_view
+    permission can_share = owner + parent->can_share
+}
+
+definition document {
+    relation parent: folder
+    relation owner: user
+    relation viewer: user | organization#member
+    permission can_view = viewer + owner + parent->can_view
+    permission can_share = owner + parent->can_share
+}

@@ -1,0 +1,77 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  AUTHZ_TEST_DATABASE_URL: postgres://authz:authz@localhost:5432/authz_test?sslmode=disable
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: authz
+          POSTGRES_PASSWORD: authz
+          POSTGRES_DB: authz_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Vet every module
+        run: go vet ./... ./datastore/postgres/... ./dsl/... ./materialize/... ./tests/...
+      - name: Test every module, Postgres suites included
+        run: go test ./... ./datastore/postgres/... ./dsl/... ./materialize/... ./tests/... -count=1
+
+  bench:
+    needs: test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: authz
+          POSTGRES_PASSWORD: authz
+          POSTGRES_DB: authz_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Run the scenario benchmarks
+        run: go test ./tests/ -run '^$' -bench BenchmarkScenarios -benchmem -count 1 | tee bench.txt
+      # AI: github-action-benchmark keeps the history on the gh-pages branch and
+      # comments on a pull request when an op slows past the threshold. It is
+      # the standard tool for this and needs no code of ours.
+      - name: Record and compare against history
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: go
+          output-file-path: bench.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          comment-on-alert: true
+          summary-always: true
+          alert-threshold: "150%"
+          fail-on-alert: false

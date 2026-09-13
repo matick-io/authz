@@ -1,0 +1,11 @@
+// Nesting shapes the index must get right: a chain, a diamond, a cycle.
+definition user {}
+
+definition team {
+    relation member: user | team#member
+}
+
+definition project {
+    relation member: user | team#member
+    permission view = member
+}

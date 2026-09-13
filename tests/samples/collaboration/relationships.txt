@@ -1,0 +1,31 @@
+# teams: leads is nested within core
+team:core#member@user:carol
+team:core#member@team:leads#member
+team:leads#member@user:dave
+
+# organisation
+organization:acme#admin@user:erin
+organization:acme#member@team:core#member
+
+# p1 belongs to acme; carol is banned despite being a member via core
+project:p1#organization@organization:acme
+project:p1#owner@user:alice
+project:p1#member@user:bob
+project:p1#member@team:core#member
+project:p1#banned@user:carol
+
+# p2 is public, except for hank
+project:p2#viewer@user:*
+project:p2#owner@user:alice
+project:p2#banned@user:hank
+
+# p3: frank owns and is a member; bob is a member
+project:p3#owner@user:frank
+project:p3#member@user:frank
+project:p3#member@user:bob
+
+# reviews
+review:r1#project@project:p1
+review:r1#recipient@user:gina
+review:r2#project@project:p3
+review:r2#recipient@team:leads#member
