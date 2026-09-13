@@ -59,8 +59,45 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+      # AI: SpiceDB runs beside the engine so the same scenarios time both. Its
+      # in-memory datastore is its fastest configuration; the kind label says
+      # so on every row of the comparison.
+      - name: Start SpiceDB
+        run: |
+          docker run -d --name spicedb -p 50051:50051 authzed/spicedb:latest serve --grpc-preshared-key ci --datastore-engine memory
+          for i in $(seq 1 30); do docker logs spicedb 2>&1 | grep -q "grpc server started" && break; sleep 1; done
       - name: Run the scenario benchmarks
-        run: go test ./tests/ -run '^$' -bench BenchmarkScenarios -benchmem -count 1 | tee bench.txt
+        env:
+          AUTHZ_BENCH_SPICEDB_ENDPOINT: 127.0.0.1:50051
+          AUTHZ_BENCH_SPICEDB_KEY: ci
+          AUTHZ_BENCH_SPICEDB_LABEL: spicedb-memdb
+        run: go test ./tests/ -run '^$' -bench BenchmarkScenarios -benchmem -benchtime 300ms -count 1 -timeout 90m | tee bench.txt
+      # AI: benchstat is the standard comparison; benchreport lays the same
+      # numbers out per scenario with Mermaid charts GitHub renders itself.
+      - name: Compare the engines
+        run: |
+          go install golang.org/x/perf/cmd/benchstat@latest
+          mkdir -p report
+          benchstat -col /kind bench.txt | tee report/compare.txt
+          go run ./tests/cmd/benchreport bench.txt > report/compare.md
+          cp bench.txt report/bench.txt
+          {
+            echo '## Engine comparison (benchstat, columns are kinds)'
+            echo
+            echo '```'
+            cat report/compare.txt
+            echo '```'
+            echo
+            cat report/compare.md
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish the comparison to gh-pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./report
+          destination_dir: compare
+          keep_files: true
       # AI: github-action-benchmark keeps the history on the gh-pages branch and
       # comments on a pull request when an op slows past the threshold. It is
       # the standard tool for this and needs no code of ours.

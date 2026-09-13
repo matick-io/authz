@@ -180,6 +180,12 @@ func (d *Datastore) CreateAll(ctx context.Context, rels []authz.Relationship) er
 			return err
 		}
 	}
+	// AI: a bulk load leaves the planner's statistics behind until autoanalyze
+	// catches up, and until then every query on the new rows plans as if the
+	// table were empty; the first benchmark after an import measured that.
+	if _, err := tx.Exec(ctx, "analyze authz.relationship"); err != nil {
+		return err
+	}
 	return tx.Commit(ctx)
 }
 

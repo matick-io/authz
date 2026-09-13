@@ -599,16 +599,37 @@ func (x *Index) staticFor(resourceType, permission string) []string {
 	return s
 }
 
-// HasPermission implements authz.PermissionIndex.
+// HasPermission implements authz.PermissionIndex. AI: it starts from the
+// few sets that grant the permission on the one resource and tests the
+// subject against each, never from every set the subject is in: a subject
+// granted ninety thousand resources made the other order two hundred times
+// slower in the scaling benchmarks.
 func (x *Index) HasPermission(ctx context.Context, r authz.Reader, resource authz.ObjectRef, permission string, subject authz.SubjectRef) (bool, error) {
 	tx, ok := pgstore.Tx(r)
 	if !ok {
 		return false, ErrNotPostgres
 	}
+	// AI: simple protocol, so every execution is planned for its values. As a
+	// prepared statement Postgres switches to a generic plan after five
+	// executions, and the generic plan probes the subject index, which for a
+	// subject holding tens of thousands of grants took 45 ms instead of 2.
+	// Every index read below is sent the same way for the same reason.
 	var found bool
-	err := tx.QueryRow(ctx, "with "+memberOfSQL+", "+grantingSQL+`
-		select exists (select 1 from granting g join member_of m on g.t = m.t and g.i = m.i and g.rel = m.rel)`,
-		subject.Object.Type, subject.Object.ID, subject.Relation, resource.Type, resource.ID, permission, x.staticFor(resource.Type, permission)).Scan(&found)
+	err := tx.QueryRow(ctx, "with "+grantingSQL+`
+		select exists (
+		    select 1 from granting g
+		    where ($3 <> '' and g.t = $1 and g.i = $2 and g.rel = $3)
+		       or exists (
+		           select 1 from authz.relationship r
+		           where r.resource_type = g.t and r.resource_id = g.i and r.relation = g.rel
+		             and r.subject_type = $1 and r.subject_id = $2 and r.subject_relation = $3)
+		       or exists (
+		           select 1 from authz.userset_closure c
+		           join authz.relationship r
+		             on r.resource_type = c.descendant_type and r.resource_id = c.descendant_id and r.relation = c.descendant_relation
+		           where c.ancestor_type = g.t and c.ancestor_id = g.i and c.ancestor_relation = g.rel
+		             and r.subject_type = $1 and r.subject_id = $2 and r.subject_relation = $3))`,
+		pgx.QueryExecModeSimpleProtocol, subject.Object.Type, subject.Object.ID, subject.Relation, resource.Type, resource.ID, permission, x.staticFor(resource.Type, permission)).Scan(&found)
 	return found, err
 }
 
@@ -629,7 +650,7 @@ func (x *Index) ResourcesWithPermission(ctx context.Context, r authz.Reader, res
 		union
 		select m.i from member_of m where m.t = $4 and m.rel = any($6::text[])
 		order by 1`,
-		subject.Object.Type, subject.Object.ID, subject.Relation, resourceType, permission, x.staticFor(resourceType, permission)))
+		pgx.QueryExecModeSimpleProtocol, subject.Object.Type, subject.Object.ID, subject.Relation, resourceType, permission, x.staticFor(resourceType, permission)))
 }
 
 // SubjectsWithPermission implements authz.PermissionIndex.
@@ -659,5 +680,5 @@ func (x *Index) SubjectsWithPermission(ctx context.Context, r authz.Reader, reso
 		union
 		select s.i from sets s where $5 <> '' and s.t = $4 and s.rel = $5
 		order by 1`,
-		resource.Type, resource.ID, permission, subjectType, subjectRelation, x.staticFor(resource.Type, permission)))
+		pgx.QueryExecModeSimpleProtocol, resource.Type, resource.ID, permission, subjectType, subjectRelation, x.staticFor(resource.Type, permission)))
 }

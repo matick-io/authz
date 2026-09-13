@@ -1,4 +1,4 @@
-go 1.25.0
+go 1.25.8
 
 use (
 	.
@@ -7,3 +7,5 @@ use (
 	./materialize
 	./tests
 )
+
+replace google.golang.org/genproto => google.golang.org/genproto v0.0.0-20260911204522-f61a6ca850bd

@@ -151,7 +151,15 @@ func (x *Index) Apply(ctx context.Context, tx pgx.Tx, change authz.Change) error
 		return err
 	}
 	if x.sets != nil {
-		return x.sets.apply(ctx, tx, change)
+		if err := x.sets.apply(ctx, tx, change); err != nil {
+			return err
+		}
+	}
+	// A bulk change refreshes the planner's view of the index tables.
+	if len(change.Updates) >= 1000 {
+		if _, err := tx.Exec(ctx, "analyze authz.userset_closure, authz.permission_set"); err != nil {
+			return err
+		}
 	}
 	return nil
 }

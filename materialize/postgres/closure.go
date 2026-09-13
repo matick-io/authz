@@ -225,7 +225,7 @@ func (x *Index) NestedRelationships(ctx context.Context, r authz.Reader, q authz
 		return nil, fmt.Errorf("%w: NestedRelationships needs a complete resource selector", authz.ErrInvalidArgument)
 	}
 	sql, args := nestedRelationshipsSQL(q)
-	rows, err := tx.Query(ctx, sql, args...)
+	rows, err := tx.Query(ctx, sql, append([]any{pgx.QueryExecModeSimpleProtocol}, args...)...)
 	if err != nil {
 		return nil, err
 	}
@@ -250,7 +250,7 @@ func (x *Index) NestedResourceIDs(ctx context.Context, r authz.Reader, subjectTy
 	if len(subjectIDs) == 0 {
 		return nil, nil
 	}
-	return scanIDs(tx.Query(ctx, nestedResourceIDsSQL, subjectType, subjectIDs, subjectRelation, resourceType, relation))
+	return scanIDs(tx.Query(ctx, nestedResourceIDsSQL, pgx.QueryExecModeSimpleProtocol, subjectType, subjectIDs, subjectRelation, resourceType, relation))
 }
 
 func scanIDs(rows pgx.Rows, err error) ([]string, error) {
