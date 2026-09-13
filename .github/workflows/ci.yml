@@ -59,18 +59,25 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
-      # AI: SpiceDB runs beside the engine so the same scenarios time both. Its
-      # in-memory datastore is its fastest configuration; the kind label says
-      # so on every row of the comparison.
-      - name: Start SpiceDB
+      # AI: two SpiceDBs run beside the engine so every kind of ours has a
+      # like-for-like column: one on SpiceDB's in-memory datastore against our
+      # memory store, one on Postgres, in its own database on the same server
+      # as ours, against our Postgres kinds.
+      - name: Start SpiceDB on its in-memory datastore
         run: |
-          docker run -d --name spicedb -p 50051:50051 authzed/spicedb:latest serve --grpc-preshared-key ci --datastore-engine memory
-          for i in $(seq 1 30); do docker logs spicedb 2>&1 | grep -q "grpc server started" && break; sleep 1; done
+          docker run -d --name spicedb-memdb -p 50051:50051 authzed/spicedb:latest serve --grpc-preshared-key ci --datastore-engine memory
+          for i in $(seq 1 30); do docker logs spicedb-memdb 2>&1 | grep -q "grpc server started" && break; sleep 1; done
+      - name: Start SpiceDB on Postgres
+        run: |
+          docker run --rm --network host postgres:16 psql postgres://authz:authz@localhost:5432/authz_test -c 'create database spicedb'
+          URI='postgres://authz:authz@localhost:5432/spicedb?sslmode=disable'
+          docker run --rm --network host authzed/spicedb:latest migrate head --datastore-engine postgres --datastore-conn-uri "$URI"
+          docker run -d --name spicedb-postgres --network host authzed/spicedb:latest serve --grpc-preshared-key ci --grpc-addr :50052 --datastore-engine postgres --datastore-conn-uri "$URI"
+          for i in $(seq 1 30); do docker logs spicedb-postgres 2>&1 | grep -q "grpc server started" && break; sleep 1; done
       - name: Run the scenario benchmarks
         env:
-          AUTHZ_BENCH_SPICEDB_ENDPOINT: 127.0.0.1:50051
+          AUTHZ_BENCH_SPICEDB: spicedb-memdb=127.0.0.1:50051,spicedb-postgres=127.0.0.1:50052
           AUTHZ_BENCH_SPICEDB_KEY: ci
-          AUTHZ_BENCH_SPICEDB_LABEL: spicedb-memdb
         run: go test ./tests/ -run '^$' -bench BenchmarkScenarios -benchmem -benchtime 300ms -count 1 -timeout 90m | tee bench.txt
       # AI: benchstat is the standard comparison; benchreport lays the same
       # numbers out per scenario with Mermaid charts GitHub renders itself.

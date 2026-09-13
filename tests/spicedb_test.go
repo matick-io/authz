@@ -22,36 +22,42 @@ import (
 	"github.com/matick-io/authz/dsl"
 )
 
-// AI: SpiceDB as a benchmark kind, through the official client, so the same
+// AI: SpiceDB as benchmark kinds, through the official client, so the same
 // scenarios and the same assertions run against it. Reads ask for full
 // consistency, which is what the engine always gives, so the comparison is
-// like for like. Set AUTHZ_BENCH_SPICEDB_ENDPOINT (host:port) and
-// AUTHZ_BENCH_SPICEDB_KEY; AUTHZ_BENCH_SPICEDB_LABEL names the kind, which
-// is how a run says which datastore SpiceDB was running on.
+// like for like. AUTHZ_BENCH_SPICEDB lists instances as label=host:port,
+// comma separated, one per datastore SpiceDB is running on, for example
+// spicedb-memdb=127.0.0.1:50051,spicedb-postgres=127.0.0.1:50052, so each
+// of our kinds has a like-for-like column; AUTHZ_BENCH_SPICEDB_KEY is the
+// preshared key they share.
 
-func spicedbKind(tb testing.TB) (benchKind, bool) {
+func spicedbKinds(tb testing.TB) []benchKind {
 	tb.Helper()
-	endpoint := os.Getenv("AUTHZ_BENCH_SPICEDB_ENDPOINT")
-	if endpoint == "" {
-		return benchKind{}, false
-	}
-	label := os.Getenv("AUTHZ_BENCH_SPICEDB_LABEL")
-	if label == "" {
-		label = "spicedb"
+	spec := os.Getenv("AUTHZ_BENCH_SPICEDB")
+	if spec == "" {
+		return nil
 	}
 	key := os.Getenv("AUTHZ_BENCH_SPICEDB_KEY")
-	return benchKind{name: label, open: func(tb testing.TB, schemaText string) authorizer {
-		tb.Helper()
-		client, err := authzed.NewClient(endpoint, grpcutil.WithInsecureBearerToken(key), grpc.WithTransportCredentials(insecure.NewCredentials()))
-		if err != nil {
-			tb.Fatal(err)
+	var kinds []benchKind
+	for _, entry := range strings.Split(spec, ",") {
+		label, endpoint, ok := strings.Cut(strings.TrimSpace(entry), "=")
+		if !ok {
+			tb.Fatalf("AUTHZ_BENCH_SPICEDB entry %q is not label=host:port", entry)
 		}
-		s := &spicedb{client: client}
-		if err := s.reset(context.Background(), schemaText); err != nil {
-			tb.Fatalf("spicedb reset: %v", err)
-		}
-		return s
-	}}, true
+		kinds = append(kinds, benchKind{name: label, open: func(tb testing.TB, schemaText string) authorizer {
+			tb.Helper()
+			client, err := authzed.NewClient(endpoint, grpcutil.WithInsecureBearerToken(key), grpc.WithTransportCredentials(insecure.NewCredentials()))
+			if err != nil {
+				tb.Fatal(err)
+			}
+			s := &spicedb{client: client}
+			if err := s.reset(context.Background(), schemaText); err != nil {
+				tb.Fatalf("%s reset: %v", label, err)
+			}
+			return s
+		}})
+	}
+	return kinds
 }
 
 type spicedb struct {
@@ -142,37 +148,27 @@ func (s *spicedb) CheckBulkPermissions(ctx context.Context, requests []authz.Che
 	return out, nil
 }
 
-// LookupResources pages through SpiceDB's stream, which a server caps at a
-// thousand results per call by default, until the whole answer is in hand,
-// so a dense list costs SpiceDB the same work the engine does for it.
+// LookupResources reads SpiceDB's stream in one call. AI: the server's
+// max-lookup-resources-limit caps a limit a client asks for; an unlimited
+// request streams everything. Paging in thousands with cursors was measured
+// at twenty times the cost, because every page restarts the query.
 func (s *spicedb) LookupResources(ctx context.Context, resourceType, permission string, subject authz.SubjectRef, limit int) ([]string, error) {
-	const page = 1000
+	stream, err := s.client.LookupResources(ctx, &v1.LookupResourcesRequest{
+		Consistency: fullyConsistent, ResourceObjectType: resourceType, Permission: permission, Subject: toSubject(subject),
+	})
+	if err != nil {
+		return nil, err
+	}
 	var ids []string
-	var cursor *v1.Cursor
 	for {
-		stream, err := s.client.LookupResources(ctx, &v1.LookupResourcesRequest{
-			Consistency: fullyConsistent, ResourceObjectType: resourceType, Permission: permission, Subject: toSubject(subject),
-			OptionalLimit: page, OptionalCursor: cursor,
-		})
-		if err != nil {
-			return nil, err
-		}
-		got := 0
-		for {
-			resp, err := stream.Recv()
-			if errors.Is(err, io.EOF) {
-				break
-			}
-			if err != nil {
-				return nil, classify(err)
-			}
-			ids = append(ids, resp.ResourceObjectId)
-			cursor = resp.AfterResultCursor
-			got++
-		}
-		if got < page {
+		resp, err := stream.Recv()
+		if errors.Is(err, io.EOF) {
 			break
 		}
+		if err != nil {
+			return nil, classify(err)
+		}
+		ids = append(ids, resp.ResourceObjectId)
 	}
 	ids = unique(ids)
 	if limit > 0 && len(ids) > limit {

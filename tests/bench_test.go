@@ -77,10 +77,7 @@ func benchKinds(tb testing.TB) []benchKind {
 			return svc
 		}})
 	}
-	if sk, ok := spicedbKind(tb); ok {
-		kinds = append(kinds, sk)
-	}
-	return kinds
+	return append(kinds, spicedbKinds(tb)...)
 }
 
 type op struct {
