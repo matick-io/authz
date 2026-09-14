@@ -182,7 +182,9 @@ func (p *parser) next() {
 		sb.WriteRune(r)
 		for p.pos < len(p.src) {
 			n := p.peek(0)
-			if unicode.IsLetter(n) || unicode.IsDigit(n) || n == '_' {
+			// A '/' followed by a letter continues a namespaced type name
+			// (acme/user); '//' still starts a comment.
+			if unicode.IsLetter(n) || unicode.IsDigit(n) || n == '_' || (n == '/' && unicode.IsLetter(p.peek(1))) {
 				sb.WriteRune(p.advance())
 				continue
 			}
@@ -230,6 +232,19 @@ func (p *parser) expectName(what string) (string, token, error) {
 	return t.text, t, nil
 }
 
+// expectTypeName reads an object type name, which may carry namespaces.
+func (p *parser) expectTypeName(what string) (string, token, error) {
+	t := p.tok
+	if t.kind != tokIdent {
+		return "", t, p.unexpected(what + " name")
+	}
+	if !schema.TypeNameRe.MatchString(t.text) {
+		return "", t, p.errorf(t, "%s name %q must be lowercase letters, digits and underscores, starting with a letter, at most 64 characters, with '/' between namespaces", what, t.text)
+	}
+	p.next()
+	return t.text, t, nil
+}
+
 func (p *parser) keyword(kw string) bool {
 	return p.tok.kind == tokIdent && p.tok.text == kw
 }
@@ -259,7 +274,7 @@ func (p *parser) parseSchema() ([]*schema.Definition, error) {
 }
 
 func (p *parser) parseDefinition() (*schema.Definition, token, error) {
-	name, nameTok, err := p.expectName("definition")
+	name, nameTok, err := p.expectTypeName("definition")
 	if err != nil {
 		return nil, nameTok, err
 	}
@@ -324,7 +339,7 @@ func (p *parser) parseRelation() (*schema.Relation, token, error) {
 }
 
 func (p *parser) parseAllowedSubject() (schema.AllowedSubject, error) {
-	typ, _, err := p.expectName("subject type")
+	typ, _, err := p.expectTypeName("subject type")
 	if err != nil {
 		return schema.AllowedSubject{}, err
 	}
@@ -428,7 +443,8 @@ func (p *parser) parseTerm() (schema.Expr, error) {
 		return e, nil
 	}
 	if p.tok.kind == tokIdent && p.tok.text == "nil" {
-		return nil, p.errorf(p.tok, "'nil' permissions are not supported; omit the permission instead")
+		p.next()
+		return schema.Nothing(), nil
 	}
 	name, _, err := p.expectName("relation or permission")
 	if err != nil {

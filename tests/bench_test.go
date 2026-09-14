@@ -51,13 +51,19 @@ type authorizer interface {
 }
 
 // benchKind is one engine configuration: open builds it for a schema, empty.
+// spicedb marks the reference implementation rather than the engine.
+// acyclicNesting marks a kind whose lookups do not terminate on a cycle of
+// nested usersets (SpiceDB runs them to its dispatch limit and past its
+// deadline); the differential test keeps nesting acyclic for such a kind.
 type benchKind struct {
-	name string
-	open func(tb testing.TB, schemaText string) authorizer
+	name           string
+	spicedb        bool
+	acyclicNesting bool
+	open           func(tb testing.TB, schemaText string) authorizer
 }
 
 // benchKinds wraps every datastore kind as an engine, and adds SpiceDB when
-// AUTHZ_BENCH_SPICEDB_ENDPOINT is set.
+// AUTHZ_SPICEDB is set.
 func benchKinds(tb testing.TB) []benchKind {
 	tb.Helper()
 	var kinds []benchKind

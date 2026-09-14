@@ -1,0 +1,88 @@
+---
+schema: |-
+  // A userset is a member of itself: for relations and for permissions, in
+  // all three directions, even on an object no relationship mentions. Also
+  // relations whose subjects are a permission, and a relation nested in the
+  // same relation of another object of its own type.
+  definition user {}
+
+  definition team {
+      relation member: user | team#member
+      relation lead: user
+      permission all = member + lead
+  }
+
+  definition project {
+      relation team: team
+      relation viewer: user | team#all
+      relation admin: user | project#admin
+      permission view = viewer + team->all + admin
+      permission admin_only = admin
+  }
+relationships: |-
+  team:core#member@user:alice
+  team:core#lead@user:bob
+  team:sub#member@team:core#member
+  project:p#team@team:core
+  project:p#viewer@team:sub#all
+  project:p#admin@user:carol
+  project:q#admin@project:p#admin
+assertions:
+  assertTrue:
+    # a userset is a member of itself, with or without relationships
+    - "team:ghost#member@team:ghost#member"
+    - "team:ghost#all@team:ghost#all"
+    - "project:ghost#view@project:ghost#view"
+    - "project:p#view@project:p#view"
+    - "team:core#member@team:core#member"
+    # a relation is inside the permission that unions it, not the other way round
+    - "team:core#all@team:core#member"
+    - "team:sub#all@team:core#member"
+    # reflexivity in the reverse and forward directions
+    - "team:core#member@team:core#member"
+    - "team:sub#member@team:core#member"
+    - "team:core#all@team:core#member"
+    - "team:sub#all@team:core#member"
+    - "team:ghost#member@team:ghost#member"
+    # a relation whose subjects are a permission of another type
+    - "project:p#viewer@user:alice"
+    - "project:p#view@user:alice"
+    - "project:p#view@user:bob"
+    - "project:p#view@user:carol"
+    - "project:p#view@team:sub#all"
+    - "project:p#view@team:core#member"
+    - "project:p#view@user:alice"
+    - "project:p#viewer@team:core#member"
+    # a relation nested in the same relation of another object of its type
+    - "project:q#admin_only@user:carol"
+    - "project:q#admin_only@project:p#admin"
+    - "project:q#admin_only@project:q#admin"
+    - "project:p#admin_only@user:carol"
+    - "project:q#admin_only@user:carol"
+    - "project:p#admin_only@project:p#admin"
+    - "project:q#admin_only@project:p#admin"
+  assertFalse:
+    - "team:ghost#member@team:other#member"
+    - "team:core#member@team:core#all"
+    - "project:p#viewer@user:bob"
+    - "project:p#admin_only@project:q#admin"
+validation:
+  "project:p#admin":
+    - "[project:p#admin] is <project:p#admin>"
+  "project:p#view":
+    - "[user:alice] is <project:p#view>"
+    - "[user:bob] is <project:p#view>"
+    - "[user:carol] is <project:p#view>"
+  "project:p#viewer":
+    - "[user:alice] is <project:p#viewer>"
+    - "[team:sub#all] is <project:p#viewer>"
+  "project:q#admin":
+    - "[project:p#admin] is <project:q#admin>"
+    - "[project:q#admin] is <project:q#admin>"
+  "team:core#member":
+    - "[team:core#member] is <team:core#member>"
+  "team:ghost#member":
+    - "[team:ghost#member] is <team:ghost#member>"
+  "team:sub#member":
+    - "[team:core#member] is <team:sub#member>"
+    - "[team:sub#member] is <team:sub#member>"

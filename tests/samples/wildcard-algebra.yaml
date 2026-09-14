@@ -1,0 +1,96 @@
+---
+schema: |-
+  // Wildcards meeting every other construct: through an arrow, against a
+  // userset subject, next to a direct grant and a ban of the same user, and on
+  // either side of an intersection or an exclusion, including against itself.
+  definition user {}
+
+  definition team {
+      relation member: user | team#member
+  }
+
+  definition doc {
+      relation parent: doc
+      relation viewer: user | user:* | team#member
+      relation editor: user | team#member
+      relation banned: user | team#member
+      permission view = (viewer + parent->view) - banned
+      permission edit = (editor & viewer) - banned
+      permission meet = viewer & parent->view
+      permission nobody = viewer - viewer
+      permission everyone = viewer & viewer
+  }
+relationships: |-
+  team:staff#member@user:alice
+  team:staff#member@user:bob
+  doc:public#viewer@user:*
+  doc:public#viewer@user:mallory
+  doc:public#banned@user:mallory
+  doc:public#editor@user:alice
+  doc:public#editor@team:staff#member
+  doc:child#parent@doc:public
+  doc:child#banned@user:bob
+  doc:child#viewer@user:carol
+  doc:staffdoc#viewer@team:staff#member
+  doc:meet#viewer@user:*
+  doc:meet#parent@doc:staffdoc
+  doc:meet#editor@team:staff#member
+assertions:
+  assertTrue:
+    # a wildcard admits any user, and a ban beats a direct grant next to a wildcard
+    - "doc:public#view@user:anyone"
+    - "doc:public#view@user:carol"
+    - "doc:public#viewer@doc:public#viewer"
+    # the wildcard reaches through an arrow; the child's own ban applies on top
+    - "doc:child#view@user:zed"
+    - "doc:child#view@user:carol"
+    # lookups over the wildcard
+    - "doc:child#view@user:zed"
+    - "doc:meet#view@user:zed"
+    - "doc:public#view@user:zed"
+    - "doc:meet#view@user:mallory"
+    - "doc:meet#view@user:bob"
+    - "doc:public#view@user:bob"
+    - "doc:staffdoc#view@user:bob"
+    - "doc:meet#view@team:staff#member"
+    - "doc:staffdoc#view@team:staff#member"
+    # a wildcard on one side of an intersection yields the other side
+    - "doc:meet#meet@user:alice"
+    - "doc:meet#edit@user:alice"
+    - "doc:public#edit@user:alice"
+    - "doc:public#edit@user:bob"
+    - "doc:meet#edit@user:bob"
+    - "doc:public#edit@user:bob"
+    - "doc:public#everyone@user:zed"
+    - "doc:public#everyone@user:mallory"
+    - "doc:meet#everyone@user:zed"
+    - "doc:public#everyone@user:zed"
+  assertFalse:
+    - "doc:public#view@user:mallory"
+    # a wildcard on users does not admit a userset subject
+    - "doc:public#view@team:staff#member"
+    - "doc:public#view@team:ghost#member"
+    - "doc:child#view@user:bob"
+    - "doc:child#view@user:mallory"
+    - "doc:meet#meet@user:zed"
+    - "doc:meet#edit@user:zed"
+    - "doc:public#edit@user:mallory"
+    # a wildcard against itself: nothing is left after the exclusion, everything after the intersection
+    - "doc:public#nobody@user:zed"
+    - "doc:public#nobody@user:mallory"
+validation:
+  "doc:child#view":
+    - "[user:* - {user:bob, user:mallory}] is <doc:child#view>"
+  "doc:meet#edit":
+    - "[user:alice] is <doc:meet#edit>"
+    - "[user:bob] is <doc:meet#edit>"
+  "doc:meet#meet":
+    - "[user:alice] is <doc:meet#meet>"
+    - "[user:bob] is <doc:meet#meet>"
+  "doc:public#edit":
+    - "[user:alice] is <doc:public#edit>"
+    - "[user:bob] is <doc:public#edit>"
+  "doc:public#everyone":
+    - "[user:*] is <doc:public#everyone>"
+  "doc:public#view":
+    - "[user:* - {user:mallory}] is <doc:public#view>"

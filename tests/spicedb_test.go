@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"regexp"
 	"sort"
 	"strings"
 	"testing"
@@ -19,40 +20,60 @@ import (
 	"google.golang.org/grpc/status"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/dsl"
 )
 
-// AI: SpiceDB as benchmark kinds, through the official client, so the same
-// scenarios and the same assertions run against it. Reads ask for full
+// AI: SpiceDB as a kind of its own, through the official client, so the same
+// samples, scenarios and differential rounds run against it: it is the
+// reference the engine is held to, and the benchmark peer. Reads ask for full
 // consistency, which is what the engine always gives, so the comparison is
-// like for like. AUTHZ_BENCH_SPICEDB lists instances as label=host:port,
+// like for like. AUTHZ_SPICEDB lists instances as label=host:port,
 // comma separated, one per datastore SpiceDB is running on, for example
 // spicedb-memdb=127.0.0.1:50051,spicedb-postgres=127.0.0.1:50052, so each
-// of our kinds has a like-for-like column; AUTHZ_BENCH_SPICEDB_KEY is the
+// of our kinds has a like-for-like column; AUTHZ_SPICEDB_KEY is the
 // preshared key they share.
 
-func spicedbKinds(tb testing.TB) []benchKind {
+// spicedbInstance is one reachable SpiceDB, from AUTHZ_SPICEDB.
+type spicedbInstance struct {
+	label, endpoint, key string
+}
+
+func spicedbInstances(tb testing.TB) []spicedbInstance {
 	tb.Helper()
-	spec := os.Getenv("AUTHZ_BENCH_SPICEDB")
+	spec := os.Getenv("AUTHZ_SPICEDB")
 	if spec == "" {
 		return nil
 	}
-	key := os.Getenv("AUTHZ_BENCH_SPICEDB_KEY")
-	var kinds []benchKind
+	key := os.Getenv("AUTHZ_SPICEDB_KEY")
+	var out []spicedbInstance
 	for _, entry := range strings.Split(spec, ",") {
 		label, endpoint, ok := strings.Cut(strings.TrimSpace(entry), "=")
 		if !ok {
-			tb.Fatalf("AUTHZ_BENCH_SPICEDB entry %q is not label=host:port", entry)
+			tb.Fatalf("AUTHZ_SPICEDB entry %q is not label=host:port", entry)
 		}
-		kinds = append(kinds, benchKind{name: label, open: func(tb testing.TB, schemaText string) authorizer {
+		out = append(out, spicedbInstance{label: label, endpoint: endpoint, key: key})
+	}
+	return out
+}
+
+func (in spicedbInstance) connect(tb testing.TB) *spicedb {
+	tb.Helper()
+	client, err := authzed.NewClient(in.endpoint, grpcutil.WithInsecureBearerToken(in.key), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		tb.Fatal(err)
+	}
+	return &spicedb{client: client}
+}
+
+func spicedbKinds(tb testing.TB) []benchKind {
+	tb.Helper()
+	var kinds []benchKind
+	for _, in := range spicedbInstances(tb) {
+		in := in
+		kinds = append(kinds, benchKind{name: in.label, spicedb: true, acyclicNesting: true, open: func(tb testing.TB, schemaText string) authorizer {
 			tb.Helper()
-			client, err := authzed.NewClient(endpoint, grpcutil.WithInsecureBearerToken(key), grpc.WithTransportCredentials(insecure.NewCredentials()))
-			if err != nil {
-				tb.Fatal(err)
-			}
-			s := &spicedb{client: client}
+			s := in.connect(tb)
 			if err := s.reset(context.Background(), schemaText); err != nil {
-				tb.Fatalf("%s reset: %v", label, err)
+				tb.Fatalf("%s reset: %v", in.label, err)
 			}
 			return s
 		}})
@@ -78,29 +99,45 @@ func classify(err error) error {
 	return err
 }
 
+// classifyItem does the same for the per-item error of a bulk check, which
+// carries a status message rather than a gRPC error.
+func classifyItem(code int32, message string) error {
+	if codes.Code(code) == codes.FailedPrecondition && strings.Contains(message, "max depth exceeded") {
+		return fmt.Errorf("%w: spicedb: %s", errUnsupported, message)
+	}
+	return fmt.Errorf("spicedb: %s", message)
+}
+
+// definitionRe finds the types of a schema as SpiceDB prints it back. AI: the
+// stored text is SpiceDB's own rendering, which drops parentheses our parser
+// insists on, so the types are read off the text, not parsed.
+var definitionRe = regexp.MustCompile(`(?m)^\s*definition\s+([\w/]+)`)
+
 // reset empties every type of the schema currently stored, then writes the
 // new schema. SpiceDB refuses to drop a type that still has relationships.
 func (s *spicedb) reset(ctx context.Context, schemaText string) error {
-	if current, err := s.client.ReadSchema(ctx, &v1.ReadSchemaRequest{}); err == nil {
-		if sch, err := dsl.Parse(current.SchemaText); err == nil {
-			for _, typ := range sch.Order {
-				for {
-					resp, err := s.client.DeleteRelationships(ctx, &v1.DeleteRelationshipsRequest{
-						RelationshipFilter:            &v1.RelationshipFilter{ResourceType: typ},
-						OptionalLimit:                 1000,
-						OptionalAllowPartialDeletions: true,
-					})
-					if err != nil {
-						return err
-					}
-					if resp.DeletionProgress == v1.DeleteRelationshipsResponse_DELETION_PROGRESS_COMPLETE {
-						break
-					}
+	current, err := s.client.ReadSchema(ctx, &v1.ReadSchemaRequest{})
+	if err != nil && status.Code(err) != codes.NotFound {
+		return err
+	}
+	if err == nil {
+		for _, m := range definitionRe.FindAllStringSubmatch(current.SchemaText, -1) {
+			for {
+				resp, err := s.client.DeleteRelationships(ctx, &v1.DeleteRelationshipsRequest{
+					RelationshipFilter:            &v1.RelationshipFilter{ResourceType: m[1]},
+					OptionalLimit:                 1000,
+					OptionalAllowPartialDeletions: true,
+				})
+				if err != nil {
+					return err
+				}
+				if resp.DeletionProgress == v1.DeleteRelationshipsResponse_DELETION_PROGRESS_COMPLETE {
+					break
 				}
 			}
 		}
 	}
-	_, err := s.client.WriteSchema(ctx, &v1.WriteSchemaRequest{Schema: schemaText})
+	_, err = s.client.WriteSchema(ctx, &v1.WriteSchemaRequest{Schema: schemaText})
 	return err
 }
 
@@ -142,7 +179,7 @@ func (s *spicedb) CheckBulkPermissions(ctx context.Context, requests []authz.Che
 		case *v1.CheckBulkPermissionsPair_Item:
 			out[i].HasPermission = r.Item.Permissionship == v1.CheckPermissionResponse_PERMISSIONSHIP_HAS_PERMISSION
 		case *v1.CheckBulkPermissionsPair_Error:
-			out[i].Err = fmt.Errorf("spicedb: %s", r.Error.Message)
+			out[i].Err = classifyItem(r.Error.Code, r.Error.Message)
 		}
 	}
 	return out, nil

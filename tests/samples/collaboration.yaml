@@ -1,0 +1,148 @@
+---
+schema: |-
+  // The product's collaboration graph: nested teams, organisations that reach
+  // projects through an arrow, a public wildcard, an exclusion, and reviews
+  // that inherit from their project.
+  definition user {}
+
+  definition team {
+      relation member: user | team#member
+  }
+
+  definition organization {
+      relation admin: user
+      relation member: user | team#member
+      permission view = member + admin
+      permission manage = admin
+  }
+
+  definition project {
+      relation organization: organization
+      relation owner: user
+      relation member: user | team#member
+      relation viewer: user | user:*
+      relation banned: user
+      permission view = (member + owner + viewer + organization->view) - banned
+      permission edit = owner + organization->manage
+      permission manage_members = owner & member
+  }
+
+  definition review {
+      relation project: project
+      relation recipient: user | team#member
+      permission view = recipient + project->view
+      permission comment = recipient
+  }
+relationships: |-
+  team:core#member@user:carol
+  team:core#member@team:leads#member
+  team:leads#member@user:dave
+  organization:acme#admin@user:erin
+  organization:acme#member@team:core#member
+  project:p1#organization@organization:acme
+  project:p1#owner@user:alice
+  project:p1#member@user:bob
+  project:p1#member@team:core#member
+  project:p1#banned@user:carol
+  project:p2#viewer@user:*
+  project:p2#owner@user:alice
+  project:p2#banned@user:hank
+  project:p3#owner@user:frank
+  project:p3#member@user:frank
+  project:p3#member@user:bob
+  review:r1#project@project:p1
+  review:r1#recipient@user:gina
+  review:r2#project@project:p3
+  review:r2#recipient@team:leads#member
+assertions:
+  assertTrue:
+    # checks
+    - "project:p1#view@user:alice"
+    - "project:p1#view@user:bob"
+    - "project:p1#view@user:dave"
+    - "project:p1#view@user:erin"
+    - "project:p1#edit@user:erin"
+    - "project:p2#view@user:zed"
+    - "project:p3#manage_members@user:frank"
+    - "review:r1#view@user:gina"
+    - "review:r1#view@user:bob"
+    - "review:r2#view@user:dave"
+    - "review:r2#view@user:frank"
+    - "project:p1#member@team:core#member"
+    - "project:p1#member@team:leads#member"
+    - "team:core#member@team:core#member"
+    # reverse lookups
+    - "project:p1#view@user:alice"
+    - "project:p2#view@user:alice"
+    - "project:p1#view@user:bob"
+    - "project:p2#view@user:bob"
+    - "project:p3#view@user:bob"
+    - "project:p2#view@user:carol"
+    - "project:p1#view@user:dave"
+    - "project:p2#view@user:dave"
+    - "project:p1#view@user:erin"
+    - "project:p2#view@user:erin"
+    - "project:p2#view@user:zed"
+    - "project:p1#edit@user:erin"
+    - "project:p3#manage_members@user:frank"
+    - "project:p1#view@team:leads#member"
+    - "project:p1#member@team:core#member"
+    - "review:r1#view@user:bob"
+    - "review:r2#view@user:bob"
+    - "review:r1#view@user:gina"
+    - "review:r1#view@user:dave"
+    - "review:r2#view@user:dave"
+    - "review:r2#comment@user:dave"
+    - "organization:acme#view@user:dave"
+    - "team:core#member@user:dave"
+    - "team:leads#member@user:dave"
+    - "team:core#member@team:leads#member"
+    - "team:leads#member@team:leads#member"
+  assertFalse:
+    - "project:p1#view@user:carol"
+    - "project:p1#view@user:zed"
+    - "project:p1#edit@user:bob"
+    - "project:p2#view@user:hank"
+    - "project:p3#manage_members@user:bob"
+    - "project:p1#manage_members@user:alice"
+    - "review:r1#view@user:carol"
+    - "review:r1#comment@user:bob"
+    - "team:core#member@team:other#member"
+validation:
+  "organization:acme#view":
+    - "[user:carol] is <organization:acme#view>"
+    - "[user:dave] is <organization:acme#view>"
+    - "[user:erin] is <organization:acme#view>"
+  "project:p1#edit":
+    - "[user:alice] is <project:p1#edit>"
+    - "[user:erin] is <project:p1#edit>"
+  "project:p1#view":
+    - "[user:alice] is <project:p1#view>"
+    - "[user:bob] is <project:p1#view>"
+    - "[user:dave] is <project:p1#view>"
+    - "[user:erin] is <project:p1#view>"
+    - "[team:core#member] is <project:p1#view>"
+    - "[team:leads#member] is <project:p1#view>"
+  "project:p2#edit":
+    - "[user:alice] is <project:p2#edit>"
+  "project:p2#view":
+    - "[user:* - {user:hank}] is <project:p2#view>"
+  "project:p3#manage_members":
+    - "[user:frank] is <project:p3#manage_members>"
+  "review:r1#comment":
+    - "[user:gina] is <review:r1#comment>"
+  "review:r1#view":
+    - "[user:alice] is <review:r1#view>"
+    - "[user:bob] is <review:r1#view>"
+    - "[user:dave] is <review:r1#view>"
+    - "[user:erin] is <review:r1#view>"
+    - "[user:gina] is <review:r1#view>"
+  "review:r2#comment":
+    - "[team:leads#member] is <review:r2#comment>"
+  "review:r2#view":
+    - "[user:bob] is <review:r2#view>"
+    - "[user:dave] is <review:r2#view>"
+    - "[user:frank] is <review:r2#view>"
+  "team:core#member":
+    - "[team:core#member] is <team:core#member>"
+    - "[team:leads#member] is <team:core#member>"

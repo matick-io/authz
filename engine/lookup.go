@@ -17,7 +17,7 @@ import (
 // LookupResources). It starts from the subject's own grants, never truncates
 // on its own, and with a authz.NestingIndex resolves each relation in one call.
 func (s *Service) LookupResources(ctx context.Context, resourceType, permission string, subject authz.SubjectRef, limit int) ([]string, error) {
-	if !authz.ValidName(resourceType) {
+	if !authz.ValidTypeName(resourceType) {
 		return nil, fmt.Errorf("%w: resource type %q", authz.ErrInvalidArgument, resourceType)
 	}
 	if !authz.ValidName(permission) {
@@ -48,6 +48,15 @@ func (s *Service) LookupResources(ctx context.Context, resourceType, permission 
 type idSet map[string]struct{}
 
 func (s idSet) add(id string) { s[id] = struct{}{} }
+
+// clone copies the set, for a caller that will add to a set it did not build.
+func (s idSet) clone() idSet {
+	out := make(idSet, len(s)+1)
+	for id := range s {
+		out[id] = struct{}{}
+	}
+	return out
+}
 
 func (s idSet) keys() []string {
 	out := make([]string, 0, len(s))
@@ -172,6 +181,9 @@ func (l *reverseResolver) resolveUncached(ctx context.Context, typ, relation str
 		}
 		// A userset is a member of itself, for permissions as for relations.
 		if l.subject.Relation == relation && l.subject.Object.Type == typ {
+			// AI: eval may hand back a set the memo owns, provisional or done;
+			// adding to it in place would change an answer already given.
+			out = out.clone()
 			out.add(l.subject.Object.ID)
 		}
 		return out, nil
@@ -283,6 +295,8 @@ func (l *reverseResolver) resolveRelationIndexed(ctx context.Context, typ string
 
 func (l *reverseResolver) eval(ctx context.Context, typ string, def *schema.Definition, e schema.Expr, depth int) (idSet, error) {
 	switch n := e.(type) {
+	case *schema.Nil:
+		return idSet{}, nil
 	case *schema.ComputedUserset:
 		return l.resolve(ctx, typ, n.Relation, depth+1)
 	case *schema.Arrow:
@@ -363,7 +377,7 @@ func (s *Service) LookupSubjects(ctx context.Context, resource authz.ObjectRef, 
 	if !authz.ValidName(permission) {
 		return nil, fmt.Errorf("%w: permission %q", authz.ErrInvalidArgument, permission)
 	}
-	if !authz.ValidName(subjectType) {
+	if !authz.ValidTypeName(subjectType) {
 		return nil, fmt.Errorf("%w: subject type %q", authz.ErrInvalidArgument, subjectType)
 	}
 	if subjectRelation != "" && !authz.ValidName(subjectRelation) {
@@ -507,8 +521,9 @@ func exclusion(a, b subjectSet) subjectSet {
 }
 
 type forwardEntry struct {
-	done bool
-	set  subjectSet
+	done  bool
+	set   subjectSet
+	index int // the frame answering this expansion while it is open
 }
 
 type forwardResolver struct {
@@ -528,15 +543,19 @@ func (f *forwardResolver) expand(ctx context.Context, res authz.ObjectRef, relat
 	key := res.String() + "#" + relation
 	if e, ok := f.memo[key]; ok {
 		if !e.done {
+			f.stack.hit(e.index)
 			return finite(), nil
 		}
 		return e.set, nil
 	}
-	f.memo[key] = forwardEntry{}
+	// AI: the same low-link discipline as the check resolver (see frames): a
+	// set that rested on an open expansion is not kept.
+	index, outerLow := f.stack.enter()
+	f.memo[key] = forwardEntry{index: index}
 	set, err := f.expandUncached(ctx, res, relation, depth)
-	if err != nil {
+	if final := f.stack.leave(index, outerLow); err != nil || !final {
 		delete(f.memo, key)
-		return subjectSet{}, err
+		return set, err
 	}
 	f.memo[key] = forwardEntry{done: true, set: set}
 	return set, nil
@@ -653,6 +672,8 @@ func (f *forwardResolver) expandRelationIndexed(ctx context.Context, res authz.O
 
 func (f *forwardResolver) eval(ctx context.Context, res authz.ObjectRef, e schema.Expr, depth int) (subjectSet, error) {
 	switch n := e.(type) {
+	case *schema.Nil:
+		return finite(), nil
 	case *schema.ComputedUserset:
 		return f.expand(ctx, res, n.Relation, depth+1)
 	case *schema.Arrow:

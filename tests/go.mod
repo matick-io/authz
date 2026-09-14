@@ -7,10 +7,9 @@ require (
 	github.com/authzed/grpcutil v0.0.0-20260105210157-e237581949c2
 	github.com/jackc/pgx/v5 v5.10.0
 	github.com/matick-io/authz v0.0.0
-	github.com/matick-io/authz/datastore/postgres v0.0.0
-	github.com/matick-io/authz/dsl v0.0.0
-	github.com/matick-io/authz/materialize v0.0.0
+	github.com/matick-io/authz/postgres v0.0.0
 	google.golang.org/grpc v1.83.2
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
@@ -36,12 +35,9 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20260911204522-f61a6ca850bd // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260911204522-f61a6ca850bd // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 replace (
 	github.com/matick-io/authz => ../
-	github.com/matick-io/authz/datastore/postgres => ../datastore/postgres
-	github.com/matick-io/authz/dsl => ../dsl
-	github.com/matick-io/authz/materialize => ../materialize
+	github.com/matick-io/authz/postgres => ../postgres
 )

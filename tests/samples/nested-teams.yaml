@@ -1,0 +1,79 @@
+---
+schema: |-
+  // Nesting shapes the index must get right: a chain, a diamond, a cycle.
+  definition user {}
+
+  definition team {
+      relation member: user | team#member
+  }
+
+  definition project {
+      relation member: user | team#member
+      permission view = member
+  }
+relationships: |-
+  team:t1#member@team:t2#member
+  team:t2#member@team:t3#member
+  team:t3#member@user:deep
+  team:base#member@user:b
+  team:left#member@team:base#member
+  team:right#member@team:base#member
+  team:top#member@team:left#member
+  team:top#member@team:right#member
+  team:x#member@team:y#member
+  team:y#member@team:x#member
+  team:y#member@user:cyc
+  project:chain#member@team:t1#member
+  project:diamond#member@team:top#member
+  project:cycle#member@team:x#member
+  project:direct#member@user:b
+assertions:
+  assertTrue:
+    - "project:chain#view@user:deep"
+    - "team:t1#member@user:deep"
+    - "team:t3#member@user:deep"
+    - "project:diamond#view@user:b"
+    - "team:left#member@user:b"
+    - "project:cycle#view@user:cyc"
+    - "team:x#member@user:cyc"
+    - "team:top#member@team:base#member"
+    - "team:x#member@team:y#member"
+    - "team:x#member@team:x#member"
+    - "project:chain#view@user:deep"
+    - "project:diamond#view@user:b"
+    - "project:direct#view@user:b"
+    - "project:cycle#view@user:cyc"
+    - "team:base#member@user:b"
+    - "team:left#member@user:b"
+    - "team:right#member@user:b"
+    - "team:top#member@user:b"
+    - "team:t1#member@user:deep"
+    - "team:t2#member@user:deep"
+    - "team:t3#member@user:deep"
+    - "team:x#member@user:cyc"
+    - "team:y#member@user:cyc"
+    - "team:base#member@team:base#member"
+    - "team:left#member@team:base#member"
+    - "team:right#member@team:base#member"
+    - "team:top#member@team:base#member"
+    - "project:chain#member@team:t3#member"
+  assertFalse:
+    - "project:chain#view@user:b"
+    - "project:cycle#view@user:deep"
+validation:
+  "project:chain#view":
+    - "[team:t1#member] is <project:chain#view>"
+    - "[team:t2#member] is <project:chain#view>"
+    - "[team:t3#member] is <project:chain#view>"
+  "project:cycle#view":
+    - "[user:cyc] is <project:cycle#view>"
+  "project:diamond#view":
+    - "[user:b] is <project:diamond#view>"
+  "team:top#member":
+    - "[team:base#member] is <team:top#member>"
+    - "[team:left#member] is <team:top#member>"
+    - "[team:right#member] is <team:top#member>"
+    - "[team:top#member] is <team:top#member>"
+  "team:x#member":
+    - "[team:x#member] is <team:x#member>"
+    - "[team:y#member] is <team:x#member>"
