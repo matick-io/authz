@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790172222548,
+  "lastUpdate": 1790190484934,
   "repoUrl": "https://github.com/matick-io/authz",
   "entries": {
     "Benchmark": [
@@ -21552,6 +21552,14790 @@ window.BENCHMARK_DATA = {
             "value": 226,
             "unit": "allocs/op",
             "extra": "20 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "storm@khaos.systems",
+            "name": "Storm Søndergaard",
+            "username": "stormsc1"
+          },
+          "committer": {
+            "email": "storm@khaos.systems",
+            "name": "Storm Søndergaard",
+            "username": "stormsc1"
+          },
+          "distinct": true,
+          "id": "373af4f3ea9148e1e32fbd7a87476f151ed0c14f",
+          "message": "chore: split the root types by concern, trim the docs, guard formatting in CI, add the license",
+          "timestamp": "2026-09-23T20:22:16+02:00",
+          "tree_id": "7c778678cc33ac15962c33eff379d513afb01699",
+          "url": "https://github.com/matick-io/authz/commit/373af4f3ea9148e1e32fbd7a87476f151ed0c14f"
+        },
+        "date": 1790190484046,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_hit",
+            "value": 2943048,
+            "unit": "ns/op\t  606816 B/op\t      32 allocs/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_hit - ns/op",
+            "value": 2943048,
+            "unit": "ns/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_hit - B/op",
+            "value": 606816,
+            "unit": "B/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_hit - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_miss",
+            "value": 2906824,
+            "unit": "ns/op\t  607211 B/op\t      35 allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_miss - ns/op",
+            "value": 2906824,
+            "unit": "ns/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_miss - B/op",
+            "value": 607211,
+            "unit": "B/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/check_miss - allocs/op",
+            "value": 35,
+            "unit": "allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/lookup_one_member",
+            "value": 806908,
+            "unit": "ns/op\t    7150 B/op\t     130 allocs/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/lookup_one_member - ns/op",
+            "value": 806908,
+            "unit": "ns/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/lookup_one_member - B/op",
+            "value": 7150,
+            "unit": "B/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/lookup_one_member - allocs/op",
+            "value": 130,
+            "unit": "allocs/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/subjects_all",
+            "value": 3794245,
+            "unit": "ns/op\t 1295429 B/op\t     139 allocs/op",
+            "extra": "97 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/subjects_all - ns/op",
+            "value": 3794245,
+            "unit": "ns/op",
+            "extra": "97 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/subjects_all - B/op",
+            "value": 1295429,
+            "unit": "B/op",
+            "extra": "97 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/subjects_all - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "97 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/bulk_200",
+            "value": 5798593,
+            "unit": "ns/op\t 2200768 B/op\t    9279 allocs/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/bulk_200 - ns/op",
+            "value": 5798593,
+            "unit": "ns/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/bulk_200 - B/op",
+            "value": 2200768,
+            "unit": "B/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/bulk_200 - allocs/op",
+            "value": 9279,
+            "unit": "allocs/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/toggle_grant",
+            "value": 328191,
+            "unit": "ns/op\t  984647 B/op\t      29 allocs/op",
+            "extra": "1244 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/toggle_grant - ns/op",
+            "value": 328191,
+            "unit": "ns/op",
+            "extra": "1244 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/toggle_grant - B/op",
+            "value": 984647,
+            "unit": "B/op",
+            "extra": "1244 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory/toggle_grant - allocs/op",
+            "value": 29,
+            "unit": "allocs/op",
+            "extra": "1244 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_hit",
+            "value": 1975,
+            "unit": "ns/op\t    1017 B/op\t      11 allocs/op",
+            "extra": "186870 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_hit - ns/op",
+            "value": 1975,
+            "unit": "ns/op",
+            "extra": "186870 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_hit - B/op",
+            "value": 1017,
+            "unit": "B/op",
+            "extra": "186870 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_hit - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "186870 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_miss",
+            "value": 6631,
+            "unit": "ns/op\t    1025 B/op\t      11 allocs/op",
+            "extra": "54921 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_miss - ns/op",
+            "value": 6631,
+            "unit": "ns/op",
+            "extra": "54921 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_miss - B/op",
+            "value": 1025,
+            "unit": "B/op",
+            "extra": "54921 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/check_miss - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "54921 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/lookup_one_member",
+            "value": 2315,
+            "unit": "ns/op\t    1400 B/op\t      13 allocs/op",
+            "extra": "166830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/lookup_one_member - ns/op",
+            "value": 2315,
+            "unit": "ns/op",
+            "extra": "166830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/lookup_one_member - B/op",
+            "value": 1400,
+            "unit": "B/op",
+            "extra": "166830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/lookup_one_member - allocs/op",
+            "value": 13,
+            "unit": "allocs/op",
+            "extra": "166830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/subjects_all",
+            "value": 781905,
+            "unit": "ns/op\t  503354 B/op\t      77 allocs/op",
+            "extra": "476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/subjects_all - ns/op",
+            "value": 781905,
+            "unit": "ns/op",
+            "extra": "476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/subjects_all - B/op",
+            "value": 503354,
+            "unit": "B/op",
+            "extra": "476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/subjects_all - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/bulk_200",
+            "value": 565904,
+            "unit": "ns/op\t  283942 B/op\t    1937 allocs/op",
+            "extra": "681 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/bulk_200 - ns/op",
+            "value": 565904,
+            "unit": "ns/op",
+            "extra": "681 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/bulk_200 - B/op",
+            "value": 283942,
+            "unit": "B/op",
+            "extra": "681 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/bulk_200 - allocs/op",
+            "value": 1937,
+            "unit": "allocs/op",
+            "extra": "681 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/toggle_grant",
+            "value": 332035,
+            "unit": "ns/op\t  984570 B/op\t      29 allocs/op",
+            "extra": "1207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/toggle_grant - ns/op",
+            "value": 332035,
+            "unit": "ns/op",
+            "extra": "1207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/toggle_grant - B/op",
+            "value": 984570,
+            "unit": "B/op",
+            "extra": "1207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=memory+index/toggle_grant - allocs/op",
+            "value": 29,
+            "unit": "allocs/op",
+            "extra": "1207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_hit",
+            "value": 4694971,
+            "unit": "ns/op\t 1049846 B/op\t   14076 allocs/op",
+            "extra": "70 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_hit - ns/op",
+            "value": 4694971,
+            "unit": "ns/op",
+            "extra": "70 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_hit - B/op",
+            "value": 1049846,
+            "unit": "B/op",
+            "extra": "70 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_hit - allocs/op",
+            "value": 14076,
+            "unit": "allocs/op",
+            "extra": "70 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_miss",
+            "value": 4884559,
+            "unit": "ns/op\t 1051611 B/op\t   14095 allocs/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_miss - ns/op",
+            "value": 4884559,
+            "unit": "ns/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_miss - B/op",
+            "value": 1051611,
+            "unit": "B/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/check_miss - allocs/op",
+            "value": 14095,
+            "unit": "allocs/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/lookup_one_member",
+            "value": 3492784,
+            "unit": "ns/op\t   45728 B/op\t     701 allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/lookup_one_member - ns/op",
+            "value": 3492784,
+            "unit": "ns/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/lookup_one_member - B/op",
+            "value": 45728,
+            "unit": "B/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/lookup_one_member - allocs/op",
+            "value": 701,
+            "unit": "allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/subjects_all",
+            "value": 5977020,
+            "unit": "ns/op\t 1739855 B/op\t   14199 allocs/op",
+            "extra": "61 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/subjects_all - ns/op",
+            "value": 5977020,
+            "unit": "ns/op",
+            "extra": "61 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/subjects_all - B/op",
+            "value": 1739855,
+            "unit": "B/op",
+            "extra": "61 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/subjects_all - allocs/op",
+            "value": 14199,
+            "unit": "allocs/op",
+            "extra": "61 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/bulk_200",
+            "value": 8146302,
+            "unit": "ns/op\t 2646582 B/op\t   23339 allocs/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/bulk_200 - ns/op",
+            "value": 8146302,
+            "unit": "ns/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/bulk_200 - B/op",
+            "value": 2646582,
+            "unit": "B/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/bulk_200 - allocs/op",
+            "value": 23339,
+            "unit": "allocs/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/toggle_grant",
+            "value": 2026664,
+            "unit": "ns/op\t    8736 B/op\t     144 allocs/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/toggle_grant - ns/op",
+            "value": 2026664,
+            "unit": "ns/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/toggle_grant - B/op",
+            "value": 8736,
+            "unit": "B/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_hit",
+            "value": 648603,
+            "unit": "ns/op\t    5906 B/op\t      96 allocs/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_hit - ns/op",
+            "value": 648603,
+            "unit": "ns/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_hit - B/op",
+            "value": 5906,
+            "unit": "B/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_hit - allocs/op",
+            "value": 96,
+            "unit": "allocs/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_miss",
+            "value": 1004776,
+            "unit": "ns/op\t   10054 B/op\t     162 allocs/op",
+            "extra": "364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_miss - ns/op",
+            "value": 1004776,
+            "unit": "ns/op",
+            "extra": "364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_miss - B/op",
+            "value": 10054,
+            "unit": "B/op",
+            "extra": "364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/lookup_one_member",
+            "value": 892331,
+            "unit": "ns/op\t    5026 B/op\t     109 allocs/op",
+            "extra": "460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/lookup_one_member - ns/op",
+            "value": 892331,
+            "unit": "ns/op",
+            "extra": "460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/lookup_one_member - B/op",
+            "value": 5026,
+            "unit": "B/op",
+            "extra": "460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/lookup_one_member - allocs/op",
+            "value": 109,
+            "unit": "allocs/op",
+            "extra": "460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/subjects_all",
+            "value": 7320124,
+            "unit": "ns/op\t 1523046 B/op\t   14203 allocs/op",
+            "extra": "46 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/subjects_all - ns/op",
+            "value": 7320124,
+            "unit": "ns/op",
+            "extra": "46 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/subjects_all - B/op",
+            "value": 1523046,
+            "unit": "B/op",
+            "extra": "46 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/subjects_all - allocs/op",
+            "value": 14203,
+            "unit": "allocs/op",
+            "extra": "46 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/bulk_200",
+            "value": 102279068,
+            "unit": "ns/op\t 1090088 B/op\t   20764 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/bulk_200 - ns/op",
+            "value": 102279068,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/bulk_200 - B/op",
+            "value": 1090088,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/bulk_200 - allocs/op",
+            "value": 20764,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/toggle_grant",
+            "value": 2298954,
+            "unit": "ns/op\t    8285 B/op\t     144 allocs/op",
+            "extra": "204 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 2298954,
+            "unit": "ns/op",
+            "extra": "204 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/toggle_grant - B/op",
+            "value": 8285,
+            "unit": "B/op",
+            "extra": "204 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "204 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_hit",
+            "value": 815758,
+            "unit": "ns/op\t    6024 B/op\t      76 allocs/op",
+            "extra": "457 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_hit - ns/op",
+            "value": 815758,
+            "unit": "ns/op",
+            "extra": "457 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_hit - B/op",
+            "value": 6024,
+            "unit": "B/op",
+            "extra": "457 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_hit - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "457 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_miss",
+            "value": 807395,
+            "unit": "ns/op\t    6127 B/op\t      76 allocs/op",
+            "extra": "459 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_miss - ns/op",
+            "value": 807395,
+            "unit": "ns/op",
+            "extra": "459 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_miss - B/op",
+            "value": 6127,
+            "unit": "B/op",
+            "extra": "459 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/check_miss - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "459 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/lookup_one_member",
+            "value": 682294,
+            "unit": "ns/op\t    3506 B/op\t      72 allocs/op",
+            "extra": "532 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/lookup_one_member - ns/op",
+            "value": 682294,
+            "unit": "ns/op",
+            "extra": "532 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/lookup_one_member - B/op",
+            "value": 3506,
+            "unit": "B/op",
+            "extra": "532 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/lookup_one_member - allocs/op",
+            "value": 72,
+            "unit": "allocs/op",
+            "extra": "532 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/subjects_all",
+            "value": 2523607,
+            "unit": "ns/op\t  429461 B/op\t    6109 allocs/op",
+            "extra": "142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/subjects_all - ns/op",
+            "value": 2523607,
+            "unit": "ns/op",
+            "extra": "142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/subjects_all - B/op",
+            "value": 429461,
+            "unit": "B/op",
+            "extra": "142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/subjects_all - allocs/op",
+            "value": 6109,
+            "unit": "allocs/op",
+            "extra": "142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/bulk_200",
+            "value": 116154553,
+            "unit": "ns/op\t 1296192 B/op\t   14858 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/bulk_200 - ns/op",
+            "value": 116154553,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/bulk_200 - B/op",
+            "value": 1296192,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/bulk_200 - allocs/op",
+            "value": 14858,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/toggle_grant",
+            "value": 2718929,
+            "unit": "ns/op\t   11543 B/op\t     210 allocs/op",
+            "extra": "136 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 2718929,
+            "unit": "ns/op",
+            "extra": "136 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/toggle_grant - B/op",
+            "value": 11543,
+            "unit": "B/op",
+            "extra": "136 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 210,
+            "unit": "allocs/op",
+            "extra": "136 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_hit",
+            "value": 362347,
+            "unit": "ns/op\t    7333 B/op\t     108 allocs/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 362347,
+            "unit": "ns/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7333,
+            "unit": "B/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_miss",
+            "value": 354321,
+            "unit": "ns/op\t    7396 B/op\t     108 allocs/op",
+            "extra": "1048 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 354321,
+            "unit": "ns/op",
+            "extra": "1048 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7396,
+            "unit": "B/op",
+            "extra": "1048 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1048 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/lookup_one_member",
+            "value": 377569,
+            "unit": "ns/op\t    8031 B/op\t     113 allocs/op",
+            "extra": "980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/lookup_one_member - ns/op",
+            "value": 377569,
+            "unit": "ns/op",
+            "extra": "980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/lookup_one_member - B/op",
+            "value": 8031,
+            "unit": "B/op",
+            "extra": "980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/lookup_one_member - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/subjects_all",
+            "value": 5334679,
+            "unit": "ns/op\t 1222080 B/op\t   20185 allocs/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/subjects_all - ns/op",
+            "value": 5334679,
+            "unit": "ns/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/subjects_all - B/op",
+            "value": 1222080,
+            "unit": "B/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/subjects_all - allocs/op",
+            "value": 20185,
+            "unit": "allocs/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/bulk_200",
+            "value": 3582122,
+            "unit": "ns/op\t  192503 B/op\t    3112 allocs/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/bulk_200 - ns/op",
+            "value": 3582122,
+            "unit": "ns/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/bulk_200 - B/op",
+            "value": 192503,
+            "unit": "B/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/bulk_200 - allocs/op",
+            "value": 3112,
+            "unit": "allocs/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/toggle_grant",
+            "value": 840881,
+            "unit": "ns/op\t   15163 B/op\t     225 allocs/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 840881,
+            "unit": "ns/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15163,
+            "unit": "B/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_hit",
+            "value": 643062,
+            "unit": "ns/op\t    7476 B/op\t     108 allocs/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 643062,
+            "unit": "ns/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7476,
+            "unit": "B/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_miss",
+            "value": 629057,
+            "unit": "ns/op\t    7409 B/op\t     108 allocs/op",
+            "extra": "578 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 629057,
+            "unit": "ns/op",
+            "extra": "578 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7409,
+            "unit": "B/op",
+            "extra": "578 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "578 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/lookup_one_member",
+            "value": 663643,
+            "unit": "ns/op\t    7856 B/op\t     113 allocs/op",
+            "extra": "520 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/lookup_one_member - ns/op",
+            "value": 663643,
+            "unit": "ns/op",
+            "extra": "520 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/lookup_one_member - B/op",
+            "value": 7856,
+            "unit": "B/op",
+            "extra": "520 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/lookup_one_member - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "520 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/subjects_all",
+            "value": 5427610,
+            "unit": "ns/op\t 1128120 B/op\t   20082 allocs/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/subjects_all - ns/op",
+            "value": 5427610,
+            "unit": "ns/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/subjects_all - B/op",
+            "value": 1128120,
+            "unit": "B/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/subjects_all - allocs/op",
+            "value": 20082,
+            "unit": "allocs/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/bulk_200",
+            "value": 4426286,
+            "unit": "ns/op\t  193196 B/op\t    3112 allocs/op",
+            "extra": "82 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/bulk_200 - ns/op",
+            "value": 4426286,
+            "unit": "ns/op",
+            "extra": "82 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/bulk_200 - B/op",
+            "value": 193196,
+            "unit": "B/op",
+            "extra": "82 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/bulk_200 - allocs/op",
+            "value": 3112,
+            "unit": "allocs/op",
+            "extra": "82 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/toggle_grant",
+            "value": 4108010,
+            "unit": "ns/op\t   15219 B/op\t     225 allocs/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 4108010,
+            "unit": "ns/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15219,
+            "unit": "B/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wide_team/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_hit",
+            "value": 187133,
+            "unit": "ns/op\t   38802 B/op\t     531 allocs/op",
+            "extra": "2035 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_hit - ns/op",
+            "value": 187133,
+            "unit": "ns/op",
+            "extra": "2035 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_hit - B/op",
+            "value": 38802,
+            "unit": "B/op",
+            "extra": "2035 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_hit - allocs/op",
+            "value": 531,
+            "unit": "allocs/op",
+            "extra": "2035 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_miss",
+            "value": 178910,
+            "unit": "ns/op\t   38955 B/op\t     534 allocs/op",
+            "extra": "1994 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_miss - ns/op",
+            "value": 178910,
+            "unit": "ns/op",
+            "extra": "1994 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_miss - B/op",
+            "value": 38955,
+            "unit": "B/op",
+            "extra": "1994 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/check_miss - allocs/op",
+            "value": 534,
+            "unit": "allocs/op",
+            "extra": "1994 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/lookup_all_teams",
+            "value": 6779765,
+            "unit": "ns/op\t 1935595 B/op\t    2541 allocs/op",
+            "extra": "54 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/lookup_all_teams - ns/op",
+            "value": 6779765,
+            "unit": "ns/op",
+            "extra": "54 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/lookup_all_teams - B/op",
+            "value": 1935595,
+            "unit": "B/op",
+            "extra": "54 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/lookup_all_teams - allocs/op",
+            "value": 2541,
+            "unit": "allocs/op",
+            "extra": "54 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/subjects_at_top",
+            "value": 223866,
+            "unit": "ns/op\t   84887 B/op\t    1046 allocs/op",
+            "extra": "1669 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/subjects_at_top - ns/op",
+            "value": 223866,
+            "unit": "ns/op",
+            "extra": "1669 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/subjects_at_top - B/op",
+            "value": 84887,
+            "unit": "B/op",
+            "extra": "1669 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/subjects_at_top - allocs/op",
+            "value": 1046,
+            "unit": "allocs/op",
+            "extra": "1669 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_top_edge",
+            "value": 17806,
+            "unit": "ns/op\t   34037 B/op\t      17 allocs/op",
+            "extra": "20554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_top_edge - ns/op",
+            "value": 17806,
+            "unit": "ns/op",
+            "extra": "20554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_top_edge - B/op",
+            "value": 34037,
+            "unit": "B/op",
+            "extra": "20554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_top_edge - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "20554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_bottom_edge",
+            "value": 18749,
+            "unit": "ns/op\t   34062 B/op\t      17 allocs/op",
+            "extra": "20834 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_bottom_edge - ns/op",
+            "value": 18749,
+            "unit": "ns/op",
+            "extra": "20834 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_bottom_edge - B/op",
+            "value": 34062,
+            "unit": "B/op",
+            "extra": "20834 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory/toggle_bottom_edge - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "20834 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_hit",
+            "value": 5817,
+            "unit": "ns/op\t    5786 B/op\t      11 allocs/op",
+            "extra": "57393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_hit - ns/op",
+            "value": 5817,
+            "unit": "ns/op",
+            "extra": "57393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_hit - B/op",
+            "value": 5786,
+            "unit": "B/op",
+            "extra": "57393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_hit - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "57393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_miss",
+            "value": 6011,
+            "unit": "ns/op\t    5795 B/op\t      11 allocs/op",
+            "extra": "68985 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_miss - ns/op",
+            "value": 6011,
+            "unit": "ns/op",
+            "extra": "68985 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_miss - B/op",
+            "value": 5795,
+            "unit": "B/op",
+            "extra": "68985 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/check_miss - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "68985 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/lookup_all_teams",
+            "value": 28550,
+            "unit": "ns/op\t   17872 B/op\t      31 allocs/op",
+            "extra": "13009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/lookup_all_teams - ns/op",
+            "value": 28550,
+            "unit": "ns/op",
+            "extra": "13009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/lookup_all_teams - B/op",
+            "value": 17872,
+            "unit": "B/op",
+            "extra": "13009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/lookup_all_teams - allocs/op",
+            "value": 31,
+            "unit": "allocs/op",
+            "extra": "13009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/subjects_at_top",
+            "value": 7003,
+            "unit": "ns/op\t    6506 B/op\t      19 allocs/op",
+            "extra": "57939 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/subjects_at_top - ns/op",
+            "value": 7003,
+            "unit": "ns/op",
+            "extra": "57939 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/subjects_at_top - B/op",
+            "value": 6506,
+            "unit": "B/op",
+            "extra": "57939 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/subjects_at_top - allocs/op",
+            "value": 19,
+            "unit": "allocs/op",
+            "extra": "57939 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_top_edge",
+            "value": 17957,
+            "unit": "ns/op\t   34034 B/op\t      17 allocs/op",
+            "extra": "20980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_top_edge - ns/op",
+            "value": 17957,
+            "unit": "ns/op",
+            "extra": "20980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_top_edge - B/op",
+            "value": 34034,
+            "unit": "B/op",
+            "extra": "20980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_top_edge - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "20980 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_bottom_edge",
+            "value": 18268,
+            "unit": "ns/op\t   34067 B/op\t      17 allocs/op",
+            "extra": "20491 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_bottom_edge - ns/op",
+            "value": 18268,
+            "unit": "ns/op",
+            "extra": "20491 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_bottom_edge - B/op",
+            "value": 34067,
+            "unit": "B/op",
+            "extra": "20491 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=memory+index/toggle_bottom_edge - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "20491 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_hit",
+            "value": 15637518,
+            "unit": "ns/op\t  186500 B/op\t    3059 allocs/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_hit - ns/op",
+            "value": 15637518,
+            "unit": "ns/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_hit - B/op",
+            "value": 186500,
+            "unit": "B/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_hit - allocs/op",
+            "value": 3059,
+            "unit": "allocs/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_miss",
+            "value": 15917059,
+            "unit": "ns/op\t  186386 B/op\t    3078 allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_miss - ns/op",
+            "value": 15917059,
+            "unit": "ns/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_miss - B/op",
+            "value": 186386,
+            "unit": "B/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/check_miss - allocs/op",
+            "value": 3078,
+            "unit": "allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/lookup_all_teams",
+            "value": 38714626,
+            "unit": "ns/op\t 3576109 B/op\t   53094 allocs/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/lookup_all_teams - ns/op",
+            "value": 38714626,
+            "unit": "ns/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/lookup_all_teams - B/op",
+            "value": 3576109,
+            "unit": "B/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/lookup_all_teams - allocs/op",
+            "value": 53094,
+            "unit": "allocs/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/subjects_at_top",
+            "value": 15869172,
+            "unit": "ns/op\t  234236 B/op\t    3591 allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/subjects_at_top - ns/op",
+            "value": 15869172,
+            "unit": "ns/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/subjects_at_top - B/op",
+            "value": 234236,
+            "unit": "B/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/subjects_at_top - allocs/op",
+            "value": 3591,
+            "unit": "allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_top_edge",
+            "value": 1821168,
+            "unit": "ns/op\t    8995 B/op\t     148 allocs/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_top_edge - ns/op",
+            "value": 1821168,
+            "unit": "ns/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_top_edge - B/op",
+            "value": 8995,
+            "unit": "B/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_top_edge - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_bottom_edge",
+            "value": 1861070,
+            "unit": "ns/op\t    8656 B/op\t     148 allocs/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_bottom_edge - ns/op",
+            "value": 1861070,
+            "unit": "ns/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_bottom_edge - B/op",
+            "value": 8656,
+            "unit": "B/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres/toggle_bottom_edge - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_hit",
+            "value": 1461945,
+            "unit": "ns/op\t    6273 B/op\t      96 allocs/op",
+            "extra": "250 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_hit - ns/op",
+            "value": 1461945,
+            "unit": "ns/op",
+            "extra": "250 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_hit - B/op",
+            "value": 6273,
+            "unit": "B/op",
+            "extra": "250 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_hit - allocs/op",
+            "value": 96,
+            "unit": "allocs/op",
+            "extra": "250 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_miss",
+            "value": 1827614,
+            "unit": "ns/op\t   10445 B/op\t     162 allocs/op",
+            "extra": "199 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_miss - ns/op",
+            "value": 1827614,
+            "unit": "ns/op",
+            "extra": "199 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_miss - B/op",
+            "value": 10445,
+            "unit": "B/op",
+            "extra": "199 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "199 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/lookup_all_teams",
+            "value": 1786439,
+            "unit": "ns/op\t   19344 B/op\t     373 allocs/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/lookup_all_teams - ns/op",
+            "value": 1786439,
+            "unit": "ns/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/lookup_all_teams - B/op",
+            "value": 19344,
+            "unit": "B/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/lookup_all_teams - allocs/op",
+            "value": 373,
+            "unit": "allocs/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/subjects_at_top",
+            "value": 1587040,
+            "unit": "ns/op\t    8090 B/op\t     140 allocs/op",
+            "extra": "217 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/subjects_at_top - ns/op",
+            "value": 1587040,
+            "unit": "ns/op",
+            "extra": "217 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/subjects_at_top - B/op",
+            "value": 8090,
+            "unit": "B/op",
+            "extra": "217 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/subjects_at_top - allocs/op",
+            "value": 140,
+            "unit": "allocs/op",
+            "extra": "217 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_top_edge",
+            "value": 41473212,
+            "unit": "ns/op\t  217382 B/op\t    2273 allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_top_edge - ns/op",
+            "value": 41473212,
+            "unit": "ns/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_top_edge - B/op",
+            "value": 217382,
+            "unit": "B/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_top_edge - allocs/op",
+            "value": 2273,
+            "unit": "allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_bottom_edge",
+            "value": 6903372,
+            "unit": "ns/op\t   74499 B/op\t    1101 allocs/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_bottom_edge - ns/op",
+            "value": 6903372,
+            "unit": "ns/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_bottom_edge - B/op",
+            "value": 74499,
+            "unit": "B/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+closure/toggle_bottom_edge - allocs/op",
+            "value": 1101,
+            "unit": "allocs/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_hit",
+            "value": 921314,
+            "unit": "ns/op\t    6038 B/op\t      76 allocs/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_hit - ns/op",
+            "value": 921314,
+            "unit": "ns/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_hit - B/op",
+            "value": 6038,
+            "unit": "B/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_hit - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_miss",
+            "value": 824366,
+            "unit": "ns/op\t    6032 B/op\t      76 allocs/op",
+            "extra": "468 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_miss - ns/op",
+            "value": 824366,
+            "unit": "ns/op",
+            "extra": "468 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_miss - B/op",
+            "value": 6032,
+            "unit": "B/op",
+            "extra": "468 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/check_miss - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "468 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/lookup_all_teams",
+            "value": 1778910,
+            "unit": "ns/op\t   19528 B/op\t     373 allocs/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/lookup_all_teams - ns/op",
+            "value": 1778910,
+            "unit": "ns/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/lookup_all_teams - B/op",
+            "value": 19528,
+            "unit": "B/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/lookup_all_teams - allocs/op",
+            "value": 373,
+            "unit": "allocs/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/subjects_at_top",
+            "value": 768800,
+            "unit": "ns/op\t    3843 B/op\t      73 allocs/op",
+            "extra": "507 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/subjects_at_top - ns/op",
+            "value": 768800,
+            "unit": "ns/op",
+            "extra": "507 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/subjects_at_top - B/op",
+            "value": 3843,
+            "unit": "B/op",
+            "extra": "507 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/subjects_at_top - allocs/op",
+            "value": 73,
+            "unit": "allocs/op",
+            "extra": "507 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_top_edge",
+            "value": 42350526,
+            "unit": "ns/op\t  185781 B/op\t    2390 allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_top_edge - ns/op",
+            "value": 42350526,
+            "unit": "ns/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_top_edge - B/op",
+            "value": 185781,
+            "unit": "B/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_top_edge - allocs/op",
+            "value": 2390,
+            "unit": "allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_bottom_edge",
+            "value": 7325685,
+            "unit": "ns/op\t   79464 B/op\t    1158 allocs/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_bottom_edge - ns/op",
+            "value": 7325685,
+            "unit": "ns/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_bottom_edge - B/op",
+            "value": 79464,
+            "unit": "B/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=postgres+sets/toggle_bottom_edge - allocs/op",
+            "value": 1158,
+            "unit": "allocs/op",
+            "extra": "45 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_top_edge",
+            "value": 853894,
+            "unit": "ns/op\t   15198 B/op\t     225 allocs/op",
+            "extra": "445 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_top_edge - ns/op",
+            "value": 853894,
+            "unit": "ns/op",
+            "extra": "445 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_top_edge - B/op",
+            "value": 15198,
+            "unit": "B/op",
+            "extra": "445 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_top_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "445 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_bottom_edge",
+            "value": 861084,
+            "unit": "ns/op\t   15201 B/op\t     225 allocs/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_bottom_edge - ns/op",
+            "value": 861084,
+            "unit": "ns/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_bottom_edge - B/op",
+            "value": 15201,
+            "unit": "B/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-memdb/toggle_bottom_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_top_edge",
+            "value": 3515705,
+            "unit": "ns/op\t   15247 B/op\t     225 allocs/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_top_edge - ns/op",
+            "value": 3515705,
+            "unit": "ns/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_top_edge - B/op",
+            "value": 15247,
+            "unit": "B/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_top_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_bottom_edge",
+            "value": 3361862,
+            "unit": "ns/op\t   15589 B/op\t     226 allocs/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_bottom_edge - ns/op",
+            "value": 3361862,
+            "unit": "ns/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_bottom_edge - B/op",
+            "value": 15589,
+            "unit": "B/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=deep_nesting/kind=spicedb-postgres/toggle_bottom_edge - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_hub",
+            "value": 883399,
+            "unit": "ns/op\t   86714 B/op\t     148 allocs/op",
+            "extra": "408 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_hub - ns/op",
+            "value": 883399,
+            "unit": "ns/op",
+            "extra": "408 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_hub - B/op",
+            "value": 86714,
+            "unit": "B/op",
+            "extra": "408 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_hub - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "408 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_single_owner",
+            "value": 454202,
+            "unit": "ns/op\t    2713 B/op\t      50 allocs/op",
+            "extra": "777 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_single_owner - ns/op",
+            "value": 454202,
+            "unit": "ns/op",
+            "extra": "777 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_single_owner - B/op",
+            "value": 2713,
+            "unit": "B/op",
+            "extra": "777 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/lookup_single_owner - allocs/op",
+            "value": 50,
+            "unit": "allocs/op",
+            "extra": "777 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/check_miss",
+            "value": 140487,
+            "unit": "ns/op\t    1207 B/op\t      16 allocs/op",
+            "extra": "2571 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/check_miss - ns/op",
+            "value": 140487,
+            "unit": "ns/op",
+            "extra": "2571 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/check_miss - B/op",
+            "value": 1207,
+            "unit": "B/op",
+            "extra": "2571 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory/check_miss - allocs/op",
+            "value": 16,
+            "unit": "allocs/op",
+            "extra": "2571 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_hub",
+            "value": 21570,
+            "unit": "ns/op\t   16854 B/op\t      34 allocs/op",
+            "extra": "17862 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_hub - ns/op",
+            "value": 21570,
+            "unit": "ns/op",
+            "extra": "17862 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_hub - B/op",
+            "value": 16854,
+            "unit": "B/op",
+            "extra": "17862 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_hub - allocs/op",
+            "value": 34,
+            "unit": "allocs/op",
+            "extra": "17862 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_single_owner",
+            "value": 2162,
+            "unit": "ns/op\t    1400 B/op\t      13 allocs/op",
+            "extra": "170269 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_single_owner - ns/op",
+            "value": 2162,
+            "unit": "ns/op",
+            "extra": "170269 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_single_owner - B/op",
+            "value": 1400,
+            "unit": "B/op",
+            "extra": "170269 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/lookup_single_owner - allocs/op",
+            "value": 13,
+            "unit": "allocs/op",
+            "extra": "170269 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/check_miss",
+            "value": 1968,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "190920 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/check_miss - ns/op",
+            "value": 1968,
+            "unit": "ns/op",
+            "extra": "190920 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "190920 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "190920 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_hub",
+            "value": 2139132,
+            "unit": "ns/op\t  146510 B/op\t    1759 allocs/op",
+            "extra": "181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_hub - ns/op",
+            "value": 2139132,
+            "unit": "ns/op",
+            "extra": "181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_hub - B/op",
+            "value": 146510,
+            "unit": "B/op",
+            "extra": "181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_hub - allocs/op",
+            "value": 1759,
+            "unit": "allocs/op",
+            "extra": "181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_single_owner",
+            "value": 1145974,
+            "unit": "ns/op\t   12456 B/op\t     197 allocs/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_single_owner - ns/op",
+            "value": 1145974,
+            "unit": "ns/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_single_owner - B/op",
+            "value": 12456,
+            "unit": "B/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/lookup_single_owner - allocs/op",
+            "value": 197,
+            "unit": "allocs/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/check_miss",
+            "value": 498979,
+            "unit": "ns/op\t    3908 B/op\t      61 allocs/op",
+            "extra": "774 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/check_miss - ns/op",
+            "value": 498979,
+            "unit": "ns/op",
+            "extra": "774 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/check_miss - B/op",
+            "value": 3908,
+            "unit": "B/op",
+            "extra": "774 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres/check_miss - allocs/op",
+            "value": 61,
+            "unit": "allocs/op",
+            "extra": "774 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_hub",
+            "value": 988858,
+            "unit": "ns/op\t   16221 B/op\t     275 allocs/op",
+            "extra": "382 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_hub - ns/op",
+            "value": 988858,
+            "unit": "ns/op",
+            "extra": "382 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_hub - B/op",
+            "value": 16221,
+            "unit": "B/op",
+            "extra": "382 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_hub - allocs/op",
+            "value": 275,
+            "unit": "allocs/op",
+            "extra": "382 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_single_owner",
+            "value": 972829,
+            "unit": "ns/op\t    5243 B/op\t     110 allocs/op",
+            "extra": "410 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_single_owner - ns/op",
+            "value": 972829,
+            "unit": "ns/op",
+            "extra": "410 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_single_owner - B/op",
+            "value": 5243,
+            "unit": "B/op",
+            "extra": "410 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/lookup_single_owner - allocs/op",
+            "value": 110,
+            "unit": "allocs/op",
+            "extra": "410 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/check_miss",
+            "value": 1024880,
+            "unit": "ns/op\t    9898 B/op\t     162 allocs/op",
+            "extra": "358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/check_miss - ns/op",
+            "value": 1024880,
+            "unit": "ns/op",
+            "extra": "358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/check_miss - B/op",
+            "value": 9898,
+            "unit": "B/op",
+            "extra": "358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_hub",
+            "value": 783585,
+            "unit": "ns/op\t   11377 B/op\t     231 allocs/op",
+            "extra": "484 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_hub - ns/op",
+            "value": 783585,
+            "unit": "ns/op",
+            "extra": "484 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_hub - B/op",
+            "value": 11377,
+            "unit": "B/op",
+            "extra": "484 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_hub - allocs/op",
+            "value": 231,
+            "unit": "allocs/op",
+            "extra": "484 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_single_owner",
+            "value": 687471,
+            "unit": "ns/op\t    3495 B/op\t      73 allocs/op",
+            "extra": "585 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_single_owner - ns/op",
+            "value": 687471,
+            "unit": "ns/op",
+            "extra": "585 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_single_owner - B/op",
+            "value": 3495,
+            "unit": "B/op",
+            "extra": "585 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/lookup_single_owner - allocs/op",
+            "value": 73,
+            "unit": "allocs/op",
+            "extra": "585 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/check_miss",
+            "value": 820470,
+            "unit": "ns/op\t    6034 B/op\t      77 allocs/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/check_miss - ns/op",
+            "value": 820470,
+            "unit": "ns/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/check_miss - B/op",
+            "value": 6034,
+            "unit": "B/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_hub",
+            "value": 692663,
+            "unit": "ns/op\t   49151 B/op\t     619 allocs/op",
+            "extra": "552 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_hub - ns/op",
+            "value": 692663,
+            "unit": "ns/op",
+            "extra": "552 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_hub - B/op",
+            "value": 49151,
+            "unit": "B/op",
+            "extra": "552 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_hub - allocs/op",
+            "value": 619,
+            "unit": "allocs/op",
+            "extra": "552 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_single_owner",
+            "value": 375510,
+            "unit": "ns/op\t    7848 B/op\t     114 allocs/op",
+            "extra": "940 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_single_owner - ns/op",
+            "value": 375510,
+            "unit": "ns/op",
+            "extra": "940 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_single_owner - B/op",
+            "value": 7848,
+            "unit": "B/op",
+            "extra": "940 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/lookup_single_owner - allocs/op",
+            "value": 114,
+            "unit": "allocs/op",
+            "extra": "940 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/check_miss",
+            "value": 370605,
+            "unit": "ns/op\t    7363 B/op\t     108 allocs/op",
+            "extra": "1058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 370605,
+            "unit": "ns/op",
+            "extra": "1058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7363,
+            "unit": "B/op",
+            "extra": "1058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_hub",
+            "value": 909575,
+            "unit": "ns/op\t   44199 B/op\t     619 allocs/op",
+            "extra": "403 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_hub - ns/op",
+            "value": 909575,
+            "unit": "ns/op",
+            "extra": "403 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_hub - B/op",
+            "value": 44199,
+            "unit": "B/op",
+            "extra": "403 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_hub - allocs/op",
+            "value": 619,
+            "unit": "allocs/op",
+            "extra": "403 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_single_owner",
+            "value": 648808,
+            "unit": "ns/op\t    7760 B/op\t     114 allocs/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_single_owner - ns/op",
+            "value": 648808,
+            "unit": "ns/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_single_owner - B/op",
+            "value": 7760,
+            "unit": "B/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/lookup_single_owner - allocs/op",
+            "value": 114,
+            "unit": "allocs/op",
+            "extra": "548 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/check_miss",
+            "value": 637748,
+            "unit": "ns/op\t    7297 B/op\t     108 allocs/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 637748,
+            "unit": "ns/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7297,
+            "unit": "B/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=hub_user/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_needle",
+            "value": 1992053,
+            "unit": "ns/op\t    2878 B/op\t      50 allocs/op",
+            "extra": "178 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_needle - ns/op",
+            "value": 1992053,
+            "unit": "ns/op",
+            "extra": "178 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_needle - B/op",
+            "value": 2878,
+            "unit": "B/op",
+            "extra": "178 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_needle - allocs/op",
+            "value": 50,
+            "unit": "allocs/op",
+            "extra": "178 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/check_needle",
+            "value": 744030,
+            "unit": "ns/op\t    1304 B/op\t      16 allocs/op",
+            "extra": "481 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/check_needle - ns/op",
+            "value": 744030,
+            "unit": "ns/op",
+            "extra": "481 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/check_needle - B/op",
+            "value": 1304,
+            "unit": "B/op",
+            "extra": "481 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/check_needle - allocs/op",
+            "value": 16,
+            "unit": "allocs/op",
+            "extra": "481 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_nobody",
+            "value": 997487,
+            "unit": "ns/op\t    1186 B/op\t      24 allocs/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_nobody - ns/op",
+            "value": 997487,
+            "unit": "ns/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_nobody - B/op",
+            "value": 1186,
+            "unit": "B/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory/lookup_nobody - allocs/op",
+            "value": 24,
+            "unit": "allocs/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_needle",
+            "value": 2301,
+            "unit": "ns/op\t    1400 B/op\t      13 allocs/op",
+            "extra": "164426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_needle - ns/op",
+            "value": 2301,
+            "unit": "ns/op",
+            "extra": "164426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_needle - B/op",
+            "value": 1400,
+            "unit": "B/op",
+            "extra": "164426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_needle - allocs/op",
+            "value": 13,
+            "unit": "allocs/op",
+            "extra": "164426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/check_needle",
+            "value": 2112,
+            "unit": "ns/op\t     929 B/op\t      10 allocs/op",
+            "extra": "181844 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/check_needle - ns/op",
+            "value": 2112,
+            "unit": "ns/op",
+            "extra": "181844 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/check_needle - B/op",
+            "value": 929,
+            "unit": "B/op",
+            "extra": "181844 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/check_needle - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "181844 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_nobody",
+            "value": 1796,
+            "unit": "ns/op\t     680 B/op\t       9 allocs/op",
+            "extra": "202995 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_nobody - ns/op",
+            "value": 1796,
+            "unit": "ns/op",
+            "extra": "202995 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_nobody - B/op",
+            "value": 680,
+            "unit": "B/op",
+            "extra": "202995 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=memory+index/lookup_nobody - allocs/op",
+            "value": 9,
+            "unit": "allocs/op",
+            "extra": "202995 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_needle",
+            "value": 1033908,
+            "unit": "ns/op\t   12685 B/op\t     197 allocs/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_needle - ns/op",
+            "value": 1033908,
+            "unit": "ns/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_needle - B/op",
+            "value": 12685,
+            "unit": "B/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_needle - allocs/op",
+            "value": 197,
+            "unit": "allocs/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/check_needle",
+            "value": 471931,
+            "unit": "ns/op\t    3853 B/op\t      61 allocs/op",
+            "extra": "946 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/check_needle - ns/op",
+            "value": 471931,
+            "unit": "ns/op",
+            "extra": "946 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/check_needle - B/op",
+            "value": 3853,
+            "unit": "B/op",
+            "extra": "946 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/check_needle - allocs/op",
+            "value": 61,
+            "unit": "allocs/op",
+            "extra": "946 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_nobody",
+            "value": 622786,
+            "unit": "ns/op\t    5743 B/op\t      92 allocs/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_nobody - ns/op",
+            "value": 622786,
+            "unit": "ns/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_nobody - B/op",
+            "value": 5743,
+            "unit": "B/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres/lookup_nobody - allocs/op",
+            "value": 92,
+            "unit": "allocs/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_needle",
+            "value": 877526,
+            "unit": "ns/op\t    5197 B/op\t     112 allocs/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_needle - ns/op",
+            "value": 877526,
+            "unit": "ns/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_needle - B/op",
+            "value": 5197,
+            "unit": "B/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_needle - allocs/op",
+            "value": 112,
+            "unit": "allocs/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/check_needle",
+            "value": 971804,
+            "unit": "ns/op\t   10503 B/op\t     174 allocs/op",
+            "extra": "352 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/check_needle - ns/op",
+            "value": 971804,
+            "unit": "ns/op",
+            "extra": "352 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/check_needle - B/op",
+            "value": 10503,
+            "unit": "B/op",
+            "extra": "352 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/check_needle - allocs/op",
+            "value": 174,
+            "unit": "allocs/op",
+            "extra": "352 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_nobody",
+            "value": 927905,
+            "unit": "ns/op\t    4579 B/op\t     103 allocs/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_nobody - ns/op",
+            "value": 927905,
+            "unit": "ns/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_nobody - B/op",
+            "value": 4579,
+            "unit": "B/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+closure/lookup_nobody - allocs/op",
+            "value": 103,
+            "unit": "allocs/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_needle",
+            "value": 656527,
+            "unit": "ns/op\t    3424 B/op\t      73 allocs/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_needle - ns/op",
+            "value": 656527,
+            "unit": "ns/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_needle - B/op",
+            "value": 3424,
+            "unit": "B/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_needle - allocs/op",
+            "value": 73,
+            "unit": "allocs/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/check_needle",
+            "value": 807846,
+            "unit": "ns/op\t    6133 B/op\t      77 allocs/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/check_needle - ns/op",
+            "value": 807846,
+            "unit": "ns/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/check_needle - B/op",
+            "value": 6133,
+            "unit": "B/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/check_needle - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_nobody",
+            "value": 685026,
+            "unit": "ns/op\t    3175 B/op\t      65 allocs/op",
+            "extra": "642 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_nobody - ns/op",
+            "value": 685026,
+            "unit": "ns/op",
+            "extra": "642 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_nobody - B/op",
+            "value": 3175,
+            "unit": "B/op",
+            "extra": "642 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=postgres+sets/lookup_nobody - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "642 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_needle",
+            "value": 376051,
+            "unit": "ns/op\t    7897 B/op\t     114 allocs/op",
+            "extra": "850 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_needle - ns/op",
+            "value": 376051,
+            "unit": "ns/op",
+            "extra": "850 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_needle - B/op",
+            "value": 7897,
+            "unit": "B/op",
+            "extra": "850 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_needle - allocs/op",
+            "value": 114,
+            "unit": "allocs/op",
+            "extra": "850 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/check_needle",
+            "value": 371697,
+            "unit": "ns/op\t    7365 B/op\t     108 allocs/op",
+            "extra": "1024 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/check_needle - ns/op",
+            "value": 371697,
+            "unit": "ns/op",
+            "extra": "1024 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/check_needle - B/op",
+            "value": 7365,
+            "unit": "B/op",
+            "extra": "1024 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/check_needle - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1024 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_nobody",
+            "value": 343252,
+            "unit": "ns/op\t    6450 B/op\t      91 allocs/op",
+            "extra": "1064 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_nobody - ns/op",
+            "value": 343252,
+            "unit": "ns/op",
+            "extra": "1064 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_nobody - B/op",
+            "value": 6450,
+            "unit": "B/op",
+            "extra": "1064 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-memdb/lookup_nobody - allocs/op",
+            "value": 91,
+            "unit": "allocs/op",
+            "extra": "1064 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_needle",
+            "value": 647999,
+            "unit": "ns/op\t    7837 B/op\t     114 allocs/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_needle - ns/op",
+            "value": 647999,
+            "unit": "ns/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_needle - B/op",
+            "value": 7837,
+            "unit": "B/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_needle - allocs/op",
+            "value": 114,
+            "unit": "allocs/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/check_needle",
+            "value": 627397,
+            "unit": "ns/op\t    7415 B/op\t     108 allocs/op",
+            "extra": "568 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/check_needle - ns/op",
+            "value": 627397,
+            "unit": "ns/op",
+            "extra": "568 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/check_needle - B/op",
+            "value": 7415,
+            "unit": "B/op",
+            "extra": "568 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/check_needle - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "568 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_nobody",
+            "value": 611197,
+            "unit": "ns/op\t    6352 B/op\t      91 allocs/op",
+            "extra": "529 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_nobody - ns/op",
+            "value": 611197,
+            "unit": "ns/op",
+            "extra": "529 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_nobody - B/op",
+            "value": 6352,
+            "unit": "B/op",
+            "extra": "529 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=needle/kind=spicedb-postgres/lookup_nobody - allocs/op",
+            "value": 91,
+            "unit": "allocs/op",
+            "extra": "529 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_last",
+            "value": 6656631,
+            "unit": "ns/op\t  655759 B/op\t    9809 allocs/op",
+            "extra": "51 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_last - ns/op",
+            "value": 6656631,
+            "unit": "ns/op",
+            "extra": "51 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_last - B/op",
+            "value": 655759,
+            "unit": "B/op",
+            "extra": "51 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_last - allocs/op",
+            "value": 9809,
+            "unit": "allocs/op",
+            "extra": "51 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_miss",
+            "value": 7653764,
+            "unit": "ns/op\t  755704 B/op\t   10048 allocs/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_miss - ns/op",
+            "value": 7653764,
+            "unit": "ns/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_miss - B/op",
+            "value": 755704,
+            "unit": "B/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/check_miss - allocs/op",
+            "value": 10048,
+            "unit": "allocs/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_teams",
+            "value": 17219223,
+            "unit": "ns/op\t11973434 B/op\t   18799 allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_teams - ns/op",
+            "value": 17219223,
+            "unit": "ns/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_teams - B/op",
+            "value": 11973434,
+            "unit": "B/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_teams - allocs/op",
+            "value": 18799,
+            "unit": "allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_users",
+            "value": 16548493,
+            "unit": "ns/op\t11965419 B/op\t   18659 allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_users - ns/op",
+            "value": 16548493,
+            "unit": "ns/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_users - B/op",
+            "value": 11965419,
+            "unit": "B/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/subjects_users - allocs/op",
+            "value": 18659,
+            "unit": "allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/lookup_one",
+            "value": 497237,
+            "unit": "ns/op\t    7117 B/op\t     130 allocs/op",
+            "extra": "709 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/lookup_one - ns/op",
+            "value": 497237,
+            "unit": "ns/op",
+            "extra": "709 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/lookup_one - B/op",
+            "value": 7117,
+            "unit": "B/op",
+            "extra": "709 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory/lookup_one - allocs/op",
+            "value": 130,
+            "unit": "allocs/op",
+            "extra": "709 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_last",
+            "value": 23049,
+            "unit": "ns/op\t   25508 B/op\t      11 allocs/op",
+            "extra": "15872 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_last - ns/op",
+            "value": 23049,
+            "unit": "ns/op",
+            "extra": "15872 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_last - B/op",
+            "value": 25508,
+            "unit": "B/op",
+            "extra": "15872 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_last - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "15872 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_miss",
+            "value": 20436,
+            "unit": "ns/op\t   25511 B/op\t      11 allocs/op",
+            "extra": "16653 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_miss - ns/op",
+            "value": 20436,
+            "unit": "ns/op",
+            "extra": "16653 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_miss - B/op",
+            "value": 25511,
+            "unit": "B/op",
+            "extra": "16653 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/check_miss - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "16653 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_teams",
+            "value": 251779,
+            "unit": "ns/op\t  258327 B/op\t     867 allocs/op",
+            "extra": "1604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_teams - ns/op",
+            "value": 251779,
+            "unit": "ns/op",
+            "extra": "1604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_teams - B/op",
+            "value": 258327,
+            "unit": "B/op",
+            "extra": "1604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_teams - allocs/op",
+            "value": 867,
+            "unit": "allocs/op",
+            "extra": "1604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_users",
+            "value": 199777,
+            "unit": "ns/op\t  150987 B/op\t      49 allocs/op",
+            "extra": "1963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_users - ns/op",
+            "value": 199777,
+            "unit": "ns/op",
+            "extra": "1963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_users - B/op",
+            "value": 150987,
+            "unit": "B/op",
+            "extra": "1963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/subjects_users - allocs/op",
+            "value": 49,
+            "unit": "allocs/op",
+            "extra": "1963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/lookup_one",
+            "value": 2289,
+            "unit": "ns/op\t    1400 B/op\t      13 allocs/op",
+            "extra": "161787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/lookup_one - ns/op",
+            "value": 2289,
+            "unit": "ns/op",
+            "extra": "161787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/lookup_one - B/op",
+            "value": 1400,
+            "unit": "B/op",
+            "extra": "161787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=memory+index/lookup_one - allocs/op",
+            "value": 13,
+            "unit": "allocs/op",
+            "extra": "161787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_last",
+            "value": 63716605,
+            "unit": "ns/op\t 1033459 B/op\t   16476 allocs/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_last - ns/op",
+            "value": 63716605,
+            "unit": "ns/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_last - B/op",
+            "value": 1033459,
+            "unit": "B/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_last - allocs/op",
+            "value": 16476,
+            "unit": "allocs/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_miss",
+            "value": 73896136,
+            "unit": "ns/op\t 1227283 B/op\t   18096 allocs/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_miss - ns/op",
+            "value": 73896136,
+            "unit": "ns/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_miss - B/op",
+            "value": 1227283,
+            "unit": "B/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/check_miss - allocs/op",
+            "value": 18096,
+            "unit": "allocs/op",
+            "extra": "5 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_teams",
+            "value": 79243143,
+            "unit": "ns/op\t12444522 B/op\t   26811 allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_teams - ns/op",
+            "value": 79243143,
+            "unit": "ns/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_teams - B/op",
+            "value": 12444522,
+            "unit": "B/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_teams - allocs/op",
+            "value": 26811,
+            "unit": "allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_users",
+            "value": 77176264,
+            "unit": "ns/op\t12436402 B/op\t   26833 allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_users - ns/op",
+            "value": 77176264,
+            "unit": "ns/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_users - B/op",
+            "value": 12436402,
+            "unit": "B/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/subjects_users - allocs/op",
+            "value": 26833,
+            "unit": "allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/lookup_one",
+            "value": 3493234,
+            "unit": "ns/op\t   45563 B/op\t     701 allocs/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/lookup_one - ns/op",
+            "value": 3493234,
+            "unit": "ns/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/lookup_one - B/op",
+            "value": 45563,
+            "unit": "B/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres/lookup_one - allocs/op",
+            "value": 701,
+            "unit": "allocs/op",
+            "extra": "98 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_last",
+            "value": 603441,
+            "unit": "ns/op\t    5908 B/op\t      96 allocs/op",
+            "extra": "597 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_last - ns/op",
+            "value": 603441,
+            "unit": "ns/op",
+            "extra": "597 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_last - B/op",
+            "value": 5908,
+            "unit": "B/op",
+            "extra": "597 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_last - allocs/op",
+            "value": 96,
+            "unit": "allocs/op",
+            "extra": "597 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_miss",
+            "value": 948884,
+            "unit": "ns/op\t    9827 B/op\t     162 allocs/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_miss - ns/op",
+            "value": 948884,
+            "unit": "ns/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_miss - B/op",
+            "value": 9827,
+            "unit": "B/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_teams",
+            "value": 2230934,
+            "unit": "ns/op\t  309233 B/op\t    3602 allocs/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_teams - ns/op",
+            "value": 2230934,
+            "unit": "ns/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_teams - B/op",
+            "value": 309233,
+            "unit": "B/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_teams - allocs/op",
+            "value": 3602,
+            "unit": "allocs/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_users",
+            "value": 2149852,
+            "unit": "ns/op\t  362609 B/op\t    3672 allocs/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_users - ns/op",
+            "value": 2149852,
+            "unit": "ns/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_users - B/op",
+            "value": 362609,
+            "unit": "B/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/subjects_users - allocs/op",
+            "value": 3672,
+            "unit": "allocs/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/lookup_one",
+            "value": 911733,
+            "unit": "ns/op\t    5082 B/op\t     109 allocs/op",
+            "extra": "374 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/lookup_one - ns/op",
+            "value": 911733,
+            "unit": "ns/op",
+            "extra": "374 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/lookup_one - B/op",
+            "value": 5082,
+            "unit": "B/op",
+            "extra": "374 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+closure/lookup_one - allocs/op",
+            "value": 109,
+            "unit": "allocs/op",
+            "extra": "374 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_last",
+            "value": 862160,
+            "unit": "ns/op\t    6021 B/op\t      76 allocs/op",
+            "extra": "464 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_last - ns/op",
+            "value": 862160,
+            "unit": "ns/op",
+            "extra": "464 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_last - B/op",
+            "value": 6021,
+            "unit": "B/op",
+            "extra": "464 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_last - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "464 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_miss",
+            "value": 806824,
+            "unit": "ns/op\t    6113 B/op\t      76 allocs/op",
+            "extra": "462 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_miss - ns/op",
+            "value": 806824,
+            "unit": "ns/op",
+            "extra": "462 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_miss - B/op",
+            "value": 6113,
+            "unit": "B/op",
+            "extra": "462 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/check_miss - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "462 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_teams",
+            "value": 2234007,
+            "unit": "ns/op\t  309727 B/op\t    3602 allocs/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_teams - ns/op",
+            "value": 2234007,
+            "unit": "ns/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_teams - B/op",
+            "value": 309727,
+            "unit": "B/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_teams - allocs/op",
+            "value": 3602,
+            "unit": "allocs/op",
+            "extra": "162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_users",
+            "value": 1438417,
+            "unit": "ns/op\t  102589 B/op\t    1592 allocs/op",
+            "extra": "249 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_users - ns/op",
+            "value": 1438417,
+            "unit": "ns/op",
+            "extra": "249 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_users - B/op",
+            "value": 102589,
+            "unit": "B/op",
+            "extra": "249 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/subjects_users - allocs/op",
+            "value": 1592,
+            "unit": "allocs/op",
+            "extra": "249 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/lookup_one",
+            "value": 670435,
+            "unit": "ns/op\t    3579 B/op\t      72 allocs/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/lookup_one - ns/op",
+            "value": 670435,
+            "unit": "ns/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/lookup_one - B/op",
+            "value": 3579,
+            "unit": "B/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=postgres+sets/lookup_one - allocs/op",
+            "value": 72,
+            "unit": "allocs/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_last",
+            "value": 354957,
+            "unit": "ns/op\t    7334 B/op\t     108 allocs/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_last - ns/op",
+            "value": 354957,
+            "unit": "ns/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_last - B/op",
+            "value": 7334,
+            "unit": "B/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_last - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_miss",
+            "value": 354517,
+            "unit": "ns/op\t    7334 B/op\t     108 allocs/op",
+            "extra": "1098 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 354517,
+            "unit": "ns/op",
+            "extra": "1098 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7334,
+            "unit": "B/op",
+            "extra": "1098 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1098 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_teams",
+            "value": 2956270,
+            "unit": "ns/op\t  595248 B/op\t   10162 allocs/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_teams - ns/op",
+            "value": 2956270,
+            "unit": "ns/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_teams - B/op",
+            "value": 595248,
+            "unit": "B/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_teams - allocs/op",
+            "value": 10162,
+            "unit": "allocs/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_users",
+            "value": 1693701,
+            "unit": "ns/op\t  305227 B/op\t    5136 allocs/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_users - ns/op",
+            "value": 1693701,
+            "unit": "ns/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_users - B/op",
+            "value": 305227,
+            "unit": "B/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/subjects_users - allocs/op",
+            "value": 5136,
+            "unit": "allocs/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/lookup_one",
+            "value": 400709,
+            "unit": "ns/op\t    7938 B/op\t     113 allocs/op",
+            "extra": "901 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/lookup_one - ns/op",
+            "value": 400709,
+            "unit": "ns/op",
+            "extra": "901 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/lookup_one - B/op",
+            "value": 7938,
+            "unit": "B/op",
+            "extra": "901 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-memdb/lookup_one - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "901 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_last",
+            "value": 631574,
+            "unit": "ns/op\t    7297 B/op\t     108 allocs/op",
+            "extra": "559 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_last - ns/op",
+            "value": 631574,
+            "unit": "ns/op",
+            "extra": "559 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_last - B/op",
+            "value": 7297,
+            "unit": "B/op",
+            "extra": "559 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_last - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "559 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_miss",
+            "value": 622052,
+            "unit": "ns/op\t    7297 B/op\t     108 allocs/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 622052,
+            "unit": "ns/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7297,
+            "unit": "B/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_teams",
+            "value": 3112424,
+            "unit": "ns/op\t  554283 B/op\t   10148 allocs/op",
+            "extra": "109 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_teams - ns/op",
+            "value": 3112424,
+            "unit": "ns/op",
+            "extra": "109 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_teams - B/op",
+            "value": 554283,
+            "unit": "B/op",
+            "extra": "109 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_teams - allocs/op",
+            "value": 10148,
+            "unit": "allocs/op",
+            "extra": "109 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_users",
+            "value": 1954762,
+            "unit": "ns/op\t  283785 B/op\t    5141 allocs/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_users - ns/op",
+            "value": 1954762,
+            "unit": "ns/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_users - B/op",
+            "value": 283785,
+            "unit": "B/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/subjects_users - allocs/op",
+            "value": 5141,
+            "unit": "allocs/op",
+            "extra": "187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/lookup_one",
+            "value": 659130,
+            "unit": "ns/op\t    7972 B/op\t     113 allocs/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/lookup_one - ns/op",
+            "value": 659130,
+            "unit": "ns/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/lookup_one - B/op",
+            "value": 7972,
+            "unit": "B/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=fan_in/kind=spicedb-postgres/lookup_one - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/check_top",
+            "value": 157159,
+            "unit": "ns/op\t   47331 B/op\t     532 allocs/op",
+            "extra": "2391 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/check_top - ns/op",
+            "value": 157159,
+            "unit": "ns/op",
+            "extra": "2391 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/check_top - B/op",
+            "value": 47331,
+            "unit": "B/op",
+            "extra": "2391 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/check_top - allocs/op",
+            "value": 532,
+            "unit": "allocs/op",
+            "extra": "2391 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/lookup_all_layers",
+            "value": 5289493,
+            "unit": "ns/op\t 2588698 B/op\t   40781 allocs/op",
+            "extra": "76 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/lookup_all_layers - ns/op",
+            "value": 5289493,
+            "unit": "ns/op",
+            "extra": "76 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/lookup_all_layers - B/op",
+            "value": 2588698,
+            "unit": "B/op",
+            "extra": "76 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/lookup_all_layers - allocs/op",
+            "value": 40781,
+            "unit": "allocs/op",
+            "extra": "76 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/toggle_bottom_edge",
+            "value": 185406,
+            "unit": "ns/op\t  492933 B/op\t      22 allocs/op",
+            "extra": "2937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/toggle_bottom_edge - ns/op",
+            "value": 185406,
+            "unit": "ns/op",
+            "extra": "2937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/toggle_bottom_edge - B/op",
+            "value": 492933,
+            "unit": "B/op",
+            "extra": "2937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory/toggle_bottom_edge - allocs/op",
+            "value": 22,
+            "unit": "allocs/op",
+            "extra": "2937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/check_top",
+            "value": 2953,
+            "unit": "ns/op\t    3993 B/op\t      11 allocs/op",
+            "extra": "134061 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/check_top - ns/op",
+            "value": 2953,
+            "unit": "ns/op",
+            "extra": "134061 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/check_top - B/op",
+            "value": 3993,
+            "unit": "B/op",
+            "extra": "134061 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/check_top - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "134061 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/lookup_all_layers",
+            "value": 19997,
+            "unit": "ns/op\t   16336 B/op\t      31 allocs/op",
+            "extra": "17876 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/lookup_all_layers - ns/op",
+            "value": 19997,
+            "unit": "ns/op",
+            "extra": "17876 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/lookup_all_layers - B/op",
+            "value": 16336,
+            "unit": "B/op",
+            "extra": "17876 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/lookup_all_layers - allocs/op",
+            "value": 31,
+            "unit": "allocs/op",
+            "extra": "17876 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/toggle_bottom_edge",
+            "value": 186939,
+            "unit": "ns/op\t  492982 B/op\t      22 allocs/op",
+            "extra": "2857 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/toggle_bottom_edge - ns/op",
+            "value": 186939,
+            "unit": "ns/op",
+            "extra": "2857 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/toggle_bottom_edge - B/op",
+            "value": 492982,
+            "unit": "B/op",
+            "extra": "2857 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=memory+index/toggle_bottom_edge - allocs/op",
+            "value": 22,
+            "unit": "allocs/op",
+            "extra": "2857 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/check_top",
+            "value": 1039647,
+            "unit": "ns/op\t   44006 B/op\t     632 allocs/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/check_top - ns/op",
+            "value": 1039647,
+            "unit": "ns/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/check_top - B/op",
+            "value": 44006,
+            "unit": "B/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/check_top - allocs/op",
+            "value": 632,
+            "unit": "allocs/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/lookup_all_layers",
+            "value": 4425588,
+            "unit": "ns/op\t 1122841 B/op\t   17130 allocs/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/lookup_all_layers - ns/op",
+            "value": 4425588,
+            "unit": "ns/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/lookup_all_layers - B/op",
+            "value": 1122841,
+            "unit": "B/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/lookup_all_layers - allocs/op",
+            "value": 17130,
+            "unit": "allocs/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/toggle_bottom_edge",
+            "value": 1824122,
+            "unit": "ns/op\t    8004 B/op\t     148 allocs/op",
+            "extra": "205 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/toggle_bottom_edge - ns/op",
+            "value": 1824122,
+            "unit": "ns/op",
+            "extra": "205 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/toggle_bottom_edge - B/op",
+            "value": 8004,
+            "unit": "B/op",
+            "extra": "205 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres/toggle_bottom_edge - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "205 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/check_top",
+            "value": 630009,
+            "unit": "ns/op\t    5836 B/op\t      96 allocs/op",
+            "extra": "616 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/check_top - ns/op",
+            "value": 630009,
+            "unit": "ns/op",
+            "extra": "616 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/check_top - B/op",
+            "value": 5836,
+            "unit": "B/op",
+            "extra": "616 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/check_top - allocs/op",
+            "value": 96,
+            "unit": "allocs/op",
+            "extra": "616 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/lookup_all_layers",
+            "value": 641444,
+            "unit": "ns/op\t   14915 B/op\t     255 allocs/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/lookup_all_layers - ns/op",
+            "value": 641444,
+            "unit": "ns/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/lookup_all_layers - B/op",
+            "value": 14915,
+            "unit": "B/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/lookup_all_layers - allocs/op",
+            "value": 255,
+            "unit": "allocs/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/toggle_bottom_edge",
+            "value": 6618764,
+            "unit": "ns/op\t   42588 B/op\t     630 allocs/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/toggle_bottom_edge - ns/op",
+            "value": 6618764,
+            "unit": "ns/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/toggle_bottom_edge - B/op",
+            "value": 42588,
+            "unit": "B/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+closure/toggle_bottom_edge - allocs/op",
+            "value": 630,
+            "unit": "allocs/op",
+            "extra": "48 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/check_top",
+            "value": 989012,
+            "unit": "ns/op\t    6056 B/op\t      76 allocs/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/check_top - ns/op",
+            "value": 989012,
+            "unit": "ns/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/check_top - B/op",
+            "value": 6056,
+            "unit": "B/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/check_top - allocs/op",
+            "value": 76,
+            "unit": "allocs/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/lookup_all_layers",
+            "value": 645239,
+            "unit": "ns/op\t   14850 B/op\t     255 allocs/op",
+            "extra": "586 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/lookup_all_layers - ns/op",
+            "value": 645239,
+            "unit": "ns/op",
+            "extra": "586 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/lookup_all_layers - B/op",
+            "value": 14850,
+            "unit": "B/op",
+            "extra": "586 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/lookup_all_layers - allocs/op",
+            "value": 255,
+            "unit": "allocs/op",
+            "extra": "586 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/toggle_bottom_edge",
+            "value": 7168894,
+            "unit": "ns/op\t   54022 B/op\t     953 allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/toggle_bottom_edge - ns/op",
+            "value": 7168894,
+            "unit": "ns/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/toggle_bottom_edge - B/op",
+            "value": 54022,
+            "unit": "B/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=postgres+sets/toggle_bottom_edge - allocs/op",
+            "value": 953,
+            "unit": "allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/check_top",
+            "value": 351405,
+            "unit": "ns/op\t    7334 B/op\t     108 allocs/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/check_top - ns/op",
+            "value": 351405,
+            "unit": "ns/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/check_top - B/op",
+            "value": 7334,
+            "unit": "B/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/check_top - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/lookup_all_layers",
+            "value": 770395,
+            "unit": "ns/op\t   59745 B/op\t     731 allocs/op",
+            "extra": "504 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/lookup_all_layers - ns/op",
+            "value": 770395,
+            "unit": "ns/op",
+            "extra": "504 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/lookup_all_layers - B/op",
+            "value": 59745,
+            "unit": "B/op",
+            "extra": "504 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/lookup_all_layers - allocs/op",
+            "value": 731,
+            "unit": "allocs/op",
+            "extra": "504 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/toggle_bottom_edge",
+            "value": 830336,
+            "unit": "ns/op\t   15199 B/op\t     225 allocs/op",
+            "extra": "426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/toggle_bottom_edge - ns/op",
+            "value": 830336,
+            "unit": "ns/op",
+            "extra": "426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/toggle_bottom_edge - B/op",
+            "value": 15199,
+            "unit": "B/op",
+            "extra": "426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-memdb/toggle_bottom_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "426 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/check_top",
+            "value": 630461,
+            "unit": "ns/op\t    7296 B/op\t     108 allocs/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/check_top - ns/op",
+            "value": 630461,
+            "unit": "ns/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/check_top - B/op",
+            "value": 7296,
+            "unit": "B/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/check_top - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/lookup_all_layers",
+            "value": 1051883,
+            "unit": "ns/op\t   54918 B/op\t     734 allocs/op",
+            "extra": "355 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/lookup_all_layers - ns/op",
+            "value": 1051883,
+            "unit": "ns/op",
+            "extra": "355 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/lookup_all_layers - B/op",
+            "value": 54918,
+            "unit": "B/op",
+            "extra": "355 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/lookup_all_layers - allocs/op",
+            "value": 734,
+            "unit": "allocs/op",
+            "extra": "355 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/toggle_bottom_edge",
+            "value": 3780918,
+            "unit": "ns/op\t   16412 B/op\t     226 allocs/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/toggle_bottom_edge - ns/op",
+            "value": 3780918,
+            "unit": "ns/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/toggle_bottom_edge - B/op",
+            "value": 16412,
+            "unit": "B/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=dag/kind=spicedb-postgres/toggle_bottom_edge - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_leaf",
+            "value": 63636,
+            "unit": "ns/op\t   27929 B/op\t     263 allocs/op",
+            "extra": "6068 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_leaf - ns/op",
+            "value": 63636,
+            "unit": "ns/op",
+            "extra": "6068 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_leaf - B/op",
+            "value": 27929,
+            "unit": "B/op",
+            "extra": "6068 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_leaf - allocs/op",
+            "value": 263,
+            "unit": "allocs/op",
+            "extra": "6068 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_miss",
+            "value": 63045,
+            "unit": "ns/op\t   28037 B/op\t     265 allocs/op",
+            "extra": "5509 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_miss - ns/op",
+            "value": 63045,
+            "unit": "ns/op",
+            "extra": "5509 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_miss - B/op",
+            "value": 28037,
+            "unit": "B/op",
+            "extra": "5509 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/check_miss - allocs/op",
+            "value": 265,
+            "unit": "allocs/op",
+            "extra": "5509 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/lookup_all_folders",
+            "value": 485595,
+            "unit": "ns/op\t  234547 B/op\t     916 allocs/op",
+            "extra": "741 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/lookup_all_folders - ns/op",
+            "value": 485595,
+            "unit": "ns/op",
+            "extra": "741 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/lookup_all_folders - B/op",
+            "value": 234547,
+            "unit": "B/op",
+            "extra": "741 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/lookup_all_folders - allocs/op",
+            "value": 916,
+            "unit": "allocs/op",
+            "extra": "741 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/subjects_leaf",
+            "value": 81704,
+            "unit": "ns/op\t   58017 B/op\t     567 allocs/op",
+            "extra": "4413 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/subjects_leaf - ns/op",
+            "value": 81704,
+            "unit": "ns/op",
+            "extra": "4413 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/subjects_leaf - B/op",
+            "value": 58017,
+            "unit": "B/op",
+            "extra": "4413 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory/subjects_leaf - allocs/op",
+            "value": 567,
+            "unit": "allocs/op",
+            "extra": "4413 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_leaf",
+            "value": 2677,
+            "unit": "ns/op\t    3666 B/op\t       8 allocs/op",
+            "extra": "164058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_leaf - ns/op",
+            "value": 2677,
+            "unit": "ns/op",
+            "extra": "164058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_leaf - B/op",
+            "value": 3666,
+            "unit": "B/op",
+            "extra": "164058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_leaf - allocs/op",
+            "value": 8,
+            "unit": "allocs/op",
+            "extra": "164058 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_miss",
+            "value": 3912,
+            "unit": "ns/op\t    3666 B/op\t       8 allocs/op",
+            "extra": "104755 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_miss - ns/op",
+            "value": 3912,
+            "unit": "ns/op",
+            "extra": "104755 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_miss - B/op",
+            "value": 3666,
+            "unit": "B/op",
+            "extra": "104755 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/check_miss - allocs/op",
+            "value": 8,
+            "unit": "allocs/op",
+            "extra": "104755 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/lookup_all_folders",
+            "value": 10616,
+            "unit": "ns/op\t    8746 B/op\t      27 allocs/op",
+            "extra": "35104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/lookup_all_folders - ns/op",
+            "value": 10616,
+            "unit": "ns/op",
+            "extra": "35104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/lookup_all_folders - B/op",
+            "value": 8746,
+            "unit": "B/op",
+            "extra": "35104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/lookup_all_folders - allocs/op",
+            "value": 27,
+            "unit": "allocs/op",
+            "extra": "35104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/subjects_leaf",
+            "value": 4202,
+            "unit": "ns/op\t    4377 B/op\t      16 allocs/op",
+            "extra": "98679 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/subjects_leaf - ns/op",
+            "value": 4202,
+            "unit": "ns/op",
+            "extra": "98679 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/subjects_leaf - B/op",
+            "value": 4377,
+            "unit": "B/op",
+            "extra": "98679 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=memory+index/subjects_leaf - allocs/op",
+            "value": 16,
+            "unit": "allocs/op",
+            "extra": "98679 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_leaf",
+            "value": 8498686,
+            "unit": "ns/op\t  101983 B/op\t    1452 allocs/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_leaf - ns/op",
+            "value": 8498686,
+            "unit": "ns/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_leaf - B/op",
+            "value": 101983,
+            "unit": "B/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_leaf - allocs/op",
+            "value": 1452,
+            "unit": "allocs/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_miss",
+            "value": 8552513,
+            "unit": "ns/op\t  101340 B/op\t    1470 allocs/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_miss - ns/op",
+            "value": 8552513,
+            "unit": "ns/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_miss - B/op",
+            "value": 101340,
+            "unit": "B/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/check_miss - allocs/op",
+            "value": 1470,
+            "unit": "allocs/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/lookup_all_folders",
+            "value": 8580732,
+            "unit": "ns/op\t  437413 B/op\t    6015 allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/lookup_all_folders - ns/op",
+            "value": 8580732,
+            "unit": "ns/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/lookup_all_folders - B/op",
+            "value": 437413,
+            "unit": "B/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/lookup_all_folders - allocs/op",
+            "value": 6015,
+            "unit": "allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/subjects_leaf",
+            "value": 8012083,
+            "unit": "ns/op\t  134121 B/op\t    1772 allocs/op",
+            "extra": "40 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/subjects_leaf - ns/op",
+            "value": 8012083,
+            "unit": "ns/op",
+            "extra": "40 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/subjects_leaf - B/op",
+            "value": 134121,
+            "unit": "B/op",
+            "extra": "40 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres/subjects_leaf - allocs/op",
+            "value": 1772,
+            "unit": "allocs/op",
+            "extra": "40 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_leaf",
+            "value": 15346230,
+            "unit": "ns/op\t  200733 B/op\t    3131 allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_leaf - ns/op",
+            "value": 15346230,
+            "unit": "ns/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_leaf - B/op",
+            "value": 200733,
+            "unit": "B/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_leaf - allocs/op",
+            "value": 3131,
+            "unit": "allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_miss",
+            "value": 15621100,
+            "unit": "ns/op\t  202122 B/op\t    3169 allocs/op",
+            "extra": "21 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_miss - ns/op",
+            "value": 15621100,
+            "unit": "ns/op",
+            "extra": "21 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_miss - B/op",
+            "value": 202122,
+            "unit": "B/op",
+            "extra": "21 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/check_miss - allocs/op",
+            "value": 3169,
+            "unit": "allocs/op",
+            "extra": "21 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/lookup_all_folders",
+            "value": 14377890,
+            "unit": "ns/op\t  431932 B/op\t    6451 allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/lookup_all_folders - ns/op",
+            "value": 14377890,
+            "unit": "ns/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/lookup_all_folders - B/op",
+            "value": 431932,
+            "unit": "B/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/lookup_all_folders - allocs/op",
+            "value": 6451,
+            "unit": "allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/subjects_leaf",
+            "value": 15393059,
+            "unit": "ns/op\t  180891 B/op\t    2821 allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/subjects_leaf - ns/op",
+            "value": 15393059,
+            "unit": "ns/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/subjects_leaf - B/op",
+            "value": 180891,
+            "unit": "B/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+closure/subjects_leaf - allocs/op",
+            "value": 2821,
+            "unit": "allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_leaf",
+            "value": 842021,
+            "unit": "ns/op\t    5978 B/op\t      74 allocs/op",
+            "extra": "447 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_leaf - ns/op",
+            "value": 842021,
+            "unit": "ns/op",
+            "extra": "447 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_leaf - B/op",
+            "value": 5978,
+            "unit": "B/op",
+            "extra": "447 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_leaf - allocs/op",
+            "value": 74,
+            "unit": "allocs/op",
+            "extra": "447 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_miss",
+            "value": 815686,
+            "unit": "ns/op\t    5989 B/op\t      74 allocs/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_miss - ns/op",
+            "value": 815686,
+            "unit": "ns/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_miss - B/op",
+            "value": 5989,
+            "unit": "B/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/check_miss - allocs/op",
+            "value": 74,
+            "unit": "allocs/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/lookup_all_folders",
+            "value": 914338,
+            "unit": "ns/op\t    9333 B/op\t     167 allocs/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/lookup_all_folders - ns/op",
+            "value": 914338,
+            "unit": "ns/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/lookup_all_folders - B/op",
+            "value": 9333,
+            "unit": "B/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/lookup_all_folders - allocs/op",
+            "value": 167,
+            "unit": "allocs/op",
+            "extra": "396 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/subjects_leaf",
+            "value": 772366,
+            "unit": "ns/op\t    3715 B/op\t      71 allocs/op",
+            "extra": "498 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/subjects_leaf - ns/op",
+            "value": 772366,
+            "unit": "ns/op",
+            "extra": "498 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/subjects_leaf - B/op",
+            "value": 3715,
+            "unit": "B/op",
+            "extra": "498 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=postgres+sets/subjects_leaf - allocs/op",
+            "value": 71,
+            "unit": "allocs/op",
+            "extra": "498 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_leaf",
+            "value": 381393,
+            "unit": "ns/op\t    7329 B/op\t     108 allocs/op",
+            "extra": "1009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_leaf - ns/op",
+            "value": 381393,
+            "unit": "ns/op",
+            "extra": "1009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_leaf - B/op",
+            "value": 7329,
+            "unit": "B/op",
+            "extra": "1009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_leaf - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1009 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_miss",
+            "value": 355977,
+            "unit": "ns/op\t    7367 B/op\t     108 allocs/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 355977,
+            "unit": "ns/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7367,
+            "unit": "B/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/lookup_all_folders",
+            "value": 700715,
+            "unit": "ns/op\t   47620 B/op\t     418 allocs/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/lookup_all_folders - ns/op",
+            "value": 700715,
+            "unit": "ns/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/lookup_all_folders - B/op",
+            "value": 47620,
+            "unit": "B/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/lookup_all_folders - allocs/op",
+            "value": 418,
+            "unit": "allocs/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/subjects_leaf",
+            "value": 364123,
+            "unit": "ns/op\t    7680 B/op\t     114 allocs/op",
+            "extra": "969 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/subjects_leaf - ns/op",
+            "value": 364123,
+            "unit": "ns/op",
+            "extra": "969 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/subjects_leaf - B/op",
+            "value": 7680,
+            "unit": "B/op",
+            "extra": "969 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-memdb/subjects_leaf - allocs/op",
+            "value": 114,
+            "unit": "allocs/op",
+            "extra": "969 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_leaf",
+            "value": 620144,
+            "unit": "ns/op\t    7416 B/op\t     108 allocs/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_leaf - ns/op",
+            "value": 620144,
+            "unit": "ns/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_leaf - B/op",
+            "value": 7416,
+            "unit": "B/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_leaf - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_miss",
+            "value": 640790,
+            "unit": "ns/op\t    7296 B/op\t     108 allocs/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 640790,
+            "unit": "ns/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7296,
+            "unit": "B/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/lookup_all_folders",
+            "value": 990626,
+            "unit": "ns/op\t   45007 B/op\t     420 allocs/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/lookup_all_folders - ns/op",
+            "value": 990626,
+            "unit": "ns/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/lookup_all_folders - B/op",
+            "value": 45007,
+            "unit": "B/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/lookup_all_folders - allocs/op",
+            "value": 420,
+            "unit": "allocs/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/subjects_leaf",
+            "value": 632919,
+            "unit": "ns/op\t    7709 B/op\t     114 allocs/op",
+            "extra": "525 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/subjects_leaf - ns/op",
+            "value": 632919,
+            "unit": "ns/op",
+            "extra": "525 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/subjects_leaf - B/op",
+            "value": 7709,
+            "unit": "B/op",
+            "extra": "525 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=arrow_chain/kind=spicedb-postgres/subjects_leaf - allocs/op",
+            "value": 114,
+            "unit": "allocs/op",
+            "extra": "525 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_unbanned",
+            "value": 8331025,
+            "unit": "ns/op\t 1762776 B/op\t      35 allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_unbanned - ns/op",
+            "value": 8331025,
+            "unit": "ns/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_unbanned - B/op",
+            "value": 1762776,
+            "unit": "B/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_unbanned - allocs/op",
+            "value": 35,
+            "unit": "allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_banned",
+            "value": 8321562,
+            "unit": "ns/op\t 1762768 B/op\t      35 allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_banned - ns/op",
+            "value": 8321562,
+            "unit": "ns/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_banned - B/op",
+            "value": 1762768,
+            "unit": "B/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/check_banned - allocs/op",
+            "value": 35,
+            "unit": "allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/subjects_wildcard_minus",
+            "value": 9658332,
+            "unit": "ns/op\t 2719766 B/op\t     141 allocs/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/subjects_wildcard_minus - ns/op",
+            "value": 9658332,
+            "unit": "ns/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/subjects_wildcard_minus - B/op",
+            "value": 2719766,
+            "unit": "B/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/subjects_wildcard_minus - allocs/op",
+            "value": 141,
+            "unit": "allocs/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_banned",
+            "value": 239703,
+            "unit": "ns/op\t    1624 B/op\t      26 allocs/op",
+            "extra": "1544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_banned - ns/op",
+            "value": 239703,
+            "unit": "ns/op",
+            "extra": "1544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_banned - B/op",
+            "value": 1624,
+            "unit": "B/op",
+            "extra": "1544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_banned - allocs/op",
+            "value": 26,
+            "unit": "allocs/op",
+            "extra": "1544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_unbanned",
+            "value": 230071,
+            "unit": "ns/op\t    1520 B/op\t      25 allocs/op",
+            "extra": "1572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_unbanned - ns/op",
+            "value": 230071,
+            "unit": "ns/op",
+            "extra": "1572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_unbanned - B/op",
+            "value": 1520,
+            "unit": "B/op",
+            "extra": "1572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory/lookup_unbanned - allocs/op",
+            "value": 25,
+            "unit": "allocs/op",
+            "extra": "1572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_unbanned",
+            "value": 36272,
+            "unit": "ns/op\t     924 B/op\t      19 allocs/op",
+            "extra": "10003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_unbanned - ns/op",
+            "value": 36272,
+            "unit": "ns/op",
+            "extra": "10003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_unbanned - B/op",
+            "value": 924,
+            "unit": "B/op",
+            "extra": "10003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_unbanned - allocs/op",
+            "value": 19,
+            "unit": "allocs/op",
+            "extra": "10003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_banned",
+            "value": 33834,
+            "unit": "ns/op\t    1036 B/op\t      21 allocs/op",
+            "extra": "10000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_banned - ns/op",
+            "value": 33834,
+            "unit": "ns/op",
+            "extra": "10000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_banned - B/op",
+            "value": 1036,
+            "unit": "B/op",
+            "extra": "10000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/check_banned - allocs/op",
+            "value": 21,
+            "unit": "allocs/op",
+            "extra": "10000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/subjects_wildcard_minus",
+            "value": 2405799,
+            "unit": "ns/op\t 2718213 B/op\t     140 allocs/op",
+            "extra": "148 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/subjects_wildcard_minus - ns/op",
+            "value": 2405799,
+            "unit": "ns/op",
+            "extra": "148 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/subjects_wildcard_minus - B/op",
+            "value": 2718213,
+            "unit": "B/op",
+            "extra": "148 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/subjects_wildcard_minus - allocs/op",
+            "value": 140,
+            "unit": "allocs/op",
+            "extra": "148 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_banned",
+            "value": 2802,
+            "unit": "ns/op\t    1392 B/op\t      22 allocs/op",
+            "extra": "137787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_banned - ns/op",
+            "value": 2802,
+            "unit": "ns/op",
+            "extra": "137787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_banned - B/op",
+            "value": 1392,
+            "unit": "B/op",
+            "extra": "137787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_banned - allocs/op",
+            "value": 22,
+            "unit": "allocs/op",
+            "extra": "137787 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_unbanned",
+            "value": 2793,
+            "unit": "ns/op\t    1392 B/op\t      22 allocs/op",
+            "extra": "134527 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_unbanned - ns/op",
+            "value": 2793,
+            "unit": "ns/op",
+            "extra": "134527 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_unbanned - B/op",
+            "value": 1392,
+            "unit": "B/op",
+            "extra": "134527 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=memory+index/lookup_unbanned - allocs/op",
+            "value": 22,
+            "unit": "allocs/op",
+            "extra": "134527 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_unbanned",
+            "value": 3664740,
+            "unit": "ns/op\t 2841737 B/op\t   30077 allocs/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_unbanned - ns/op",
+            "value": 3664740,
+            "unit": "ns/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_unbanned - B/op",
+            "value": 2841737,
+            "unit": "B/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_unbanned - allocs/op",
+            "value": 30077,
+            "unit": "allocs/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_banned",
+            "value": 3446693,
+            "unit": "ns/op\t 2841870 B/op\t   30077 allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_banned - ns/op",
+            "value": 3446693,
+            "unit": "ns/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_banned - B/op",
+            "value": 2841870,
+            "unit": "B/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/check_banned - allocs/op",
+            "value": 30077,
+            "unit": "allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/subjects_wildcard_minus",
+            "value": 4949442,
+            "unit": "ns/op\t 3799660 B/op\t   30183 allocs/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/subjects_wildcard_minus - ns/op",
+            "value": 4949442,
+            "unit": "ns/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/subjects_wildcard_minus - B/op",
+            "value": 3799660,
+            "unit": "B/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/subjects_wildcard_minus - allocs/op",
+            "value": 30183,
+            "unit": "allocs/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_banned",
+            "value": 638799,
+            "unit": "ns/op\t    6972 B/op\t     107 allocs/op",
+            "extra": "656 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_banned - ns/op",
+            "value": 638799,
+            "unit": "ns/op",
+            "extra": "656 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_banned - B/op",
+            "value": 6972,
+            "unit": "B/op",
+            "extra": "656 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_banned - allocs/op",
+            "value": 107,
+            "unit": "allocs/op",
+            "extra": "656 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_unbanned",
+            "value": 597403,
+            "unit": "ns/op\t    6483 B/op\t      99 allocs/op",
+            "extra": "670 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_unbanned - ns/op",
+            "value": 597403,
+            "unit": "ns/op",
+            "extra": "670 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_unbanned - B/op",
+            "value": 6483,
+            "unit": "B/op",
+            "extra": "670 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres/lookup_unbanned - allocs/op",
+            "value": 99,
+            "unit": "allocs/op",
+            "extra": "670 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_unbanned",
+            "value": 1006399,
+            "unit": "ns/op\t   10420 B/op\t     170 allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_unbanned - ns/op",
+            "value": 1006399,
+            "unit": "ns/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_unbanned - B/op",
+            "value": 10420,
+            "unit": "B/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_unbanned - allocs/op",
+            "value": 170,
+            "unit": "allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_banned",
+            "value": 1008545,
+            "unit": "ns/op\t   10763 B/op\t     177 allocs/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_banned - ns/op",
+            "value": 1008545,
+            "unit": "ns/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_banned - B/op",
+            "value": 10763,
+            "unit": "B/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/check_banned - allocs/op",
+            "value": 177,
+            "unit": "allocs/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/subjects_wildcard_minus",
+            "value": 17221598,
+            "unit": "ns/op\t 3803264 B/op\t   30252 allocs/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/subjects_wildcard_minus - ns/op",
+            "value": 17221598,
+            "unit": "ns/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/subjects_wildcard_minus - B/op",
+            "value": 3803264,
+            "unit": "B/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/subjects_wildcard_minus - allocs/op",
+            "value": 30252,
+            "unit": "allocs/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_banned",
+            "value": 875591,
+            "unit": "ns/op\t    4926 B/op\t     113 allocs/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_banned - ns/op",
+            "value": 875591,
+            "unit": "ns/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_banned - B/op",
+            "value": 4926,
+            "unit": "B/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_banned - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_unbanned",
+            "value": 840951,
+            "unit": "ns/op\t    5088 B/op\t     111 allocs/op",
+            "extra": "433 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_unbanned - ns/op",
+            "value": 840951,
+            "unit": "ns/op",
+            "extra": "433 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_unbanned - B/op",
+            "value": 5088,
+            "unit": "B/op",
+            "extra": "433 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+closure/lookup_unbanned - allocs/op",
+            "value": 111,
+            "unit": "allocs/op",
+            "extra": "433 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_unbanned",
+            "value": 1020563,
+            "unit": "ns/op\t   10307 B/op\t     170 allocs/op",
+            "extra": "368 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_unbanned - ns/op",
+            "value": 1020563,
+            "unit": "ns/op",
+            "extra": "368 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_unbanned - B/op",
+            "value": 10307,
+            "unit": "B/op",
+            "extra": "368 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_unbanned - allocs/op",
+            "value": 170,
+            "unit": "allocs/op",
+            "extra": "368 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_banned",
+            "value": 1027201,
+            "unit": "ns/op\t   10764 B/op\t     177 allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_banned - ns/op",
+            "value": 1027201,
+            "unit": "ns/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_banned - B/op",
+            "value": 10764,
+            "unit": "B/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/check_banned - allocs/op",
+            "value": 177,
+            "unit": "allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/subjects_wildcard_minus",
+            "value": 17160374,
+            "unit": "ns/op\t 3803242 B/op\t   30251 allocs/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/subjects_wildcard_minus - ns/op",
+            "value": 17160374,
+            "unit": "ns/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/subjects_wildcard_minus - B/op",
+            "value": 3803242,
+            "unit": "B/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/subjects_wildcard_minus - allocs/op",
+            "value": 30251,
+            "unit": "allocs/op",
+            "extra": "20 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_banned",
+            "value": 944849,
+            "unit": "ns/op\t    5198 B/op\t     113 allocs/op",
+            "extra": "430 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_banned - ns/op",
+            "value": 944849,
+            "unit": "ns/op",
+            "extra": "430 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_banned - B/op",
+            "value": 5198,
+            "unit": "B/op",
+            "extra": "430 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_banned - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "430 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_unbanned",
+            "value": 872057,
+            "unit": "ns/op\t    4905 B/op\t     111 allocs/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_unbanned - ns/op",
+            "value": 872057,
+            "unit": "ns/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_unbanned - B/op",
+            "value": 4905,
+            "unit": "B/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=postgres+sets/lookup_unbanned - allocs/op",
+            "value": 111,
+            "unit": "allocs/op",
+            "extra": "471 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_unbanned",
+            "value": 373204,
+            "unit": "ns/op\t    7337 B/op\t     108 allocs/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_unbanned - ns/op",
+            "value": 373204,
+            "unit": "ns/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_unbanned - B/op",
+            "value": 7337,
+            "unit": "B/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_unbanned - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "984 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_banned",
+            "value": 349360,
+            "unit": "ns/op\t    7368 B/op\t     108 allocs/op",
+            "extra": "1003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_banned - ns/op",
+            "value": 349360,
+            "unit": "ns/op",
+            "extra": "1003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_banned - B/op",
+            "value": 7368,
+            "unit": "B/op",
+            "extra": "1003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/check_banned - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1003 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/subjects_wildcard_minus",
+            "value": 3216930,
+            "unit": "ns/op\t 1117984 B/op\t   15160 allocs/op",
+            "extra": "110 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/subjects_wildcard_minus - ns/op",
+            "value": 3216930,
+            "unit": "ns/op",
+            "extra": "110 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/subjects_wildcard_minus - B/op",
+            "value": 1117984,
+            "unit": "B/op",
+            "extra": "110 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/subjects_wildcard_minus - allocs/op",
+            "value": 15160,
+            "unit": "allocs/op",
+            "extra": "110 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_banned",
+            "value": 346013,
+            "unit": "ns/op\t    6366 B/op\t      91 allocs/op",
+            "extra": "1066 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_banned - ns/op",
+            "value": 346013,
+            "unit": "ns/op",
+            "extra": "1066 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_banned - B/op",
+            "value": 6366,
+            "unit": "B/op",
+            "extra": "1066 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_banned - allocs/op",
+            "value": 91,
+            "unit": "allocs/op",
+            "extra": "1066 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_unbanned",
+            "value": 372018,
+            "unit": "ns/op\t    7938 B/op\t     113 allocs/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_unbanned - ns/op",
+            "value": 372018,
+            "unit": "ns/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_unbanned - B/op",
+            "value": 7938,
+            "unit": "B/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-memdb/lookup_unbanned - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_unbanned",
+            "value": 624913,
+            "unit": "ns/op\t    7357 B/op\t     108 allocs/op",
+            "extra": "549 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_unbanned - ns/op",
+            "value": 624913,
+            "unit": "ns/op",
+            "extra": "549 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_unbanned - B/op",
+            "value": 7357,
+            "unit": "B/op",
+            "extra": "549 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_unbanned - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "549 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_banned",
+            "value": 636847,
+            "unit": "ns/op\t    7408 B/op\t     108 allocs/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_banned - ns/op",
+            "value": 636847,
+            "unit": "ns/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_banned - B/op",
+            "value": 7408,
+            "unit": "B/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/check_banned - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/subjects_wildcard_minus",
+            "value": 3533181,
+            "unit": "ns/op\t 1098324 B/op\t   15160 allocs/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/subjects_wildcard_minus - ns/op",
+            "value": 3533181,
+            "unit": "ns/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/subjects_wildcard_minus - B/op",
+            "value": 1098324,
+            "unit": "B/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/subjects_wildcard_minus - allocs/op",
+            "value": 15160,
+            "unit": "allocs/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_banned",
+            "value": 621003,
+            "unit": "ns/op\t    6393 B/op\t      91 allocs/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_banned - ns/op",
+            "value": 621003,
+            "unit": "ns/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_banned - B/op",
+            "value": 6393,
+            "unit": "B/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_banned - allocs/op",
+            "value": 91,
+            "unit": "allocs/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_unbanned",
+            "value": 639650,
+            "unit": "ns/op\t    7934 B/op\t     113 allocs/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_unbanned - ns/op",
+            "value": 639650,
+            "unit": "ns/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_unbanned - B/op",
+            "value": 7934,
+            "unit": "B/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/pattern/name=wildcard_ban/kind=spicedb-postgres/lookup_unbanned - allocs/op",
+            "value": 113,
+            "unit": "allocs/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/lookup",
+            "value": 902787,
+            "unit": "ns/op\t  174168 B/op\t     164 allocs/op",
+            "extra": "394 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/lookup - ns/op",
+            "value": 902787,
+            "unit": "ns/op",
+            "extra": "394 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/lookup - B/op",
+            "value": 174168,
+            "unit": "B/op",
+            "extra": "394 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/lookup - allocs/op",
+            "value": 164,
+            "unit": "allocs/op",
+            "extra": "394 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_hit",
+            "value": 41647,
+            "unit": "ns/op\t    1853 B/op\t      17 allocs/op",
+            "extra": "8158 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_hit - ns/op",
+            "value": 41647,
+            "unit": "ns/op",
+            "extra": "8158 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_hit - B/op",
+            "value": 1853,
+            "unit": "B/op",
+            "extra": "8158 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_hit - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "8158 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_miss",
+            "value": 78331,
+            "unit": "ns/op\t    1930 B/op\t      20 allocs/op",
+            "extra": "4346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_miss - ns/op",
+            "value": 78331,
+            "unit": "ns/op",
+            "extra": "4346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_miss - B/op",
+            "value": 1930,
+            "unit": "B/op",
+            "extra": "4346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "4346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/bulk_100",
+            "value": 1041760,
+            "unit": "ns/op\t  319776 B/op\t    1337 allocs/op",
+            "extra": "339 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/bulk_100 - ns/op",
+            "value": 1041760,
+            "unit": "ns/op",
+            "extra": "339 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/bulk_100 - B/op",
+            "value": 319776,
+            "unit": "B/op",
+            "extra": "339 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/bulk_100 - allocs/op",
+            "value": 1337,
+            "unit": "allocs/op",
+            "extra": "339 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/subjects_one",
+            "value": 81396,
+            "unit": "ns/op\t    3033 B/op\t      32 allocs/op",
+            "extra": "4197 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/subjects_one - ns/op",
+            "value": 81396,
+            "unit": "ns/op",
+            "extra": "4197 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/subjects_one - B/op",
+            "value": 3033,
+            "unit": "B/op",
+            "extra": "4197 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "4197 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/toggle_grant",
+            "value": 404681,
+            "unit": "ns/op\t  984744 B/op\t      29 allocs/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/toggle_grant - ns/op",
+            "value": 404681,
+            "unit": "ns/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/toggle_grant - B/op",
+            "value": 984744,
+            "unit": "B/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory/toggle_grant - allocs/op",
+            "value": 29,
+            "unit": "allocs/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/lookup",
+            "value": 43857,
+            "unit": "ns/op\t   33859 B/op\t      40 allocs/op",
+            "extra": "7892 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/lookup - ns/op",
+            "value": 43857,
+            "unit": "ns/op",
+            "extra": "7892 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/lookup - B/op",
+            "value": 33859,
+            "unit": "B/op",
+            "extra": "7892 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/lookup - allocs/op",
+            "value": 40,
+            "unit": "allocs/op",
+            "extra": "7892 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_hit",
+            "value": 1956,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "191358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_hit - ns/op",
+            "value": 1956,
+            "unit": "ns/op",
+            "extra": "191358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_hit - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "191358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_hit - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "191358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_miss",
+            "value": 2022,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "169377 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_miss - ns/op",
+            "value": 2022,
+            "unit": "ns/op",
+            "extra": "169377 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "169377 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "169377 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/bulk_100",
+            "value": 209827,
+            "unit": "ns/op\t   93784 B/op\t     326 allocs/op",
+            "extra": "1753 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/bulk_100 - ns/op",
+            "value": 209827,
+            "unit": "ns/op",
+            "extra": "1753 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/bulk_100 - B/op",
+            "value": 93784,
+            "unit": "B/op",
+            "extra": "1753 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/bulk_100 - allocs/op",
+            "value": 326,
+            "unit": "allocs/op",
+            "extra": "1753 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/subjects_one",
+            "value": 2520,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "157314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/subjects_one - ns/op",
+            "value": 2520,
+            "unit": "ns/op",
+            "extra": "157314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "157314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "157314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/toggle_grant",
+            "value": 416547,
+            "unit": "ns/op\t  984749 B/op\t      29 allocs/op",
+            "extra": "1113 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/toggle_grant - ns/op",
+            "value": 416547,
+            "unit": "ns/op",
+            "extra": "1113 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/toggle_grant - B/op",
+            "value": 984749,
+            "unit": "B/op",
+            "extra": "1113 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=memory+index/toggle_grant - allocs/op",
+            "value": 29,
+            "unit": "allocs/op",
+            "extra": "1113 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/lookup",
+            "value": 2217779,
+            "unit": "ns/op\t  279909 B/op\t    3231 allocs/op",
+            "extra": "165 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/lookup - ns/op",
+            "value": 2217779,
+            "unit": "ns/op",
+            "extra": "165 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/lookup - B/op",
+            "value": 279909,
+            "unit": "B/op",
+            "extra": "165 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/lookup - allocs/op",
+            "value": 3231,
+            "unit": "allocs/op",
+            "extra": "165 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_hit",
+            "value": 319024,
+            "unit": "ns/op\t    4002 B/op\t      65 allocs/op",
+            "extra": "1324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_hit - ns/op",
+            "value": 319024,
+            "unit": "ns/op",
+            "extra": "1324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_hit - B/op",
+            "value": 4002,
+            "unit": "B/op",
+            "extra": "1324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_hit - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "1324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_miss",
+            "value": 450395,
+            "unit": "ns/op\t    4818 B/op\t      77 allocs/op",
+            "extra": "963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_miss - ns/op",
+            "value": 450395,
+            "unit": "ns/op",
+            "extra": "963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_miss - B/op",
+            "value": 4818,
+            "unit": "B/op",
+            "extra": "963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "963 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/bulk_100",
+            "value": 1960385,
+            "unit": "ns/op\t  396366 B/op\t    3749 allocs/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/bulk_100 - ns/op",
+            "value": 1960385,
+            "unit": "ns/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/bulk_100 - B/op",
+            "value": 396366,
+            "unit": "B/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/bulk_100 - allocs/op",
+            "value": 3749,
+            "unit": "allocs/op",
+            "extra": "182 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/subjects_one",
+            "value": 440785,
+            "unit": "ns/op\t    6053 B/op\t      89 allocs/op",
+            "extra": "914 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/subjects_one - ns/op",
+            "value": 440785,
+            "unit": "ns/op",
+            "extra": "914 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/subjects_one - B/op",
+            "value": 6053,
+            "unit": "B/op",
+            "extra": "914 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "914 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/toggle_grant",
+            "value": 1738674,
+            "unit": "ns/op\t    8890 B/op\t     144 allocs/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/toggle_grant - ns/op",
+            "value": 1738674,
+            "unit": "ns/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/toggle_grant - B/op",
+            "value": 8890,
+            "unit": "B/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/lookup",
+            "value": 1163514,
+            "unit": "ns/op\t   28087 B/op\t     436 allocs/op",
+            "extra": "309 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/lookup - ns/op",
+            "value": 1163514,
+            "unit": "ns/op",
+            "extra": "309 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/lookup - B/op",
+            "value": 28087,
+            "unit": "B/op",
+            "extra": "309 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/lookup - allocs/op",
+            "value": 436,
+            "unit": "allocs/op",
+            "extra": "309 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_hit",
+            "value": 687240,
+            "unit": "ns/op\t    5924 B/op\t      97 allocs/op",
+            "extra": "544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_hit - ns/op",
+            "value": 687240,
+            "unit": "ns/op",
+            "extra": "544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_hit - B/op",
+            "value": 5924,
+            "unit": "B/op",
+            "extra": "544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "544 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_miss",
+            "value": 1072763,
+            "unit": "ns/op\t    9910 B/op\t     162 allocs/op",
+            "extra": "337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_miss - ns/op",
+            "value": 1072763,
+            "unit": "ns/op",
+            "extra": "337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_miss - B/op",
+            "value": 9910,
+            "unit": "B/op",
+            "extra": "337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/bulk_100",
+            "value": 3348435,
+            "unit": "ns/op\t  169452 B/op\t    1631 allocs/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 3348435,
+            "unit": "ns/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/bulk_100 - B/op",
+            "value": 169452,
+            "unit": "B/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 1631,
+            "unit": "allocs/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/subjects_one",
+            "value": 1048990,
+            "unit": "ns/op\t    9141 B/op\t     158 allocs/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/subjects_one - ns/op",
+            "value": 1048990,
+            "unit": "ns/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/subjects_one - B/op",
+            "value": 9141,
+            "unit": "B/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/toggle_grant",
+            "value": 1779485,
+            "unit": "ns/op\t    8581 B/op\t     144 allocs/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 1779485,
+            "unit": "ns/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/toggle_grant - B/op",
+            "value": 8581,
+            "unit": "B/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/lookup",
+            "value": 918355,
+            "unit": "ns/op\t   19967 B/op\t     390 allocs/op",
+            "extra": "414 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/lookup - ns/op",
+            "value": 918355,
+            "unit": "ns/op",
+            "extra": "414 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/lookup - B/op",
+            "value": 19967,
+            "unit": "B/op",
+            "extra": "414 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/lookup - allocs/op",
+            "value": 390,
+            "unit": "allocs/op",
+            "extra": "414 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_hit",
+            "value": 1054866,
+            "unit": "ns/op\t    5852 B/op\t      77 allocs/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_hit - ns/op",
+            "value": 1054866,
+            "unit": "ns/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_hit - B/op",
+            "value": 5852,
+            "unit": "B/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_miss",
+            "value": 1079235,
+            "unit": "ns/op\t    5982 B/op\t      77 allocs/op",
+            "extra": "344 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_miss - ns/op",
+            "value": 1079235,
+            "unit": "ns/op",
+            "extra": "344 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_miss - B/op",
+            "value": 5982,
+            "unit": "B/op",
+            "extra": "344 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "344 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/bulk_100",
+            "value": 2495775,
+            "unit": "ns/op\t   69277 B/op\t     903 allocs/op",
+            "extra": "144 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 2495775,
+            "unit": "ns/op",
+            "extra": "144 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/bulk_100 - B/op",
+            "value": 69277,
+            "unit": "B/op",
+            "extra": "144 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 903,
+            "unit": "allocs/op",
+            "extra": "144 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/subjects_one",
+            "value": 636218,
+            "unit": "ns/op\t    3896 B/op\t      80 allocs/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/subjects_one - ns/op",
+            "value": 636218,
+            "unit": "ns/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/subjects_one - B/op",
+            "value": 3896,
+            "unit": "B/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "582 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/toggle_grant",
+            "value": 3531753,
+            "unit": "ns/op\t   20147 B/op\t     331 allocs/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 3531753,
+            "unit": "ns/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/toggle_grant - B/op",
+            "value": 20147,
+            "unit": "B/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 331,
+            "unit": "allocs/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/lookup",
+            "value": 981014,
+            "unit": "ns/op\t   92629 B/op\t    1149 allocs/op",
+            "extra": "388 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/lookup - ns/op",
+            "value": 981014,
+            "unit": "ns/op",
+            "extra": "388 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/lookup - B/op",
+            "value": 92629,
+            "unit": "B/op",
+            "extra": "388 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 1149,
+            "unit": "allocs/op",
+            "extra": "388 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_hit",
+            "value": 352262,
+            "unit": "ns/op\t    7366 B/op\t     108 allocs/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 352262,
+            "unit": "ns/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7366,
+            "unit": "B/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1010 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_miss",
+            "value": 348791,
+            "unit": "ns/op\t    7398 B/op\t     108 allocs/op",
+            "extra": "1063 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 348791,
+            "unit": "ns/op",
+            "extra": "1063 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7398,
+            "unit": "B/op",
+            "extra": "1063 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1063 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/bulk_100",
+            "value": 1397445,
+            "unit": "ns/op\t   99213 B/op\t    1711 allocs/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1397445,
+            "unit": "ns/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99213,
+            "unit": "B/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/subjects_one",
+            "value": 377393,
+            "unit": "ns/op\t    8972 B/op\t     139 allocs/op",
+            "extra": "926 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 377393,
+            "unit": "ns/op",
+            "extra": "926 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8972,
+            "unit": "B/op",
+            "extra": "926 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "926 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/toggle_grant",
+            "value": 841929,
+            "unit": "ns/op\t   15164 B/op\t     225 allocs/op",
+            "extra": "423 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 841929,
+            "unit": "ns/op",
+            "extra": "423 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15164,
+            "unit": "B/op",
+            "extra": "423 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "423 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/lookup",
+            "value": 1243571,
+            "unit": "ns/op\t   81584 B/op\t    1152 allocs/op",
+            "extra": "298 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/lookup - ns/op",
+            "value": 1243571,
+            "unit": "ns/op",
+            "extra": "298 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/lookup - B/op",
+            "value": 81584,
+            "unit": "B/op",
+            "extra": "298 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 1152,
+            "unit": "allocs/op",
+            "extra": "298 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_hit",
+            "value": 627576,
+            "unit": "ns/op\t    7297 B/op\t     108 allocs/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 627576,
+            "unit": "ns/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7297,
+            "unit": "B/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_miss",
+            "value": 635099,
+            "unit": "ns/op\t    7473 B/op\t     108 allocs/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 635099,
+            "unit": "ns/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7473,
+            "unit": "B/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "565 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/bulk_100",
+            "value": 1657437,
+            "unit": "ns/op\t   99598 B/op\t    1711 allocs/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1657437,
+            "unit": "ns/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99598,
+            "unit": "B/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/subjects_one",
+            "value": 643244,
+            "unit": "ns/op\t    8815 B/op\t     138 allocs/op",
+            "extra": "500 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 643244,
+            "unit": "ns/op",
+            "extra": "500 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8815,
+            "unit": "B/op",
+            "extra": "500 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "500 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/toggle_grant",
+            "value": 3569446,
+            "unit": "ns/op\t   15531 B/op\t     225 allocs/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 3569446,
+            "unit": "ns/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15531,
+            "unit": "B/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "104 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/lookup",
+            "value": 5996367,
+            "unit": "ns/op\t 1621559 B/op\t     244 allocs/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/lookup - ns/op",
+            "value": 5996367,
+            "unit": "ns/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/lookup - B/op",
+            "value": 1621559,
+            "unit": "B/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/lookup - allocs/op",
+            "value": 244,
+            "unit": "allocs/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_hit",
+            "value": 61605,
+            "unit": "ns/op\t    1855 B/op\t      17 allocs/op",
+            "extra": "5745 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_hit - ns/op",
+            "value": 61605,
+            "unit": "ns/op",
+            "extra": "5745 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_hit - B/op",
+            "value": 1855,
+            "unit": "B/op",
+            "extra": "5745 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_hit - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "5745 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_miss",
+            "value": 119704,
+            "unit": "ns/op\t    1925 B/op\t      20 allocs/op",
+            "extra": "2991 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_miss - ns/op",
+            "value": 119704,
+            "unit": "ns/op",
+            "extra": "2991 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_miss - B/op",
+            "value": 1925,
+            "unit": "B/op",
+            "extra": "2991 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "2991 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/bulk_100",
+            "value": 1196376,
+            "unit": "ns/op\t  423382 B/op\t    1471 allocs/op",
+            "extra": "278 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/bulk_100 - ns/op",
+            "value": 1196376,
+            "unit": "ns/op",
+            "extra": "278 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/bulk_100 - B/op",
+            "value": 423382,
+            "unit": "B/op",
+            "extra": "278 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/bulk_100 - allocs/op",
+            "value": 1471,
+            "unit": "allocs/op",
+            "extra": "278 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/subjects_one",
+            "value": 122424,
+            "unit": "ns/op\t    3037 B/op\t      32 allocs/op",
+            "extra": "2824 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/subjects_one - ns/op",
+            "value": 122424,
+            "unit": "ns/op",
+            "extra": "2824 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/subjects_one - B/op",
+            "value": 3037,
+            "unit": "B/op",
+            "extra": "2824 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "2824 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/toggle_grant",
+            "value": 742459,
+            "unit": "ns/op\t 1968483 B/op\t      45 allocs/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/toggle_grant - ns/op",
+            "value": 742459,
+            "unit": "ns/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/toggle_grant - B/op",
+            "value": 1968483,
+            "unit": "B/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory/toggle_grant - allocs/op",
+            "value": 45,
+            "unit": "allocs/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/lookup",
+            "value": 530231,
+            "unit": "ns/op\t  513239 B/op\t      73 allocs/op",
+            "extra": "763 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/lookup - ns/op",
+            "value": 530231,
+            "unit": "ns/op",
+            "extra": "763 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/lookup - B/op",
+            "value": 513239,
+            "unit": "B/op",
+            "extra": "763 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/lookup - allocs/op",
+            "value": 73,
+            "unit": "allocs/op",
+            "extra": "763 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_hit",
+            "value": 1991,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "188181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_hit - ns/op",
+            "value": 1991,
+            "unit": "ns/op",
+            "extra": "188181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_hit - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "188181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_hit - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "188181 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_miss",
+            "value": 2078,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "181131 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_miss - ns/op",
+            "value": 2078,
+            "unit": "ns/op",
+            "extra": "181131 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "181131 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "181131 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/bulk_100",
+            "value": 601718,
+            "unit": "ns/op\t  640559 B/op\t     471 allocs/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/bulk_100 - ns/op",
+            "value": 601718,
+            "unit": "ns/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/bulk_100 - B/op",
+            "value": 640559,
+            "unit": "B/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/bulk_100 - allocs/op",
+            "value": 471,
+            "unit": "allocs/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/subjects_one",
+            "value": 2455,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "160134 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/subjects_one - ns/op",
+            "value": 2455,
+            "unit": "ns/op",
+            "extra": "160134 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "160134 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "160134 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/toggle_grant",
+            "value": 736517,
+            "unit": "ns/op\t 1968264 B/op\t      45 allocs/op",
+            "extra": "496 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/toggle_grant - ns/op",
+            "value": 736517,
+            "unit": "ns/op",
+            "extra": "496 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/toggle_grant - B/op",
+            "value": 1968264,
+            "unit": "B/op",
+            "extra": "496 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=memory+index/toggle_grant - allocs/op",
+            "value": 45,
+            "unit": "allocs/op",
+            "extra": "496 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/lookup",
+            "value": 5828013,
+            "unit": "ns/op\t 2435034 B/op\t   25569 allocs/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/lookup - ns/op",
+            "value": 5828013,
+            "unit": "ns/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/lookup - B/op",
+            "value": 2435034,
+            "unit": "B/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/lookup - allocs/op",
+            "value": 25569,
+            "unit": "allocs/op",
+            "extra": "60 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_hit",
+            "value": 336098,
+            "unit": "ns/op\t    3947 B/op\t      65 allocs/op",
+            "extra": "1267 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_hit - ns/op",
+            "value": 336098,
+            "unit": "ns/op",
+            "extra": "1267 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_hit - B/op",
+            "value": 3947,
+            "unit": "B/op",
+            "extra": "1267 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_hit - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "1267 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_miss",
+            "value": 466031,
+            "unit": "ns/op\t    4818 B/op\t      77 allocs/op",
+            "extra": "820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_miss - ns/op",
+            "value": 466031,
+            "unit": "ns/op",
+            "extra": "820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_miss - B/op",
+            "value": 4818,
+            "unit": "B/op",
+            "extra": "820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/bulk_100",
+            "value": 1878591,
+            "unit": "ns/op\t  513361 B/op\t    4330 allocs/op",
+            "extra": "186 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/bulk_100 - ns/op",
+            "value": 1878591,
+            "unit": "ns/op",
+            "extra": "186 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/bulk_100 - B/op",
+            "value": 513361,
+            "unit": "B/op",
+            "extra": "186 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/bulk_100 - allocs/op",
+            "value": 4330,
+            "unit": "allocs/op",
+            "extra": "186 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/subjects_one",
+            "value": 440950,
+            "unit": "ns/op\t    5931 B/op\t      89 allocs/op",
+            "extra": "909 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/subjects_one - ns/op",
+            "value": 440950,
+            "unit": "ns/op",
+            "extra": "909 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/subjects_one - B/op",
+            "value": 5931,
+            "unit": "B/op",
+            "extra": "909 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "909 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/toggle_grant",
+            "value": 1784898,
+            "unit": "ns/op\t    8569 B/op\t     144 allocs/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/toggle_grant - ns/op",
+            "value": 1784898,
+            "unit": "ns/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/toggle_grant - B/op",
+            "value": 8569,
+            "unit": "B/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "208 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/lookup",
+            "value": 1966011,
+            "unit": "ns/op\t  306152 B/op\t    2846 allocs/op",
+            "extra": "183 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/lookup - ns/op",
+            "value": 1966011,
+            "unit": "ns/op",
+            "extra": "183 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/lookup - B/op",
+            "value": 306152,
+            "unit": "B/op",
+            "extra": "183 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/lookup - allocs/op",
+            "value": 2846,
+            "unit": "allocs/op",
+            "extra": "183 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_hit",
+            "value": 641869,
+            "unit": "ns/op\t    5969 B/op\t      97 allocs/op",
+            "extra": "595 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_hit - ns/op",
+            "value": 641869,
+            "unit": "ns/op",
+            "extra": "595 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_hit - B/op",
+            "value": 5969,
+            "unit": "B/op",
+            "extra": "595 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "595 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_miss",
+            "value": 1054680,
+            "unit": "ns/op\t    9788 B/op\t     162 allocs/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_miss - ns/op",
+            "value": 1054680,
+            "unit": "ns/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_miss - B/op",
+            "value": 9788,
+            "unit": "B/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "351 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/bulk_100",
+            "value": 3347044,
+            "unit": "ns/op\t  223797 B/op\t    2143 allocs/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 3347044,
+            "unit": "ns/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/bulk_100 - B/op",
+            "value": 223797,
+            "unit": "B/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 2143,
+            "unit": "allocs/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/subjects_one",
+            "value": 1019626,
+            "unit": "ns/op\t    9140 B/op\t     158 allocs/op",
+            "extra": "362 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/subjects_one - ns/op",
+            "value": 1019626,
+            "unit": "ns/op",
+            "extra": "362 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/subjects_one - B/op",
+            "value": 9140,
+            "unit": "B/op",
+            "extra": "362 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "362 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/toggle_grant",
+            "value": 1855178,
+            "unit": "ns/op\t    8731 B/op\t     144 allocs/op",
+            "extra": "213 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 1855178,
+            "unit": "ns/op",
+            "extra": "213 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/toggle_grant - B/op",
+            "value": 8731,
+            "unit": "B/op",
+            "extra": "213 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "213 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/lookup",
+            "value": 1861727,
+            "unit": "ns/op\t  195865 B/op\t    2789 allocs/op",
+            "extra": "194 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/lookup - ns/op",
+            "value": 1861727,
+            "unit": "ns/op",
+            "extra": "194 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/lookup - B/op",
+            "value": 195865,
+            "unit": "B/op",
+            "extra": "194 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/lookup - allocs/op",
+            "value": 2789,
+            "unit": "allocs/op",
+            "extra": "194 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_hit",
+            "value": 1017155,
+            "unit": "ns/op\t    6088 B/op\t      77 allocs/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_hit - ns/op",
+            "value": 1017155,
+            "unit": "ns/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_hit - B/op",
+            "value": 6088,
+            "unit": "B/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_miss",
+            "value": 1005194,
+            "unit": "ns/op\t    6083 B/op\t      77 allocs/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_miss - ns/op",
+            "value": 1005194,
+            "unit": "ns/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_miss - B/op",
+            "value": 6083,
+            "unit": "B/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "373 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/bulk_100",
+            "value": 3070745,
+            "unit": "ns/op\t  122570 B/op\t    1470 allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 3070745,
+            "unit": "ns/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/bulk_100 - B/op",
+            "value": 122570,
+            "unit": "B/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 1470,
+            "unit": "allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/subjects_one",
+            "value": 621725,
+            "unit": "ns/op\t    3759 B/op\t      80 allocs/op",
+            "extra": "600 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/subjects_one - ns/op",
+            "value": 621725,
+            "unit": "ns/op",
+            "extra": "600 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/subjects_one - B/op",
+            "value": 3759,
+            "unit": "B/op",
+            "extra": "600 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "600 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/toggle_grant",
+            "value": 3714211,
+            "unit": "ns/op\t   19574 B/op\t     331 allocs/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 3714211,
+            "unit": "ns/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/toggle_grant - B/op",
+            "value": 19574,
+            "unit": "B/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 331,
+            "unit": "allocs/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/lookup",
+            "value": 5276285,
+            "unit": "ns/op\t  795757 B/op\t    9235 allocs/op",
+            "extra": "74 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/lookup - ns/op",
+            "value": 5276285,
+            "unit": "ns/op",
+            "extra": "74 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/lookup - B/op",
+            "value": 795757,
+            "unit": "B/op",
+            "extra": "74 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 9235,
+            "unit": "allocs/op",
+            "extra": "74 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_hit",
+            "value": 383007,
+            "unit": "ns/op\t    7396 B/op\t     108 allocs/op",
+            "extra": "979 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 383007,
+            "unit": "ns/op",
+            "extra": "979 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7396,
+            "unit": "B/op",
+            "extra": "979 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "979 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_miss",
+            "value": 353554,
+            "unit": "ns/op\t    7366 B/op\t     108 allocs/op",
+            "extra": "1065 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 353554,
+            "unit": "ns/op",
+            "extra": "1065 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7366,
+            "unit": "B/op",
+            "extra": "1065 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1065 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/bulk_100",
+            "value": 1280666,
+            "unit": "ns/op\t   99268 B/op\t    1710 allocs/op",
+            "extra": "282 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1280666,
+            "unit": "ns/op",
+            "extra": "282 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99268,
+            "unit": "B/op",
+            "extra": "282 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1710,
+            "unit": "allocs/op",
+            "extra": "282 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/subjects_one",
+            "value": 396992,
+            "unit": "ns/op\t    8964 B/op\t     138 allocs/op",
+            "extra": "938 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 396992,
+            "unit": "ns/op",
+            "extra": "938 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8964,
+            "unit": "B/op",
+            "extra": "938 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "938 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/toggle_grant",
+            "value": 910304,
+            "unit": "ns/op\t   15322 B/op\t     225 allocs/op",
+            "extra": "417 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 910304,
+            "unit": "ns/op",
+            "extra": "417 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15322,
+            "unit": "B/op",
+            "extra": "417 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "417 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/lookup",
+            "value": 5407688,
+            "unit": "ns/op\t  724750 B/op\t    9273 allocs/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/lookup - ns/op",
+            "value": 5407688,
+            "unit": "ns/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/lookup - B/op",
+            "value": 724750,
+            "unit": "B/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 9273,
+            "unit": "allocs/op",
+            "extra": "66 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_hit",
+            "value": 633906,
+            "unit": "ns/op\t    7356 B/op\t     108 allocs/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 633906,
+            "unit": "ns/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7356,
+            "unit": "B/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_miss",
+            "value": 632884,
+            "unit": "ns/op\t    7298 B/op\t     108 allocs/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 632884,
+            "unit": "ns/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7298,
+            "unit": "B/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/bulk_100",
+            "value": 1712208,
+            "unit": "ns/op\t   99402 B/op\t    1711 allocs/op",
+            "extra": "210 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1712208,
+            "unit": "ns/op",
+            "extra": "210 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99402,
+            "unit": "B/op",
+            "extra": "210 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "210 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/subjects_one",
+            "value": 654353,
+            "unit": "ns/op\t    8881 B/op\t     139 allocs/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 654353,
+            "unit": "ns/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8881,
+            "unit": "B/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "536 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/toggle_grant",
+            "value": 3516429,
+            "unit": "ns/op\t   15225 B/op\t     226 allocs/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 3516429,
+            "unit": "ns/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15225,
+            "unit": "B/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "103 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/lookup",
+            "value": 1611796,
+            "unit": "ns/op\t  441540 B/op\t    5724 allocs/op",
+            "extra": "216 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/lookup - ns/op",
+            "value": 1611796,
+            "unit": "ns/op",
+            "extra": "216 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/lookup - B/op",
+            "value": 441540,
+            "unit": "B/op",
+            "extra": "216 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/lookup - allocs/op",
+            "value": 5724,
+            "unit": "allocs/op",
+            "extra": "216 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_hit",
+            "value": 72824,
+            "unit": "ns/op\t    2141 B/op\t      24 allocs/op",
+            "extra": "4712 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_hit - ns/op",
+            "value": 72824,
+            "unit": "ns/op",
+            "extra": "4712 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_hit - B/op",
+            "value": 2141,
+            "unit": "B/op",
+            "extra": "4712 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_hit - allocs/op",
+            "value": 24,
+            "unit": "allocs/op",
+            "extra": "4712 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_miss",
+            "value": 79624,
+            "unit": "ns/op\t    1940 B/op\t      20 allocs/op",
+            "extra": "4142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_miss - ns/op",
+            "value": 79624,
+            "unit": "ns/op",
+            "extra": "4142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_miss - B/op",
+            "value": 1940,
+            "unit": "B/op",
+            "extra": "4142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "4142 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/bulk_100",
+            "value": 1086859,
+            "unit": "ns/op\t  333219 B/op\t    1552 allocs/op",
+            "extra": "324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/bulk_100 - ns/op",
+            "value": 1086859,
+            "unit": "ns/op",
+            "extra": "324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/bulk_100 - B/op",
+            "value": 333219,
+            "unit": "B/op",
+            "extra": "324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/bulk_100 - allocs/op",
+            "value": 1552,
+            "unit": "allocs/op",
+            "extra": "324 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/subjects_one",
+            "value": 82238,
+            "unit": "ns/op\t    3042 B/op\t      32 allocs/op",
+            "extra": "4276 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/subjects_one - ns/op",
+            "value": 82238,
+            "unit": "ns/op",
+            "extra": "4276 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/subjects_one - B/op",
+            "value": 3042,
+            "unit": "B/op",
+            "extra": "4276 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "4276 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/toggle_team_edge",
+            "value": 403750,
+            "unit": "ns/op\t  984677 B/op\t      30 allocs/op",
+            "extra": "808 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/toggle_team_edge - ns/op",
+            "value": 403750,
+            "unit": "ns/op",
+            "extra": "808 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/toggle_team_edge - B/op",
+            "value": 984677,
+            "unit": "B/op",
+            "extra": "808 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory/toggle_team_edge - allocs/op",
+            "value": 30,
+            "unit": "allocs/op",
+            "extra": "808 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/lookup",
+            "value": 44530,
+            "unit": "ns/op\t   33854 B/op\t      40 allocs/op",
+            "extra": "7820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/lookup - ns/op",
+            "value": 44530,
+            "unit": "ns/op",
+            "extra": "7820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/lookup - B/op",
+            "value": 33854,
+            "unit": "B/op",
+            "extra": "7820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/lookup - allocs/op",
+            "value": 40,
+            "unit": "allocs/op",
+            "extra": "7820 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_hit",
+            "value": 2136,
+            "unit": "ns/op\t    1017 B/op\t      11 allocs/op",
+            "extra": "167476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_hit - ns/op",
+            "value": 2136,
+            "unit": "ns/op",
+            "extra": "167476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_hit - B/op",
+            "value": 1017,
+            "unit": "B/op",
+            "extra": "167476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_hit - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "167476 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_miss",
+            "value": 2117,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "188908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_miss - ns/op",
+            "value": 2117,
+            "unit": "ns/op",
+            "extra": "188908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "188908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "188908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/bulk_100",
+            "value": 214485,
+            "unit": "ns/op\t   93806 B/op\t     326 allocs/op",
+            "extra": "1734 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/bulk_100 - ns/op",
+            "value": 214485,
+            "unit": "ns/op",
+            "extra": "1734 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/bulk_100 - B/op",
+            "value": 93806,
+            "unit": "B/op",
+            "extra": "1734 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/bulk_100 - allocs/op",
+            "value": 326,
+            "unit": "allocs/op",
+            "extra": "1734 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/subjects_one",
+            "value": 2572,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "157044 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/subjects_one - ns/op",
+            "value": 2572,
+            "unit": "ns/op",
+            "extra": "157044 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "157044 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "157044 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/toggle_team_edge",
+            "value": 424649,
+            "unit": "ns/op\t  984717 B/op\t      30 allocs/op",
+            "extra": "1099 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/toggle_team_edge - ns/op",
+            "value": 424649,
+            "unit": "ns/op",
+            "extra": "1099 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/toggle_team_edge - B/op",
+            "value": 984717,
+            "unit": "B/op",
+            "extra": "1099 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=memory+index/toggle_team_edge - allocs/op",
+            "value": 30,
+            "unit": "allocs/op",
+            "extra": "1099 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/lookup",
+            "value": 4176233,
+            "unit": "ns/op\t  308352 B/op\t    4019 allocs/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/lookup - ns/op",
+            "value": 4176233,
+            "unit": "ns/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/lookup - B/op",
+            "value": 308352,
+            "unit": "B/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/lookup - allocs/op",
+            "value": 4019,
+            "unit": "allocs/op",
+            "extra": "88 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_hit",
+            "value": 463016,
+            "unit": "ns/op\t    5546 B/op\t      95 allocs/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_hit - ns/op",
+            "value": 463016,
+            "unit": "ns/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_hit - B/op",
+            "value": 5546,
+            "unit": "B/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_hit - allocs/op",
+            "value": 95,
+            "unit": "allocs/op",
+            "extra": "968 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_miss",
+            "value": 472611,
+            "unit": "ns/op\t    4819 B/op\t      77 allocs/op",
+            "extra": "786 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_miss - ns/op",
+            "value": 472611,
+            "unit": "ns/op",
+            "extra": "786 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_miss - B/op",
+            "value": 4819,
+            "unit": "B/op",
+            "extra": "786 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "786 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/bulk_100",
+            "value": 2063391,
+            "unit": "ns/op\t  402099 B/op\t    3803 allocs/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/bulk_100 - ns/op",
+            "value": 2063391,
+            "unit": "ns/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/bulk_100 - B/op",
+            "value": 402099,
+            "unit": "B/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/bulk_100 - allocs/op",
+            "value": 3803,
+            "unit": "allocs/op",
+            "extra": "169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/subjects_one",
+            "value": 465456,
+            "unit": "ns/op\t    5932 B/op\t      89 allocs/op",
+            "extra": "847 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/subjects_one - ns/op",
+            "value": 465456,
+            "unit": "ns/op",
+            "extra": "847 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/subjects_one - B/op",
+            "value": 5932,
+            "unit": "B/op",
+            "extra": "847 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "847 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/toggle_team_edge",
+            "value": 1861388,
+            "unit": "ns/op\t    8339 B/op\t     148 allocs/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/toggle_team_edge - ns/op",
+            "value": 1861388,
+            "unit": "ns/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/toggle_team_edge - B/op",
+            "value": 8339,
+            "unit": "B/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres/toggle_team_edge - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/lookup",
+            "value": 1046252,
+            "unit": "ns/op\t   28092 B/op\t     436 allocs/op",
+            "extra": "334 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/lookup - ns/op",
+            "value": 1046252,
+            "unit": "ns/op",
+            "extra": "334 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/lookup - B/op",
+            "value": 28092,
+            "unit": "B/op",
+            "extra": "334 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/lookup - allocs/op",
+            "value": 436,
+            "unit": "allocs/op",
+            "extra": "334 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_hit",
+            "value": 644829,
+            "unit": "ns/op\t    5906 B/op\t      97 allocs/op",
+            "extra": "620 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_hit - ns/op",
+            "value": 644829,
+            "unit": "ns/op",
+            "extra": "620 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_hit - B/op",
+            "value": 5906,
+            "unit": "B/op",
+            "extra": "620 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "620 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_miss",
+            "value": 1055802,
+            "unit": "ns/op\t   10011 B/op\t     162 allocs/op",
+            "extra": "363 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_miss - ns/op",
+            "value": 1055802,
+            "unit": "ns/op",
+            "extra": "363 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_miss - B/op",
+            "value": 10011,
+            "unit": "B/op",
+            "extra": "363 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "363 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/bulk_100",
+            "value": 2962406,
+            "unit": "ns/op\t  168873 B/op\t    1631 allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 2962406,
+            "unit": "ns/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/bulk_100 - B/op",
+            "value": 168873,
+            "unit": "B/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 1631,
+            "unit": "allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/subjects_one",
+            "value": 1000358,
+            "unit": "ns/op\t    9351 B/op\t     158 allocs/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/subjects_one - ns/op",
+            "value": 1000358,
+            "unit": "ns/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/subjects_one - B/op",
+            "value": 9351,
+            "unit": "B/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/toggle_team_edge",
+            "value": 4287609,
+            "unit": "ns/op\t   16883 B/op\t     271 allocs/op",
+            "extra": "72 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/toggle_team_edge - ns/op",
+            "value": 4287609,
+            "unit": "ns/op",
+            "extra": "72 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/toggle_team_edge - B/op",
+            "value": 16883,
+            "unit": "B/op",
+            "extra": "72 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+closure/toggle_team_edge - allocs/op",
+            "value": 271,
+            "unit": "allocs/op",
+            "extra": "72 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/lookup",
+            "value": 852422,
+            "unit": "ns/op\t   19947 B/op\t     390 allocs/op",
+            "extra": "465 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/lookup - ns/op",
+            "value": 852422,
+            "unit": "ns/op",
+            "extra": "465 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/lookup - B/op",
+            "value": 19947,
+            "unit": "B/op",
+            "extra": "465 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/lookup - allocs/op",
+            "value": 390,
+            "unit": "allocs/op",
+            "extra": "465 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_hit",
+            "value": 909315,
+            "unit": "ns/op\t    6060 B/op\t      77 allocs/op",
+            "extra": "411 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_hit - ns/op",
+            "value": 909315,
+            "unit": "ns/op",
+            "extra": "411 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_hit - B/op",
+            "value": 6060,
+            "unit": "B/op",
+            "extra": "411 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "411 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_miss",
+            "value": 927366,
+            "unit": "ns/op\t    5956 B/op\t      77 allocs/op",
+            "extra": "415 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_miss - ns/op",
+            "value": 927366,
+            "unit": "ns/op",
+            "extra": "415 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_miss - B/op",
+            "value": 5956,
+            "unit": "B/op",
+            "extra": "415 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "415 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/bulk_100",
+            "value": 2222273,
+            "unit": "ns/op\t   69197 B/op\t     903 allocs/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 2222273,
+            "unit": "ns/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/bulk_100 - B/op",
+            "value": 69197,
+            "unit": "B/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 903,
+            "unit": "allocs/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/subjects_one",
+            "value": 662145,
+            "unit": "ns/op\t    3760 B/op\t      80 allocs/op",
+            "extra": "584 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/subjects_one - ns/op",
+            "value": 662145,
+            "unit": "ns/op",
+            "extra": "584 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/subjects_one - B/op",
+            "value": 3760,
+            "unit": "B/op",
+            "extra": "584 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "584 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/toggle_team_edge",
+            "value": 5804109,
+            "unit": "ns/op\t   25799 B/op\t     447 allocs/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/toggle_team_edge - ns/op",
+            "value": 5804109,
+            "unit": "ns/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/toggle_team_edge - B/op",
+            "value": 25799,
+            "unit": "B/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=postgres+sets/toggle_team_edge - allocs/op",
+            "value": 447,
+            "unit": "allocs/op",
+            "extra": "62 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/lookup",
+            "value": 1040629,
+            "unit": "ns/op\t   95864 B/op\t    1151 allocs/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/lookup - ns/op",
+            "value": 1040629,
+            "unit": "ns/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/lookup - B/op",
+            "value": 95864,
+            "unit": "B/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 1151,
+            "unit": "allocs/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_hit",
+            "value": 352420,
+            "unit": "ns/op\t    7334 B/op\t     108 allocs/op",
+            "extra": "987 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 352420,
+            "unit": "ns/op",
+            "extra": "987 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7334,
+            "unit": "B/op",
+            "extra": "987 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "987 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_miss",
+            "value": 349872,
+            "unit": "ns/op\t    7366 B/op\t     108 allocs/op",
+            "extra": "1057 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 349872,
+            "unit": "ns/op",
+            "extra": "1057 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7366,
+            "unit": "B/op",
+            "extra": "1057 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1057 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/bulk_100",
+            "value": 1406923,
+            "unit": "ns/op\t   99153 B/op\t    1710 allocs/op",
+            "extra": "284 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1406923,
+            "unit": "ns/op",
+            "extra": "284 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99153,
+            "unit": "B/op",
+            "extra": "284 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1710,
+            "unit": "allocs/op",
+            "extra": "284 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/subjects_one",
+            "value": 376731,
+            "unit": "ns/op\t    8967 B/op\t     138 allocs/op",
+            "extra": "924 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 376731,
+            "unit": "ns/op",
+            "extra": "924 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8967,
+            "unit": "B/op",
+            "extra": "924 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "924 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge",
+            "value": 858368,
+            "unit": "ns/op\t   15193 B/op\t     225 allocs/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - ns/op",
+            "value": 858368,
+            "unit": "ns/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - B/op",
+            "value": 15193,
+            "unit": "B/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/lookup",
+            "value": 1246481,
+            "unit": "ns/op\t   84729 B/op\t    1155 allocs/op",
+            "extra": "279 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/lookup - ns/op",
+            "value": 1246481,
+            "unit": "ns/op",
+            "extra": "279 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/lookup - B/op",
+            "value": 84729,
+            "unit": "B/op",
+            "extra": "279 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 1155,
+            "unit": "allocs/op",
+            "extra": "279 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_hit",
+            "value": 637832,
+            "unit": "ns/op\t    7361 B/op\t     108 allocs/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 637832,
+            "unit": "ns/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7361,
+            "unit": "B/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "561 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_miss",
+            "value": 633534,
+            "unit": "ns/op\t    7297 B/op\t     108 allocs/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 633534,
+            "unit": "ns/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7297,
+            "unit": "B/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "570 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/bulk_100",
+            "value": 1713871,
+            "unit": "ns/op\t   99220 B/op\t    1711 allocs/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1713871,
+            "unit": "ns/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99220,
+            "unit": "B/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/subjects_one",
+            "value": 638143,
+            "unit": "ns/op\t    8816 B/op\t     138 allocs/op",
+            "extra": "537 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 638143,
+            "unit": "ns/op",
+            "extra": "537 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8816,
+            "unit": "B/op",
+            "extra": "537 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "537 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge",
+            "value": 3696466,
+            "unit": "ns/op\t   15647 B/op\t     226 allocs/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - ns/op",
+            "value": 3696466,
+            "unit": "ns/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - B/op",
+            "value": 15647,
+            "unit": "B/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=1000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "85 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/lookup",
+            "value": 12358227,
+            "unit": "ns/op\t 1623710 B/op\t     242 allocs/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/lookup - ns/op",
+            "value": 12358227,
+            "unit": "ns/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/lookup - B/op",
+            "value": 1623710,
+            "unit": "B/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/lookup - allocs/op",
+            "value": 242,
+            "unit": "allocs/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_hit",
+            "value": 496353,
+            "unit": "ns/op\t    1903 B/op\t      17 allocs/op",
+            "extra": "700 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_hit - ns/op",
+            "value": 496353,
+            "unit": "ns/op",
+            "extra": "700 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_hit - B/op",
+            "value": 1903,
+            "unit": "B/op",
+            "extra": "700 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_hit - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "700 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_miss",
+            "value": 972220,
+            "unit": "ns/op\t    2017 B/op\t      20 allocs/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_miss - ns/op",
+            "value": 972220,
+            "unit": "ns/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_miss - B/op",
+            "value": 2017,
+            "unit": "B/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/bulk_100",
+            "value": 3630768,
+            "unit": "ns/op\t  332029 B/op\t    1367 allocs/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/bulk_100 - ns/op",
+            "value": 3630768,
+            "unit": "ns/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/bulk_100 - B/op",
+            "value": 332029,
+            "unit": "B/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/bulk_100 - allocs/op",
+            "value": 1367,
+            "unit": "allocs/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/subjects_one",
+            "value": 983413,
+            "unit": "ns/op\t    3129 B/op\t      32 allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/subjects_one - ns/op",
+            "value": 983413,
+            "unit": "ns/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/subjects_one - B/op",
+            "value": 3129,
+            "unit": "B/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/toggle_grant",
+            "value": 9945240,
+            "unit": "ns/op\t15741360 B/op\t     270 allocs/op",
+            "extra": "34 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/toggle_grant - ns/op",
+            "value": 9945240,
+            "unit": "ns/op",
+            "extra": "34 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/toggle_grant - B/op",
+            "value": 15741360,
+            "unit": "B/op",
+            "extra": "34 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory/toggle_grant - allocs/op",
+            "value": 270,
+            "unit": "allocs/op",
+            "extra": "34 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/lookup",
+            "value": 578774,
+            "unit": "ns/op\t  517373 B/op\t      73 allocs/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/lookup - ns/op",
+            "value": 578774,
+            "unit": "ns/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/lookup - B/op",
+            "value": 517373,
+            "unit": "B/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/lookup - allocs/op",
+            "value": 73,
+            "unit": "allocs/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_hit",
+            "value": 1988,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "187761 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_hit - ns/op",
+            "value": 1988,
+            "unit": "ns/op",
+            "extra": "187761 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_hit - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "187761 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_hit - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "187761 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_miss",
+            "value": 2005,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "191149 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_miss - ns/op",
+            "value": 2005,
+            "unit": "ns/op",
+            "extra": "191149 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "191149 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "191149 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/bulk_100",
+            "value": 584700,
+            "unit": "ns/op\t  593505 B/op\t     368 allocs/op",
+            "extra": "651 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/bulk_100 - ns/op",
+            "value": 584700,
+            "unit": "ns/op",
+            "extra": "651 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/bulk_100 - B/op",
+            "value": 593505,
+            "unit": "B/op",
+            "extra": "651 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/bulk_100 - allocs/op",
+            "value": 368,
+            "unit": "allocs/op",
+            "extra": "651 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/subjects_one",
+            "value": 2512,
+            "unit": "ns/op\t    1705 B/op\t      18 allocs/op",
+            "extra": "160916 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/subjects_one - ns/op",
+            "value": 2512,
+            "unit": "ns/op",
+            "extra": "160916 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/subjects_one - B/op",
+            "value": 1705,
+            "unit": "B/op",
+            "extra": "160916 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "160916 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/toggle_grant",
+            "value": 9561302,
+            "unit": "ns/op\t15738023 B/op\t     269 allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/toggle_grant - ns/op",
+            "value": 9561302,
+            "unit": "ns/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/toggle_grant - B/op",
+            "value": 15738023,
+            "unit": "B/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=memory+index/toggle_grant - allocs/op",
+            "value": 269,
+            "unit": "allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/lookup",
+            "value": 7364649,
+            "unit": "ns/op\t 2588606 B/op\t   30077 allocs/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/lookup - ns/op",
+            "value": 7364649,
+            "unit": "ns/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/lookup - B/op",
+            "value": 2588606,
+            "unit": "B/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/lookup - allocs/op",
+            "value": 30077,
+            "unit": "allocs/op",
+            "extra": "44 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_hit",
+            "value": 330709,
+            "unit": "ns/op\t    3946 B/op\t      65 allocs/op",
+            "extra": "1315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_hit - ns/op",
+            "value": 330709,
+            "unit": "ns/op",
+            "extra": "1315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_hit - B/op",
+            "value": 3946,
+            "unit": "B/op",
+            "extra": "1315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_hit - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "1315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_miss",
+            "value": 453036,
+            "unit": "ns/op\t    4918 B/op\t      77 allocs/op",
+            "extra": "1006 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_miss - ns/op",
+            "value": 453036,
+            "unit": "ns/op",
+            "extra": "1006 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_miss - B/op",
+            "value": 4918,
+            "unit": "B/op",
+            "extra": "1006 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "1006 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/bulk_100",
+            "value": 1617636,
+            "unit": "ns/op\t  410323 B/op\t    3803 allocs/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/bulk_100 - ns/op",
+            "value": 1617636,
+            "unit": "ns/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/bulk_100 - B/op",
+            "value": 410323,
+            "unit": "B/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/bulk_100 - allocs/op",
+            "value": 3803,
+            "unit": "allocs/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/subjects_one",
+            "value": 455854,
+            "unit": "ns/op\t    5955 B/op\t      89 allocs/op",
+            "extra": "806 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/subjects_one - ns/op",
+            "value": 455854,
+            "unit": "ns/op",
+            "extra": "806 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/subjects_one - B/op",
+            "value": 5955,
+            "unit": "B/op",
+            "extra": "806 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "806 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/toggle_grant",
+            "value": 1792789,
+            "unit": "ns/op\t    8632 B/op\t     144 allocs/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/toggle_grant - ns/op",
+            "value": 1792789,
+            "unit": "ns/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/toggle_grant - B/op",
+            "value": 8632,
+            "unit": "B/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "202 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/lookup",
+            "value": 2162505,
+            "unit": "ns/op\t  340094 B/op\t    3330 allocs/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/lookup - ns/op",
+            "value": 2162505,
+            "unit": "ns/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/lookup - B/op",
+            "value": 340094,
+            "unit": "B/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/lookup - allocs/op",
+            "value": 3330,
+            "unit": "allocs/op",
+            "extra": "164 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_hit",
+            "value": 614650,
+            "unit": "ns/op\t    5776 B/op\t      97 allocs/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_hit - ns/op",
+            "value": 614650,
+            "unit": "ns/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_hit - B/op",
+            "value": 5776,
+            "unit": "B/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_miss",
+            "value": 1019666,
+            "unit": "ns/op\t    9787 B/op\t     162 allocs/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_miss - ns/op",
+            "value": 1019666,
+            "unit": "ns/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_miss - B/op",
+            "value": 9787,
+            "unit": "B/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "370 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/bulk_100",
+            "value": 2986032,
+            "unit": "ns/op\t  181391 B/op\t    1681 allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 2986032,
+            "unit": "ns/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/bulk_100 - B/op",
+            "value": 181391,
+            "unit": "B/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 1681,
+            "unit": "allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/subjects_one",
+            "value": 937277,
+            "unit": "ns/op\t    9153 B/op\t     158 allocs/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/subjects_one - ns/op",
+            "value": 937277,
+            "unit": "ns/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/subjects_one - B/op",
+            "value": 9153,
+            "unit": "B/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "402 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/toggle_grant",
+            "value": 1882024,
+            "unit": "ns/op\t    8567 B/op\t     144 allocs/op",
+            "extra": "212 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 1882024,
+            "unit": "ns/op",
+            "extra": "212 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/toggle_grant - B/op",
+            "value": 8567,
+            "unit": "B/op",
+            "extra": "212 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "212 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/lookup",
+            "value": 2130536,
+            "unit": "ns/op\t  229820 B/op\t    3273 allocs/op",
+            "extra": "166 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/lookup - ns/op",
+            "value": 2130536,
+            "unit": "ns/op",
+            "extra": "166 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/lookup - B/op",
+            "value": 229820,
+            "unit": "B/op",
+            "extra": "166 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/lookup - allocs/op",
+            "value": 3273,
+            "unit": "allocs/op",
+            "extra": "166 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_hit",
+            "value": 798434,
+            "unit": "ns/op\t    5853 B/op\t      77 allocs/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_hit - ns/op",
+            "value": 798434,
+            "unit": "ns/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_hit - B/op",
+            "value": 5853,
+            "unit": "B/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_miss",
+            "value": 806667,
+            "unit": "ns/op\t    6033 B/op\t      77 allocs/op",
+            "extra": "466 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_miss - ns/op",
+            "value": 806667,
+            "unit": "ns/op",
+            "extra": "466 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_miss - B/op",
+            "value": 6033,
+            "unit": "B/op",
+            "extra": "466 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "466 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/bulk_100",
+            "value": 3010279,
+            "unit": "ns/op\t   75001 B/op\t     943 allocs/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 3010279,
+            "unit": "ns/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/bulk_100 - B/op",
+            "value": 75001,
+            "unit": "B/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 943,
+            "unit": "allocs/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/subjects_one",
+            "value": 679381,
+            "unit": "ns/op\t    3914 B/op\t      80 allocs/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/subjects_one - ns/op",
+            "value": 679381,
+            "unit": "ns/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/subjects_one - B/op",
+            "value": 3914,
+            "unit": "B/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/toggle_grant",
+            "value": 3078184,
+            "unit": "ns/op\t   18895 B/op\t     331 allocs/op",
+            "extra": "118 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 3078184,
+            "unit": "ns/op",
+            "extra": "118 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/toggle_grant - B/op",
+            "value": 18895,
+            "unit": "B/op",
+            "extra": "118 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 331,
+            "unit": "allocs/op",
+            "extra": "118 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/lookup",
+            "value": 6317026,
+            "unit": "ns/op\t  958983 B/op\t   10873 allocs/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/lookup - ns/op",
+            "value": 6317026,
+            "unit": "ns/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/lookup - B/op",
+            "value": 958983,
+            "unit": "B/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 10873,
+            "unit": "allocs/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_hit",
+            "value": 352561,
+            "unit": "ns/op\t    7336 B/op\t     108 allocs/op",
+            "extra": "993 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 352561,
+            "unit": "ns/op",
+            "extra": "993 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7336,
+            "unit": "B/op",
+            "extra": "993 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "993 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_miss",
+            "value": 354227,
+            "unit": "ns/op\t    7434 B/op\t     108 allocs/op",
+            "extra": "1004 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 354227,
+            "unit": "ns/op",
+            "extra": "1004 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7434,
+            "unit": "B/op",
+            "extra": "1004 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1004 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/bulk_100",
+            "value": 1291101,
+            "unit": "ns/op\t   99583 B/op\t    1711 allocs/op",
+            "extra": "270 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1291101,
+            "unit": "ns/op",
+            "extra": "270 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99583,
+            "unit": "B/op",
+            "extra": "270 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "270 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/subjects_one",
+            "value": 373727,
+            "unit": "ns/op\t    8989 B/op\t     139 allocs/op",
+            "extra": "907 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 373727,
+            "unit": "ns/op",
+            "extra": "907 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8989,
+            "unit": "B/op",
+            "extra": "907 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "907 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/toggle_grant",
+            "value": 896190,
+            "unit": "ns/op\t   15232 B/op\t     225 allocs/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 896190,
+            "unit": "ns/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15232,
+            "unit": "B/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/lookup",
+            "value": 6115581,
+            "unit": "ns/op\t  880419 B/op\t   10917 allocs/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/lookup - ns/op",
+            "value": 6115581,
+            "unit": "ns/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/lookup - B/op",
+            "value": 880419,
+            "unit": "B/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 10917,
+            "unit": "allocs/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_hit",
+            "value": 633936,
+            "unit": "ns/op\t    7299 B/op\t     108 allocs/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 633936,
+            "unit": "ns/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7299,
+            "unit": "B/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "555 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_miss",
+            "value": 638256,
+            "unit": "ns/op\t    7412 B/op\t     108 allocs/op",
+            "extra": "580 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 638256,
+            "unit": "ns/op",
+            "extra": "580 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7412,
+            "unit": "B/op",
+            "extra": "580 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "580 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/bulk_100",
+            "value": 1673541,
+            "unit": "ns/op\t   99306 B/op\t    1711 allocs/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1673541,
+            "unit": "ns/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99306,
+            "unit": "B/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/subjects_one",
+            "value": 652643,
+            "unit": "ns/op\t    8945 B/op\t     138 allocs/op",
+            "extra": "541 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 652643,
+            "unit": "ns/op",
+            "extra": "541 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8945,
+            "unit": "B/op",
+            "extra": "541 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "541 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/toggle_grant",
+            "value": 3457950,
+            "unit": "ns/op\t   15943 B/op\t     226 allocs/op",
+            "extra": "91 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 3457950,
+            "unit": "ns/op",
+            "extra": "91 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15943,
+            "unit": "B/op",
+            "extra": "91 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "91 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/lookup",
+            "value": 76064177,
+            "unit": "ns/op\t22469794 B/op\t     630 allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/lookup - ns/op",
+            "value": 76064177,
+            "unit": "ns/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/lookup - B/op",
+            "value": 22469794,
+            "unit": "B/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/lookup - allocs/op",
+            "value": 630,
+            "unit": "allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_hit",
+            "value": 565355,
+            "unit": "ns/op\t    1850 B/op\t      17 allocs/op",
+            "extra": "619 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_hit - ns/op",
+            "value": 565355,
+            "unit": "ns/op",
+            "extra": "619 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_hit - B/op",
+            "value": 1850,
+            "unit": "B/op",
+            "extra": "619 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_hit - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "619 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_miss",
+            "value": 1134802,
+            "unit": "ns/op\t    2146 B/op\t      20 allocs/op",
+            "extra": "322 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_miss - ns/op",
+            "value": 1134802,
+            "unit": "ns/op",
+            "extra": "322 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_miss - B/op",
+            "value": 2146,
+            "unit": "B/op",
+            "extra": "322 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "322 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/bulk_100",
+            "value": 3512550,
+            "unit": "ns/op\t  423493 B/op\t    1471 allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/bulk_100 - ns/op",
+            "value": 3512550,
+            "unit": "ns/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/bulk_100 - B/op",
+            "value": 423493,
+            "unit": "B/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/bulk_100 - allocs/op",
+            "value": 1471,
+            "unit": "allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/subjects_one",
+            "value": 1118413,
+            "unit": "ns/op\t    3027 B/op\t      32 allocs/op",
+            "extra": "314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/subjects_one - ns/op",
+            "value": 1118413,
+            "unit": "ns/op",
+            "extra": "314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/subjects_one - B/op",
+            "value": 3027,
+            "unit": "B/op",
+            "extra": "314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "314 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/toggle_grant",
+            "value": 10730082,
+            "unit": "ns/op\t15739757 B/op\t     270 allocs/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/toggle_grant - ns/op",
+            "value": 10730082,
+            "unit": "ns/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/toggle_grant - B/op",
+            "value": 15739757,
+            "unit": "B/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory/toggle_grant - allocs/op",
+            "value": 270,
+            "unit": "allocs/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/lookup",
+            "value": 5289459,
+            "unit": "ns/op\t 4141430 B/op\t     250 allocs/op",
+            "extra": "73 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/lookup - ns/op",
+            "value": 5289459,
+            "unit": "ns/op",
+            "extra": "73 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/lookup - B/op",
+            "value": 4141430,
+            "unit": "B/op",
+            "extra": "73 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/lookup - allocs/op",
+            "value": 250,
+            "unit": "allocs/op",
+            "extra": "73 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_hit",
+            "value": 2001,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "190658 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_hit - ns/op",
+            "value": 2001,
+            "unit": "ns/op",
+            "extra": "190658 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_hit - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "190658 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_hit - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "190658 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_miss",
+            "value": 2011,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "190096 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_miss - ns/op",
+            "value": 2011,
+            "unit": "ns/op",
+            "extra": "190096 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "190096 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "190096 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/bulk_100",
+            "value": 3768352,
+            "unit": "ns/op\t 4313697 B/op\t     589 allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/bulk_100 - ns/op",
+            "value": 3768352,
+            "unit": "ns/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/bulk_100 - B/op",
+            "value": 4313697,
+            "unit": "B/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/bulk_100 - allocs/op",
+            "value": 589,
+            "unit": "allocs/op",
+            "extra": "100 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/subjects_one",
+            "value": 2542,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "159864 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/subjects_one - ns/op",
+            "value": 2542,
+            "unit": "ns/op",
+            "extra": "159864 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "159864 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "159864 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/toggle_grant",
+            "value": 11382223,
+            "unit": "ns/op\t15739623 B/op\t     270 allocs/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/toggle_grant - ns/op",
+            "value": 11382223,
+            "unit": "ns/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/toggle_grant - B/op",
+            "value": 15739623,
+            "unit": "B/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=memory+index/toggle_grant - allocs/op",
+            "value": 270,
+            "unit": "allocs/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/lookup",
+            "value": 38571406,
+            "unit": "ns/op\t30529686 B/op\t  252254 allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/lookup - ns/op",
+            "value": 38571406,
+            "unit": "ns/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/lookup - B/op",
+            "value": 30529686,
+            "unit": "B/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/lookup - allocs/op",
+            "value": 252254,
+            "unit": "allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_hit",
+            "value": 316987,
+            "unit": "ns/op\t    3965 B/op\t      65 allocs/op",
+            "extra": "1171 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_hit - ns/op",
+            "value": 316987,
+            "unit": "ns/op",
+            "extra": "1171 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_hit - B/op",
+            "value": 3965,
+            "unit": "B/op",
+            "extra": "1171 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_hit - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "1171 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_miss",
+            "value": 474236,
+            "unit": "ns/op\t    4845 B/op\t      77 allocs/op",
+            "extra": "830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_miss - ns/op",
+            "value": 474236,
+            "unit": "ns/op",
+            "extra": "830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_miss - B/op",
+            "value": 4845,
+            "unit": "B/op",
+            "extra": "830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "830 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/bulk_100",
+            "value": 1654176,
+            "unit": "ns/op\t  514422 B/op\t    4330 allocs/op",
+            "extra": "219 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/bulk_100 - ns/op",
+            "value": 1654176,
+            "unit": "ns/op",
+            "extra": "219 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/bulk_100 - B/op",
+            "value": 514422,
+            "unit": "B/op",
+            "extra": "219 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/bulk_100 - allocs/op",
+            "value": 4330,
+            "unit": "allocs/op",
+            "extra": "219 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/subjects_one",
+            "value": 483037,
+            "unit": "ns/op\t    5954 B/op\t      89 allocs/op",
+            "extra": "930 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/subjects_one - ns/op",
+            "value": 483037,
+            "unit": "ns/op",
+            "extra": "930 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/subjects_one - B/op",
+            "value": 5954,
+            "unit": "B/op",
+            "extra": "930 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "930 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/toggle_grant",
+            "value": 1771722,
+            "unit": "ns/op\t    8249 B/op\t     144 allocs/op",
+            "extra": "211 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/toggle_grant - ns/op",
+            "value": 1771722,
+            "unit": "ns/op",
+            "extra": "211 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/toggle_grant - B/op",
+            "value": 8249,
+            "unit": "B/op",
+            "extra": "211 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "211 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/lookup",
+            "value": 8887758,
+            "unit": "ns/op\t 2901446 B/op\t   27217 allocs/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/lookup - ns/op",
+            "value": 8887758,
+            "unit": "ns/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/lookup - B/op",
+            "value": 2901446,
+            "unit": "B/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/lookup - allocs/op",
+            "value": 27217,
+            "unit": "allocs/op",
+            "extra": "38 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_hit",
+            "value": 614026,
+            "unit": "ns/op\t    5772 B/op\t      97 allocs/op",
+            "extra": "594 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_hit - ns/op",
+            "value": 614026,
+            "unit": "ns/op",
+            "extra": "594 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_hit - B/op",
+            "value": 5772,
+            "unit": "B/op",
+            "extra": "594 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "594 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_miss",
+            "value": 1040221,
+            "unit": "ns/op\t    9995 B/op\t     162 allocs/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_miss - ns/op",
+            "value": 1040221,
+            "unit": "ns/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_miss - B/op",
+            "value": 9995,
+            "unit": "B/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/bulk_100",
+            "value": 3049727,
+            "unit": "ns/op\t  223805 B/op\t    2143 allocs/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 3049727,
+            "unit": "ns/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/bulk_100 - B/op",
+            "value": 223805,
+            "unit": "B/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 2143,
+            "unit": "allocs/op",
+            "extra": "99 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/subjects_one",
+            "value": 947958,
+            "unit": "ns/op\t    9153 B/op\t     158 allocs/op",
+            "extra": "399 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/subjects_one - ns/op",
+            "value": 947958,
+            "unit": "ns/op",
+            "extra": "399 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/subjects_one - B/op",
+            "value": 9153,
+            "unit": "B/op",
+            "extra": "399 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "399 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/toggle_grant",
+            "value": 1826850,
+            "unit": "ns/op\t    7940 B/op\t     144 allocs/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 1826850,
+            "unit": "ns/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/toggle_grant - B/op",
+            "value": 7940,
+            "unit": "B/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/lookup",
+            "value": 11283260,
+            "unit": "ns/op\t 2031231 B/op\t   27103 allocs/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/lookup - ns/op",
+            "value": 11283260,
+            "unit": "ns/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/lookup - B/op",
+            "value": 2031231,
+            "unit": "B/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/lookup - allocs/op",
+            "value": 27103,
+            "unit": "allocs/op",
+            "extra": "27 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_hit",
+            "value": 813259,
+            "unit": "ns/op\t    6131 B/op\t      77 allocs/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_hit - ns/op",
+            "value": 813259,
+            "unit": "ns/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_hit - B/op",
+            "value": 6131,
+            "unit": "B/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "428 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_miss",
+            "value": 803455,
+            "unit": "ns/op\t    5946 B/op\t      77 allocs/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_miss - ns/op",
+            "value": 803455,
+            "unit": "ns/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_miss - B/op",
+            "value": 5946,
+            "unit": "B/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/bulk_100",
+            "value": 7363829,
+            "unit": "ns/op\t  122763 B/op\t    1470 allocs/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 7363829,
+            "unit": "ns/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/bulk_100 - B/op",
+            "value": 122763,
+            "unit": "B/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 1470,
+            "unit": "allocs/op",
+            "extra": "42 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/subjects_one",
+            "value": 638771,
+            "unit": "ns/op\t    3904 B/op\t      80 allocs/op",
+            "extra": "624 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/subjects_one - ns/op",
+            "value": 638771,
+            "unit": "ns/op",
+            "extra": "624 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/subjects_one - B/op",
+            "value": 3904,
+            "unit": "B/op",
+            "extra": "624 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "624 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/toggle_grant",
+            "value": 2931223,
+            "unit": "ns/op\t   20033 B/op\t     331 allocs/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 2931223,
+            "unit": "ns/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/toggle_grant - B/op",
+            "value": 20033,
+            "unit": "B/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 331,
+            "unit": "allocs/op",
+            "extra": "117 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/lookup",
+            "value": 54515546,
+            "unit": "ns/op\t 8282523 B/op\t   91444 allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/lookup - ns/op",
+            "value": 54515546,
+            "unit": "ns/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/lookup - B/op",
+            "value": 8282523,
+            "unit": "B/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 91444,
+            "unit": "allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_hit",
+            "value": 358203,
+            "unit": "ns/op\t    7368 B/op\t     108 allocs/op",
+            "extra": "955 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 358203,
+            "unit": "ns/op",
+            "extra": "955 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7368,
+            "unit": "B/op",
+            "extra": "955 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "955 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_miss",
+            "value": 356567,
+            "unit": "ns/op\t    7342 B/op\t     109 allocs/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 356567,
+            "unit": "ns/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7342,
+            "unit": "B/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 109,
+            "unit": "allocs/op",
+            "extra": "952 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/bulk_100",
+            "value": 1352089,
+            "unit": "ns/op\t   99230 B/op\t    1711 allocs/op",
+            "extra": "255 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1352089,
+            "unit": "ns/op",
+            "extra": "255 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99230,
+            "unit": "B/op",
+            "extra": "255 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "255 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/subjects_one",
+            "value": 374441,
+            "unit": "ns/op\t    8940 B/op\t     138 allocs/op",
+            "extra": "904 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 374441,
+            "unit": "ns/op",
+            "extra": "904 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8940,
+            "unit": "B/op",
+            "extra": "904 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "904 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/toggle_grant",
+            "value": 899231,
+            "unit": "ns/op\t   15156 B/op\t     225 allocs/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 899231,
+            "unit": "ns/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15156,
+            "unit": "B/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/lookup",
+            "value": 45901564,
+            "unit": "ns/op\t 7626320 B/op\t   91887 allocs/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/lookup - ns/op",
+            "value": 45901564,
+            "unit": "ns/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/lookup - B/op",
+            "value": 7626320,
+            "unit": "B/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 91887,
+            "unit": "allocs/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_hit",
+            "value": 629871,
+            "unit": "ns/op\t    7308 B/op\t     109 allocs/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 629871,
+            "unit": "ns/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7308,
+            "unit": "B/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 109,
+            "unit": "allocs/op",
+            "extra": "564 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_miss",
+            "value": 631163,
+            "unit": "ns/op\t    7355 B/op\t     108 allocs/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 631163,
+            "unit": "ns/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7355,
+            "unit": "B/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/bulk_100",
+            "value": 1662126,
+            "unit": "ns/op\t   99448 B/op\t    1711 allocs/op",
+            "extra": "223 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1662126,
+            "unit": "ns/op",
+            "extra": "223 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99448,
+            "unit": "B/op",
+            "extra": "223 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "223 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/subjects_one",
+            "value": 641947,
+            "unit": "ns/op\t    8827 B/op\t     139 allocs/op",
+            "extra": "495 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 641947,
+            "unit": "ns/op",
+            "extra": "495 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8827,
+            "unit": "B/op",
+            "extra": "495 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "495 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/toggle_grant",
+            "value": 3494919,
+            "unit": "ns/op\t   15984 B/op\t     226 allocs/op",
+            "extra": "87 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 3494919,
+            "unit": "ns/op",
+            "extra": "87 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15984,
+            "unit": "B/op",
+            "extra": "87 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "87 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/lookup",
+            "value": 21483158,
+            "unit": "ns/op\t 5838724 B/op\t   88016 allocs/op",
+            "extra": "14 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/lookup - ns/op",
+            "value": 21483158,
+            "unit": "ns/op",
+            "extra": "14 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/lookup - B/op",
+            "value": 5838724,
+            "unit": "B/op",
+            "extra": "14 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/lookup - allocs/op",
+            "value": 88016,
+            "unit": "allocs/op",
+            "extra": "14 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_hit",
+            "value": 926748,
+            "unit": "ns/op\t    2245 B/op\t      24 allocs/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_hit - ns/op",
+            "value": 926748,
+            "unit": "ns/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_hit - B/op",
+            "value": 2245,
+            "unit": "B/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_hit - allocs/op",
+            "value": 24,
+            "unit": "allocs/op",
+            "extra": "380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_miss",
+            "value": 984892,
+            "unit": "ns/op\t    2017 B/op\t      20 allocs/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_miss - ns/op",
+            "value": 984892,
+            "unit": "ns/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_miss - B/op",
+            "value": 2017,
+            "unit": "B/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "366 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/bulk_100",
+            "value": 4031872,
+            "unit": "ns/op\t  347891 B/op\t    1629 allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/bulk_100 - ns/op",
+            "value": 4031872,
+            "unit": "ns/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/bulk_100 - B/op",
+            "value": 347891,
+            "unit": "B/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/bulk_100 - allocs/op",
+            "value": 1629,
+            "unit": "allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/subjects_one",
+            "value": 987604,
+            "unit": "ns/op\t    3130 B/op\t      32 allocs/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/subjects_one - ns/op",
+            "value": 987604,
+            "unit": "ns/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/subjects_one - B/op",
+            "value": 3130,
+            "unit": "B/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "360 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/toggle_team_edge",
+            "value": 9800451,
+            "unit": "ns/op\t15738087 B/op\t     270 allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/toggle_team_edge - ns/op",
+            "value": 9800451,
+            "unit": "ns/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/toggle_team_edge - B/op",
+            "value": 15738087,
+            "unit": "B/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory/toggle_team_edge - allocs/op",
+            "value": 270,
+            "unit": "allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/lookup",
+            "value": 565889,
+            "unit": "ns/op\t  517431 B/op\t      73 allocs/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/lookup - ns/op",
+            "value": 565889,
+            "unit": "ns/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/lookup - B/op",
+            "value": 517431,
+            "unit": "B/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/lookup - allocs/op",
+            "value": 73,
+            "unit": "allocs/op",
+            "extra": "613 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_hit",
+            "value": 2122,
+            "unit": "ns/op\t    1017 B/op\t      11 allocs/op",
+            "extra": "177016 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_hit - ns/op",
+            "value": 2122,
+            "unit": "ns/op",
+            "extra": "177016 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_hit - B/op",
+            "value": 1017,
+            "unit": "B/op",
+            "extra": "177016 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_hit - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "177016 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_miss",
+            "value": 2031,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "185898 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_miss - ns/op",
+            "value": 2031,
+            "unit": "ns/op",
+            "extra": "185898 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "185898 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "185898 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/bulk_100",
+            "value": 571877,
+            "unit": "ns/op\t  593555 B/op\t     368 allocs/op",
+            "extra": "666 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/bulk_100 - ns/op",
+            "value": 571877,
+            "unit": "ns/op",
+            "extra": "666 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/bulk_100 - B/op",
+            "value": 593555,
+            "unit": "B/op",
+            "extra": "666 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/bulk_100 - allocs/op",
+            "value": 368,
+            "unit": "allocs/op",
+            "extra": "666 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/subjects_one",
+            "value": 2426,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "148896 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/subjects_one - ns/op",
+            "value": 2426,
+            "unit": "ns/op",
+            "extra": "148896 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "148896 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "148896 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/toggle_team_edge",
+            "value": 9711954,
+            "unit": "ns/op\t15740704 B/op\t     271 allocs/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/toggle_team_edge - ns/op",
+            "value": 9711954,
+            "unit": "ns/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/toggle_team_edge - B/op",
+            "value": 15740704,
+            "unit": "B/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=memory+index/toggle_team_edge - allocs/op",
+            "value": 271,
+            "unit": "allocs/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/lookup",
+            "value": 8380627,
+            "unit": "ns/op\t 2647171 B/op\t   34689 allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/lookup - ns/op",
+            "value": 8380627,
+            "unit": "ns/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/lookup - B/op",
+            "value": 2647171,
+            "unit": "B/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/lookup - allocs/op",
+            "value": 34689,
+            "unit": "allocs/op",
+            "extra": "43 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_hit",
+            "value": 486055,
+            "unit": "ns/op\t    5548 B/op\t      95 allocs/op",
+            "extra": "891 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_hit - ns/op",
+            "value": 486055,
+            "unit": "ns/op",
+            "extra": "891 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_hit - B/op",
+            "value": 5548,
+            "unit": "B/op",
+            "extra": "891 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_hit - allocs/op",
+            "value": 95,
+            "unit": "allocs/op",
+            "extra": "891 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_miss",
+            "value": 453436,
+            "unit": "ns/op\t    4842 B/op\t      77 allocs/op",
+            "extra": "816 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_miss - ns/op",
+            "value": 453436,
+            "unit": "ns/op",
+            "extra": "816 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_miss - B/op",
+            "value": 4842,
+            "unit": "B/op",
+            "extra": "816 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "816 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/bulk_100",
+            "value": 1756812,
+            "unit": "ns/op\t  416026 B/op\t    3853 allocs/op",
+            "extra": "184 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/bulk_100 - ns/op",
+            "value": 1756812,
+            "unit": "ns/op",
+            "extra": "184 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/bulk_100 - B/op",
+            "value": 416026,
+            "unit": "B/op",
+            "extra": "184 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/bulk_100 - allocs/op",
+            "value": 3853,
+            "unit": "allocs/op",
+            "extra": "184 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/subjects_one",
+            "value": 478888,
+            "unit": "ns/op\t    5957 B/op\t      89 allocs/op",
+            "extra": "837 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/subjects_one - ns/op",
+            "value": 478888,
+            "unit": "ns/op",
+            "extra": "837 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/subjects_one - B/op",
+            "value": 5957,
+            "unit": "B/op",
+            "extra": "837 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "837 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/toggle_team_edge",
+            "value": 1806590,
+            "unit": "ns/op\t    8328 B/op\t     148 allocs/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/toggle_team_edge - ns/op",
+            "value": 1806590,
+            "unit": "ns/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/toggle_team_edge - B/op",
+            "value": 8328,
+            "unit": "B/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres/toggle_team_edge - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/lookup",
+            "value": 2227744,
+            "unit": "ns/op\t  340094 B/op\t    3330 allocs/op",
+            "extra": "159 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/lookup - ns/op",
+            "value": 2227744,
+            "unit": "ns/op",
+            "extra": "159 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/lookup - B/op",
+            "value": 340094,
+            "unit": "B/op",
+            "extra": "159 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/lookup - allocs/op",
+            "value": 3330,
+            "unit": "allocs/op",
+            "extra": "159 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_hit",
+            "value": 637873,
+            "unit": "ns/op\t    5774 B/op\t      97 allocs/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_hit - ns/op",
+            "value": 637873,
+            "unit": "ns/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_hit - B/op",
+            "value": 5774,
+            "unit": "B/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_miss",
+            "value": 1026367,
+            "unit": "ns/op\t    9788 B/op\t     162 allocs/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_miss - ns/op",
+            "value": 1026367,
+            "unit": "ns/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_miss - B/op",
+            "value": 9788,
+            "unit": "B/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/bulk_100",
+            "value": 2920203,
+            "unit": "ns/op\t  181735 B/op\t    1681 allocs/op",
+            "extra": "124 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 2920203,
+            "unit": "ns/op",
+            "extra": "124 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/bulk_100 - B/op",
+            "value": 181735,
+            "unit": "B/op",
+            "extra": "124 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 1681,
+            "unit": "allocs/op",
+            "extra": "124 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/subjects_one",
+            "value": 935178,
+            "unit": "ns/op\t    9153 B/op\t     158 allocs/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/subjects_one - ns/op",
+            "value": 935178,
+            "unit": "ns/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/subjects_one - B/op",
+            "value": 9153,
+            "unit": "B/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/toggle_team_edge",
+            "value": 11239819,
+            "unit": "ns/op\t   21790 B/op\t     272 allocs/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/toggle_team_edge - ns/op",
+            "value": 11239819,
+            "unit": "ns/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/toggle_team_edge - B/op",
+            "value": 21790,
+            "unit": "B/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+closure/toggle_team_edge - allocs/op",
+            "value": 272,
+            "unit": "allocs/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/lookup",
+            "value": 2046907,
+            "unit": "ns/op\t  229805 B/op\t    3273 allocs/op",
+            "extra": "174 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/lookup - ns/op",
+            "value": 2046907,
+            "unit": "ns/op",
+            "extra": "174 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/lookup - B/op",
+            "value": 229805,
+            "unit": "B/op",
+            "extra": "174 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/lookup - allocs/op",
+            "value": 3273,
+            "unit": "allocs/op",
+            "extra": "174 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_hit",
+            "value": 1234391,
+            "unit": "ns/op\t    5857 B/op\t      77 allocs/op",
+            "extra": "285 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_hit - ns/op",
+            "value": 1234391,
+            "unit": "ns/op",
+            "extra": "285 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_hit - B/op",
+            "value": 5857,
+            "unit": "B/op",
+            "extra": "285 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "285 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_miss",
+            "value": 1247013,
+            "unit": "ns/op\t    5858 B/op\t      77 allocs/op",
+            "extra": "273 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_miss - ns/op",
+            "value": 1247013,
+            "unit": "ns/op",
+            "extra": "273 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_miss - B/op",
+            "value": 5858,
+            "unit": "B/op",
+            "extra": "273 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "273 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/bulk_100",
+            "value": 2907169,
+            "unit": "ns/op\t   75359 B/op\t     943 allocs/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 2907169,
+            "unit": "ns/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/bulk_100 - B/op",
+            "value": 75359,
+            "unit": "B/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 943,
+            "unit": "allocs/op",
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/subjects_one",
+            "value": 737805,
+            "unit": "ns/op\t    3938 B/op\t      80 allocs/op",
+            "extra": "499 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/subjects_one - ns/op",
+            "value": 737805,
+            "unit": "ns/op",
+            "extra": "499 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/subjects_one - B/op",
+            "value": 3938,
+            "unit": "B/op",
+            "extra": "499 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "499 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/toggle_team_edge",
+            "value": 12116927,
+            "unit": "ns/op\t   33528 B/op\t     448 allocs/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/toggle_team_edge - ns/op",
+            "value": 12116927,
+            "unit": "ns/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/toggle_team_edge - B/op",
+            "value": 33528,
+            "unit": "B/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=postgres+sets/toggle_team_edge - allocs/op",
+            "value": 448,
+            "unit": "allocs/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/lookup",
+            "value": 5914705,
+            "unit": "ns/op\t 1022630 B/op\t   10898 allocs/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/lookup - ns/op",
+            "value": 5914705,
+            "unit": "ns/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/lookup - B/op",
+            "value": 1022630,
+            "unit": "B/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 10898,
+            "unit": "allocs/op",
+            "extra": "57 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_hit",
+            "value": 355735,
+            "unit": "ns/op\t    7335 B/op\t     108 allocs/op",
+            "extra": "932 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 355735,
+            "unit": "ns/op",
+            "extra": "932 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7335,
+            "unit": "B/op",
+            "extra": "932 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "932 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_miss",
+            "value": 355888,
+            "unit": "ns/op\t    7378 B/op\t     109 allocs/op",
+            "extra": "933 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 355888,
+            "unit": "ns/op",
+            "extra": "933 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7378,
+            "unit": "B/op",
+            "extra": "933 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 109,
+            "unit": "allocs/op",
+            "extra": "933 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/bulk_100",
+            "value": 1725070,
+            "unit": "ns/op\t   99402 B/op\t    1710 allocs/op",
+            "extra": "253 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1725070,
+            "unit": "ns/op",
+            "extra": "253 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99402,
+            "unit": "B/op",
+            "extra": "253 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1710,
+            "unit": "allocs/op",
+            "extra": "253 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/subjects_one",
+            "value": 374692,
+            "unit": "ns/op\t    9014 B/op\t     139 allocs/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 374692,
+            "unit": "ns/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 9014,
+            "unit": "B/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge",
+            "value": 855435,
+            "unit": "ns/op\t   15199 B/op\t     225 allocs/op",
+            "extra": "412 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - ns/op",
+            "value": 855435,
+            "unit": "ns/op",
+            "extra": "412 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - B/op",
+            "value": 15199,
+            "unit": "B/op",
+            "extra": "412 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "412 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/lookup",
+            "value": 6452075,
+            "unit": "ns/op\t  941120 B/op\t   10937 allocs/op",
+            "extra": "52 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/lookup - ns/op",
+            "value": 6452075,
+            "unit": "ns/op",
+            "extra": "52 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/lookup - B/op",
+            "value": 941120,
+            "unit": "B/op",
+            "extra": "52 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 10937,
+            "unit": "allocs/op",
+            "extra": "52 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_hit",
+            "value": 627920,
+            "unit": "ns/op\t    7353 B/op\t     108 allocs/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 627920,
+            "unit": "ns/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7353,
+            "unit": "B/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "577 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_miss",
+            "value": 625961,
+            "unit": "ns/op\t    7410 B/op\t     108 allocs/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 625961,
+            "unit": "ns/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7410,
+            "unit": "B/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "576 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/bulk_100",
+            "value": 1598978,
+            "unit": "ns/op\t   99079 B/op\t    1711 allocs/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1598978,
+            "unit": "ns/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99079,
+            "unit": "B/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "225 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/subjects_one",
+            "value": 646449,
+            "unit": "ns/op\t    8948 B/op\t     139 allocs/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 646449,
+            "unit": "ns/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8948,
+            "unit": "B/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "550 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge",
+            "value": 3418138,
+            "unit": "ns/op\t   16302 B/op\t     225 allocs/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - ns/op",
+            "value": 3418138,
+            "unit": "ns/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - B/op",
+            "value": 16302,
+            "unit": "B/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=10000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/lookup",
+            "value": 150255105,
+            "unit": "ns/op\t22476981 B/op\t     629 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/lookup - ns/op",
+            "value": 150255105,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/lookup - B/op",
+            "value": 22476981,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/lookup - allocs/op",
+            "value": 629,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_hit",
+            "value": 4635534,
+            "unit": "ns/op\t    2358 B/op\t      17 allocs/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_hit - ns/op",
+            "value": 4635534,
+            "unit": "ns/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_hit - B/op",
+            "value": 2358,
+            "unit": "B/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_hit - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "75 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_miss",
+            "value": 9345815,
+            "unit": "ns/op\t    5043 B/op\t      23 allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_miss - ns/op",
+            "value": 9345815,
+            "unit": "ns/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_miss - B/op",
+            "value": 5043,
+            "unit": "B/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/check_miss - allocs/op",
+            "value": 23,
+            "unit": "allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/bulk_100",
+            "value": 29609900,
+            "unit": "ns/op\t  322806 B/op\t    1336 allocs/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/bulk_100 - ns/op",
+            "value": 29609900,
+            "unit": "ns/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/bulk_100 - B/op",
+            "value": 322806,
+            "unit": "B/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/bulk_100 - allocs/op",
+            "value": 1336,
+            "unit": "allocs/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/subjects_one",
+            "value": 9246652,
+            "unit": "ns/op\t    4056 B/op\t      32 allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/subjects_one - ns/op",
+            "value": 9246652,
+            "unit": "ns/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/subjects_one - B/op",
+            "value": 4056,
+            "unit": "B/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/toggle_grant",
+            "value": 125280543,
+            "unit": "ns/op\t125898042 B/op\t    2066 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/toggle_grant - ns/op",
+            "value": 125280543,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/toggle_grant - B/op",
+            "value": 125898042,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory/toggle_grant - allocs/op",
+            "value": 2066,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/lookup",
+            "value": 1553066789,
+            "unit": "ns/op\t1109708480 B/op\t10477140 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/lookup - ns/op",
+            "value": 1553066789,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/lookup - B/op",
+            "value": 1109708480,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/lookup - allocs/op",
+            "value": 10477140,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_hit",
+            "value": 1873,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "197460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_hit - ns/op",
+            "value": 1873,
+            "unit": "ns/op",
+            "extra": "197460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_hit - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "197460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_hit - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "197460 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_miss",
+            "value": 1886,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "191778 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_miss - ns/op",
+            "value": 1886,
+            "unit": "ns/op",
+            "extra": "191778 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "191778 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "191778 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/bulk_100",
+            "value": 4642496,
+            "unit": "ns/op\t 4259211 B/op\t     465 allocs/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/bulk_100 - ns/op",
+            "value": 4642496,
+            "unit": "ns/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/bulk_100 - B/op",
+            "value": 4259211,
+            "unit": "B/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/bulk_100 - allocs/op",
+            "value": 465,
+            "unit": "allocs/op",
+            "extra": "80 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/subjects_one",
+            "value": 2593,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "155922 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/subjects_one - ns/op",
+            "value": 2593,
+            "unit": "ns/op",
+            "extra": "155922 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "155922 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "155922 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/toggle_grant",
+            "value": 152879706,
+            "unit": "ns/op\t125910204 B/op\t    2067 allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/toggle_grant - ns/op",
+            "value": 152879706,
+            "unit": "ns/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/toggle_grant - B/op",
+            "value": 125910204,
+            "unit": "B/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=memory+index/toggle_grant - allocs/op",
+            "value": 2067,
+            "unit": "allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/lookup",
+            "value": 49653056,
+            "unit": "ns/op\t31415549 B/op\t  279219 allocs/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/lookup - ns/op",
+            "value": 49653056,
+            "unit": "ns/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/lookup - B/op",
+            "value": 31415549,
+            "unit": "B/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/lookup - allocs/op",
+            "value": 279219,
+            "unit": "allocs/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_hit",
+            "value": 327361,
+            "unit": "ns/op\t    3971 B/op\t      65 allocs/op",
+            "extra": "1256 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_hit - ns/op",
+            "value": 327361,
+            "unit": "ns/op",
+            "extra": "1256 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_hit - B/op",
+            "value": 3971,
+            "unit": "B/op",
+            "extra": "1256 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_hit - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "1256 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_miss",
+            "value": 450794,
+            "unit": "ns/op\t    4843 B/op\t      77 allocs/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_miss - ns/op",
+            "value": 450794,
+            "unit": "ns/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_miss - B/op",
+            "value": 4843,
+            "unit": "B/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/bulk_100",
+            "value": 1641791,
+            "unit": "ns/op\t  397756 B/op\t    3742 allocs/op",
+            "extra": "220 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/bulk_100 - ns/op",
+            "value": 1641791,
+            "unit": "ns/op",
+            "extra": "220 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/bulk_100 - B/op",
+            "value": 397756,
+            "unit": "B/op",
+            "extra": "220 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/bulk_100 - allocs/op",
+            "value": 3742,
+            "unit": "allocs/op",
+            "extra": "220 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/subjects_one",
+            "value": 472305,
+            "unit": "ns/op\t    5955 B/op\t      89 allocs/op",
+            "extra": "807 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/subjects_one - ns/op",
+            "value": 472305,
+            "unit": "ns/op",
+            "extra": "807 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/subjects_one - B/op",
+            "value": 5955,
+            "unit": "B/op",
+            "extra": "807 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "807 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/toggle_grant",
+            "value": 1828710,
+            "unit": "ns/op\t    8607 B/op\t     144 allocs/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/toggle_grant - ns/op",
+            "value": 1828710,
+            "unit": "ns/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/toggle_grant - B/op",
+            "value": 8607,
+            "unit": "B/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "201 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/lookup",
+            "value": 11621649,
+            "unit": "ns/op\t 2978112 B/op\t   30106 allocs/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/lookup - ns/op",
+            "value": 11621649,
+            "unit": "ns/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/lookup - B/op",
+            "value": 2978112,
+            "unit": "B/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/lookup - allocs/op",
+            "value": 30106,
+            "unit": "allocs/op",
+            "extra": "28 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_hit",
+            "value": 625625,
+            "unit": "ns/op\t    5777 B/op\t      97 allocs/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_hit - ns/op",
+            "value": 625625,
+            "unit": "ns/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_hit - B/op",
+            "value": 5777,
+            "unit": "B/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "573 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_miss",
+            "value": 1022346,
+            "unit": "ns/op\t   10015 B/op\t     162 allocs/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_miss - ns/op",
+            "value": 1022346,
+            "unit": "ns/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_miss - B/op",
+            "value": 10015,
+            "unit": "B/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "357 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/bulk_100",
+            "value": 3354680,
+            "unit": "ns/op\t  168880 B/op\t    1625 allocs/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 3354680,
+            "unit": "ns/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/bulk_100 - B/op",
+            "value": 168880,
+            "unit": "B/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 1625,
+            "unit": "allocs/op",
+            "extra": "96 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/subjects_one",
+            "value": 986116,
+            "unit": "ns/op\t    9154 B/op\t     158 allocs/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/subjects_one - ns/op",
+            "value": 986116,
+            "unit": "ns/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/subjects_one - B/op",
+            "value": 9154,
+            "unit": "B/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "393 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/toggle_grant",
+            "value": 1851275,
+            "unit": "ns/op\t    7952 B/op\t     144 allocs/op",
+            "extra": "200 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 1851275,
+            "unit": "ns/op",
+            "extra": "200 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/toggle_grant - B/op",
+            "value": 7952,
+            "unit": "B/op",
+            "extra": "200 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "200 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/lookup",
+            "value": 13830129,
+            "unit": "ns/op\t 2103343 B/op\t   29990 allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/lookup - ns/op",
+            "value": 13830129,
+            "unit": "ns/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/lookup - B/op",
+            "value": 2103343,
+            "unit": "B/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/lookup - allocs/op",
+            "value": 29990,
+            "unit": "allocs/op",
+            "extra": "24 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_hit",
+            "value": 801724,
+            "unit": "ns/op\t    5853 B/op\t      77 allocs/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_hit - ns/op",
+            "value": 801724,
+            "unit": "ns/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_hit - B/op",
+            "value": 5853,
+            "unit": "B/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "453 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_miss",
+            "value": 817189,
+            "unit": "ns/op\t    6037 B/op\t      77 allocs/op",
+            "extra": "469 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_miss - ns/op",
+            "value": 817189,
+            "unit": "ns/op",
+            "extra": "469 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_miss - B/op",
+            "value": 6037,
+            "unit": "B/op",
+            "extra": "469 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "469 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/bulk_100",
+            "value": 11236046,
+            "unit": "ns/op\t   68598 B/op\t     896 allocs/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 11236046,
+            "unit": "ns/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/bulk_100 - B/op",
+            "value": 68598,
+            "unit": "B/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 896,
+            "unit": "allocs/op",
+            "extra": "31 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/subjects_one",
+            "value": 629358,
+            "unit": "ns/op\t    3910 B/op\t      80 allocs/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/subjects_one - ns/op",
+            "value": 629358,
+            "unit": "ns/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/subjects_one - B/op",
+            "value": 3910,
+            "unit": "B/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "604 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/toggle_grant",
+            "value": 3134899,
+            "unit": "ns/op\t   20022 B/op\t     331 allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 3134899,
+            "unit": "ns/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/toggle_grant - B/op",
+            "value": 20022,
+            "unit": "B/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 331,
+            "unit": "allocs/op",
+            "extra": "121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/lookup",
+            "value": 63466115,
+            "unit": "ns/op\t 9407411 B/op\t  100868 allocs/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/lookup - ns/op",
+            "value": 63466115,
+            "unit": "ns/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/lookup - B/op",
+            "value": 9407411,
+            "unit": "B/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 100868,
+            "unit": "allocs/op",
+            "extra": "7 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_hit",
+            "value": 379727,
+            "unit": "ns/op\t    7453 B/op\t     108 allocs/op",
+            "extra": "793 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 379727,
+            "unit": "ns/op",
+            "extra": "793 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7453,
+            "unit": "B/op",
+            "extra": "793 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "793 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_miss",
+            "value": 352663,
+            "unit": "ns/op\t    7367 B/op\t     108 allocs/op",
+            "extra": "986 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 352663,
+            "unit": "ns/op",
+            "extra": "986 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7367,
+            "unit": "B/op",
+            "extra": "986 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "986 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/bulk_100",
+            "value": 1329866,
+            "unit": "ns/op\t   99080 B/op\t    1710 allocs/op",
+            "extra": "264 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1329866,
+            "unit": "ns/op",
+            "extra": "264 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99080,
+            "unit": "B/op",
+            "extra": "264 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1710,
+            "unit": "allocs/op",
+            "extra": "264 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/subjects_one",
+            "value": 373340,
+            "unit": "ns/op\t    8957 B/op\t     139 allocs/op",
+            "extra": "937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 373340,
+            "unit": "ns/op",
+            "extra": "937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8957,
+            "unit": "B/op",
+            "extra": "937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 139,
+            "unit": "allocs/op",
+            "extra": "937 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/toggle_grant",
+            "value": 844435,
+            "unit": "ns/op\t   15240 B/op\t     225 allocs/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 844435,
+            "unit": "ns/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15240,
+            "unit": "B/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "429 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/lookup",
+            "value": 51528177,
+            "unit": "ns/op\t 8637645 B/op\t  101732 allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/lookup - ns/op",
+            "value": 51528177,
+            "unit": "ns/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/lookup - B/op",
+            "value": 8637645,
+            "unit": "B/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 101732,
+            "unit": "allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_hit",
+            "value": 635169,
+            "unit": "ns/op\t    7422 B/op\t     108 allocs/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 635169,
+            "unit": "ns/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7422,
+            "unit": "B/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "562 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_miss",
+            "value": 632437,
+            "unit": "ns/op\t    7305 B/op\t     108 allocs/op",
+            "extra": "572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 632437,
+            "unit": "ns/op",
+            "extra": "572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7305,
+            "unit": "B/op",
+            "extra": "572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "572 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/bulk_100",
+            "value": 1696331,
+            "unit": "ns/op\t   99531 B/op\t    1711 allocs/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1696331,
+            "unit": "ns/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99531,
+            "unit": "B/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "222 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/subjects_one",
+            "value": 651807,
+            "unit": "ns/op\t    8923 B/op\t     138 allocs/op",
+            "extra": "538 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 651807,
+            "unit": "ns/op",
+            "extra": "538 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8923,
+            "unit": "B/op",
+            "extra": "538 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "538 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/toggle_grant",
+            "value": 5719111,
+            "unit": "ns/op\t   15539 B/op\t     225 allocs/op",
+            "extra": "102 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 5719111,
+            "unit": "ns/op",
+            "extra": "102 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15539,
+            "unit": "B/op",
+            "extra": "102 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=direct/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "102 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/lookup",
+            "value": 1080987515,
+            "unit": "ns/op\t245956992 B/op\t    3382 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/lookup - ns/op",
+            "value": 1080987515,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/lookup - B/op",
+            "value": 245956992,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/lookup - allocs/op",
+            "value": 3382,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_hit",
+            "value": 5279107,
+            "unit": "ns/op\t    1865 B/op\t      17 allocs/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_hit - ns/op",
+            "value": 5279107,
+            "unit": "ns/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_hit - B/op",
+            "value": 1865,
+            "unit": "B/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_hit - allocs/op",
+            "value": 17,
+            "unit": "allocs/op",
+            "extra": "64 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_miss",
+            "value": 10769218,
+            "unit": "ns/op\t    3106 B/op\t      20 allocs/op",
+            "extra": "32 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_miss - ns/op",
+            "value": 10769218,
+            "unit": "ns/op",
+            "extra": "32 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_miss - B/op",
+            "value": 3106,
+            "unit": "B/op",
+            "extra": "32 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "32 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/bulk_100",
+            "value": 28369188,
+            "unit": "ns/op\t  418492 B/op\t    1472 allocs/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/bulk_100 - ns/op",
+            "value": 28369188,
+            "unit": "ns/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/bulk_100 - B/op",
+            "value": 418492,
+            "unit": "B/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/bulk_100 - allocs/op",
+            "value": 1472,
+            "unit": "allocs/op",
+            "extra": "12 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/subjects_one",
+            "value": 10897441,
+            "unit": "ns/op\t    4181 B/op\t      32 allocs/op",
+            "extra": "33 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/subjects_one - ns/op",
+            "value": 10897441,
+            "unit": "ns/op",
+            "extra": "33 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/subjects_one - B/op",
+            "value": 4181,
+            "unit": "B/op",
+            "extra": "33 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "33 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/toggle_grant",
+            "value": 154105241,
+            "unit": "ns/op\t125873068 B/op\t    2063 allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/toggle_grant - ns/op",
+            "value": 154105241,
+            "unit": "ns/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/toggle_grant - B/op",
+            "value": 125873068,
+            "unit": "B/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory/toggle_grant - allocs/op",
+            "value": 2063,
+            "unit": "allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/lookup",
+            "value": 1902963469,
+            "unit": "ns/op\t1289341392 B/op\t10963332 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/lookup - ns/op",
+            "value": 1902963469,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/lookup - B/op",
+            "value": 1289341392,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/lookup - allocs/op",
+            "value": 10963332,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_hit",
+            "value": 1889,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "192420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_hit - ns/op",
+            "value": 1889,
+            "unit": "ns/op",
+            "extra": "192420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_hit - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "192420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_hit - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "192420 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_miss",
+            "value": 1918,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "191688 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_miss - ns/op",
+            "value": 1918,
+            "unit": "ns/op",
+            "extra": "191688 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "191688 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "191688 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/bulk_100",
+            "value": 39450767,
+            "unit": "ns/op\t33691307 B/op\t    1493 allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/bulk_100 - ns/op",
+            "value": 39450767,
+            "unit": "ns/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/bulk_100 - B/op",
+            "value": 33691307,
+            "unit": "B/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/bulk_100 - allocs/op",
+            "value": 1493,
+            "unit": "allocs/op",
+            "extra": "8 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/subjects_one",
+            "value": 2326,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "158371 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/subjects_one - ns/op",
+            "value": 2326,
+            "unit": "ns/op",
+            "extra": "158371 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "158371 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "158371 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/toggle_grant",
+            "value": 156469003,
+            "unit": "ns/op\t125891636 B/op\t    2065 allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/toggle_grant - ns/op",
+            "value": 156469003,
+            "unit": "ns/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/toggle_grant - B/op",
+            "value": 125891636,
+            "unit": "B/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=memory+index/toggle_grant - allocs/op",
+            "value": 2065,
+            "unit": "allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/lookup",
+            "value": 401919114,
+            "unit": "ns/op\t326618880 B/op\t 2523913 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/lookup - ns/op",
+            "value": 401919114,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/lookup - B/op",
+            "value": 326618880,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/lookup - allocs/op",
+            "value": 2523913,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_hit",
+            "value": 312572,
+            "unit": "ns/op\t    4070 B/op\t      65 allocs/op",
+            "extra": "1135 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_hit - ns/op",
+            "value": 312572,
+            "unit": "ns/op",
+            "extra": "1135 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_hit - B/op",
+            "value": 4070,
+            "unit": "B/op",
+            "extra": "1135 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_hit - allocs/op",
+            "value": 65,
+            "unit": "allocs/op",
+            "extra": "1135 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_miss",
+            "value": 463740,
+            "unit": "ns/op\t    4845 B/op\t      77 allocs/op",
+            "extra": "913 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_miss - ns/op",
+            "value": 463740,
+            "unit": "ns/op",
+            "extra": "913 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_miss - B/op",
+            "value": 4845,
+            "unit": "B/op",
+            "extra": "913 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "913 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/bulk_100",
+            "value": 1721472,
+            "unit": "ns/op\t  504541 B/op\t    4342 allocs/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/bulk_100 - ns/op",
+            "value": 1721472,
+            "unit": "ns/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/bulk_100 - B/op",
+            "value": 504541,
+            "unit": "B/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/bulk_100 - allocs/op",
+            "value": 4342,
+            "unit": "allocs/op",
+            "extra": "218 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/subjects_one",
+            "value": 450569,
+            "unit": "ns/op\t    6046 B/op\t      89 allocs/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/subjects_one - ns/op",
+            "value": 450569,
+            "unit": "ns/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/subjects_one - B/op",
+            "value": 6046,
+            "unit": "B/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "817 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/toggle_grant",
+            "value": 1912036,
+            "unit": "ns/op\t    7944 B/op\t     144 allocs/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/toggle_grant - ns/op",
+            "value": 1912036,
+            "unit": "ns/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/toggle_grant - B/op",
+            "value": 7944,
+            "unit": "B/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "207 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/lookup",
+            "value": 100743533,
+            "unit": "ns/op\t26086946 B/op\t  271229 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/lookup - ns/op",
+            "value": 100743533,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/lookup - B/op",
+            "value": 26086946,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/lookup - allocs/op",
+            "value": 271229,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_hit",
+            "value": 622166,
+            "unit": "ns/op\t    5776 B/op\t      97 allocs/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_hit - ns/op",
+            "value": 622166,
+            "unit": "ns/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_hit - B/op",
+            "value": 5776,
+            "unit": "B/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "606 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_miss",
+            "value": 1007934,
+            "unit": "ns/op\t    9787 B/op\t     162 allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_miss - ns/op",
+            "value": 1007934,
+            "unit": "ns/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_miss - B/op",
+            "value": 9787,
+            "unit": "B/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "361 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/bulk_100",
+            "value": 3260234,
+            "unit": "ns/op\t  223984 B/op\t    2155 allocs/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 3260234,
+            "unit": "ns/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/bulk_100 - B/op",
+            "value": 223984,
+            "unit": "B/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 2155,
+            "unit": "allocs/op",
+            "extra": "94 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/subjects_one",
+            "value": 987080,
+            "unit": "ns/op\t    9154 B/op\t     158 allocs/op",
+            "extra": "384 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/subjects_one - ns/op",
+            "value": 987080,
+            "unit": "ns/op",
+            "extra": "384 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/subjects_one - B/op",
+            "value": 9154,
+            "unit": "B/op",
+            "extra": "384 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "384 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/toggle_grant",
+            "value": 1802513,
+            "unit": "ns/op\t    7963 B/op\t     144 allocs/op",
+            "extra": "192 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/toggle_grant - ns/op",
+            "value": 1802513,
+            "unit": "ns/op",
+            "extra": "192 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/toggle_grant - B/op",
+            "value": 7963,
+            "unit": "B/op",
+            "extra": "192 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+closure/toggle_grant - allocs/op",
+            "value": 144,
+            "unit": "allocs/op",
+            "extra": "192 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/lookup",
+            "value": 173676364,
+            "unit": "ns/op\t19074708 B/op\t  270672 allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/lookup - ns/op",
+            "value": 173676364,
+            "unit": "ns/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/lookup - B/op",
+            "value": 19074708,
+            "unit": "B/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/lookup - allocs/op",
+            "value": 270672,
+            "unit": "allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_hit",
+            "value": 804406,
+            "unit": "ns/op\t    5858 B/op\t      77 allocs/op",
+            "extra": "446 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_hit - ns/op",
+            "value": 804406,
+            "unit": "ns/op",
+            "extra": "446 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_hit - B/op",
+            "value": 5858,
+            "unit": "B/op",
+            "extra": "446 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "446 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_miss",
+            "value": 806875,
+            "unit": "ns/op\t    6045 B/op\t      77 allocs/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_miss - ns/op",
+            "value": 806875,
+            "unit": "ns/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_miss - B/op",
+            "value": 6045,
+            "unit": "B/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "441 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/bulk_100",
+            "value": 3919910,
+            "unit": "ns/op\t  123008 B/op\t    1484 allocs/op",
+            "extra": "81 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 3919910,
+            "unit": "ns/op",
+            "extra": "81 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/bulk_100 - B/op",
+            "value": 123008,
+            "unit": "B/op",
+            "extra": "81 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 1484,
+            "unit": "allocs/op",
+            "extra": "81 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/subjects_one",
+            "value": 621813,
+            "unit": "ns/op\t    3775 B/op\t      80 allocs/op",
+            "extra": "590 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/subjects_one - ns/op",
+            "value": 621813,
+            "unit": "ns/op",
+            "extra": "590 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/subjects_one - B/op",
+            "value": 3775,
+            "unit": "B/op",
+            "extra": "590 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "590 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/toggle_grant",
+            "value": 2943037,
+            "unit": "ns/op\t   19544 B/op\t     331 allocs/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/toggle_grant - ns/op",
+            "value": 2943037,
+            "unit": "ns/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/toggle_grant - B/op",
+            "value": 19544,
+            "unit": "B/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=postgres+sets/toggle_grant - allocs/op",
+            "value": 331,
+            "unit": "allocs/op",
+            "extra": "120 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/lookup",
+            "value": 714920483,
+            "unit": "ns/op\t86109072 B/op\t  917578 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/lookup - ns/op",
+            "value": 714920483,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/lookup - B/op",
+            "value": 86109072,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 917578,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_hit",
+            "value": 352224,
+            "unit": "ns/op\t    7333 B/op\t     108 allocs/op",
+            "extra": "1012 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 352224,
+            "unit": "ns/op",
+            "extra": "1012 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7333,
+            "unit": "B/op",
+            "extra": "1012 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1012 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_miss",
+            "value": 350825,
+            "unit": "ns/op\t    7334 B/op\t     108 allocs/op",
+            "extra": "1000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 350825,
+            "unit": "ns/op",
+            "extra": "1000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7334,
+            "unit": "B/op",
+            "extra": "1000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "1000 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/bulk_100",
+            "value": 1353249,
+            "unit": "ns/op\t   99398 B/op\t    1711 allocs/op",
+            "extra": "259 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1353249,
+            "unit": "ns/op",
+            "extra": "259 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99398,
+            "unit": "B/op",
+            "extra": "259 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "259 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/subjects_one",
+            "value": 389911,
+            "unit": "ns/op\t    8951 B/op\t     138 allocs/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 389911,
+            "unit": "ns/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8951,
+            "unit": "B/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "931 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/toggle_grant",
+            "value": 854439,
+            "unit": "ns/op\t   15321 B/op\t     225 allocs/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - ns/op",
+            "value": 854439,
+            "unit": "ns/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - B/op",
+            "value": 15321,
+            "unit": "B/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-memdb/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "422 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/lookup",
+            "value": 761114109,
+            "unit": "ns/op\t79232408 B/op\t  920423 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/lookup - ns/op",
+            "value": 761114109,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/lookup - B/op",
+            "value": 79232408,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 920423,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_hit",
+            "value": 640643,
+            "unit": "ns/op\t    7302 B/op\t     108 allocs/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 640643,
+            "unit": "ns/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7302,
+            "unit": "B/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "554 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_miss",
+            "value": 644553,
+            "unit": "ns/op\t    7477 B/op\t     108 allocs/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 644553,
+            "unit": "ns/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7477,
+            "unit": "B/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/bulk_100",
+            "value": 1654960,
+            "unit": "ns/op\t   99210 B/op\t    1711 allocs/op",
+            "extra": "230 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1654960,
+            "unit": "ns/op",
+            "extra": "230 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99210,
+            "unit": "B/op",
+            "extra": "230 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "230 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/subjects_one",
+            "value": 648279,
+            "unit": "ns/op\t    8857 B/op\t     138 allocs/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 648279,
+            "unit": "ns/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8857,
+            "unit": "B/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/toggle_grant",
+            "value": 3536141,
+            "unit": "ns/op\t   15216 B/op\t     225 allocs/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - ns/op",
+            "value": 3536141,
+            "unit": "ns/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - B/op",
+            "value": 15216,
+            "unit": "B/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=90/path=direct/kind=spicedb-postgres/toggle_grant - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "105 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/lookup",
+            "value": 257193507,
+            "unit": "ns/op\t76143876 B/op\t 1117905 allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/lookup - ns/op",
+            "value": 257193507,
+            "unit": "ns/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/lookup - B/op",
+            "value": 76143876,
+            "unit": "B/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/lookup - allocs/op",
+            "value": 1117905,
+            "unit": "allocs/op",
+            "extra": "2 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_hit",
+            "value": 8667916,
+            "unit": "ns/op\t    3118 B/op\t      24 allocs/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_hit - ns/op",
+            "value": 8667916,
+            "unit": "ns/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_hit - B/op",
+            "value": 3118,
+            "unit": "B/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_hit - allocs/op",
+            "value": 24,
+            "unit": "allocs/op",
+            "extra": "39 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_miss",
+            "value": 9231182,
+            "unit": "ns/op\t    1941 B/op\t      20 allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_miss - ns/op",
+            "value": 9231182,
+            "unit": "ns/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_miss - B/op",
+            "value": 1941,
+            "unit": "B/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/check_miss - allocs/op",
+            "value": 20,
+            "unit": "allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/bulk_100",
+            "value": 35383157,
+            "unit": "ns/op\t  345263 B/op\t    1547 allocs/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/bulk_100 - ns/op",
+            "value": 35383157,
+            "unit": "ns/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/bulk_100 - B/op",
+            "value": 345263,
+            "unit": "B/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/bulk_100 - allocs/op",
+            "value": 1547,
+            "unit": "allocs/op",
+            "extra": "9 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/subjects_one",
+            "value": 9312372,
+            "unit": "ns/op\t    4056 B/op\t      32 allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/subjects_one - ns/op",
+            "value": 9312372,
+            "unit": "ns/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/subjects_one - B/op",
+            "value": 4056,
+            "unit": "B/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/subjects_one - allocs/op",
+            "value": 32,
+            "unit": "allocs/op",
+            "extra": "37 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/toggle_team_edge",
+            "value": 133450787,
+            "unit": "ns/op\t125898106 B/op\t    2067 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/toggle_team_edge - ns/op",
+            "value": 133450787,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/toggle_team_edge - B/op",
+            "value": 125898106,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory/toggle_team_edge - allocs/op",
+            "value": 2067,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/lookup",
+            "value": 1652319858,
+            "unit": "ns/op\t1179185168 B/op\t11592241 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/lookup - ns/op",
+            "value": 1652319858,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/lookup - B/op",
+            "value": 1179185168,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/lookup - allocs/op",
+            "value": 11592241,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_hit",
+            "value": 2007,
+            "unit": "ns/op\t    1017 B/op\t      11 allocs/op",
+            "extra": "179280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_hit - ns/op",
+            "value": 2007,
+            "unit": "ns/op",
+            "extra": "179280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_hit - B/op",
+            "value": 1017,
+            "unit": "B/op",
+            "extra": "179280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_hit - allocs/op",
+            "value": 11,
+            "unit": "allocs/op",
+            "extra": "179280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_miss",
+            "value": 1959,
+            "unit": "ns/op\t     921 B/op\t      10 allocs/op",
+            "extra": "182122 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_miss - ns/op",
+            "value": 1959,
+            "unit": "ns/op",
+            "extra": "182122 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_miss - B/op",
+            "value": 921,
+            "unit": "B/op",
+            "extra": "182122 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/check_miss - allocs/op",
+            "value": 10,
+            "unit": "allocs/op",
+            "extra": "182122 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/bulk_100",
+            "value": 4519422,
+            "unit": "ns/op\t 4259112 B/op\t     465 allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/bulk_100 - ns/op",
+            "value": 4519422,
+            "unit": "ns/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/bulk_100 - B/op",
+            "value": 4259112,
+            "unit": "B/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/bulk_100 - allocs/op",
+            "value": 465,
+            "unit": "allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/subjects_one",
+            "value": 2446,
+            "unit": "ns/op\t    1704 B/op\t      18 allocs/op",
+            "extra": "155121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/subjects_one - ns/op",
+            "value": 2446,
+            "unit": "ns/op",
+            "extra": "155121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/subjects_one - B/op",
+            "value": 1704,
+            "unit": "B/op",
+            "extra": "155121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/subjects_one - allocs/op",
+            "value": 18,
+            "unit": "allocs/op",
+            "extra": "155121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/toggle_team_edge",
+            "value": 136196320,
+            "unit": "ns/op\t125898106 B/op\t    2067 allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/toggle_team_edge - ns/op",
+            "value": 136196320,
+            "unit": "ns/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/toggle_team_edge - B/op",
+            "value": 125898106,
+            "unit": "B/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=memory+index/toggle_team_edge - allocs/op",
+            "value": 2067,
+            "unit": "allocs/op",
+            "extra": "3 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/lookup",
+            "value": 51110760,
+            "unit": "ns/op\t31760817 B/op\t  319368 allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/lookup - ns/op",
+            "value": 51110760,
+            "unit": "ns/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/lookup - B/op",
+            "value": 31760817,
+            "unit": "B/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/lookup - allocs/op",
+            "value": 319368,
+            "unit": "allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_hit",
+            "value": 480476,
+            "unit": "ns/op\t    5699 B/op\t      95 allocs/op",
+            "extra": "878 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_hit - ns/op",
+            "value": 480476,
+            "unit": "ns/op",
+            "extra": "878 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_hit - B/op",
+            "value": 5699,
+            "unit": "B/op",
+            "extra": "878 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_hit - allocs/op",
+            "value": 95,
+            "unit": "allocs/op",
+            "extra": "878 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_miss",
+            "value": 459520,
+            "unit": "ns/op\t    4843 B/op\t      77 allocs/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_miss - ns/op",
+            "value": 459520,
+            "unit": "ns/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_miss - B/op",
+            "value": 4843,
+            "unit": "B/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "908 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/bulk_100",
+            "value": 1821479,
+            "unit": "ns/op\t  403291 B/op\t    3797 allocs/op",
+            "extra": "198 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/bulk_100 - ns/op",
+            "value": 1821479,
+            "unit": "ns/op",
+            "extra": "198 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/bulk_100 - B/op",
+            "value": 403291,
+            "unit": "B/op",
+            "extra": "198 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/bulk_100 - allocs/op",
+            "value": 3797,
+            "unit": "allocs/op",
+            "extra": "198 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/subjects_one",
+            "value": 447695,
+            "unit": "ns/op\t    5955 B/op\t      89 allocs/op",
+            "extra": "897 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/subjects_one - ns/op",
+            "value": 447695,
+            "unit": "ns/op",
+            "extra": "897 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/subjects_one - B/op",
+            "value": 5955,
+            "unit": "B/op",
+            "extra": "897 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/subjects_one - allocs/op",
+            "value": 89,
+            "unit": "allocs/op",
+            "extra": "897 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/toggle_team_edge",
+            "value": 1898660,
+            "unit": "ns/op\t    8979 B/op\t     148 allocs/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/toggle_team_edge - ns/op",
+            "value": 1898660,
+            "unit": "ns/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/toggle_team_edge - B/op",
+            "value": 8979,
+            "unit": "B/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres/toggle_team_edge - allocs/op",
+            "value": 148,
+            "unit": "allocs/op",
+            "extra": "206 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/lookup",
+            "value": 10712398,
+            "unit": "ns/op\t 2982010 B/op\t   30107 allocs/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/lookup - ns/op",
+            "value": 10712398,
+            "unit": "ns/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/lookup - B/op",
+            "value": 2982010,
+            "unit": "B/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/lookup - allocs/op",
+            "value": 30107,
+            "unit": "allocs/op",
+            "extra": "30 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_hit",
+            "value": 611339,
+            "unit": "ns/op\t    5775 B/op\t      97 allocs/op",
+            "extra": "637 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_hit - ns/op",
+            "value": 611339,
+            "unit": "ns/op",
+            "extra": "637 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_hit - B/op",
+            "value": 5775,
+            "unit": "B/op",
+            "extra": "637 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_hit - allocs/op",
+            "value": 97,
+            "unit": "allocs/op",
+            "extra": "637 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_miss",
+            "value": 988488,
+            "unit": "ns/op\t    9786 B/op\t     162 allocs/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_miss - ns/op",
+            "value": 988488,
+            "unit": "ns/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_miss - B/op",
+            "value": 9786,
+            "unit": "B/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/check_miss - allocs/op",
+            "value": 162,
+            "unit": "allocs/op",
+            "extra": "385 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/bulk_100",
+            "value": 4764197,
+            "unit": "ns/op\t  169734 B/op\t    1625 allocs/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/bulk_100 - ns/op",
+            "value": 4764197,
+            "unit": "ns/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/bulk_100 - B/op",
+            "value": 169734,
+            "unit": "B/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/bulk_100 - allocs/op",
+            "value": 1625,
+            "unit": "allocs/op",
+            "extra": "67 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/subjects_one",
+            "value": 974080,
+            "unit": "ns/op\t    9364 B/op\t     158 allocs/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/subjects_one - ns/op",
+            "value": 974080,
+            "unit": "ns/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/subjects_one - B/op",
+            "value": 9364,
+            "unit": "B/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/subjects_one - allocs/op",
+            "value": 158,
+            "unit": "allocs/op",
+            "extra": "372 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/toggle_team_edge",
+            "value": 82625700,
+            "unit": "ns/op\t   64230 B/op\t     278 allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/toggle_team_edge - ns/op",
+            "value": 82625700,
+            "unit": "ns/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/toggle_team_edge - B/op",
+            "value": 64230,
+            "unit": "B/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+closure/toggle_team_edge - allocs/op",
+            "value": 278,
+            "unit": "allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/lookup",
+            "value": 13377263,
+            "unit": "ns/op\t 2106556 B/op\t   29991 allocs/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/lookup - ns/op",
+            "value": 13377263,
+            "unit": "ns/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/lookup - B/op",
+            "value": 2106556,
+            "unit": "B/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/lookup - allocs/op",
+            "value": 29991,
+            "unit": "allocs/op",
+            "extra": "25 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_hit",
+            "value": 824082,
+            "unit": "ns/op\t    5853 B/op\t      77 allocs/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_hit - ns/op",
+            "value": 824082,
+            "unit": "ns/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_hit - B/op",
+            "value": 5853,
+            "unit": "B/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_hit - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "440 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_miss",
+            "value": 839359,
+            "unit": "ns/op\t    5955 B/op\t      77 allocs/op",
+            "extra": "438 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_miss - ns/op",
+            "value": 839359,
+            "unit": "ns/op",
+            "extra": "438 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_miss - B/op",
+            "value": 5955,
+            "unit": "B/op",
+            "extra": "438 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/check_miss - allocs/op",
+            "value": 77,
+            "unit": "allocs/op",
+            "extra": "438 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/bulk_100",
+            "value": 9196425,
+            "unit": "ns/op\t   71096 B/op\t     897 allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/bulk_100 - ns/op",
+            "value": 9196425,
+            "unit": "ns/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/bulk_100 - B/op",
+            "value": 71096,
+            "unit": "B/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/bulk_100 - allocs/op",
+            "value": 897,
+            "unit": "allocs/op",
+            "extra": "36 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/subjects_one",
+            "value": 637715,
+            "unit": "ns/op\t    3906 B/op\t      80 allocs/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/subjects_one - ns/op",
+            "value": 637715,
+            "unit": "ns/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/subjects_one - B/op",
+            "value": 3906,
+            "unit": "B/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/subjects_one - allocs/op",
+            "value": 80,
+            "unit": "allocs/op",
+            "extra": "602 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/toggle_team_edge",
+            "value": 83379839,
+            "unit": "ns/op\t   23102 B/op\t     448 allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/toggle_team_edge - ns/op",
+            "value": 83379839,
+            "unit": "ns/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/toggle_team_edge - B/op",
+            "value": 23102,
+            "unit": "B/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=postgres+sets/toggle_team_edge - allocs/op",
+            "value": 448,
+            "unit": "allocs/op",
+            "extra": "4 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/lookup",
+            "value": 52183436,
+            "unit": "ns/op\t 9753337 B/op\t  101688 allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/lookup - ns/op",
+            "value": 52183436,
+            "unit": "ns/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/lookup - B/op",
+            "value": 9753337,
+            "unit": "B/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/lookup - allocs/op",
+            "value": 101688,
+            "unit": "allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_hit",
+            "value": 355056,
+            "unit": "ns/op\t    7368 B/op\t     108 allocs/op",
+            "extra": "996 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_hit - ns/op",
+            "value": 355056,
+            "unit": "ns/op",
+            "extra": "996 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_hit - B/op",
+            "value": 7368,
+            "unit": "B/op",
+            "extra": "996 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "996 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_miss",
+            "value": 355694,
+            "unit": "ns/op\t    7334 B/op\t     108 allocs/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_miss - ns/op",
+            "value": 355694,
+            "unit": "ns/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_miss - B/op",
+            "value": 7334,
+            "unit": "B/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "990 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/bulk_100",
+            "value": 1279842,
+            "unit": "ns/op\t   99196 B/op\t    1710 allocs/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/bulk_100 - ns/op",
+            "value": 1279842,
+            "unit": "ns/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/bulk_100 - B/op",
+            "value": 99196,
+            "unit": "B/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/bulk_100 - allocs/op",
+            "value": 1710,
+            "unit": "allocs/op",
+            "extra": "280 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/subjects_one",
+            "value": 378296,
+            "unit": "ns/op\t    8953 B/op\t     138 allocs/op",
+            "extra": "942 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/subjects_one - ns/op",
+            "value": 378296,
+            "unit": "ns/op",
+            "extra": "942 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/subjects_one - B/op",
+            "value": 8953,
+            "unit": "B/op",
+            "extra": "942 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "942 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge",
+            "value": 837635,
+            "unit": "ns/op\t   15349 B/op\t     225 allocs/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - ns/op",
+            "value": 837635,
+            "unit": "ns/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - B/op",
+            "value": 15349,
+            "unit": "B/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-memdb/toggle_team_edge - allocs/op",
+            "value": 225,
+            "unit": "allocs/op",
+            "extra": "424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/lookup",
+            "value": 57592675,
+            "unit": "ns/op\t 9397490 B/op\t  101955 allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/lookup - ns/op",
+            "value": 57592675,
+            "unit": "ns/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/lookup - B/op",
+            "value": 9397490,
+            "unit": "B/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/lookup - allocs/op",
+            "value": 101955,
+            "unit": "allocs/op",
+            "extra": "6 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_hit",
+            "value": 631368,
+            "unit": "ns/op\t    7304 B/op\t     108 allocs/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_hit - ns/op",
+            "value": 631368,
+            "unit": "ns/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_hit - B/op",
+            "value": 7304,
+            "unit": "B/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_hit - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "546 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_miss",
+            "value": 621086,
+            "unit": "ns/op\t    7362 B/op\t     108 allocs/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_miss - ns/op",
+            "value": 621086,
+            "unit": "ns/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_miss - B/op",
+            "value": 7362,
+            "unit": "B/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/check_miss - allocs/op",
+            "value": 108,
+            "unit": "allocs/op",
+            "extra": "558 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/bulk_100",
+            "value": 1696893,
+            "unit": "ns/op\t   99287 B/op\t    1711 allocs/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/bulk_100 - ns/op",
+            "value": 1696893,
+            "unit": "ns/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/bulk_100 - B/op",
+            "value": 99287,
+            "unit": "B/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/bulk_100 - allocs/op",
+            "value": 1711,
+            "unit": "allocs/op",
+            "extra": "231 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/subjects_one",
+            "value": 649471,
+            "unit": "ns/op\t    8924 B/op\t     138 allocs/op",
+            "extra": "517 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/subjects_one - ns/op",
+            "value": 649471,
+            "unit": "ns/op",
+            "extra": "517 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/subjects_one - B/op",
+            "value": 8924,
+            "unit": "B/op",
+            "extra": "517 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/subjects_one - allocs/op",
+            "value": 138,
+            "unit": "allocs/op",
+            "extra": "517 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge",
+            "value": 3509678,
+            "unit": "ns/op\t   16401 B/op\t     226 allocs/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - ns/op",
+            "value": 3509678,
+            "unit": "ns/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - B/op",
+            "value": 16401,
+            "unit": "B/op",
+            "extra": "86 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkScenarios/scale/resources=100000/density=10/path=team/kind=spicedb-postgres/toggle_team_edge - allocs/op",
+            "value": 226,
+            "unit": "allocs/op",
+            "extra": "86 times\n4 procs"
           }
         ]
       }
