@@ -12,6 +12,10 @@ import (
 	"github.com/matick-io/authz"
 )
 
+// errUnsupported is an answer a kind cannot give at all, such as SpiceDB at a
+// data cycle; it is logged, never compared.
+var errUnsupported = errors.New("unsupported by this kind")
+
 func parseSubject(t *testing.T, where, s string) authz.SubjectRef {
 	t.Helper()
 	obj, relation, _ := strings.Cut(s, "#")

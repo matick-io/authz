@@ -6,47 +6,25 @@ import (
 	"sync"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/engine"
-	"github.com/matick-io/authz/materialize"
-	"github.com/matick-io/authz/schema"
+	"github.com/matick-io/authz/internal/materialize"
 )
 
 // ErrNotMemory is returned when the index is asked to answer for a Reader
-// that did not come from the memory datastore.
-var ErrNotMemory = errors.New("memory: the index needs the memory datastore's reader")
+// that did not come from this datastore.
+var ErrNotMemory = errors.New("memory: the index needs this datastore's reader")
 
-// Index is the memory datastore's index: a materialize.Snapshot, rebuilt from
-// the store the first time it is asked after the store changed. It is exact
-// by construction and costs a full derivation per change, which suits a store
-// that is itself a test oracle; it is the reference the Postgres index is
-// held to, and the way to run every suite on an indexed engine without a
-// database.
+// Index is the memory datastore's index (authz.Index): a
+// materialize.Snapshot, rebuilt from the store the first time it is asked
+// after the store changed. It is exact by construction and costs a full
+// derivation per change, which suits a store that is itself a test oracle;
+// it is the reference the Postgres index is held to, and the way to run
+// every suite on an indexed engine without a database.
 type Index struct {
 	ds   *Datastore
 	sets *materialize.Sets
 	mu   sync.Mutex
 	rev  authz.Revision
 	snap *materialize.Snapshot
-}
-
-// NewIndex returns an index over ds materialising the named permissions of
-// the schema, written as type#permission (materialize.Materializable lists
-// those the schema allows); none keeps the closure only.
-func NewIndex(ds *Datastore, sch *schema.Schema, permissions ...string) (*Index, error) {
-	sets, err := materialize.NewSets(sch, permissions...)
-	if err != nil {
-		return nil, err
-	}
-	return &Index{ds: ds, sets: sets}, nil
-}
-
-// Options returns the engine options that read this index.
-func (x *Index) Options() []engine.Option {
-	opts := []engine.Option{engine.WithNestingIndex(x)}
-	if !x.sets.Empty() {
-		opts = append(opts, engine.WithPermissionIndex(x))
-	}
-	return opts
 }
 
 // snapshot returns the snapshot for the store as the reader sees it,

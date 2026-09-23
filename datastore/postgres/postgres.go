@@ -4,11 +4,12 @@
 // all, and every write records what it changed in the change log at a
 // revision that follows commit order.
 //
-// The adapter stores tuples and their changes and nothing else. An index that
-// wants to stay in step with writes registers a Hook, which runs inside the
-// write transaction with the Change it produced; an index that can lag follows
-// Changes instead. Tx hands an index the transaction behind a Reader so it can
-// query its own tables at the same snapshot.
+// The datastore stores tuples and their changelog, and keeps its Index
+// beside them when asked (WithIndex): the userset closure and the permission
+// sets, maintained by a Hook inside the write transaction, or afterwards from
+// the changelog (WithAsyncIndex). Tx hands the index the transaction behind a
+// Reader so it can query its own tables at the same snapshot. Migrations
+// create every table; see Migrate.
 //
 // A write can also run inside a transaction the application owns, so a grant
 // commits with the row it protects or not at all: TransactIn takes the
@@ -28,6 +29,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/matick-io/authz"
+	"github.com/matick-io/authz/schema"
 )
 
 // Hook runs inside a write transaction, after the relationships and the
@@ -35,27 +37,84 @@ import (
 // transaction produced. Returning an error rolls the whole write back.
 type Hook func(ctx context.Context, tx pgx.Tx, change authz.Change) error
 
-// Datastore is the Postgres-backed store.
+// Datastore is the Postgres-backed store, with its Index when one was asked
+// for.
 type Datastore struct {
 	pool  *pgxpool.Pool
 	hooks []Hook
+	index *Index
+	cfg   indexConfig
 }
 
 // Option configures New.
 type Option func(*Datastore)
 
-// WithHook registers a Hook. Hooks run in registration order.
+// WithHook registers a Hook. Hooks run in registration order, after the
+// index when there is one.
 func WithHook(h Hook) Option {
 	return func(d *Datastore) { d.hooks = append(d.hooks, h) }
 }
 
-// New wraps a pool. The authz schema must exist; see Migrate.
-func New(pool *pgxpool.Pool, opts ...Option) *Datastore {
+// WithIndex keeps the index beside the tuples, maintained inside every write
+// transaction so reads are never behind: the userset closure, and the
+// permission sets of the named permissions, written type#permission, or of
+// every permission the schema lets a set represent when none are named. A
+// named permission the sets cannot represent fails New with
+// ErrNotMaterializable.
+func WithIndex(sch *schema.Schema, permissions ...string) Option {
+	return func(d *Datastore) { d.cfg.wanted, d.cfg.sets, d.cfg.sch, d.cfg.perms = true, true, sch, permissions }
+}
+
+// WithNestingIndex keeps the userset closure alone, with no permission sets.
+// It needs no schema.
+func WithNestingIndex() Option {
+	return func(d *Datastore) { d.cfg.wanted = true }
+}
+
+// WithNestingBudget overrides DefaultNestingBudget for the index.
+func WithNestingBudget(n int64) Option {
+	return func(d *Datastore) { d.cfg.budget = n }
+}
+
+// WithAsyncIndex maintains the index from the changelog after commit, through
+// Index.Follow or Index.Catchup, instead of inside the write transaction.
+// Reads then trail writes by the follower's lag, the trade AuthZed
+// Materialize makes.
+func WithAsyncIndex() Option {
+	return func(d *Datastore) { d.cfg.async = true }
+}
+
+// New wraps a pool. The authz schema must exist (Migrate); the engine finds
+// the index through Datastore.Index.
+func New(pool *pgxpool.Pool, opts ...Option) (*Datastore, error) {
 	d := &Datastore{pool: pool}
 	for _, o := range opts {
 		o(d)
 	}
-	return d
+	if d.cfg.wanted {
+		if d.cfg.sets && d.cfg.sch == nil {
+			return nil, fmt.Errorf("%w: nil schema", authz.ErrInvalidArgument)
+		}
+		x, err := newIndex(d, d.cfg)
+		if err != nil {
+			return nil, err
+		}
+		d.index = x
+		if !d.cfg.async {
+			d.hooks = append([]Hook{x.apply}, d.hooks...)
+		}
+	}
+	return d, nil
+}
+
+// Index returns the datastore's index, or nil when New was not asked for
+// one. It is the engine's way in (authz.Indexed), and the way to Verify,
+// Reindex, Catchup or Follow it.
+func (d *Datastore) Index() authz.Index {
+	if d.index == nil {
+		return nil
+	}
+	return d.index
 }
 
 // changelogLockKey serialises the tail of every write transaction that

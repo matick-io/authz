@@ -1,16 +1,4 @@
-// Package index is the Postgres datastore's index: the closure of userset
-// nesting (authz.NestingIndex) and the permission sets
-// (authz.PermissionIndex) of the materialize package, kept in two tables in
-// the same database as the relationships, maintained incrementally in SQL
-// inside the write's own transaction, and answered with one query each.
-//
-// Attach wires an index into a deployment in one call. Underneath, the index
-// runs synchronously when Hook is registered with the datastore, so every
-// write updates it in its own transaction and reads are never behind, or
-// asynchronously with Follow, which applies the change log with some lag;
-// the engine then reads an index that may trail the tuples, which is the
-// trade AuthZed Materialize makes.
-package index
+package postgres
 
 import (
 	"context"
@@ -18,11 +6,9 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5"
-	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/materialize"
-	pgstore "github.com/matick-io/authz/postgres"
+	"github.com/matick-io/authz/internal/materialize"
 	"github.com/matick-io/authz/schema"
 )
 
@@ -32,10 +18,10 @@ const DefaultNestingBudget = 100_000
 var (
 	// ErrNestingTooLarge is returned when one change would add more closure
 	// rows than the budget; a synchronous write is rolled back.
-	ErrNestingTooLarge = errors.New("materialize: userset nesting exceeds the index budget")
+	ErrNestingTooLarge = errors.New("postgres: userset nesting exceeds the index budget")
 	// ErrNotPostgres is returned when the index is asked to answer for a
-	// Reader that did not come from the Postgres datastore.
-	ErrNotPostgres = errors.New("materialize: the index needs the postgres datastore's reader")
+	// Reader that did not come from this datastore.
+	ErrNotPostgres = errors.New("postgres: the index needs this datastore's reader")
 	// ErrNotMaterializable is returned by New for a permission whose rewrite
 	// the permission sets cannot represent.
 	ErrNotMaterializable = materialize.ErrNotMaterializable
@@ -44,71 +30,57 @@ var (
 // Drift is what Verify found; see materialize.Drift.
 type Drift = materialize.Drift
 
-// Materializable lists the permissions of the schema the sets can
-// represent; see materialize.Materializable.
-func Materializable(sch *schema.Schema) []string { return materialize.Materializable(sch) }
-
 // indexLockKey serialises every change that touches an index table; plain
 // grants on a schema without permission sets never take it.
 const indexLockKey = 0x617574687a // "authz"
 
-// Index is the nesting closure, and the permission sets when configured. It
-// implements authz.NestingIndex and authz.PermissionIndex.
+// Index is the datastore's index (authz.Index): the userset closure, after
+// Zanzibar's Leopard, and the permission sets, after AuthZed's Materialize,
+// in two tables beside the relationships. It is maintained in SQL inside
+// every write transaction (WithIndex) or afterwards from the changelog
+// (WithAsyncIndex), and answers each question with one query. Datastore.Index
+// returns it.
 type Index struct {
+	ds     *Datastore
 	budget int64
 	sets   *materialize.Sets // nil when none are configured
 }
 
-// Option configures New.
-type Option func(*Index) error
-
-// WithNestingBudget overrides DefaultNestingBudget.
-func WithNestingBudget(n int64) Option {
-	return func(x *Index) error {
-		x.budget = n
-		return nil
-	}
+// indexConfig is what the options collect; New builds the Index from it.
+type indexConfig struct {
+	wanted bool
+	sets   bool
+	sch    *schema.Schema
+	perms  []string
+	budget int64
+	async  bool
 }
 
-// WithPermissionSets materialises the named permissions, written as
-// type#permission, of the schema. Each must be materialisable
-// (Materializable lists those that are); otherwise New fails with
-// ErrNotMaterializable. With no names the index keeps the closure only.
-func WithPermissionSets(sch *schema.Schema, permissions ...string) Option {
-	return func(x *Index) error {
-		if len(permissions) == 0 {
-			x.sets = nil
-			return nil
+func newIndex(ds *Datastore, c indexConfig) (*Index, error) {
+	x := &Index{ds: ds, budget: c.budget}
+	if x.budget <= 0 {
+		x.budget = DefaultNestingBudget
+	}
+	if c.sch != nil {
+		perms := c.perms
+		if len(perms) == 0 {
+			perms = materialize.Materializable(c.sch)
 		}
-		sets, err := materialize.NewSets(sch, permissions...)
+		sets, err := materialize.NewSets(c.sch, perms...)
 		if err != nil {
-			return err
-		}
-		x.sets = sets
-		return nil
-	}
-}
-
-// New returns an index over the index tables, which must exist (postgres.Migrate).
-func New(opts ...Option) (*Index, error) {
-	x := &Index{budget: DefaultNestingBudget}
-	for _, o := range opts {
-		if err := o(x); err != nil {
 			return nil, err
+		}
+		if !sets.Empty() {
+			x.sets = sets
 		}
 	}
 	return x, nil
 }
 
-// Hook returns the datastore hook that keeps the index in step with every
-// write, inside the write's own transaction.
-func (x *Index) Hook() pgstore.Hook {
-	return x.Apply
-}
-
-// Apply brings the index up to date with one change, in the given
+// apply brings the index up to date with one change, in the given
 // transaction: the closure first, then the permission sets that depend on it.
-func (x *Index) Apply(ctx context.Context, tx pgx.Tx, change authz.Change) error {
+// It is the datastore's hook when the index is synchronous.
+func (x *Index) apply(ctx context.Context, tx pgx.Tx, change authz.Change) error {
 	needsLock := x.sets != nil
 	for _, u := range change.Updates {
 		if u.Relationship.IsNesting() {
@@ -181,8 +153,8 @@ const (
 // the SQL maintenance cannot hide from it. It is the consistency check to
 // run after a suspected fault, an index reconfiguration, or in a test after
 // concurrent writes.
-func (x *Index) Verify(ctx context.Context, pool *pgxpool.Pool) (Drift, error) {
-	tx, err := pool.Begin(ctx)
+func (x *Index) Verify(ctx context.Context) (Drift, error) {
+	tx, err := x.ds.pool.Begin(ctx)
 	if err != nil {
 		return Drift{}, err
 	}
@@ -228,23 +200,22 @@ func allRelationships(ctx context.Context, tx pgx.Tx) ([]authz.Relationship, err
 // follower is the index as a materialize.Applier: its cursor is a row in the
 // database, advanced in the transaction that applies each change.
 type follower struct {
-	x    *Index
-	pool *pgxpool.Pool
+	x *Index
 }
 
 func (f follower) Cursor(ctx context.Context) (authz.Revision, error) {
 	var cursor int64
-	err := f.pool.QueryRow(ctx, "select coalesce((select revision from authz.userset_closure_cursor where id = 1), 0)").Scan(&cursor)
+	err := f.x.ds.pool.QueryRow(ctx, "select coalesce((select revision from authz.userset_closure_cursor where id = 1), 0)").Scan(&cursor)
 	return authz.Revision(cursor), err
 }
 
 func (f follower) Apply(ctx context.Context, change authz.Change) error {
-	tx, err := f.pool.Begin(ctx)
+	tx, err := f.x.ds.pool.Begin(ctx)
 	if err != nil {
 		return err
 	}
 	defer tx.Rollback(ctx) //nolint:errcheck
-	if err := f.x.Apply(ctx, tx, change); err != nil {
+	if err := f.x.apply(ctx, tx, change); err != nil {
 		return err
 	}
 	if _, err := tx.Exec(ctx, `
@@ -257,21 +228,22 @@ func (f follower) Apply(ctx context.Context, change authz.Change) error {
 
 // Catchup applies every change after the follower's cursor, each in its own
 // transaction, and reports how many it applied. It is one pass; Follow loops.
-func (x *Index) Catchup(ctx context.Context, pool *pgxpool.Pool, ds *pgstore.Datastore) (int, error) {
-	return materialize.Catchup(ctx, ds, follower{x, pool}, 100)
+// An asynchronous index (WithAsyncIndex) is kept in step by one of them.
+func (x *Index) Catchup(ctx context.Context) (int, error) {
+	return materialize.Catchup(ctx, x.ds, follower{x}, 100)
 }
 
 // Follow runs Catchup every interval until ctx ends. Errors are sent on errs
 // when there is room and never stop the loop.
-func (x *Index) Follow(ctx context.Context, pool *pgxpool.Pool, ds *pgstore.Datastore, interval time.Duration, errs chan<- error) {
-	materialize.Follow(ctx, ds, follower{x, pool}, interval, errs)
+func (x *Index) Follow(ctx context.Context, interval time.Duration, errs chan<- error) {
+	materialize.Follow(ctx, x.ds, follower{x}, interval, errs)
 }
 
 // Reindex rebuilds every index table from the relationships and sets the
 // follower's cursor to the latest revision. It is the repair tool; Verify
 // says whether it is needed.
-func (x *Index) Reindex(ctx context.Context, pool *pgxpool.Pool) error {
-	tx, err := pool.Begin(ctx)
+func (x *Index) Reindex(ctx context.Context) error {
+	tx, err := x.ds.pool.Begin(ctx)
 	if err != nil {
 		return err
 	}
@@ -298,5 +270,5 @@ func (x *Index) Reindex(ctx context.Context, pool *pgxpool.Pool) error {
 
 // Materialized implements authz.PermissionIndex.
 func (x *Index) Materialized(resourceType, permission string) bool {
-	return x.sets.Materialized(resourceType, permission)
+	return x.sets != nil && x.sets.Materialized(resourceType, permission)
 }

@@ -9,5 +9,11 @@ import (
 )
 
 func TestConformance(t *testing.T) {
-	datastoretest.Run(t, func(t *testing.T) authz.Datastore { return memory.New() })
+	datastoretest.Run(t, func(t *testing.T) authz.Datastore {
+		ds, err := memory.New()
+		if err != nil {
+			t.Fatal(err)
+		}
+		return ds
+	})
 }

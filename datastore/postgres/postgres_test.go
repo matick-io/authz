@@ -1,4 +1,4 @@
-package postgres_test
+package postgres
 
 import (
 	"context"
@@ -11,8 +11,7 @@ import (
 
 	"github.com/matick-io/authz"
 	"github.com/matick-io/authz/internal/datastoretest"
-	"github.com/matick-io/authz/postgres"
-	"github.com/matick-io/authz/postgres/pgtest"
+	"github.com/matick-io/authz/internal/pgtest"
 )
 
 // AI: the suite needs a real Postgres and names it through
@@ -30,10 +29,10 @@ func openPool(t *testing.T) *pgxpool.Pool {
 		t.Fatal(err)
 	}
 	t.Cleanup(pool.Close)
-	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade; drop table if exists "+postgres.MigrationTable); err != nil {
+	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade; drop table if exists "+MigrationTable); err != nil {
 		t.Fatal(err)
 	}
-	if err := postgres.Migrate(ctx, pool); err != nil {
+	if err := Migrate(ctx, pool); err != nil {
 		t.Fatal(err)
 	}
 	return pool
@@ -44,6 +43,16 @@ func truncate(t *testing.T, pool *pgxpool.Pool) {
 	if _, err := pool.Exec(context.Background(), "truncate authz.relationship, authz.relationship_change"); err != nil {
 		t.Fatal(err)
 	}
+}
+
+// open is a datastore on pool with opts, or a failed test.
+func open(t *testing.T, pool *pgxpool.Pool, opts ...Option) *Datastore {
+	t.Helper()
+	ds, err := New(pool, opts...)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return ds
 }
 
 func mustRel(t *testing.T, s string) authz.Relationship {
@@ -59,13 +68,13 @@ func TestConformance(t *testing.T) {
 	pool := openPool(t)
 	datastoretest.Run(t, func(t *testing.T) authz.Datastore {
 		truncate(t, pool)
-		return postgres.New(pool)
+		return open(t, pool)
 	})
 }
 
 func TestMigrateIsIdempotent(t *testing.T) {
 	pool := openPool(t)
-	if err := postgres.Migrate(context.Background(), pool); err != nil {
+	if err := Migrate(context.Background(), pool); err != nil {
 		t.Fatalf("second migrate: %v", err)
 	}
 }
@@ -75,10 +84,10 @@ func TestMigrateIsIdempotent(t *testing.T) {
 func TestMigrationsRoundTrip(t *testing.T) {
 	pool := openPool(t)
 	ctx := context.Background()
-	if err := postgres.Check(ctx, pool); err != nil {
+	if err := Check(ctx, pool); err != nil {
 		t.Fatalf("check after migrate: %v", err)
 	}
-	m, err := postgres.NewMigrator(pool)
+	m, err := NewMigrator(pool)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -90,14 +99,14 @@ func TestMigrationsRoundTrip(t *testing.T) {
 	if err := pool.QueryRow(ctx, "select count(*) from pg_namespace where nspname = 'authz'").Scan(&n); err != nil || n != 0 {
 		t.Fatalf("authz schema after down: n=%d err=%v", n, err)
 	}
-	if err := postgres.Check(ctx, pool); !errors.Is(err, postgres.ErrSchemaVersion) {
+	if err := Check(ctx, pool); !errors.Is(err, ErrSchemaVersion) {
 		t.Fatalf("check on an empty database: %v", err)
 	}
 	if err := m.Up(ctx); err != nil {
 		t.Fatalf("up again: %v", err)
 	}
-	if v, err := m.Version(ctx); err != nil || v != postgres.SchemaVersion {
-		t.Fatalf("version after up: %d %v, want %d", v, err, postgres.SchemaVersion)
+	if v, err := m.Version(ctx); err != nil || v != SchemaVersion {
+		t.Fatalf("version after up: %d %v, want %d", v, err, SchemaVersion)
 	}
 }
 
@@ -120,7 +129,7 @@ func TestHook(t *testing.T) {
 	var seen []authz.Change
 	veto := errors.New("veto")
 	var fail bool
-	ds := postgres.New(pool, postgres.WithHook(func(ctx context.Context, tx pgx.Tx, c authz.Change) error {
+	ds := open(t, pool, WithHook(func(ctx context.Context, tx pgx.Tx, c authz.Change) error {
 		seen = append(seen, c)
 		var n int
 		if err := tx.QueryRow(ctx, "select count(*) from authz.relationship").Scan(&n); err != nil {
@@ -163,9 +172,9 @@ func TestHook(t *testing.T) {
 
 func TestTxExposesTheTransaction(t *testing.T) {
 	pool := openPool(t)
-	ds := postgres.New(pool)
+	ds := open(t, pool)
 	if err := ds.View(context.Background(), func(r authz.Reader) error {
-		if _, ok := postgres.Tx(r); !ok {
+		if _, ok := Tx(r); !ok {
 			t.Error("Tx did not recognise its own reader")
 		}
 		return nil
@@ -182,7 +191,7 @@ func TestTransactInCommitsWithTheHost(t *testing.T) {
 	pool := openPool(t)
 	truncate(t, pool)
 	ctx := context.Background()
-	ds := postgres.New(pool, postgres.WithHook(func(ctx context.Context, tx pgx.Tx, c authz.Change) error {
+	ds := open(t, pool, WithHook(func(ctx context.Context, tx pgx.Tx, c authz.Change) error {
 		// The hook's own writes ride the same transaction as the grant.
 		_, err := tx.Exec(ctx, "create table if not exists authz.hook_saw (revision bigint primary key)")
 		if err != nil {

@@ -40,7 +40,11 @@ func TestProgrammaticSchema(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	svc, err := engine.New(memory.New(), sch)
+	ds, err := memory.New()
+	if err != nil {
+		t.Fatal(err)
+	}
+	svc, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
 	}

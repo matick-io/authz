@@ -1,4 +1,4 @@
-package index_test
+package postgres
 
 import (
 	"context"
@@ -11,11 +11,10 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/dsl"
 	"github.com/matick-io/authz/engine"
-	"github.com/matick-io/authz/postgres"
-	"github.com/matick-io/authz/postgres/index"
+	"github.com/matick-io/authz/internal/materialize"
 	"github.com/matick-io/authz/schema"
+	"github.com/matick-io/authz/schema/dsl"
 )
 
 const hierarchySchema = `
@@ -56,18 +55,18 @@ func parse(t *testing.T, text string) *schema.Schema {
 
 func TestMaterializable(t *testing.T) {
 	sch := parse(t, hierarchySchema)
-	got := strings.Join(index.Materializable(sch), ",")
+	got := strings.Join(materialize.Materializable(sch), ",")
 	want := "document#view,folder#edit,folder#view,organization#manage"
 	if got != want {
 		t.Fatalf("materializable: got %s want %s", got, want)
 	}
 	for _, bad := range []string{"folder#view_or_public", "folder#owner_only", "folder#owner", "ghost#view", "folder#ghost", "noseparator"} {
-		_, err := index.New(index.WithPermissionSets(sch, bad))
+		_, err := New(nil, WithIndex(sch, bad))
 		if err == nil {
 			t.Errorf("%s: accepted", bad)
 		}
 	}
-	if _, err := index.New(index.WithPermissionSets(sch, "folder#view_or_public")); !errors.Is(err, index.ErrNotMaterializable) {
+	if _, err := New(nil, WithIndex(sch, "folder#view_or_public")); !errors.Is(err, ErrNotMaterializable) {
 		t.Errorf("wildcard path: %v", err)
 	}
 	// A wildcard behind a userset, however deep, is a wildcard on the path.
@@ -85,49 +84,49 @@ definition doc {
     permission view = viewer + owner
     permission own = owner
 }`)
-	if got := strings.Join(index.Materializable(nested), ","); got != "doc#own" {
+	if got := strings.Join(materialize.Materializable(nested), ","); got != "doc#own" {
 		t.Errorf("materializable with a nested wildcard: got %s want doc#own", got)
 	}
-	if _, err := index.New(index.WithPermissionSets(nested, "doc#view")); !errors.Is(err, index.ErrNotMaterializable) {
+	if _, err := New(nil, WithIndex(nested, "doc#view")); !errors.Is(err, ErrNotMaterializable) {
 		t.Errorf("nested wildcard: %v", err)
 	}
-	if _, err := index.New(index.WithPermissionSets(sch, "folder#owner_only")); !errors.Is(err, index.ErrNotMaterializable) {
+	if _, err := New(nil, WithIndex(sch, "folder#owner_only")); !errors.Is(err, ErrNotMaterializable) {
 		t.Errorf("exclusion: %v", err)
 	}
-	if _, err := index.New(index.WithPermissionSets(sch, "folder#owner")); !errors.Is(err, index.ErrNotMaterializable) {
+	if _, err := New(nil, WithIndex(sch, "folder#owner")); !errors.Is(err, ErrNotMaterializable) {
 		t.Errorf("relation: %v", err)
 	}
-	if _, err := index.New(index.WithPermissionSets(sch, "ghost#view")); !errors.Is(err, authz.ErrInvalidArgument) {
+	if _, err := New(nil, WithIndex(sch, "ghost#view")); !errors.Is(err, authz.ErrInvalidArgument) {
 		t.Errorf("unknown type: %v", err)
 	}
-	idx, err := index.New(index.WithPermissionSets(sch, index.Materializable(sch)...))
+	ds, err := New(nil, WithIndex(sch))
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !idx.Materialized("folder", "view") || idx.Materialized("folder", "owner_only") || idx.Materialized("folder", "owner") {
+	if idx := ds.index; !idx.Materialized("folder", "view") || idx.Materialized("folder", "owner_only") || idx.Materialized("folder", "owner") {
 		t.Fatal("Materialized reports the wrong set")
 	}
 }
 
 type fixture struct {
 	pool *pgxpool.Pool
-	idx  *index.Index
-	ds   *postgres.Datastore
+	idx  *Index
+	ds   *Datastore
 	svc  *engine.Service
 }
 
 func newFixture(t *testing.T, sch *schema.Schema) *fixture {
 	t.Helper()
 	pool := openPool(t)
-	a, err := index.Attach(pool, sch)
+	ds, err := New(pool, WithIndex(sch))
 	if err != nil {
 		t.Fatal(err)
 	}
-	svc, err := engine.New(a.Datastore, sch, a.Options...)
+	svc, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
 	}
-	return &fixture{pool: pool, idx: a.Index, ds: a.Datastore, svc: svc}
+	return &fixture{pool: pool, idx: ds.index, ds: ds, svc: svc}
 }
 
 func (f *fixture) write(t *testing.T, op authz.UpdateOperation, tuples ...string) {
@@ -323,7 +322,7 @@ func TestPermissionSetsMatchReindex(t *testing.T) {
 		}
 		maintained := readSets(t, f.pool)
 		maintainedClosure := readClosure(t, f.pool)
-		if err := f.idx.Reindex(ctx, f.pool); err != nil {
+		if err := f.idx.Reindex(ctx); err != nil {
 			t.Fatalf("step %d reindex: %v", step, err)
 		}
 		if got := readSets(t, f.pool); strings.Join(maintained, "\n") != strings.Join(got, "\n") {
@@ -340,11 +339,7 @@ func TestPermissionSetsMatchReindex(t *testing.T) {
 func TestPermissionSetsCatchup(t *testing.T) {
 	sch := parse(t, hierarchySchema)
 	pool := openPool(t)
-	idx, err := index.New(index.WithPermissionSets(sch, index.Materializable(sch)...))
-	if err != nil {
-		t.Fatal(err)
-	}
-	ds := postgres.New(pool)
+	ds, idx := indexed(t, pool, WithIndex(sch), WithAsyncIndex())
 	svc, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
@@ -360,21 +355,21 @@ func TestPermissionSetsCatchup(t *testing.T) {
 	if got := readSets(t, pool); len(got) != 0 {
 		t.Fatalf("sets changed without a follower: %v", got)
 	}
-	if applied, err := idx.Catchup(ctx, pool, ds); err != nil || applied != 1 {
+	if applied, err := idx.Catchup(ctx); err != nil || applied != 1 {
 		t.Fatalf("catchup: applied=%d err=%v", applied, err)
 	}
 	maintained := readSets(t, pool)
-	if err := idx.Reindex(ctx, pool); err != nil {
+	if err := idx.Reindex(ctx); err != nil {
 		t.Fatal(err)
 	}
 	if got := readSets(t, pool); strings.Join(maintained, "\n") != strings.Join(got, "\n") {
 		t.Fatalf("follower diverged:\n%v\n%v", maintained, got)
 	}
-	indexed, err := engine.New(ds, sch, idx.Options()...)
+	viaIndex, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if ok, err := indexed.CheckPermission(ctx, obj("document:d"), "view", subj("user:alice")); err != nil || !ok {
+	if ok, err := viaIndex.CheckPermission(ctx, obj("document:d"), "view", subj("user:alice")); err != nil || !ok {
 		t.Fatalf("check through the followed index: %v %v", ok, err)
 	}
 }

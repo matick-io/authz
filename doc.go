@@ -6,7 +6,7 @@
 //
 // A Service is built from a datastore and a schema value (package schema).
 // The schema is code: build it with schema.Build, or parse the SpiceDB DSL
-// with package dsl. ValidateStored checks at boot that the
+// with package schema/dsl. ValidateStored checks at boot that the
 // relationships already in the datastore still fit the schema in code.
 //
 // AI: what is deliberately left out, and why. Caveats, zed tokens and the

@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/dsl"
 	"github.com/matick-io/authz/engine"
+	"github.com/matick-io/authz/schema/dsl"
 )
 
 // AI: two scenario families, both run against every engine kind, including
@@ -94,7 +94,6 @@ type op struct {
 // errUnsupported marks an answer a kind cannot give at all, such as SpiceDB
 // refusing a nesting deeper than its dispatch limit. It is reported, not
 // counted as a failure, and leaves the kind's cell empty in the comparison.
-var errUnsupported = errors.New("unsupported by this kind")
 
 type scenario struct {
 	name   string

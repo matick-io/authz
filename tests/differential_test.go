@@ -12,8 +12,8 @@ import (
 	"testing"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/dsl"
 	"github.com/matick-io/authz/schema"
+	"github.com/matick-io/authz/schema/dsl"
 )
 
 // AI: the differential test is the broadest proof the engine has. From a

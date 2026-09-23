@@ -10,10 +10,8 @@ import (
 
 	"github.com/matick-io/authz"
 	"github.com/matick-io/authz/datastore/memory"
+	"github.com/matick-io/authz/datastore/postgres"
 	"github.com/matick-io/authz/engine"
-	"github.com/matick-io/authz/materialize"
-	"github.com/matick-io/authz/postgres"
-	"github.com/matick-io/authz/postgres/index"
 	"github.com/matick-io/authz/schema"
 )
 
@@ -71,17 +69,12 @@ func truncatePostgres(tb testing.TB, p *pgxpool.Pool) {
 // assumed.
 func datastores(tb testing.TB) []datastoreKind {
 	tb.Helper()
-	kinds := []datastoreKind{{name: "memory", open: func(testing.TB, *schema.Schema) (authz.Datastore, []engine.Option) { return memory.New(), nil }}}
+	kinds := []datastoreKind{{name: "memory", open: func(tb testing.TB, _ *schema.Schema) (authz.Datastore, []engine.Option) { return mustMemory(tb), nil }}}
 	// AI: the memory datastore with its index, materialize.Snapshot rebuilt on
 	// change: the reference implementation of every index query, run through
 	// every suite and compared with the walk without a database.
 	kinds = append(kinds, datastoreKind{name: "memory+index", indexed: true, open: func(tb testing.TB, sch *schema.Schema) (authz.Datastore, []engine.Option) {
-		ds := memory.New()
-		idx, err := memory.NewIndex(ds, sch, materialize.Materializable(sch)...)
-		if err != nil {
-			tb.Fatal(err)
-		}
-		return ds, idx.Options()
+		return mustMemory(tb, memory.WithIndex(sch)), nil
 	}})
 	p := postgresPool(tb)
 	if p == nil {
@@ -90,24 +83,36 @@ func datastores(tb testing.TB) []datastoreKind {
 	kinds = append(kinds,
 		datastoreKind{name: "postgres", open: func(tb testing.TB, _ *schema.Schema) (authz.Datastore, []engine.Option) {
 			truncatePostgres(tb, p)
-			return postgres.New(p), nil
+			return mustPostgres(tb, p), nil
 		}},
 		datastoreKind{name: "postgres+closure", indexed: true, open: func(tb testing.TB, sch *schema.Schema) (authz.Datastore, []engine.Option) {
 			truncatePostgres(tb, p)
-			a, err := index.Attach(p, sch, index.WithPermissionSets(sch))
-			if err != nil {
-				tb.Fatal(err)
-			}
-			return a.Datastore, a.Options
+			return mustPostgres(tb, p, postgres.WithNestingIndex()), nil
 		}},
 		datastoreKind{name: "postgres+sets", indexed: true, open: func(tb testing.TB, sch *schema.Schema) (authz.Datastore, []engine.Option) {
 			truncatePostgres(tb, p)
-			a, err := index.Attach(p, sch)
-			if err != nil {
-				tb.Fatal(err)
-			}
-			return a.Datastore, a.Options
+			return mustPostgres(tb, p, postgres.WithIndex(sch)), nil
 		}},
 	)
 	return kinds
+}
+
+// mustMemory is a memory datastore with opts, or a failed test.
+func mustMemory(tb testing.TB, opts ...memory.Option) *memory.Datastore {
+	tb.Helper()
+	ds, err := memory.New(opts...)
+	if err != nil {
+		tb.Fatal(err)
+	}
+	return ds
+}
+
+// mustPostgres is a Postgres datastore on p with opts, or a failed test.
+func mustPostgres(tb testing.TB, p *pgxpool.Pool, opts ...postgres.Option) *postgres.Datastore {
+	tb.Helper()
+	ds, err := postgres.New(p, opts...)
+	if err != nil {
+		tb.Fatal(err)
+	}
+	return ds
 }

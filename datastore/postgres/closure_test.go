@@ -1,42 +1,17 @@
-package index_test
+package postgres
 
 import (
 	"context"
 	"errors"
 	"fmt"
 	"math/rand"
-	"os"
 	"strings"
 	"testing"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/postgres"
-	"github.com/matick-io/authz/postgres/index"
-	"github.com/matick-io/authz/postgres/pgtest"
 )
-
-func openPool(t *testing.T) *pgxpool.Pool {
-	t.Helper()
-	url := os.Getenv("AUTHZ_TEST_DATABASE_URL")
-	if url == "" {
-		t.Skip("AUTHZ_TEST_DATABASE_URL not set")
-	}
-	ctx := context.Background()
-	pool, err := pgxpool.New(ctx, url)
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Cleanup(pool.Close)
-	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade; drop table if exists "+postgres.MigrationTable); err != nil {
-		t.Fatal(err)
-	}
-	if err := postgres.Migrate(ctx, pool); err != nil {
-		t.Fatal(err)
-	}
-	return pool
-}
 
 func rel(t *testing.T, s string) authz.Relationship {
 	t.Helper()
@@ -82,8 +57,7 @@ func readClosure(t *testing.T, pool *pgxpool.Pool) []string {
 // hook installed: create, touch, delete, delete-matching, and a cycle.
 func TestNestedQueries(t *testing.T) {
 	pool := openPool(t)
-	idx := mustNew(t)
-	ds := postgres.New(pool, postgres.WithHook(idx.Hook()))
+	ds, idx := indexed(t, pool)
 	ctx := context.Background()
 	write := func(op string, tuples ...string) {
 		t.Helper()
@@ -212,7 +186,7 @@ func TestNestedQueries(t *testing.T) {
 // maintained closure equals the one recomputed from scratch.
 func TestClosureMatchesReindex(t *testing.T) {
 	pool := openPool(t)
-	ds := postgres.New(pool, postgres.WithHook(mustNew(t).Hook()))
+	ds, _ := indexed(t, pool)
 	ctx := context.Background()
 	rnd := rand.New(rand.NewSource(7))
 	const nodes = 7
@@ -256,7 +230,7 @@ func TestClosureMatchesReindex(t *testing.T) {
 			t.Fatalf("step %d %s: %v", step, did, err)
 		}
 		maintained := readClosure(t, pool)
-		if err := mustNew(t).Reindex(ctx, pool); err != nil {
+		if err := closureIndex(t, pool).Reindex(ctx); err != nil {
 			t.Fatalf("step %d reindex: %v", step, err)
 		}
 		recomputed := readClosure(t, pool)
@@ -272,8 +246,7 @@ func TestClosureMatchesReindex(t *testing.T) {
 // recomputation.
 func TestCatchup(t *testing.T) {
 	pool := openPool(t)
-	idx := mustNew(t)
-	ds := postgres.New(pool)
+	ds, idx := indexed(t, pool, WithAsyncIndex())
 	ctx := context.Background()
 	write := func(fn func(w authz.Writer) error) {
 		t.Helper()
@@ -292,12 +265,12 @@ func TestCatchup(t *testing.T) {
 	if got := readClosure(t, pool); len(got) != 0 {
 		t.Fatalf("closure changed without a follower: %v", got)
 	}
-	applied, err := idx.Catchup(ctx, pool, ds)
+	applied, err := idx.Catchup(ctx)
 	if err != nil || applied != 1 {
 		t.Fatalf("catchup: applied=%d err=%v", applied, err)
 	}
 	maintained := readClosure(t, pool)
-	if err := mustNew(t).Reindex(ctx, pool); err != nil {
+	if err := closureIndex(t, pool).Reindex(ctx); err != nil {
 		t.Fatal(err)
 	}
 	if strings.Join(maintained, "\n") != strings.Join(readClosure(t, pool), "\n") {
@@ -305,25 +278,25 @@ func TestCatchup(t *testing.T) {
 	}
 	write(func(w authz.Writer) error { return w.Delete(ctx, rel(t, "team:core#member@team:leads#member")) })
 	write(func(w authz.Writer) error { return w.Create(ctx, rel(t, "project:p#member@team:leads#member")) })
-	applied, err = idx.Catchup(ctx, pool, ds)
+	applied, err = idx.Catchup(ctx)
 	if err != nil || applied != 2 {
 		t.Fatalf("second catchup: applied=%d err=%v", applied, err)
 	}
 	maintained = readClosure(t, pool)
-	if err := mustNew(t).Reindex(ctx, pool); err != nil {
+	if err := closureIndex(t, pool).Reindex(ctx); err != nil {
 		t.Fatal(err)
 	}
 	if strings.Join(maintained, "\n") != strings.Join(readClosure(t, pool), "\n") {
 		t.Fatalf("follower diverged after deletes: %v", maintained)
 	}
-	if applied, err := idx.Catchup(ctx, pool, ds); err != nil || applied != 0 {
+	if applied, err := idx.Catchup(ctx); err != nil || applied != 0 {
 		t.Fatalf("caught-up follower applied %d, err %v", applied, err)
 	}
 }
 
 func TestNestingBudget(t *testing.T) {
 	pool := openPool(t)
-	ds := postgres.New(pool, postgres.WithHook(mustNew(t, index.WithNestingBudget(2)).Hook()))
+	ds, _ := indexed(t, pool, WithNestingBudget(2))
 	ctx := context.Background()
 	touch := func(s string) error {
 		return ds.Transact(ctx, func(w authz.Writer) error { return w.Touch(ctx, rel(t, s)) })
@@ -335,7 +308,7 @@ func TestNestingBudget(t *testing.T) {
 		t.Fatal(err)
 	}
 	err := touch("team:t2#member@team:t3#member")
-	if !errors.Is(err, index.ErrNestingTooLarge) {
+	if !errors.Is(err, ErrNestingTooLarge) {
 		t.Fatalf("want ErrNestingTooLarge, got %v", err)
 	}
 	var n int
@@ -348,9 +321,13 @@ func TestNestingBudget(t *testing.T) {
 }
 
 func TestIndexRefusesForeignReaders(t *testing.T) {
-	idx := mustNew(t)
-	_, err := idx.NestedResourceIDs(context.Background(), fakeReader{}, "user", []string{"a"}, "", "project", "member")
-	if !errors.Is(err, index.ErrNotPostgres) {
+	ds, err := New(nil, WithNestingIndex())
+	if err != nil {
+		t.Fatal(err)
+	}
+	idx := ds.index
+	_, err = idx.NestedResourceIDs(context.Background(), fakeReader{}, "user", []string{"a"}, "", "project", "member")
+	if !errors.Is(err, ErrNotPostgres) {
 		t.Fatalf("got %v", err)
 	}
 }
@@ -367,13 +344,21 @@ func (fakeReader) Changes(context.Context, authz.Revision, int) ([]authz.Change,
 	return nil, nil
 }
 
-func mustNew(t *testing.T, opts ...index.Option) *index.Index {
+// indexed is a datastore on pool with the closure index and opts, and that
+// index.
+func indexed(t *testing.T, pool *pgxpool.Pool, opts ...Option) (*Datastore, *Index) {
 	t.Helper()
-	idx, err := index.New(opts...)
+	ds, err := New(pool, append([]Option{WithNestingIndex()}, opts...)...)
 	if err != nil {
 		t.Fatal(err)
 	}
-	return idx
+	return ds, ds.index
 }
 
-func TestMain(m *testing.M) { os.Exit(pgtest.Main(m)) }
+// closureIndex is the closure index of a fresh datastore on pool, for a
+// recomputation beside the one under test.
+func closureIndex(t *testing.T, pool *pgxpool.Pool) *Index {
+	t.Helper()
+	_, idx := indexed(t, pool)
+	return idx
+}

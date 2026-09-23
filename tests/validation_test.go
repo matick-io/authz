@@ -13,8 +13,8 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/dsl"
 	"github.com/matick-io/authz/schema"
+	"github.com/matick-io/authz/schema/dsl"
 )
 
 // AI: validation files, SpiceDB's format for a schema, its relationships,

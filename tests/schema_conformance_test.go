@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/matick-io/authz/dsl"
+	"github.com/matick-io/authz/schema/dsl"
 )
 
 // AI: which schemas each side accepts. The DSL is a subset of SpiceDB's and

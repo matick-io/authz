@@ -277,8 +277,8 @@ type BulkCreator interface {
 }
 
 // NestingIndex answers questions about nested usersets in one call however
-// deep the nesting, so the engine never walks nesting when one is registered
-// (WithNestingIndex). Each method receives the Reader of the resolution in
+// deep the nesting, so the engine never walks nesting when the datastore
+// keeps one (Indexed). Each method receives the Reader of the resolution in
 // progress so an index kept in the same database can answer at the same
 // snapshot.
 //
@@ -298,6 +298,23 @@ type NestingIndex interface {
 	// ids in among: which of them hold any of the named subjects. It is how a
 	// bulk check asks one question about many resources at once.
 	NestedResourceIDsAmong(ctx context.Context, r Reader, subjectType string, subjectIDs []string, subjectRelation, resourceType, relation string, among []string) ([]string, error)
+}
+
+// Index is what a datastore keeps beside its tuples to answer nesting and,
+// when configured, whole permissions in one call: a NestingIndex that is
+// also a PermissionIndex. A datastore that keeps one implements Indexed, and
+// engine.New reads it; nothing else has to be wired.
+type Index interface {
+	NestingIndex
+	PermissionIndex
+}
+
+// Indexed is a Datastore that keeps an Index of its own. Index returns nil
+// when none is configured, and the engine then walks nesting and evaluates
+// every permission from the tuples.
+type Indexed interface {
+	Datastore
+	Index() Index
 }
 
 // PermissionIndex precomputes whole permissions: for each resource and each

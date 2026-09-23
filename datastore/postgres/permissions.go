@@ -1,4 +1,4 @@
-package index
+package postgres
 
 import (
 	"context"
@@ -7,8 +7,7 @@ import (
 	"github.com/jackc/pgx/v5"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/materialize"
-	pgstore "github.com/matick-io/authz/postgres"
+	"github.com/matick-io/authz/internal/materialize"
 )
 
 // AI: the permission-set half of the index. The model and the derivation
@@ -260,7 +259,7 @@ func (x *Index) staticFor(resourceType, permission string) []string {
 // granted ninety thousand resources made the other order two hundred times
 // slower.
 func (x *Index) HasPermission(ctx context.Context, r authz.Reader, resource authz.ObjectRef, permission string, subject authz.SubjectRef) (bool, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return false, ErrNotPostgres
 	}
@@ -293,7 +292,7 @@ func (x *Index) HasPermission(ctx context.Context, r authz.Reader, resource auth
 // reason: the granting sets of every resource in the batch, each tested for
 // the subject, never the subject's every set.
 func (x *Index) ResourcesWithPermissionAmong(ctx context.Context, r authz.Reader, resourceType, permission string, subject authz.SubjectRef, among []string) ([]string, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return nil, ErrNotPostgres
 	}
@@ -325,7 +324,7 @@ func (x *Index) ResourcesWithPermissionAmong(ctx context.Context, r authz.Reader
 
 // ResourcesWithPermission implements authz.PermissionIndex.
 func (x *Index) ResourcesWithPermission(ctx context.Context, r authz.Reader, resourceType, permission string, subject authz.SubjectRef) ([]string, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return nil, ErrNotPostgres
 	}
@@ -345,7 +344,7 @@ func (x *Index) ResourcesWithPermission(ctx context.Context, r authz.Reader, res
 
 // SubjectsWithPermission implements authz.PermissionIndex.
 func (x *Index) SubjectsWithPermission(ctx context.Context, r authz.Reader, resource authz.ObjectRef, permission, subjectType, subjectRelation string) ([]string, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return nil, ErrNotPostgres
 	}

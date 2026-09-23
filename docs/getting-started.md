@@ -28,14 +28,14 @@ if err := svc.ValidateStored(ctx); err != nil { ... }     // stored grants fit t
 ## Wire the engine
 
 ```go
-a, err := index.Attach(pool, sch)                 // the datastore with its index
-svc, err := engine.New(a.Datastore, sch, a.Options...)
+ds, err := postgres.New(pool, postgres.WithIndex(sch)) // the datastore with its index
+svc, err := engine.New(ds, sch)                       // finds the index on the datastore
 ```
 
 Write a grant inside the transaction that writes the row it protects:
 
 ```go
-err = a.Datastore.TransactIn(ctx, tx, func(w authz.Writer) error {
+err = ds.TransactIn(ctx, tx, func(w authz.Writer) error {
     return svc.WriteRelationshipsIn(ctx, w, updates)
 })
 ```
@@ -95,5 +95,5 @@ limit 50;
 ```
 
 A permission appears in `authz.permission_set` only if the index
-materialises it: every permission `materialize.Materializable` allows, unless
-`index.WithPermissionSets` narrows the list.
+materialises it: every permission the schema lets a set represent, unless
+`postgres.WithIndex` is given the names of fewer.

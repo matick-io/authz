@@ -1,4 +1,4 @@
-package index
+package postgres
 
 import (
 	"context"
@@ -8,7 +8,6 @@ import (
 	"github.com/jackc/pgx/v5"
 
 	"github.com/matick-io/authz"
-	pgstore "github.com/matick-io/authz/postgres"
 )
 
 // AI: the closure half of the index. A relationship whose subject is a
@@ -234,7 +233,7 @@ order by 1`
 
 // NestedRelationships implements authz.NestingIndex.
 func (x *Index) NestedRelationships(ctx context.Context, r authz.Reader, q authz.RelationshipQuery) ([]authz.Relationship, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return nil, ErrNotPostgres
 	}
@@ -260,7 +259,7 @@ func (x *Index) NestedRelationships(ctx context.Context, r authz.Reader, q authz
 
 // NestedResourceIDs implements authz.NestingIndex.
 func (x *Index) NestedResourceIDs(ctx context.Context, r authz.Reader, subjectType string, subjectIDs []string, subjectRelation, resourceType, relation string) ([]string, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return nil, ErrNotPostgres
 	}
@@ -272,7 +271,7 @@ func (x *Index) NestedResourceIDs(ctx context.Context, r authz.Reader, subjectTy
 
 // NestedResourceIDsAmong implements authz.NestingIndex.
 func (x *Index) NestedResourceIDsAmong(ctx context.Context, r authz.Reader, subjectType string, subjectIDs []string, subjectRelation, resourceType, relation string, among []string) ([]string, error) {
-	tx, ok := pgstore.Tx(r)
+	tx, ok := Tx(r)
 	if !ok {
 		return nil, ErrNotPostgres
 	}

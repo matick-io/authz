@@ -39,14 +39,12 @@ the engine.
 
 | Module | Path | Depends on | Holds |
 |---|---|---|---|
-| core | `github.com/matick-io/authz` | nothing | the engine, the schema model and its DSL, the `Datastore` contract, the generic index core (`materialize`), the in-memory datastore and its index |
-| postgres | `github.com/matick-io/authz/postgres` | pgx, the core at a pinned version | the Postgres datastore and its migrations, and `postgres/index`: the nesting closure and permission sets, kept in the same database |
-| tests | `github.com/matick-io/authz/tests` | everything, plus the SpiceDB client | the validation files, SpiceDB's corpus, the differential and conformance suites, the benchmarks |
+| authz | `github.com/matick-io/authz` | pgx and goose | the `Datastore` contract and tuple types (root), `schema` with its DSL parser in `schema/dsl`, `engine`, the datastores in `datastore/memory` and `datastore/postgres`, the latter with its index and migrations; under `internal`, the index core (`materialize`), the conformance suite and the Postgres test helper |
+| tests | `github.com/matick-io/authz/tests` | the library, plus the SpiceDB client | the validation files, SpiceDB's corpus, the differential and conformance suites, the benchmarks |
 
-The postgres module requires the core by version, never through a `replace`,
-so `go get` works from any module; `go.work` makes the local core win while
-developing here. Bump that pin when the postgres module needs something newer
-from the core.
+A datastore is the engine's only dependency and carries its own index, so an
+embedder imports the root, `schema` or `schema/dsl`, `engine` and one
+datastore package. `go.work` lets the tests module use the library in place.
 
 Planned, not yet present: an `api` module offering the SpiceDB v1 gRPC surface
 over the core, and a `cmd` module building a standalone server from `api` and
@@ -59,10 +57,9 @@ import (
     "github.com/jackc/pgx/v5/pgxpool"
 
     "github.com/matick-io/authz"
-    "github.com/matick-io/authz/dsl"
+    "github.com/matick-io/authz/schema/dsl"
     "github.com/matick-io/authz/engine"
-    "github.com/matick-io/authz/postgres"
-    "github.com/matick-io/authz/postgres/index"
+    "github.com/matick-io/authz/datastore/postgres"
 )
 
 sch, err := dsl.Parse(`
@@ -84,10 +81,10 @@ definition project {
 pool, _ := pgxpool.New(ctx, databaseURL)
 if err := postgres.Migrate(ctx, pool); err != nil { ... } // or your deploy step, see docs/getting-started.md
 
-// With the index, nested usersets and materialisable permissions answer in
-// one query each. Without it, engine.New(postgres.New(pool), sch) walks.
-a, err := index.Attach(pool, sch)
-svc, err := engine.New(a.Datastore, sch, a.Options...)
+// The datastore carries its index: nested usersets and materialisable
+// permissions answer in one query each. Without WithIndex the engine walks.
+ds, err := postgres.New(pool, postgres.WithIndex(sch))
+svc, err := engine.New(ds, sch)
 if err := postgres.Check(ctx, pool); err != nil { ... }  // the database is at postgres.SchemaVersion
 if err := svc.ValidateStored(ctx); err != nil { ... }   // the stored grants still fit the schema
 
@@ -113,7 +110,7 @@ grants already stored still fit.
 `type:id#relation@type:id[#relation]`, and `Relationship.String` writes it.
 
 For tests, `memory.New()` is a datastore with the same contract and no
-database, and `memory.NewIndex` is its index.
+database, and `memory.WithIndex(sch)` gives it an index.
 
 `postgres.Migrations` is every table the datastore and its index need, as
 numbered goose migrations, one file today. `postgres.Migrate` applies it with goose and records
@@ -130,7 +127,7 @@ sets so its SQL never names an authz table.
 tx, err := pool.Begin(ctx)
 defer tx.Rollback(ctx)
 // ... insert the application row ...
-err = a.Datastore.TransactIn(ctx, tx, func(w authz.Writer) error {
+err = ds.TransactIn(ctx, tx, func(w authz.Writer) error {
     return svc.WriteRelationshipsIn(ctx, w, updates)
 })
 // ... tx.Commit(ctx)
@@ -199,12 +196,14 @@ after Zanzibar's Leopard and AuthZed's Materialize:
   represent: unions, references and arrows, with no wildcard, intersection or
   exclusion on the path.
 
-Package `materialize` holds what every implementation shares: the derivation
-of closure and set rows from relationships, the comparison of a maintained
-index with a fresh derivation, and the follower that feeds an index from the
-change log. The Postgres index in `postgres/index` keeps both in two tables
-beside the relationships, maintained in SQL inside the write's own transaction
-when attached through the datastore's hook, or with some lag through `Follow`.
+A datastore that keeps an index returns it from `Index` (`authz.Indexed`), and
+`engine.New` reads it; nothing else is wired. The internal `materialize`
+package holds what every implementation shares: the derivation of closure and
+set rows from relationships, the comparison of a maintained index with a
+fresh derivation, and the follower that feeds an index from the changelog.
+The Postgres datastore keeps both in two tables beside the relationships,
+maintained in SQL inside the write's own transaction (`WithIndex`), or with
+some lag through `Follow` (`WithAsyncIndex`).
 Writes that touch the index serialise on an advisory lock; plain grants never
 take it. `Verify` compares the tables with a recomputation, `Reindex` rebuilds
 them, and a budget refuses a single write that would add more closure rows
@@ -238,7 +237,7 @@ schemas each side accepts; and scenario benchmarks with SpiceDB as the peer.
 ## Testing
 
 ```bash
-go test ./... ./postgres/... ./tests/...
+go test ./... ./tests/...
 ```
 
 runs everything that needs no database. The Postgres suites read
@@ -248,7 +247,7 @@ it at a scratch database:
 
 ```bash
 AUTHZ_TEST_DATABASE_URL='postgres://user:pass@localhost:5432/authz_test?sslmode=disable' \
-  go test ./... ./postgres/... ./tests/...
+  go test ./... ./tests/...
 ```
 
 `AUTHZ_SPICEDB=label=host:port`, comma separated for several instances, and
@@ -261,5 +260,4 @@ gh-pages branch.
 ## Roadmap
 
 - The `api` module, wire-compatible with SpiceDB v1 where the feature exists.
-- Version tags once something external pins one; until then the postgres
-  module pins the core by commit.
+- Version tags once something external pins one.

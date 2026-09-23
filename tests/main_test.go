@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/matick-io/authz/postgres/pgtest"
+	"github.com/matick-io/authz/internal/pgtest"
 )
 
 func TestMain(m *testing.M) { os.Exit(pgtest.Main(m)) }

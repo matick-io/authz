@@ -1,17 +1,21 @@
 // Package memory is an in-process authz.Datastore for tests. It holds
 // everything in maps under one lock, so a View sees a consistent state and a
-// Transact that returns an error leaves nothing behind. It keeps the change
-// log like any other datastore and has no index of its own, so the engine
-// walks nesting on it: that makes it the oracle the indexed datastores are
-// checked against.
+// Transact that returns an error leaves nothing behind. It keeps the
+// changelog like any other datastore. Without an index the engine walks
+// nesting on it, which makes it the oracle the indexed datastores are checked
+// against; with one (WithIndex) it is the reference index, rebuilt in full
+// on every change.
 package memory
 
 import (
 	"context"
+	"fmt"
 	"sort"
 	"sync"
 
 	"github.com/matick-io/authz"
+	"github.com/matick-io/authz/internal/materialize"
+	"github.com/matick-io/authz/schema"
 )
 
 // Datastore is the in-memory store. The zero value is not usable; call New.
@@ -19,11 +23,57 @@ type Datastore struct {
 	mu      sync.RWMutex
 	rels    map[string]authz.Relationship
 	changes []authz.Change
+	index   *Index
+	cfg     indexConfig
 }
 
-// New returns an empty datastore.
-func New() *Datastore {
-	return &Datastore{rels: map[string]authz.Relationship{}}
+// Option configures New.
+type Option func(*Datastore)
+
+type indexConfig struct {
+	wanted bool
+	sch    *schema.Schema
+	perms  []string
+}
+
+// WithIndex keeps an index over the store: the userset closure, and the
+// permission sets of the named permissions, written type#permission, or of
+// every permission the schema lets a set represent when none are named. A
+// named permission the sets cannot represent fails New.
+func WithIndex(sch *schema.Schema, permissions ...string) Option {
+	return func(d *Datastore) { d.cfg = indexConfig{wanted: true, sch: sch, perms: permissions} }
+}
+
+// New returns an empty datastore; the engine finds its index, if any,
+// through Index.
+func New(opts ...Option) (*Datastore, error) {
+	d := &Datastore{rels: map[string]authz.Relationship{}}
+	for _, o := range opts {
+		o(d)
+	}
+	if d.cfg.wanted {
+		if d.cfg.sch == nil {
+			return nil, fmt.Errorf("%w: nil schema", authz.ErrInvalidArgument)
+		}
+		perms := d.cfg.perms
+		if len(perms) == 0 {
+			perms = materialize.Materializable(d.cfg.sch)
+		}
+		sets, err := materialize.NewSets(d.cfg.sch, perms...)
+		if err != nil {
+			return nil, err
+		}
+		d.index = &Index{ds: d, sets: sets}
+	}
+	return d, nil
+}
+
+// Index returns the datastore's index, or nil when New was not asked for one.
+func (d *Datastore) Index() authz.Index {
+	if d.index == nil {
+		return nil
+	}
+	return d.index
 }
 
 // View runs fn under a read lock.

@@ -11,7 +11,7 @@ import (
 
 // DefaultMaxDepth bounds how many hops one resolution may take before it
 // fails with authz.ErrMaxDepthExceeded. Arrows always count; nesting counts only
-// when no authz.NestingIndex is registered.
+// when the datastore keeps no index.
 const DefaultMaxDepth = 50
 
 // Service is the engine: one schema, one datastore. It is safe for concurrent
@@ -28,19 +28,6 @@ type Service struct {
 // Option configures New.
 type Option func(*Service)
 
-// WithNestingIndex registers an index that answers nested usersets in one
-// call (see authz.NestingIndex). Without one the engine walks nesting.
-func WithNestingIndex(idx authz.NestingIndex) Option {
-	return func(s *Service) { s.idx = idx }
-}
-
-// WithPermissionIndex registers an index of precomputed permissions (see
-// authz.PermissionIndex). The engine uses it for every permission it reports as
-// materialised and evaluates the rewrite for the rest.
-func WithPermissionIndex(idx authz.PermissionIndex) Option {
-	return func(s *Service) { s.pidx = idx }
-}
-
 // WithMaxDepth overrides DefaultMaxDepth.
 func WithMaxDepth(n int) Option {
 	return func(s *Service) {
@@ -50,9 +37,11 @@ func WithMaxDepth(n int) Option {
 	}
 }
 
-// New builds a Service over a datastore with the schema it will enforce. It
-// touches the datastore only through ValidateStored, which the caller runs at
-// boot.
+// New builds a Service over a datastore with the schema it will enforce. A
+// datastore that keeps an index (authz.Indexed) is read through it: nesting
+// answers in one call, and every permission the index materialises comes
+// from its sets. New touches the datastore only through ValidateStored,
+// which the caller runs at boot.
 func New(ds authz.Datastore, sch *schema.Schema, opts ...Option) (*Service, error) {
 	if ds == nil {
 		return nil, fmt.Errorf("%w: nil datastore", authz.ErrInvalidArgument)
@@ -61,6 +50,11 @@ func New(ds authz.Datastore, sch *schema.Schema, opts ...Option) (*Service, erro
 		return nil, fmt.Errorf("%w: nil schema", authz.ErrInvalidArgument)
 	}
 	s := &Service{ds: ds, sch: sch, maxDepth: DefaultMaxDepth}
+	if indexed, ok := ds.(authz.Indexed); ok {
+		if idx := indexed.Index(); idx != nil {
+			s.idx, s.pidx = idx, idx
+		}
+	}
 	for _, o := range opts {
 		o(s)
 	}

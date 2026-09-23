@@ -1,4 +1,4 @@
-package index_test
+package postgres
 
 import (
 	"context"
@@ -11,8 +11,6 @@ import (
 
 	"github.com/matick-io/authz"
 	"github.com/matick-io/authz/engine"
-	"github.com/matick-io/authz/postgres"
-	"github.com/matick-io/authz/postgres/index"
 )
 
 // AI: these tests are the proof that the index is a faithful cache of the
@@ -51,9 +49,9 @@ func hierarchyCandidates() []string {
 	return out
 }
 
-func requireExact(t *testing.T, idx *index.Index, f *fixture) {
+func requireExact(t *testing.T, idx *Index, f *fixture) {
 	t.Helper()
-	drift, err := idx.Verify(context.Background(), f.pool)
+	drift, err := idx.Verify(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -122,11 +120,7 @@ func TestConcurrentWritersKeepIndexExact(t *testing.T) {
 func TestFollowerUnderLoad(t *testing.T) {
 	sch := parse(t, hierarchySchema)
 	pool := openPool(t)
-	idx, err := index.New(index.WithPermissionSets(sch, index.Materializable(sch)...))
-	if err != nil {
-		t.Fatal(err)
-	}
-	ds := postgres.New(pool)
+	ds, idx := indexed(t, pool, WithIndex(sch), WithAsyncIndex())
 	svc, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
@@ -161,7 +155,7 @@ func TestFollowerUnderLoad(t *testing.T) {
 	go func() {
 		defer follower.Done()
 		for {
-			n, err := idx.Catchup(ctx, pool, ds)
+			n, err := idx.Catchup(ctx)
 			applied += n
 			if err != nil {
 				followErr = err
@@ -184,7 +178,7 @@ func TestFollowerUnderLoad(t *testing.T) {
 	if followErr != nil {
 		t.Fatal(followErr)
 	}
-	final, err := idx.Catchup(ctx, pool, ds)
+	final, err := idx.Catchup(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -207,14 +201,14 @@ func TestFollowerUnderLoad(t *testing.T) {
 	if last := changes[len(changes)-1].Revision; authz.Revision(cursor) != last {
 		t.Fatalf("cursor at %d, log ends at %d", cursor, last)
 	}
-	drift, err := idx.Verify(ctx, pool)
+	drift, err := idx.Verify(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if !drift.Empty() {
 		t.Fatalf("follower diverged:\n%s", drift)
 	}
-	if again, err := idx.Catchup(ctx, pool, ds); err != nil || again != 0 {
+	if again, err := idx.Catchup(ctx); err != nil || again != 0 {
 		t.Fatalf("caught-up follower applied %d again, err %v", again, err)
 	}
 }
@@ -226,12 +220,12 @@ func TestFollowerUnderLoad(t *testing.T) {
 func TestVetoedWriteLeavesIndexExact(t *testing.T) {
 	sch := parse(t, hierarchySchema)
 	pool := openPool(t)
-	a, err := index.Attach(pool, sch, index.WithNestingBudget(3))
+	ds, err := New(pool, WithIndex(sch), WithNestingBudget(3))
 	if err != nil {
 		t.Fatal(err)
 	}
-	idx, ds := a.Index, a.Datastore
-	svc, err := engine.New(ds, sch, a.Options...)
+	idx := ds.index
+	svc, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -251,7 +245,7 @@ func TestVetoedWriteLeavesIndexExact(t *testing.T) {
 	}
 	before := readSets(t, pool)
 	err = write("team:t2#member@team:t3#member", "folder:f9#owner@user:x", "team:t3#member@user:deep")
-	if !errors.Is(err, index.ErrNestingTooLarge) {
+	if !errors.Is(err, ErrNestingTooLarge) {
 		t.Fatalf("want ErrNestingTooLarge, got %v", err)
 	}
 	if got := readSets(t, pool); strings.Join(got, "\n") != strings.Join(before, "\n") {
@@ -260,7 +254,7 @@ func TestVetoedWriteLeavesIndexExact(t *testing.T) {
 	if ok, _ := svc.CheckPermission(ctx, obj("folder:f9"), "view", subj("user:x")); ok {
 		t.Fatal("a grant from the vetoed write is visible")
 	}
-	drift, err := idx.Verify(ctx, pool)
+	drift, err := idx.Verify(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -274,12 +268,12 @@ func TestVetoedWriteLeavesIndexExact(t *testing.T) {
 func TestReconfigurationIsDetected(t *testing.T) {
 	sch := parse(t, hierarchySchema)
 	pool := openPool(t)
-	a, err := index.Attach(pool, sch, index.WithPermissionSets(sch))
+	ds, err := New(pool, WithNestingIndex())
 	if err != nil {
 		t.Fatal(err)
 	}
-	closureOnly := a.Index
-	svc, err := engine.New(a.Datastore, sch, a.Options...)
+	closureOnly := ds.index
+	svc, err := engine.New(ds, sch)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -291,33 +285,34 @@ func TestReconfigurationIsDetected(t *testing.T) {
 	if err := svc.WriteRelationships(ctx, ups); err != nil {
 		t.Fatal(err)
 	}
-	drift, err := closureOnly.Verify(ctx, pool)
+	drift, err := closureOnly.Verify(ctx)
 	if err != nil || !drift.Empty() {
 		t.Fatalf("closure-only index drifted: %v %s", err, drift)
 	}
-	withSets, err := index.New(index.WithPermissionSets(sch, "document#view", "folder#view"))
+	reconfigured, err := New(pool, WithIndex(sch, "document#view", "folder#view"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	drift, err = withSets.Verify(ctx, pool)
+	withSets := reconfigured.index
+	drift, err = withSets.Verify(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(drift.SetsMissing) == 0 || len(drift.ClosureMissing) != 0 || len(drift.SetsExtra) != 0 {
 		t.Fatalf("expected only missing set rows, got:\n%s", drift)
 	}
-	if err := withSets.Reindex(ctx, pool); err != nil {
+	if err := withSets.Reindex(ctx); err != nil {
 		t.Fatal(err)
 	}
-	drift, err = withSets.Verify(ctx, pool)
+	drift, err = withSets.Verify(ctx)
 	if err != nil || !drift.Empty() {
 		t.Fatalf("after reindex: %v %s", err, drift)
 	}
-	indexed, err := engine.New(postgres.New(pool, postgres.WithHook(withSets.Hook())), sch, withSets.Options()...)
+	viaSets, err := engine.New(reconfigured, sch)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if ok, err := indexed.CheckPermission(ctx, obj("document:d"), "view", subj("user:alice")); err != nil || !ok {
+	if ok, err := viaSets.CheckPermission(ctx, obj("document:d"), "view", subj("user:alice")); err != nil || !ok {
 		t.Fatalf("after reindex the reconfigured index answers %v %v", ok, err)
 	}
 }

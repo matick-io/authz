@@ -9,8 +9,8 @@ import (
 
 	"github.com/matick-io/authz"
 	"github.com/matick-io/authz/datastore/memory"
-	"github.com/matick-io/authz/dsl"
 	"github.com/matick-io/authz/engine"
+	"github.com/matick-io/authz/schema/dsl"
 )
 
 // AI: these tests run on the memory datastore, which has no index, so they
@@ -110,7 +110,7 @@ func newService(t *testing.T, schemaText string, tuples []string, opts ...engine
 	if err != nil {
 		t.Fatal(err)
 	}
-	ds := memory.New()
+	ds := mustMemory(t)
 	svc, err := engine.New(ds, sch, opts...)
 	if err != nil {
 		t.Fatal(err)
@@ -197,7 +197,7 @@ func TestNewRejectsMissingParts(t *testing.T) {
 	if _, err := engine.New(nil, sch); !errors.Is(err, authz.ErrInvalidArgument) {
 		t.Errorf("nil datastore: %v", err)
 	}
-	if _, err := engine.New(memory.New(), nil); !errors.Is(err, authz.ErrInvalidArgument) {
+	if _, err := engine.New(mustMemory(t), nil); !errors.Is(err, authz.ErrInvalidArgument) {
 		t.Errorf("nil schema: %v", err)
 	}
 }

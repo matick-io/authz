@@ -41,12 +41,12 @@ jobs:
           docker run -d --name spicedb -p 50051:50051 authzed/spicedb:latest serve --grpc-preshared-key ci --datastore-engine memory
           for i in $(seq 1 30); do docker logs spicedb 2>&1 | grep -q "grpc server started" && break; sleep 1; done
       - name: Vet every module
-        run: go vet ./... ./postgres/... ./tests/...
+        run: go vet ./... ./tests/...
       - name: Test every module, Postgres suites and SpiceDB conformance included
         env:
           AUTHZ_SPICEDB: spicedb=127.0.0.1:50051
           AUTHZ_SPICEDB_KEY: ci
-        run: go test ./... ./postgres/... ./tests/... -count=1
+        run: go test ./... ./tests/... -count=1
 
   bench:
     needs: test
