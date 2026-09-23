@@ -32,10 +32,11 @@ func columnsOf(us []userset) (types, ids, relations []string) {
 // walkSQL is the recursive climb from a set of descendants to every userset
 // they are nested within, over the nesting edges in authz.relationship. It
 // uses UNION, not UNION ALL, so a cycle terminates when it stops producing
-// new rows.
+// new rows. The seed collates its columns as the tables do, since a recursive
+// query needs both terms to agree.
 const walkSQL = `
 with recursive walk(d_type, d_id, d_relation, n_type, n_id, n_relation) as (
-    select d.typ, d.id, d.rel, d.typ, d.id, d.rel
+    select d.typ collate "C", d.id collate "C", d.rel collate "C", d.typ collate "C", d.id collate "C", d.rel collate "C"
     from unnest($1::text[], $2::text[], $3::text[]) as d(typ, id, rel)
   union
     select w.d_type, w.d_id, w.d_relation, e.resource_type, e.resource_id, e.relation

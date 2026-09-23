@@ -25,7 +25,7 @@ type Attached struct {
 // hooks it into a datastore on pool, and returns both with the engine
 // options that read the index. Every permission Materializable allows
 // becomes a permission set; pass WithPermissionSets to narrow that, with no
-// names for the closure alone. The index tables must exist (Migrate).
+// names for the closure alone. The index tables must exist (postgres.Migrate).
 //
 //	a, err := index.Attach(pool, sch)
 //	svc, err := engine.New(a.Datastore, sch, a.Options...)

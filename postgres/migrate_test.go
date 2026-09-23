@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"fmt"
 	"io/fs"
 	"strings"
 	"testing"
@@ -8,19 +9,28 @@ import (
 	"github.com/matick-io/authz"
 )
 
-// AI: runs without a database: the embedded migration must split cleanly so
-// Migrate never executes the Down section.
-func TestUpSectionExcludesDown(t *testing.T) {
-	raw, err := fs.ReadFile(Migrations, "migrations/00001_authz.sql")
+// AI: runs without a database. The files must number from 1 without a gap,
+// each with an Up and a Down, and SchemaVersion must be the last number, or
+// a deploy could skip one or fail to roll back.
+func TestMigrationsAreOneSequence(t *testing.T) {
+	entries, err := fs.ReadDir(Migrations, "migrations")
 	if err != nil {
 		t.Fatal(err)
 	}
-	up := upSection(string(raw))
-	if !strings.Contains(up, "create table if not exists authz.relationship") {
-		t.Fatalf("up section lost the table: %q", up)
+	for i, e := range entries {
+		if want := fmt.Sprintf("%05d_", i+1); !strings.HasPrefix(e.Name(), want) {
+			t.Fatalf("migration %d is %q, want a %s prefix", i+1, e.Name(), want)
+		}
+		raw, err := fs.ReadFile(Migrations, "migrations/"+e.Name())
+		if err != nil {
+			t.Fatal(err)
+		}
+		if !strings.Contains(string(raw), "-- +goose Up") || !strings.Contains(string(raw), "-- +goose Down") {
+			t.Fatalf("%s lacks an Up or a Down section", e.Name())
+		}
 	}
-	if strings.Contains(up, "drop schema") {
-		t.Fatalf("up section contains the down section: %q", up)
+	if SchemaVersion != int64(len(entries)) {
+		t.Fatalf("SchemaVersion is %d for %d migrations", SchemaVersion, len(entries))
 	}
 }
 

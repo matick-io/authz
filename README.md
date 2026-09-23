@@ -82,14 +82,14 @@ definition project {
 `)
 
 pool, _ := pgxpool.New(ctx, databaseURL)
-if err := postgres.Migrate(ctx, pool); err != nil { ... }
-if err := index.Migrate(ctx, pool); err != nil { ... }
+if err := postgres.Migrate(ctx, pool); err != nil { ... } // or your deploy step, see docs/getting-started.md
 
 // With the index, nested usersets and materialisable permissions answer in
 // one query each. Without it, engine.New(postgres.New(pool), sch) walks.
 a, err := index.Attach(pool, sch)
 svc, err := engine.New(a.Datastore, sch, a.Options...)
-if err := svc.ValidateStored(ctx); err != nil { ... } // the stored grants still fit the schema
+if err := postgres.Check(ctx, pool); err != nil { ... }  // the database is at postgres.SchemaVersion
+if err := svc.ValidateStored(ctx); err != nil { ... }   // the stored grants still fit the schema
 
 err = svc.WriteRelationships(ctx, []authz.RelationshipUpdate{
     {Operation: authz.OperationCreate, Relationship: mustParse("project:p1#member@team:core#member")},
@@ -114,6 +114,15 @@ grants already stored still fit.
 
 For tests, `memory.New()` is a datastore with the same contract and no
 database, and `memory.NewIndex` is its index.
+
+`postgres.Migrations` is every table the datastore and its index need, as
+numbered goose migrations, one file today. `postgres.Migrate` applies it with goose and records
+the versions in `public.authz_migration`; a deploy step can drive `postgres.NewMigrator`
+up and down instead, or hand the same files to a goose of its own under
+`postgres.MigrationTable`. `postgres.Check` refuses a database that is not at
+`postgres.SchemaVersion`. [docs/getting-started.md](docs/getting-started.md)
+puts it together, including the view an application keeps over the permission
+sets so its SQL never names an authz table.
 
 ### A grant commits with the row it protects
 
@@ -233,8 +242,9 @@ go test ./... ./postgres/... ./tests/...
 ```
 
 runs everything that needs no database. The Postgres suites read
-`AUTHZ_TEST_DATABASE_URL`, drop and recreate the `authz` schema in that
-database, and skip when the variable is unset; point it at a scratch database:
+`AUTHZ_TEST_DATABASE_URL`, drop and recreate the `authz` schema and its
+migration table in that database, and skip when the variable is unset; point
+it at a scratch database:
 
 ```bash
 AUTHZ_TEST_DATABASE_URL='postgres://user:pass@localhost:5432/authz_test?sslmode=disable' \

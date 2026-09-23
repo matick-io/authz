@@ -14,7 +14,6 @@ package index
 
 import (
 	"context"
-	"embed"
 	"errors"
 	"time"
 
@@ -26,16 +25,6 @@ import (
 	pgstore "github.com/matick-io/authz/postgres"
 	"github.com/matick-io/authz/schema"
 )
-
-// Migrations creates the index tables.
-//
-//go:embed migrations/*.sql
-var Migrations embed.FS
-
-// Migrate applies the index migrations. Idempotent.
-func Migrate(ctx context.Context, pool *pgxpool.Pool) error {
-	return pgstore.ApplyMigrations(ctx, pool, Migrations, "migrations")
-}
 
 // DefaultNestingBudget bounds how many closure rows one change may add.
 const DefaultNestingBudget = 100_000
@@ -100,7 +89,7 @@ func WithPermissionSets(sch *schema.Schema, permissions ...string) Option {
 	}
 }
 
-// New returns an index over the index tables, which must exist (Migrate).
+// New returns an index over the index tables, which must exist (postgres.Migrate).
 func New(opts ...Option) (*Index, error) {
 	x := &Index{budget: DefaultNestingBudget}
 	for _, o := range opts {

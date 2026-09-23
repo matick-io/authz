@@ -29,13 +29,10 @@ func openPool(t *testing.T) *pgxpool.Pool {
 		t.Fatal(err)
 	}
 	t.Cleanup(pool.Close)
-	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade"); err != nil {
+	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade; drop table if exists "+postgres.MigrationTable); err != nil {
 		t.Fatal(err)
 	}
 	if err := postgres.Migrate(ctx, pool); err != nil {
-		t.Fatal(err)
-	}
-	if err := index.Migrate(ctx, pool); err != nil {
 		t.Fatal(err)
 	}
 	return pool

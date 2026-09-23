@@ -18,10 +18,8 @@ package postgres
 
 import (
 	"context"
-	"embed"
 	"errors"
 	"fmt"
-	"io/fs"
 	"sort"
 	"strings"
 
@@ -31,52 +29,6 @@ import (
 
 	"github.com/matick-io/authz"
 )
-
-// Migrations holds the goose-annotated SQL that creates the authz schema. The
-// host's migration runner can apply it, or Migrate applies the Up sections
-// directly.
-//
-//go:embed migrations/*.sql
-var Migrations embed.FS
-
-// Migrate applies the Up section of every embedded migration, in file order.
-// Every statement is idempotent, so running it again is harmless.
-func Migrate(ctx context.Context, pool *pgxpool.Pool) error {
-	return ApplyMigrations(ctx, pool, Migrations, "migrations")
-}
-
-// ApplyMigrations applies the Up sections of goose-annotated SQL files found
-// in dir of fsys, in name order. Index packages reuse it for their own tables.
-func ApplyMigrations(ctx context.Context, pool *pgxpool.Pool, fsys fs.FS, dir string) error {
-	entries, err := fs.ReadDir(fsys, dir)
-	if err != nil {
-		return err
-	}
-	names := make([]string, 0, len(entries))
-	for _, e := range entries {
-		names = append(names, e.Name())
-	}
-	sort.Strings(names)
-	for _, name := range names {
-		raw, err := fs.ReadFile(fsys, dir+"/"+name)
-		if err != nil {
-			return err
-		}
-		if _, err := pool.Exec(ctx, upSection(string(raw))); err != nil {
-			return fmt.Errorf("migration %s: %w", name, err)
-		}
-	}
-	return nil
-}
-
-func upSection(sql string) string {
-	_, after, ok := strings.Cut(sql, "-- +goose Up")
-	if !ok {
-		return sql
-	}
-	before, _, _ := strings.Cut(after, "-- +goose Down")
-	return before
-}
 
 // Hook runs inside a write transaction, after the relationships and the
 // change log rows are written and before commit, with the Change the

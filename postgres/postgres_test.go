@@ -30,7 +30,7 @@ func openPool(t *testing.T) *pgxpool.Pool {
 		t.Fatal(err)
 	}
 	t.Cleanup(pool.Close)
-	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade"); err != nil {
+	if _, err := pool.Exec(ctx, "drop schema if exists authz cascade; drop table if exists "+postgres.MigrationTable); err != nil {
 		t.Fatal(err)
 	}
 	if err := postgres.Migrate(ctx, pool); err != nil {
@@ -67,6 +67,37 @@ func TestMigrateIsIdempotent(t *testing.T) {
 	pool := openPool(t)
 	if err := postgres.Migrate(context.Background(), pool); err != nil {
 		t.Fatalf("second migrate: %v", err)
+	}
+}
+
+// Down undoes Up: after DownTo(0) nothing of authz is left and Check says so;
+// Up brings it all back to SchemaVersion.
+func TestMigrationsRoundTrip(t *testing.T) {
+	pool := openPool(t)
+	ctx := context.Background()
+	if err := postgres.Check(ctx, pool); err != nil {
+		t.Fatalf("check after migrate: %v", err)
+	}
+	m, err := postgres.NewMigrator(pool)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer m.Close()
+	if err := m.DownTo(ctx, 0); err != nil {
+		t.Fatalf("down to 0: %v", err)
+	}
+	var n int
+	if err := pool.QueryRow(ctx, "select count(*) from pg_namespace where nspname = 'authz'").Scan(&n); err != nil || n != 0 {
+		t.Fatalf("authz schema after down: n=%d err=%v", n, err)
+	}
+	if err := postgres.Check(ctx, pool); !errors.Is(err, postgres.ErrSchemaVersion) {
+		t.Fatalf("check on an empty database: %v", err)
+	}
+	if err := m.Up(ctx); err != nil {
+		t.Fatalf("up again: %v", err)
+	}
+	if v, err := m.Version(ctx); err != nil || v != postgres.SchemaVersion {
+		t.Fatalf("version after up: %d %v, want %d", v, err, postgres.SchemaVersion)
 	}
 }
 

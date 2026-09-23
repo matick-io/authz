@@ -46,13 +46,10 @@ func postgresPool(tb testing.TB) *pgxpool.Pool {
 		if poolErr != nil {
 			return
 		}
-		if _, poolErr = pool.Exec(ctx, "drop schema if exists authz cascade"); poolErr != nil {
+		if _, poolErr = pool.Exec(ctx, "drop schema if exists authz cascade; drop table if exists "+postgres.MigrationTable); poolErr != nil {
 			return
 		}
-		if poolErr = postgres.Migrate(ctx, pool); poolErr != nil {
-			return
-		}
-		poolErr = index.Migrate(ctx, pool)
+		poolErr = postgres.Migrate(ctx, pool)
 	})
 	if poolErr != nil {
 		tb.Fatal(poolErr)
