@@ -7,9 +7,10 @@ second service. Grants live in your own database, so they can commit in the
 same transaction as the rows they protect and your row-level security can read
 them.
 
-> **Status: pre-release.** The engine and the Postgres datastore exist and pass
-> their suites against the in-memory store. The Postgres suite has not yet run
-> against a live server. Nothing here is versioned or stable.
+> **Status: pre-release.** Every suite, SpiceDB's own corpus included, runs in
+> CI on the in-memory store, on Postgres and against a real SpiceDB. Nothing is
+> tagged yet: the postgres module pins the core by commit until something
+> external needs a tag.
 
 ## Why this exists
 
@@ -25,21 +26,27 @@ This repository keeps the parts of SpiceDB that matter to an embedder:
   (`user:*`), and permissions built from union, intersection, exclusion and
   arrows;
 - the schema DSL, as a subset the parser rejects loudly when you leave it;
-- the API surface: schema read and write, relationship read, write and delete
-  with preconditions, check, bulk check, expand, lookup resources, lookup
-  subjects.
+- the API surface: relationship read, write and delete with preconditions,
+  check, bulk check, expand, lookup resources, lookup subjects.
 
 It leaves out what only a distributed service needs: caveats, consistency
-tokens, the Watch service, dispatch clusters. One database gives one snapshot
-per read and one transaction per write, and that is the whole consistency
-story.
+tokens, the Watch service, dispatch clusters, schema storage. One database
+gives one snapshot per read and one transaction per write, and that is the
+whole consistency story. The schema is code, kept by the program that embeds
+the engine.
 
 ## Modules
 
 | Module | Path | Depends on | Holds |
 |---|---|---|---|
-| core | `github.com/khaossystems/authz` | nothing | engine, schema DSL, `Datastore` contract, in-memory datastore, `datastoretest`, `sampletest` |
-| postgres | `github.com/khaossystems/authz/postgres` | pgx | the Postgres datastore and its migrations |
+| core | `github.com/matick-io/authz` | nothing | the engine, the schema model and its DSL, the `Datastore` contract, the generic index core (`materialize`), the in-memory datastore and its index |
+| postgres | `github.com/matick-io/authz/postgres` | pgx, the core at a pinned version | the Postgres datastore and its migrations, and `postgres/index`: the nesting closure and permission sets, kept in the same database |
+| tests | `github.com/matick-io/authz/tests` | everything, plus the SpiceDB client | the validation files, SpiceDB's corpus, the differential and conformance suites, the benchmarks |
+
+The postgres module requires the core by version, never through a `replace`,
+so `go get` works from any module; `go.work` makes the local core win while
+developing here. Bump that pin when the postgres module needs something newer
+from the core.
 
 Planned, not yet present: an `api` module offering the SpiceDB v1 gRPC surface
 over the core, and a `cmd` module building a standalone server from `api` and
@@ -51,16 +58,14 @@ over the core, and a `cmd` module building a standalone server from `api` and
 import (
     "github.com/jackc/pgx/v5/pgxpool"
 
-    "github.com/khaossystems/authz"
-    "github.com/khaossystems/authz/postgres"
+    "github.com/matick-io/authz"
+    "github.com/matick-io/authz/dsl"
+    "github.com/matick-io/authz/engine"
+    "github.com/matick-io/authz/postgres"
+    "github.com/matick-io/authz/postgres/index"
 )
 
-pool, _ := pgxpool.New(ctx, databaseURL)
-if err := postgres.Migrate(ctx, pool); err != nil { ... }
-
-svc := authz.New(postgres.New(pool))
-
-err := svc.WriteSchema(ctx, `
+sch, err := dsl.Parse(`
 definition user {}
 
 definition team {
@@ -76,6 +81,16 @@ definition project {
 }
 `)
 
+pool, _ := pgxpool.New(ctx, databaseURL)
+if err := postgres.Migrate(ctx, pool); err != nil { ... }
+if err := index.Migrate(ctx, pool); err != nil { ... }
+
+// With the index, nested usersets and materialisable permissions answer in
+// one query each. Without it, engine.New(postgres.New(pool), sch) walks.
+a, err := index.Attach(pool, sch)
+svc, err := engine.New(a.Datastore, sch, a.Options...)
+if err := svc.ValidateStored(ctx); err != nil { ... } // the stored grants still fit the schema
+
 err = svc.WriteRelationships(ctx, []authz.RelationshipUpdate{
     {Operation: authz.OperationCreate, Relationship: mustParse("project:p1#member@team:core#member")},
     {Operation: authz.OperationCreate, Relationship: mustParse("team:core#member@user:alice")},
@@ -89,32 +104,56 @@ ids, err := svc.LookupResources(ctx, "project", "view",
     authz.SubjectRef{Object: authz.ObjectRef{Type: "user", ID: "alice"}}, 0)
 ```
 
+The schema is code: `dsl.Parse` reads the SpiceDB DSL and `schema.Build`
+builds the same value without a parser. An engine is built for one schema;
+changing it means building a new engine, after `ValidateStored` says the
+grants already stored still fit.
+
 `authz.ParseRelationship` reads the SpiceDB tuple form,
 `type:id#relation@type:id[#relation]`, and `Relationship.String` writes it.
 
 For tests, `memory.New()` is a datastore with the same contract and no
-database.
+database, and `memory.NewIndex` is its index.
+
+### A grant commits with the row it protects
+
+```go
+tx, err := pool.Begin(ctx)
+defer tx.Rollback(ctx)
+// ... insert the application row ...
+err = a.Datastore.TransactIn(ctx, tx, func(w authz.Writer) error {
+    return svc.WriteRelationshipsIn(ctx, w, updates)
+})
+// ... tx.Commit(ctx)
+```
+
+`TransactIn` does everything a write does, the change log and the index
+included, inside the transaction you hand it. Call it last: the change log's
+lock is held until the transaction ends.
 
 ## The API, next to SpiceDB's
 
 | SpiceDB v1 | Here | Notes |
 |---|---|---|
-| `WriteSchema` | `WriteSchema` | refuses a schema that would orphan stored relationships |
-| `ReadSchema` | `ReadSchema` | |
+| `WriteSchema`, `ReadSchema` | absent | the schema is code; `ValidateStored` checks the store against it |
 | `ReadRelationships` | `ReadRelationships` | filter plus a limit; no cursor |
 | `WriteRelationships` | `WriteRelationships` | create, touch, delete; preconditions; one transaction |
+| | `WriteRelationshipsIn` | the same, inside a transaction the caller owns |
+| | `ImportRelationships` | many creates in one pass, for loading a dataset |
 | `DeleteRelationships` | `DeleteRelationships` | by filter, with preconditions |
 | `CheckPermission` | `CheckPermission` | returns a bool; no caveats, so no conditional result |
-| `CheckBulkPermissions` | `CheckBulkPermissions` | one snapshot, per-item errors |
+| `CheckBulkPermissions` | `CheckBulkPermissions` | one snapshot, per-item errors; requests that differ only in the resource id share one walk |
 | `ExpandPermissionTree` | `ExpandPermissionTree` | |
 | `LookupResources` | `LookupResources` | sorted ids, caller-chosen limit, never truncated silently |
 | `LookupSubjects` | `LookupSubjects` | exact wildcard algebra, with excluded ids |
-| `Watch` | absent | |
+| `Watch` | absent | the change log, `Reader.Changes`, is the same stream as a table |
 | caveats, zed tokens | absent | |
 
 An unknown type, permission or subject type is an error, never a silent
 denial. A resolution that runs past the depth limit is an error, never a
-truncated answer.
+truncated answer. A cycle in the data, such as a folder whose parent is its own
+descendant, resolves as in Zanzibar: a path that returns to an open question
+contributes nothing, and the memo keeps no answer that rested on one.
 
 ## Schema language
 
@@ -130,72 +169,87 @@ definition <type> {
 where an expression is a relation or permission on the same type, an arrow
 `relation->name`, or a combination with `+`, `&` and `-`. Mixing operators in
 one expression requires parentheses, as in SpiceDB. Arrows start from a
-relation and cannot walk a relation that allows a wildcard. Comments use `//`
+relation and cannot walk a relation that allows a wildcard. `nil` is the
+empty set. Type names may carry a `prefix/`, as in SpiceDB. Comments use `//`
 and `/* */`.
 
-## Datastores and the nesting index
+## Datastores and indexes
 
 A datastore implements `authz.Datastore`: a `View` at one read snapshot and a
 `Transact` that commits only on success, over a `Reader` and `Writer` the
-engine calls.
+engine calls, plus a change log. Every write records what came into being and
+what went, under a revision drawn in commit order, so an index or a mirror can
+follow it without missing a step.
 
-The contract is stronger than SpiceDB's in one way. Two of the reader's
-methods, `NestedRelationships` and `NestedResourceIDs`, must answer questions
-about nested usersets in one call however deep the nesting, so the engine never
-walks nesting itself. Only arrows and usersets whose relation is a permission
-recurse, and only they count against the depth limit.
+The engine is correct on a bare datastore. Two optional indexes make it fast,
+after Zanzibar's Leopard and AuthZed's Materialize:
 
-The Postgres datastore meets that obligation with a Leopard-style index:
-`authz.userset_closure` holds the transitive closure of nesting edges,
-maintained in the same transaction as the relationship write. Writes that touch
-the index serialise on an advisory lock; plain grants never take it. `Reindex`
-rebuilds the table from the relationships and is the oracle a property test
-checks the maintained index against after every step of a random edit
-sequence. A budget refuses a single write that would add more index rows than
-allowed.
+- a `NestingIndex` answers questions about nested usersets in one call however
+  deep the nesting, so only arrows count against the depth limit;
+- a `PermissionIndex` precomputes whole permissions, for the rewrites a set can
+  represent: unions, references and arrows, with no wildcard, intersection or
+  exclusion on the path.
 
-The in-memory datastore answers the same methods by search at query time, so
-the two stores check each other.
+Package `materialize` holds what every implementation shares: the derivation
+of closure and set rows from relationships, the comparison of a maintained
+index with a fresh derivation, and the follower that feeds an index from the
+change log. The Postgres index in `postgres/index` keeps both in two tables
+beside the relationships, maintained in SQL inside the write's own transaction
+when attached through the datastore's hook, or with some lag through `Follow`.
+Writes that touch the index serialise on an advisory lock; plain grants never
+take it. `Verify` compares the tables with a recomputation, `Reindex` rebuilds
+them, and a budget refuses a single write that would add more closure rows
+than allowed. The memory index is a `materialize.Snapshot` rebuilt on change:
+exact by construction, and the reference the Postgres index is held to.
 
-Any datastore must pass `datastoretest.Run`.
+Every datastore in this repository passes the conformance suite in
+`internal/datastoretest`.
 
-## Samples
+## Validation files
 
-`samples/<name>/` holds a scenario as data: `schema.zed`,
-`relationships.txt` (one tuple per line) and `assertions.txt`:
+`tests/samples/*.yaml` hold scenarios as data, in SpiceDB's validation-file
+format: a schema, its relationships, assertions, and the subjects each object
+expands to. `tests/corpus/spicedb/` is SpiceDB's own integration corpus, copied
+with its licence and notice; a file needing caveats, expiration or
+intersection arrows is skipped with the reason.
 
-```
-check     project:p1#view@user:alice     true
-resources project#view@user:bob          p1,p2,p3
-subjects  project:p2#view user           *-hank
-subjects  project:p1#view team#member    core,leads
-```
+Every file runs on every kind: memory, memory with its index, Postgres bare,
+with the closure, with the permission sets, and SpiceDB itself when one is
+reachable. After the assertions and the validation block, a consistency pass
+checks every (resource, relation, subject) pair the file gives rise to,
+requires both lookups to return exactly the pairs that checked true, and
+compares the matrices across kinds. Add a scenario there rather than as Go
+code.
 
-`sampletest.RunAll` runs every sample against a datastore. The core runs them
-against memory; the Postgres module runs them against Postgres, so each sample
-is also a differential test between the two. Add a scenario there rather than
-as Go code.
+Beside the files: a differential test that writes random relationships to
+every kind and asks random questions, holding the indexed kinds to the walk
+and the walk to SpiceDB; conformance tables for what a write refuses and which
+schemas each side accepts; and scenario benchmarks with SpiceDB as the peer.
 
 ## Testing
 
 ```bash
-go test ./...
+go test ./... ./postgres/... ./tests/...
 ```
 
-runs everything that needs no database. The Postgres suite, the closure
-property test included, reads `AUTHZ_TEST_DATABASE_URL`, drops and recreates
-the `authz` schema in that database, and skips when the variable is unset:
+runs everything that needs no database. The Postgres suites read
+`AUTHZ_TEST_DATABASE_URL`, drop and recreate the `authz` schema in that
+database, and skip when the variable is unset; point it at a scratch database:
 
 ```bash
-cd postgres && AUTHZ_TEST_DATABASE_URL=postgres://user:pass@localhost:5432/authz_test go test ./...
+AUTHZ_TEST_DATABASE_URL='postgres://user:pass@localhost:5432/authz_test?sslmode=disable' \
+  go test ./... ./postgres/... ./tests/...
 ```
 
-Point it at a scratch database.
+`AUTHZ_SPICEDB=label=host:port`, comma separated for several instances, and
+`AUTHZ_SPICEDB_KEY` add SpiceDB as a kind, which is how CI runs.
+`AUTHZ_DIFF_ROUNDS` scales the differential test. The benchmarks are
+`go test ./tests -run '^$' -bench BenchmarkScenarios`; `tests/cmd/benchreport`
+lays their output out per scenario, and CI publishes the comparison to the
+gh-pages branch.
 
 ## Roadmap
 
-- Host-owned transactions: hand the engine your own `pgx.Tx` so a grant and the
-  row it protects commit together.
-- A real SpiceDB as a differential oracle in CI over the samples.
 - The `api` module, wire-compatible with SpiceDB v1 where the feature exists.
-- Per-module version tags once something external pins one.
+- Version tags once something external pins one; until then the postgres
+  module pins the core by commit.

@@ -9,6 +9,11 @@
 // write transaction with the Change it produced; an index that can lag follows
 // Changes instead. Tx hands an index the transaction behind a Reader so it can
 // query its own tables at the same snapshot.
+//
+// A write can also run inside a transaction the application owns, so a grant
+// commits with the row it protects or not at all: TransactIn takes the
+// application's pgx.Tx and does everything Transact does except begin and
+// commit.
 package postgres
 
 import (
@@ -119,30 +124,63 @@ func (d *Datastore) View(ctx context.Context, fn func(authz.Reader) error) error
 	return tx.Commit(ctx)
 }
 
-// Transact runs fn in a read-committed transaction, records the change it
-// produced, runs the hooks, and commits if everything returned nil.
+// Transact runs fn in a read-committed transaction of its own, records the
+// change it produced, runs the hooks, and commits if everything returned nil.
 func (d *Datastore) Transact(ctx context.Context, fn func(authz.Writer) error) error {
 	tx, err := d.pool.Begin(ctx)
 	if err != nil {
 		return err
 	}
 	defer tx.Rollback(ctx) //nolint:errcheck // AI: rollback after commit is a no-op
+	if err := d.TransactIn(ctx, tx, fn); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// TransactIn is Transact inside a transaction the caller owns: fn runs on a
+// Writer over tx, then the change is recorded and the hooks run, all in tx,
+// and the caller commits or rolls back. It is how a grant lands in the same
+// transaction as the application row it protects:
+//
+//	tx, err := pool.Begin(ctx)
+//	defer tx.Rollback(ctx)
+//	// ... insert the row ...
+//	err = ds.TransactIn(ctx, tx, func(w authz.Writer) error {
+//	    return svc.WriteRelationshipsIn(ctx, w, updates)
+//	})
+//	// ... commit
+//
+// Call it last, just before the commit: the change log's lock is taken here
+// and held until tx ends, and every other write that changed something waits
+// on it. AI: the change log and the hooks belong to the write, not to the
+// commit, so they run here rather than in Transact; a Writer handed out
+// without them would leave every index and mirror behind.
+func (d *Datastore) TransactIn(ctx context.Context, tx pgx.Tx, fn func(authz.Writer) error) error {
 	c := &conn{q: tx}
 	if err := fn(c); err != nil {
 		return err
 	}
-	if len(c.recorded) > 0 {
-		change, err := c.logChange(ctx)
-		if err != nil {
+	return d.finish(ctx, tx, c)
+}
+
+// finish is the tail of every write that may have changed something: the
+// change log rows and the hooks, inside tx. A write that changed nothing
+// records nothing and runs no hook.
+func (d *Datastore) finish(ctx context.Context, tx pgx.Tx, c *conn) error {
+	if len(c.recorded) == 0 {
+		return nil
+	}
+	change, err := c.logChange(ctx)
+	if err != nil {
+		return err
+	}
+	for _, h := range d.hooks {
+		if err := h(ctx, tx, change); err != nil {
 			return err
 		}
-		for _, h := range d.hooks {
-			if err := h(ctx, tx, change); err != nil {
-				return err
-			}
-		}
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 
 // CreateAll implements authz.BulkCreator: one COPY into the relationships,
@@ -171,14 +209,8 @@ func (d *Datastore) CreateAll(ctx context.Context, rels []authz.Relationship) er
 	for _, r := range rels {
 		c.record(authz.OperationTouch, r)
 	}
-	change, err := c.logChange(ctx)
-	if err != nil {
+	if err := d.finish(ctx, tx, c); err != nil {
 		return err
-	}
-	for _, h := range d.hooks {
-		if err := h(ctx, tx, change); err != nil {
-			return err
-		}
 	}
 	// AI: a bulk load leaves the planner's statistics behind until autoanalyze
 	// catches up, and until then every query on the new rows plans as if the

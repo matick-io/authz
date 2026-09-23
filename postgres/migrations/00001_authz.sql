@@ -21,12 +21,6 @@ create table if not exists authz.relationship (
 create index if not exists relationship_by_subject
     on authz.relationship (subject_type, subject_id, subject_relation, resource_type, relation);
 
-create table if not exists authz.schema_definition (
-    id         smallint    primary key default 1,
-    definition text        not null,
-    updated_at timestamptz not null default now(),
-    constraint schema_definition_singleton check (id = 1)
-);
 
 -- +goose Down
 drop schema if exists authz cascade;

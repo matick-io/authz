@@ -4,7 +4,12 @@ go 1.25.0
 
 require (
 	github.com/jackc/pgx/v5 v5.10.0
-	github.com/matick-io/authz v0.0.0
+	// AI: the core is pinned by version, never by path. A consumer ignores
+	// replace directives, so a module that only builds through one only
+	// builds here; go.work makes the local core win while developing. Bump
+	// the pin when this module needs something newer from the core, and
+	// replace it with a tag once one exists.
+	github.com/matick-io/authz v0.0.0-20260923122543-36f551dfea5d
 )
 
 require (
@@ -14,5 +19,3 @@ require (
 	golang.org/x/sync v0.17.0 // indirect
 	golang.org/x/text v0.29.0 // indirect
 )
-
-replace github.com/matick-io/authz => ../

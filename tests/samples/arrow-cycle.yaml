@@ -1,0 +1,49 @@
+---
+schema: |-
+  // An arrow cycle in the data (m's parent is n, n's parent is m) under a
+  // permission that asks one question twice in a single resolution. The
+  // intersection's first operand opens m#view, reaches n#view through it,
+  // and n re-enters m while it is still open, so n is answered provisionally
+  // on that path. The union's second operand then asks n#view again. An
+  // engine that kept the provisional answer says false for x on top#special;
+  // the answer is true, through n's parent m, which x owns.
+  definition user {}
+
+  definition doc {
+      relation parent: doc
+      relation other: doc
+      relation viewer: user
+      relation owner: user
+      permission view = viewer + parent->view + owner
+      permission special = (parent->view & viewer) + other->view
+  }
+relationships: |-
+  doc:top#parent@doc:m
+  doc:top#other@doc:n
+  doc:top#viewer@user:y
+  doc:m#parent@doc:n
+  doc:m#viewer@user:y
+  doc:m#owner@user:x
+  doc:n#parent@doc:m
+assertions:
+  assertTrue:
+    - "doc:m#view@user:x"
+    - "doc:n#view@user:x"
+    - "doc:top#view@user:x"
+    - "doc:top#special@user:x"
+    - "doc:top#special@user:y"
+    - "doc:m#special@user:y"
+  assertFalse:
+    - "doc:m#special@user:x"
+    - "doc:n#special@user:x"
+    - "doc:n#special@user:y"
+    - "doc:top#special@user:z"
+validation:
+  "doc:top#special":
+    - "[user:x] is <doc:top#special>"
+    - "[user:y] is <doc:top#special>"
+  "doc:m#special":
+    - "[user:y] is <doc:m#special>"
+  "doc:n#view":
+    - "[user:x] is <doc:n#view>"
+    - "[user:y] is <doc:n#view>"
