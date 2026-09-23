@@ -6,42 +6,42 @@ Time per operation; lower is better. Every kind answered the same questions with
 
 | scenario | memory vs spicedb-memdb | memory+index vs spicedb-postgres | postgres vs spicedb-postgres | postgres+closure vs spicedb-postgres | postgres+sets vs spicedb-postgres |
 |---|---:|---:|---:|---:|---:|
-| **all scenarios** | **2.05×** (85 ops) | **0.03×** (85 ops) | **1.45×** (85 ops) | **1.36×** (85 ops) | **1.25×** (85 ops) |
-| pattern/name=wide_team | 2.01× | 0.02× | 2.87× | 1.74× | 1.87× |
-| pattern/name=deep_nesting | 0.02× | 0.00× | 0.82× | 3.10× | 1.97× |
-| pattern/name=hub_user | 0.87× | 0.01× | 1.38× | 1.27× | 0.92× |
-| pattern/name=needle | 3.63× | 0.00× | 1.09× | 1.38× | 1.08× |
-| pattern/name=fan_in | 8.68× | 0.03× | 37.7× | 1.14× | 1.00× |
-| pattern/name=dag | 0.89× | 0.01× | 1.22× | 0.76× | 0.79× |
-| pattern/name=arrow_chain | 0.29× | 0.01× | 11.8× | 20.2× | 1.13× |
-| pattern/name=wildcard_ban | 3.55× | 0.04× | 2.06× | 1.88× | 1.86× |
-| scale/resources=1000/density=10/path=direct | 0.38× | 0.01× | 0.79× | 1.09× | 1.25× |
-| scale/resources=1000/density=90/path=direct | 0.54× | 0.02× | 1.06× | 1.08× | 1.12× |
-| scale/resources=1000/density=10/path=team | 0.46× | 0.01× | 0.91× | 1.08× | 1.11× |
-| scale/resources=10000/density=10/path=direct | 3.31× | 0.03× | 0.85× | 0.97× | 0.98× |
-| scale/resources=10000/density=90/path=direct | 3.48× | 0.04× | 0.86× | 0.94× | 1.22× |
-| scale/resources=10000/density=10/path=team | 3.98× | 0.03× | 0.86× | 1.20× | 1.22× |
-| scale/resources=100000/density=10/path=direct | 8.95× | 0.20× | 0.88× | 1.06× | 1.42× |
-| scale/resources=100000/density=90/path=direct | 8.97× | 0.18× | 0.78× | 0.90× | 1.22× |
-| scale/resources=100000/density=10/path=team | 10.5× | 0.16× | 0.86× | 1.40× | 1.61× |
+| **all scenarios** | **2.30×** (85 ops) | **0.03×** (85 ops) | **1.32×** (85 ops) | **1.41×** (85 ops) | **1.27×** (85 ops) |
+| pattern/name=wide_team | 2.00× | 0.02× | 2.58× | 1.83× | 1.54× |
+| pattern/name=deep_nesting | 0.02× | 0.01× | 0.54× | 4.92× | 5.12× |
+| pattern/name=hub_user | 0.84× | 0.01× | 1.48× | 1.38× | 1.06× |
+| pattern/name=needle | 3.14× | 0.00× | 1.07× | 1.47× | 1.14× |
+| pattern/name=fan_in | 7.78× | 0.03× | 36.4× | 1.10× | 0.99× |
+| pattern/name=dag | 0.88× | 0.02× | 1.50× | 1.02× | 1.22× |
+| pattern/name=arrow_chain | 0.26× | 0.01× | 11.9× | 21.5× | 1.18× |
+| pattern/name=wildcard_ban | 3.69× | 0.03× | 2.12× | 1.87× | 1.93× |
+| scale/resources=1000/density=10/path=direct | 0.35× | 0.02× | 0.80× | 1.19× | 1.21× |
+| scale/resources=1000/density=90/path=direct | 0.49× | 0.03× | 0.74× | 1.00× | 1.08× |
+| scale/resources=1000/density=10/path=team | 0.42× | 0.02× | 0.96× | 1.28× | 1.20× |
+| scale/resources=10000/density=10/path=direct | 2.92× | 0.04× | 0.73× | 0.96× | 0.99× |
+| scale/resources=10000/density=90/path=direct | 2.94× | 0.06× | 0.70× | 0.87× | 1.07× |
+| scale/resources=10000/density=10/path=team | 3.50× | 0.04× | 0.82× | 1.31× | 1.45× |
+| scale/resources=100000/density=10/path=direct | 19.9× | 0.21× | 0.66× | 0.84× | 1.07× |
+| scale/resources=100000/density=90/path=direct | 20.5× | 0.21× | 0.65× | 0.82× | 0.94× |
+| scale/resources=100000/density=10/path=team | 26.4× | 0.22× | 0.76× | 1.75× | 1.93× |
 
 ## pattern/name=wide_team
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| check_hit | 2.5 ms (7.66×) | 1.8 µs (0.00×) | 4.5 ms (7.64×) | 605.3 µs (1.03×) | 748.9 µs (1.27×) | 330.1 µs | 589.5 µs |
-| check_miss | 2.6 ms (7.93×) | 7.0 µs (0.01×) | 4.7 ms (7.92×) | 1.0 ms (1.69×) | 752.1 µs (1.26×) | 327.9 µs | 595.3 µs |
-| lookup_one_member | 749.2 µs (2.15×) | 2.0 µs (0.00×) | 3.7 ms (6.05×) | 904.9 µs (1.50×) | 672.5 µs (1.11×) | 348.6 µs | 603.8 µs |
-| subjects_all | 3.4 ms (0.76×) | 696.7 µs (0.15×) | 5.7 ms (1.24×) | 7.0 ms (1.54×) | 3.2 ms (0.71×) | 4.5 ms | 4.6 ms |
-| bulk_200 | 5.3 ms (1.70×) | 444.8 µs (0.13×) | 7.6 ms (2.16×) | 90.1 ms (25.6×) | 100.7 ms (28.7×) | 3.1 ms | 3.5 ms |
-| toggle_grant | 324.1 µs (0.39×) | 314.6 µs (0.02×) | 8.3 ms (0.57×) | 3.9 ms (0.27×) | 16.8 ms (1.16×) | 831.3 µs | 14.5 ms |
+| check_hit | 2.9 ms (8.12×) | 2.0 µs (0.00×) | 4.7 ms (7.30×) | 648.6 µs (1.01×) | 815.8 µs (1.27×) | 362.3 µs | 643.1 µs |
+| check_miss | 2.9 ms (8.20×) | 6.6 µs (0.01×) | 4.9 ms (7.76×) | 1.0 ms (1.60×) | 807.4 µs (1.28×) | 354.3 µs | 629.1 µs |
+| lookup_one_member | 806.9 µs (2.14×) | 2.3 µs (0.00×) | 3.5 ms (5.26×) | 892.3 µs (1.34×) | 682.3 µs (1.03×) | 377.6 µs | 663.6 µs |
+| subjects_all | 3.8 ms (0.71×) | 781.9 µs (0.14×) | 6.0 ms (1.10×) | 7.3 ms (1.35×) | 2.5 ms (0.46×) | 5.3 ms | 5.4 ms |
+| bulk_200 | 5.8 ms (1.62×) | 565.9 µs (0.13×) | 8.1 ms (1.84×) | 102.3 ms (23.1×) | 116.2 ms (26.2×) | 3.6 ms | 4.4 ms |
+| toggle_grant | 328.2 µs (0.39×) | 332.0 µs (0.08×) | 2.0 ms (0.49×) | 2.3 ms (0.56×) | 2.7 ms (0.66×) | 840.9 µs | 4.1 ms |
 
 ```mermaid
 xychart-beta
     title "pattern/name=wide_team: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [2.527, 0.002, 4.504, 0.605, 0.749, 0.330, 0.589]
+    bar [2.943, 0.002, 4.695, 0.649, 0.816, 0.362, 0.643]
 ```
 
 ```mermaid
@@ -49,26 +49,26 @@ xychart-beta
     title "pattern/name=wide_team: lookup_one_member (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.749, 0.002, 3.651, 0.905, 0.672, 0.349, 0.604]
+    bar [0.807, 0.002, 3.493, 0.892, 0.682, 0.378, 0.664]
 ```
 
 ## pattern/name=deep_nesting
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| check_hit | 199.7 µs | 4.8 µs | 15.3 ms | 1.3 ms | 785.8 µs | | |
-| check_miss | 195.3 µs | 4.9 µs | 14.4 ms | 1.6 ms | 767.0 µs | | |
-| lookup_all_teams | 5.9 ms | 26.3 µs | 37.8 ms | 1.6 ms | 1.6 ms | | |
-| subjects_at_top | 220.4 µs | 5.5 µs | 14.9 ms | 1.5 ms | 751.2 µs | | |
-| toggle_top_edge | 16.3 µs (0.02×) | 16.1 µs (0.00×) | 16.4 ms (1.15×) | 91.2 ms (6.41×) | 54.3 ms (3.81×) | 782.5 µs | 14.2 ms |
-| toggle_bottom_edge | 16.2 µs (0.02×) | 16.1 µs (0.00×) | 7.6 ms (0.59×) | 19.3 ms (1.50×) | 13.1 ms (1.01×) | 795.6 µs | 12.9 ms |
+| check_hit | 187.1 µs | 5.8 µs | 15.6 ms | 1.5 ms | 921.3 µs | | |
+| check_miss | 178.9 µs | 6.0 µs | 15.9 ms | 1.8 ms | 824.4 µs | | |
+| lookup_all_teams | 6.8 ms | 28.6 µs | 38.7 ms | 1.8 ms | 1.8 ms | | |
+| subjects_at_top | 223.9 µs | 7.0 µs | 15.9 ms | 1.6 ms | 768.8 µs | | |
+| toggle_top_edge | 17.8 µs (0.02×) | 18.0 µs (0.01×) | 1.8 ms (0.52×) | 41.5 ms (11.8×) | 42.4 ms (12.0×) | 853.9 µs | 3.5 ms |
+| toggle_bottom_edge | 18.7 µs (0.02×) | 18.3 µs (0.01×) | 1.9 ms (0.55×) | 6.9 ms (2.05×) | 7.3 ms (2.18×) | 861.1 µs | 3.4 ms |
 
 ```mermaid
 xychart-beta
     title "pattern/name=deep_nesting: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets"]
     y-axis "ms/op"
-    bar [0.200, 0.005, 15.338, 1.310, 0.786]
+    bar [0.187, 0.006, 15.638, 1.462, 0.921]
 ```
 
 ```mermaid
@@ -76,23 +76,23 @@ xychart-beta
     title "pattern/name=deep_nesting: lookup_all_teams (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets"]
     y-axis "ms/op"
-    bar [5.858, 0.026, 37.778, 1.617, 1.602]
+    bar [6.780, 0.029, 38.715, 1.786, 1.779]
 ```
 
 ## pattern/name=hub_user
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup_hub | 848.7 µs (1.32×) | 19.8 µs (0.02×) | 1.9 ms (2.37×) | 846.1 µs (1.03×) | 652.1 µs (0.79×) | 644.2 µs | 822.6 µs |
-| lookup_single_owner | 430.3 µs (1.21×) | 1.9 µs (0.00×) | 1.1 ms (1.65×) | 824.4 µs (1.28×) | 536.4 µs (0.83×) | 356.2 µs | 643.8 µs |
-| check_miss | 140.2 µs (0.42×) | 1.6 µs (0.00×) | 410.3 µs (0.68×) | 938.2 µs (1.55×) | 705.0 µs (1.16×) | 334.9 µs | 606.3 µs |
+| lookup_hub | 883.4 µs (1.28×) | 21.6 µs (0.02×) | 2.1 ms (2.35×) | 988.9 µs (1.09×) | 783.6 µs (0.86×) | 692.7 µs | 909.6 µs |
+| lookup_single_owner | 454.2 µs (1.21×) | 2.2 µs (0.00×) | 1.1 ms (1.77×) | 972.8 µs (1.50×) | 687.5 µs (1.06×) | 375.5 µs | 648.8 µs |
+| check_miss | 140.5 µs (0.38×) | 2.0 µs (0.00×) | 499.0 µs (0.78×) | 1.0 ms (1.61×) | 820.5 µs (1.29×) | 370.6 µs | 637.7 µs |
 
 ```mermaid
 xychart-beta
     title "pattern/name=hub_user: lookup_hub (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.849, 0.020, 1.947, 0.846, 0.652, 0.644, 0.823]
+    bar [0.883, 0.022, 2.139, 0.989, 0.784, 0.693, 0.910]
 ```
 
 ```mermaid
@@ -100,23 +100,23 @@ xychart-beta
     title "pattern/name=hub_user: lookup_single_owner (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.430, 0.002, 1.061, 0.824, 0.536, 0.356, 0.644]
+    bar [0.454, 0.002, 1.146, 0.973, 0.687, 0.376, 0.649]
 ```
 
 ## pattern/name=needle
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup_needle | 2.2 ms (6.22×) | 2.0 µs (0.00×) | 1.0 ms (1.69×) | 816.2 µs (1.34×) | 554.0 µs (0.91×) | 347.9 µs | 610.5 µs |
-| check_needle | 785.9 µs (2.41×) | 1.7 µs (0.00×) | 413.1 µs (0.70×) | 845.7 µs (1.43×) | 731.9 µs (1.24×) | 326.5 µs | 591.6 µs |
-| lookup_nobody | 1.1 ms (3.20×) | 1.5 µs (0.00×) | 636.1 µs (1.10×) | 795.3 µs (1.37×) | 642.9 µs (1.11×) | 330.7 µs | 580.1 µs |
+| lookup_needle | 2.0 ms (5.30×) | 2.3 µs (0.00×) | 1.0 ms (1.60×) | 877.5 µs (1.35×) | 656.5 µs (1.01×) | 376.1 µs | 648.0 µs |
+| check_needle | 744.0 µs (2.00×) | 2.1 µs (0.00×) | 471.9 µs (0.75×) | 971.8 µs (1.55×) | 807.8 µs (1.29×) | 371.7 µs | 627.4 µs |
+| lookup_nobody | 997.5 µs (2.91×) | 1.8 µs (0.00×) | 622.8 µs (1.02×) | 927.9 µs (1.52×) | 685.0 µs (1.12×) | 343.3 µs | 611.2 µs |
 
 ```mermaid
 xychart-beta
     title "pattern/name=needle: lookup_needle (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [2.165, 0.002, 1.032, 0.816, 0.554, 0.348, 0.611]
+    bar [1.992, 0.002, 1.034, 0.878, 0.657, 0.376, 0.648]
 ```
 
 ```mermaid
@@ -124,76 +124,76 @@ xychart-beta
     title "pattern/name=needle: lookup_nobody (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [1.059, 0.002, 0.636, 0.795, 0.643, 0.331, 0.580]
+    bar [0.997, 0.002, 0.623, 0.928, 0.685, 0.343, 0.611]
 ```
 
 ## pattern/name=fan_in
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| check_last | 6.8 ms (20.2×) | 21.1 µs (0.04×) | 59.1 ms (103×) | 579.3 µs (1.01×) | 734.0 µs (1.28×) | 339.1 µs | 572.7 µs |
-| check_miss | 7.6 ms (23.2×) | 19.9 µs (0.03×) | 62.7 ms (108×) | 971.0 µs (1.67×) | 776.8 µs (1.34×) | 328.7 µs | 581.2 µs |
-| subjects_teams | 17.2 ms (6.62×) | 228.6 µs (0.09×) | 77.1 ms (29.1×) | 2.1 ms (0.79×) | 2.0 ms (0.76×) | 2.6 ms | 2.7 ms |
-| subjects_users | 16.9 ms (11.2×) | 180.2 µs (0.10×) | 78.7 ms (41.5×) | 2.1 ms (1.10×) | 1.5 ms (0.78×) | 1.5 ms | 1.9 ms |
-| lookup_one | 514.6 µs (1.43×) | 2.0 µs (0.00×) | 3.4 ms (5.64×) | 787.6 µs (1.30×) | 584.0 µs (0.97×) | 361.1 µs | 604.9 µs |
+| check_last | 6.7 ms (18.8×) | 23.0 µs (0.04×) | 63.7 ms (101×) | 603.4 µs (0.96×) | 862.2 µs (1.37×) | 355.0 µs | 631.6 µs |
+| check_miss | 7.7 ms (21.6×) | 20.4 µs (0.03×) | 73.9 ms (119×) | 948.9 µs (1.53×) | 806.8 µs (1.30×) | 354.5 µs | 622.1 µs |
+| subjects_teams | 17.2 ms (5.82×) | 251.8 µs (0.08×) | 79.2 ms (25.5×) | 2.2 ms (0.72×) | 2.2 ms (0.72×) | 3.0 ms | 3.1 ms |
+| subjects_users | 16.5 ms (9.77×) | 199.8 µs (0.10×) | 77.2 ms (39.5×) | 2.1 ms (1.10×) | 1.4 ms (0.74×) | 1.7 ms | 2.0 ms |
+| lookup_one | 497.2 µs (1.24×) | 2.3 µs (0.00×) | 3.5 ms (5.30×) | 911.7 µs (1.38×) | 670.4 µs (1.02×) | 400.7 µs | 659.1 µs |
 
 ```mermaid
 xychart-beta
     title "pattern/name=fan_in: lookup_one (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.515, 0.002, 3.415, 0.788, 0.584, 0.361, 0.605]
+    bar [0.497, 0.002, 3.493, 0.912, 0.670, 0.401, 0.659]
 ```
 
 ## pattern/name=dag
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| check_top | 151.9 µs (0.45×) | 2.5 µs (0.00×) | 968.1 µs (1.65×) | 586.5 µs (1.00×) | 799.6 µs (1.36×) | 339.9 µs | 586.5 µs |
-| lookup_all_layers | 4.5 ms (6.39×) | 18.1 µs (0.02×) | 5.5 ms (5.86×) | 610.4 µs (0.65×) | 580.2 µs (0.62×) | 699.4 µs | 936.4 µs |
-| toggle_bottom_edge | 189.5 µs (0.24×) | 185.3 µs (0.01×) | 5.7 ms (0.19×) | 20.8 ms (0.68×) | 17.8 ms (0.58×) | 775.0 µs | 30.5 ms |
+| check_top | 157.2 µs (0.45×) | 3.0 µs (0.00×) | 1.0 ms (1.65×) | 630.0 µs (1.00×) | 989.0 µs (1.57×) | 351.4 µs | 630.5 µs |
+| lookup_all_layers | 5.3 ms (6.87×) | 20.0 µs (0.02×) | 4.4 ms (4.21×) | 641.4 µs (0.61×) | 645.2 µs (0.61×) | 770.4 µs | 1.1 ms |
+| toggle_bottom_edge | 185.4 µs (0.22×) | 186.9 µs (0.05×) | 1.8 ms (0.48×) | 6.6 ms (1.75×) | 7.2 ms (1.90×) | 830.3 µs | 3.8 ms |
 
 ```mermaid
 xychart-beta
     title "pattern/name=dag: lookup_all_layers (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [4.466, 0.018, 5.483, 0.610, 0.580, 0.699, 0.936]
+    bar [5.289, 0.020, 4.426, 0.641, 0.645, 0.770, 1.052]
 ```
 
 ## pattern/name=arrow_chain
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| check_leaf | 65.6 µs (0.19×) | 2.4 µs (0.00×) | 8.1 ms (13.6×) | 13.5 ms (22.6×) | 771.8 µs (1.29×) | 343.0 µs | 596.1 µs |
-| check_miss | 66.6 µs (0.20×) | 3.3 µs (0.01×) | 7.9 ms (12.0×) | 14.3 ms (21.9×) | 699.9 µs (1.07×) | 327.5 µs | 653.6 µs |
-| lookup_all_folders | 425.1 µs (0.69×) | 10.6 µs (0.01×) | 8.0 ms (9.45×) | 12.6 ms (14.8×) | 844.9 µs (0.99×) | 614.5 µs | 850.5 µs |
-| subjects_leaf | 82.9 µs (0.25×) | 3.6 µs (0.01×) | 7.2 ms (12.3×) | 13.3 ms (22.6×) | 702.8 µs (1.20×) | 335.7 µs | 587.2 µs |
+| check_leaf | 63.6 µs (0.17×) | 2.7 µs (0.00×) | 8.5 ms (13.7×) | 15.3 ms (24.7×) | 842.0 µs (1.36×) | 381.4 µs | 620.1 µs |
+| check_miss | 63.0 µs (0.18×) | 3.9 µs (0.01×) | 8.6 ms (13.3×) | 15.6 ms (24.4×) | 815.7 µs (1.27×) | 356.0 µs | 640.8 µs |
+| lookup_all_folders | 485.6 µs (0.69×) | 10.6 µs (0.01×) | 8.6 ms (8.66×) | 14.4 ms (14.5×) | 914.3 µs (0.92×) | 700.7 µs | 990.6 µs |
+| subjects_leaf | 81.7 µs (0.22×) | 4.2 µs (0.01×) | 8.0 ms (12.7×) | 15.4 ms (24.3×) | 772.4 µs (1.22×) | 364.1 µs | 632.9 µs |
 
 ```mermaid
 xychart-beta
     title "pattern/name=arrow_chain: lookup_all_folders (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.425, 0.011, 8.037, 12.612, 0.845, 0.615, 0.850]
+    bar [0.486, 0.011, 8.581, 14.378, 0.914, 0.701, 0.991]
 ```
 
 ## pattern/name=wildcard_ban
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| check_unbanned | 7.3 ms (20.6×) | 43.0 µs (0.07×) | 3.1 ms (5.25×) | 926.7 µs (1.58×) | 941.8 µs (1.60×) | 355.1 µs | 587.1 µs |
-| check_banned | 7.2 ms (22.2×) | 44.9 µs (0.08×) | 3.1 ms (5.11×) | 892.7 µs (1.49×) | 923.1 µs (1.54×) | 323.2 µs | 598.4 µs |
-| subjects_wildcard_minus | 8.5 ms (2.61×) | 2.2 ms (0.72×) | 4.3 ms (1.43×) | 16.5 ms (5.41×) | 16.3 ms (5.37×) | 3.2 ms | 3.0 ms |
-| lookup_banned | 220.3 µs (0.69×) | 2.4 µs (0.00×) | 600.8 µs (1.04×) | 786.9 µs (1.36×) | 792.4 µs (1.37×) | 320.7 µs | 579.3 µs |
-| lookup_unbanned | 238.2 µs (0.68×) | 2.3 µs (0.00×) | 562.0 µs (0.93×) | 811.9 µs (1.35×) | 746.9 µs (1.24×) | 349.0 µs | 602.0 µs |
+| check_unbanned | 8.3 ms (22.3×) | 36.3 µs (0.06×) | 3.7 ms (5.86×) | 1.0 ms (1.61×) | 1.0 ms (1.63×) | 373.2 µs | 624.9 µs |
+| check_banned | 8.3 ms (23.8×) | 33.8 µs (0.05×) | 3.4 ms (5.41×) | 1.0 ms (1.58×) | 1.0 ms (1.61×) | 349.4 µs | 636.8 µs |
+| subjects_wildcard_minus | 9.7 ms (3.00×) | 2.4 ms (0.68×) | 4.9 ms (1.40×) | 17.2 ms (4.87×) | 17.2 ms (4.86×) | 3.2 ms | 3.5 ms |
+| lookup_banned | 239.7 µs (0.69×) | 2.8 µs (0.00×) | 638.8 µs (1.03×) | 875.6 µs (1.41×) | 944.8 µs (1.52×) | 346.0 µs | 621.0 µs |
+| lookup_unbanned | 230.1 µs (0.62×) | 2.8 µs (0.00×) | 597.4 µs (0.93×) | 841.0 µs (1.31×) | 872.1 µs (1.36×) | 372.0 µs | 639.6 µs |
 
 ```mermaid
 xychart-beta
     title "pattern/name=wildcard_ban: lookup_banned (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.220, 0.002, 0.601, 0.787, 0.792, 0.321, 0.579]
+    bar [0.240, 0.003, 0.639, 0.876, 0.945, 0.346, 0.621]
 ```
 
 ```mermaid
@@ -201,26 +201,26 @@ xychart-beta
     title "pattern/name=wildcard_ban: lookup_unbanned (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.238, 0.002, 0.562, 0.812, 0.747, 0.349, 0.602]
+    bar [0.230, 0.003, 0.597, 0.841, 0.872, 0.372, 0.640]
 ```
 
 ## scale/resources=1000/density=10/path=direct
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 907.9 µs (1.00×) | 38.4 µs (0.03×) | 2.1 ms (1.73×) | 1.0 ms (0.84×) | 870.3 µs (0.71×) | 909.1 µs | 1.2 ms |
-| check_hit | 45.0 µs (0.13×) | 1.6 µs (0.00×) | 306.2 µs (0.48×) | 604.8 µs (0.95×) | 933.4 µs (1.47×) | 339.0 µs | 635.2 µs |
-| check_miss | 86.3 µs (0.26×) | 1.6 µs (0.00×) | 455.5 µs (0.71×) | 1.0 ms (1.55×) | 928.9 µs (1.44×) | 333.1 µs | 644.2 µs |
-| bulk_100 | 960.9 µs (0.77×) | 182.5 µs (0.12×) | 1.8 ms (1.13×) | 2.6 ms (1.68×) | 2.2 ms (1.42×) | 1.2 ms | 1.6 ms |
-| subjects_one | 87.8 µs (0.24×) | 2.2 µs (0.00×) | 454.6 µs (0.70×) | 971.8 µs (1.50×) | 564.7 µs (0.87×) | 360.2 µs | 648.5 µs |
-| toggle_grant | 413.5 µs (0.49×) | 404.7 µs (0.03×) | 6.0 ms (0.52×) | 6.1 ms (0.53×) | 24.1 ms (2.08×) | 841.8 µs | 11.6 ms |
+| lookup | 902.8 µs (0.92×) | 43.9 µs (0.04×) | 2.2 ms (1.78×) | 1.2 ms (0.94×) | 918.4 µs (0.74×) | 981.0 µs | 1.2 ms |
+| check_hit | 41.6 µs (0.12×) | 2.0 µs (0.00×) | 319.0 µs (0.51×) | 687.2 µs (1.10×) | 1.1 ms (1.68×) | 352.3 µs | 627.6 µs |
+| check_miss | 78.3 µs (0.22×) | 2.0 µs (0.00×) | 450.4 µs (0.71×) | 1.1 ms (1.69×) | 1.1 ms (1.70×) | 348.8 µs | 635.1 µs |
+| bulk_100 | 1.0 ms (0.75×) | 209.8 µs (0.13×) | 2.0 ms (1.18×) | 3.3 ms (2.02×) | 2.5 ms (1.51×) | 1.4 ms | 1.7 ms |
+| subjects_one | 81.4 µs (0.22×) | 2.5 µs (0.00×) | 440.8 µs (0.69×) | 1.0 ms (1.63×) | 636.2 µs (0.99×) | 377.4 µs | 643.2 µs |
+| toggle_grant | 404.7 µs (0.48×) | 416.5 µs (0.12×) | 1.7 ms (0.49×) | 1.8 ms (0.50×) | 3.5 ms (0.99×) | 841.9 µs | 3.6 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=1000/density=10/path=direct: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.908, 0.038, 2.113, 1.020, 0.870, 0.909, 1.221]
+    bar [0.903, 0.044, 2.218, 1.164, 0.918, 0.981, 1.244]
 ```
 
 ```mermaid
@@ -228,26 +228,26 @@ xychart-beta
     title "scale/resources=1000/density=10/path=direct: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.045, 0.002, 0.306, 0.605, 0.933, 0.339, 0.635]
+    bar [0.042, 0.002, 0.319, 0.687, 1.055, 0.352, 0.628]
 ```
 
 ## scale/resources=1000/density=90/path=direct
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 5.5 ms (1.15×) | 485.8 µs (0.10×) | 6.3 ms (1.27×) | 2.0 ms (0.40×) | 2.0 ms (0.40×) | 4.8 ms | 5.0 ms |
-| check_hit | 62.1 µs (0.19×) | 1.6 µs (0.00×) | 307.9 µs (0.51×) | 609.7 µs (1.00×) | 898.5 µs (1.48×) | 327.3 µs | 608.8 µs |
-| check_miss | 120.8 µs (0.37×) | 1.6 µs (0.00×) | 464.6 µs (0.78×) | 997.0 µs (1.67×) | 868.0 µs (1.45×) | 326.1 µs | 597.3 µs |
-| bulk_100 | 1.1 ms (0.91×) | 560.7 µs (0.39×) | 1.8 ms (1.27×) | 2.7 ms (1.86×) | 2.7 ms (1.88×) | 1.2 ms | 1.4 ms |
-| subjects_one | 123.1 µs (0.33×) | 2.3 µs (0.00×) | 428.9 µs (0.72×) | 942.7 µs (1.57×) | 580.4 µs (0.97×) | 372.1 µs | 599.0 µs |
-| toggle_grant | 784.6 µs (1.03×) | 835.6 µs (0.09×) | 29.2 ms (3.13×) | 7.6 ms (0.82×) | 11.7 ms (1.26×) | 765.0 µs | 9.3 ms |
+| lookup | 6.0 ms (1.14×) | 530.2 µs (0.10×) | 5.8 ms (1.08×) | 2.0 ms (0.36×) | 1.9 ms (0.34×) | 5.3 ms | 5.4 ms |
+| check_hit | 61.6 µs (0.16×) | 2.0 µs (0.00×) | 336.1 µs (0.53×) | 641.9 µs (1.01×) | 1.0 ms (1.60×) | 383.0 µs | 633.9 µs |
+| check_miss | 119.7 µs (0.34×) | 2.1 µs (0.00×) | 466.0 µs (0.74×) | 1.1 ms (1.67×) | 1.0 ms (1.59×) | 353.6 µs | 632.9 µs |
+| bulk_100 | 1.2 ms (0.93×) | 601.7 µs (0.35×) | 1.9 ms (1.10×) | 3.3 ms (1.95×) | 3.1 ms (1.79×) | 1.3 ms | 1.7 ms |
+| subjects_one | 122.4 µs (0.31×) | 2.5 µs (0.00×) | 440.9 µs (0.67×) | 1.0 ms (1.56×) | 621.7 µs (0.95×) | 397.0 µs | 654.4 µs |
+| toggle_grant | 742.5 µs (0.82×) | 736.5 µs (0.21×) | 1.8 ms (0.51×) | 1.9 ms (0.53×) | 3.7 ms (1.06×) | 910.3 µs | 3.5 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=1000/density=90/path=direct: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [5.470, 0.486, 6.283, 1.995, 1.978, 4.765, 4.952]
+    bar [5.996, 0.530, 5.828, 1.966, 1.862, 5.276, 5.408]
 ```
 
 ```mermaid
@@ -255,26 +255,26 @@ xychart-beta
     title "scale/resources=1000/density=90/path=direct: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.062, 0.002, 0.308, 0.610, 0.898, 0.327, 0.609]
+    bar [0.062, 0.002, 0.336, 0.642, 1.017, 0.383, 0.634]
 ```
 
 ## scale/resources=1000/density=10/path=team
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 1.5 ms (1.60×) | 41.2 µs (0.03×) | 3.8 ms (3.09×) | 926.0 µs (0.76×) | 805.5 µs (0.66×) | 938.8 µs | 1.2 ms |
-| check_hit | 77.5 µs (0.22×) | 1.9 µs (0.00×) | 448.6 µs (0.71×) | 559.3 µs (0.88×) | 789.5 µs (1.24×) | 352.5 µs | 635.2 µs |
-| check_miss | 86.4 µs (0.23×) | 1.7 µs (0.00×) | 473.8 µs (0.74×) | 915.1 µs (1.43×) | 784.7 µs (1.22×) | 371.0 µs | 642.1 µs |
-| bulk_100 | 1.0 ms (0.82×) | 171.0 µs (0.11×) | 1.9 ms (1.22×) | 2.2 ms (1.39×) | 2.3 ms (1.44×) | 1.3 ms | 1.6 ms |
-| subjects_one | 88.1 µs (0.25×) | 2.2 µs (0.00×) | 447.2 µs (0.73×) | 881.8 µs (1.44×) | 627.1 µs (1.02×) | 350.9 µs | 612.6 µs |
-| toggle_team_edge | 461.5 µs (0.57×) | 408.1 µs (0.03×) | 4.9 ms (0.40×) | 10.2 ms (0.83×) | 15.6 ms (1.26×) | 811.7 µs | 12.3 ms |
+| lookup | 1.6 ms (1.55×) | 44.5 µs (0.04×) | 4.2 ms (3.35×) | 1.0 ms (0.84×) | 852.4 µs (0.68×) | 1.0 ms | 1.2 ms |
+| check_hit | 72.8 µs (0.21×) | 2.1 µs (0.00×) | 463.0 µs (0.73×) | 644.8 µs (1.01×) | 909.3 µs (1.43×) | 352.4 µs | 637.8 µs |
+| check_miss | 79.6 µs (0.23×) | 2.1 µs (0.00×) | 472.6 µs (0.75×) | 1.1 ms (1.67×) | 927.4 µs (1.46×) | 349.9 µs | 633.5 µs |
+| bulk_100 | 1.1 ms (0.77×) | 214.5 µs (0.13×) | 2.1 ms (1.20×) | 3.0 ms (1.73×) | 2.2 ms (1.30×) | 1.4 ms | 1.7 ms |
+| subjects_one | 82.2 µs (0.22×) | 2.6 µs (0.00×) | 465.5 µs (0.73×) | 1.0 ms (1.57×) | 662.1 µs (1.04×) | 376.7 µs | 638.1 µs |
+| toggle_team_edge | 403.8 µs (0.47×) | 424.6 µs (0.11×) | 1.9 ms (0.50×) | 4.3 ms (1.16×) | 5.8 ms (1.57×) | 858.4 µs | 3.7 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=1000/density=10/path=team: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [1.506, 0.041, 3.769, 0.926, 0.805, 0.939, 1.220]
+    bar [1.612, 0.045, 4.176, 1.046, 0.852, 1.041, 1.246]
 ```
 
 ```mermaid
@@ -282,26 +282,26 @@ xychart-beta
     title "scale/resources=1000/density=10/path=team: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.077, 0.002, 0.449, 0.559, 0.789, 0.353, 0.635]
+    bar [0.073, 0.002, 0.463, 0.645, 0.909, 0.352, 0.638]
 ```
 
 ## scale/resources=10000/density=10/path=direct
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 11.2 ms (2.18×) | 521.8 µs (0.10×) | 7.6 ms (1.40×) | 2.2 ms (0.42×) | 2.3 ms (0.42×) | 5.2 ms | 5.4 ms |
-| check_hit | 561.8 µs (1.69×) | 1.6 µs (0.00×) | 288.8 µs (0.49×) | 569.8 µs (0.97×) | 711.2 µs (1.21×) | 332.7 µs | 589.8 µs |
-| check_miss | 1.0 ms (3.06×) | 1.8 µs (0.00×) | 416.2 µs (0.64×) | 880.3 µs (1.36×) | 713.6 µs (1.10×) | 341.2 µs | 648.8 µs |
-| bulk_100 | 3.8 ms (3.28×) | 597.3 µs (0.42×) | 1.7 ms (1.20×) | 2.5 ms (1.75×) | 2.6 ms (1.85×) | 1.2 ms | 1.4 ms |
-| subjects_one | 1.0 ms (2.71×) | 2.2 µs (0.00×) | 470.6 µs (0.79×) | 844.0 µs (1.41×) | 589.4 µs (0.98×) | 386.0 µs | 599.0 µs |
-| toggle_grant | 11.2 ms (13.3×) | 15.1 ms (1.15×) | 12.2 ms (0.93×) | 8.2 ms (0.62×) | 11.2 ms (0.85×) | 841.8 µs | 13.1 ms |
+| lookup | 12.4 ms (1.96×) | 578.8 µs (0.09×) | 7.4 ms (1.20×) | 2.2 ms (0.35×) | 2.1 ms (0.35×) | 6.3 ms | 6.1 ms |
+| check_hit | 496.4 µs (1.41×) | 2.0 µs (0.00×) | 330.7 µs (0.52×) | 614.6 µs (0.97×) | 798.4 µs (1.26×) | 352.6 µs | 633.9 µs |
+| check_miss | 972.2 µs (2.74×) | 2.0 µs (0.00×) | 453.0 µs (0.71×) | 1.0 ms (1.60×) | 806.7 µs (1.26×) | 354.2 µs | 638.3 µs |
+| bulk_100 | 3.6 ms (2.81×) | 584.7 µs (0.35×) | 1.6 ms (0.97×) | 3.0 ms (1.78×) | 3.0 ms (1.80×) | 1.3 ms | 1.7 ms |
+| subjects_one | 983.4 µs (2.63×) | 2.5 µs (0.00×) | 455.9 µs (0.70×) | 937.3 µs (1.44×) | 679.4 µs (1.04×) | 373.7 µs | 652.6 µs |
+| toggle_grant | 9.9 ms (11.1×) | 9.6 ms (2.77×) | 1.8 ms (0.52×) | 1.9 ms (0.54×) | 3.1 ms (0.89×) | 896.2 µs | 3.5 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=10000/density=10/path=direct: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [11.220, 0.522, 7.550, 2.247, 2.263, 5.152, 5.383]
+    bar [12.358, 0.579, 7.365, 2.163, 2.131, 6.317, 6.116]
 ```
 
 ```mermaid
@@ -309,26 +309,26 @@ xychart-beta
     title "scale/resources=10000/density=10/path=direct: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.562, 0.002, 0.289, 0.570, 0.711, 0.333, 0.590]
+    bar [0.496, 0.002, 0.331, 0.615, 0.798, 0.353, 0.634]
 ```
 
 ## scale/resources=10000/density=90/path=direct
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 66.3 ms (1.34×) | 5.3 ms (0.12×) | 52.2 ms (1.22×) | 14.3 ms (0.33×) | 14.7 ms (0.34×) | 49.4 ms | 43.0 ms |
-| check_hit | 670.0 µs (2.02×) | 1.6 µs (0.00×) | 308.2 µs (0.53×) | 622.4 µs (1.06×) | 735.6 µs (1.26×) | 331.4 µs | 585.7 µs |
-| check_miss | 1.3 ms (3.89×) | 1.6 µs (0.00×) | 396.3 µs (0.67×) | 974.5 µs (1.65×) | 741.6 µs (1.26×) | 329.5 µs | 590.9 µs |
-| bulk_100 | 3.6 ms (3.13×) | 3.6 ms (2.45×) | 1.6 ms (1.12×) | 3.3 ms (2.28×) | 5.7 ms (3.88×) | 1.2 ms | 1.5 ms |
-| subjects_one | 1.2 ms (3.38×) | 2.1 µs (0.00×) | 422.6 µs (0.69×) | 913.3 µs (1.48×) | 581.3 µs (0.94×) | 350.1 µs | 615.6 µs |
-| toggle_grant | 12.5 ms (16.0×) | 12.1 ms (0.61×) | 24.4 ms (1.24×) | 6.6 ms (0.34×) | 33.1 ms (1.69×) | 779.1 µs | 19.6 ms |
+| lookup | 76.1 ms (1.40×) | 5.3 ms (0.12×) | 38.6 ms (0.84×) | 8.9 ms (0.19×) | 11.3 ms (0.25×) | 54.5 ms | 45.9 ms |
+| check_hit | 565.4 µs (1.58×) | 2.0 µs (0.00×) | 317.0 µs (0.50×) | 614.0 µs (0.97×) | 813.3 µs (1.29×) | 358.2 µs | 629.9 µs |
+| check_miss | 1.1 ms (3.18×) | 2.0 µs (0.00×) | 474.2 µs (0.75×) | 1.0 ms (1.65×) | 803.5 µs (1.27×) | 356.6 µs | 631.2 µs |
+| bulk_100 | 3.5 ms (2.60×) | 3.8 ms (2.27×) | 1.7 ms (1.00×) | 3.0 ms (1.83×) | 7.4 ms (4.43×) | 1.4 ms | 1.7 ms |
+| subjects_one | 1.1 ms (2.99×) | 2.5 µs (0.00×) | 483.0 µs (0.75×) | 948.0 µs (1.48×) | 638.8 µs (1.00×) | 374.4 µs | 641.9 µs |
+| toggle_grant | 10.7 ms (11.9×) | 11.4 ms (3.26×) | 1.8 ms (0.51×) | 1.8 ms (0.52×) | 2.9 ms (0.84×) | 899.2 µs | 3.5 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=10000/density=90/path=direct: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [66.317, 5.259, 52.226, 14.349, 14.686, 49.421, 42.963]
+    bar [76.064, 5.289, 38.571, 8.888, 11.283, 54.516, 45.902]
 ```
 
 ```mermaid
@@ -336,26 +336,26 @@ xychart-beta
     title "scale/resources=10000/density=90/path=direct: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.670, 0.002, 0.308, 0.622, 0.736, 0.331, 0.586]
+    bar [0.565, 0.002, 0.317, 0.614, 0.813, 0.358, 0.630]
 ```
 
 ## scale/resources=10000/density=10/path=team
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 20.3 ms (3.25×) | 523.6 µs (0.09×) | 8.9 ms (1.53×) | 2.4 ms (0.41×) | 2.3 ms (0.39×) | 6.2 ms | 5.8 ms |
-| check_hit | 958.7 µs (2.89×) | 1.7 µs (0.00×) | 503.9 µs (0.86×) | 585.2 µs (1.00×) | 1.2 ms (2.00×) | 331.4 µs | 584.4 µs |
-| check_miss | 1.0 ms (3.11×) | 1.6 µs (0.00×) | 390.8 µs (0.66×) | 897.6 µs (1.51×) | 1.1 ms (1.89×) | 327.6 µs | 594.0 µs |
-| bulk_100 | 4.3 ms (3.71×) | 530.1 µs (0.37×) | 1.8 ms (1.27×) | 2.1 ms (1.50×) | 2.6 ms (1.85×) | 1.1 ms | 1.4 ms |
-| subjects_one | 1.0 ms (2.90×) | 2.2 µs (0.00×) | 460.0 µs (0.75×) | 838.8 µs (1.36×) | 675.0 µs (1.10×) | 348.7 µs | 615.5 µs |
-| toggle_team_edge | 11.0 ms (12.6×) | 11.1 ms (0.56×) | 9.6 ms (0.48×) | 47.1 ms (2.36×) | 22.4 ms (1.13×) | 872.5 µs | 19.9 ms |
+| lookup | 21.5 ms (3.63×) | 565.9 µs (0.09×) | 8.4 ms (1.30×) | 2.2 ms (0.35×) | 2.0 ms (0.32×) | 5.9 ms | 6.5 ms |
+| check_hit | 926.7 µs (2.61×) | 2.1 µs (0.00×) | 486.1 µs (0.77×) | 637.9 µs (1.02×) | 1.2 ms (1.97×) | 355.7 µs | 627.9 µs |
+| check_miss | 984.9 µs (2.77×) | 2.0 µs (0.00×) | 453.4 µs (0.72×) | 1.0 ms (1.64×) | 1.2 ms (1.99×) | 355.9 µs | 626.0 µs |
+| bulk_100 | 4.0 ms (2.34×) | 571.9 µs (0.36×) | 1.8 ms (1.10×) | 2.9 ms (1.83×) | 2.9 ms (1.82×) | 1.7 ms | 1.6 ms |
+| subjects_one | 987.6 µs (2.64×) | 2.4 µs (0.00×) | 478.9 µs (0.74×) | 935.2 µs (1.45×) | 737.8 µs (1.14×) | 374.7 µs | 646.4 µs |
+| toggle_team_edge | 9.8 ms (11.5×) | 9.7 ms (2.84×) | 1.8 ms (0.53×) | 11.2 ms (3.29×) | 12.1 ms (3.54×) | 855.4 µs | 3.4 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=10000/density=10/path=team: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [20.336, 0.524, 8.929, 2.392, 2.254, 6.250, 5.843]
+    bar [21.483, 0.566, 8.381, 2.228, 2.047, 5.915, 6.452]
 ```
 
 ```mermaid
@@ -363,26 +363,26 @@ xychart-beta
     title "scale/resources=10000/density=10/path=team: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [0.959, 0.002, 0.504, 0.585, 1.170, 0.331, 0.584]
+    bar [0.927, 0.002, 0.486, 0.638, 1.234, 0.356, 0.628]
 ```
 
 ## scale/resources=100000/density=10/path=direct
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 151.4 ms (3.15×) | 1.38 s (30.4×) | 66.9 ms (1.47×) | 15.6 ms (0.34×) | 17.6 ms (0.39×) | 48.0 ms | 45.5 ms |
-| check_hit | 4.9 ms (13.7×) | 1.5 µs (0.00×) | 355.3 µs (0.60×) | 542.4 µs (0.92×) | 734.5 µs (1.25×) | 355.6 µs | 588.3 µs |
-| check_miss | 9.9 ms (28.6×) | 1.6 µs (0.00×) | 436.6 µs (0.74×) | 825.3 µs (1.40×) | 719.3 µs (1.22×) | 345.4 µs | 588.7 µs |
-| bulk_100 | 33.4 ms (0.10×) | 4.2 ms (3.02×) | 1.7 ms (1.19×) | 2.9 ms (2.05×) | 8.9 ms (6.33×) | 344.0 ms | 1.4 ms |
-| subjects_one | 10.2 ms (25.3×) | 2.3 µs (0.00×) | 448.4 µs (0.73×) | 864.7 µs (1.41×) | 591.2 µs (0.97×) | 404.2 µs | 611.1 µs |
-| toggle_grant | 134.3 ms (169×) | 175.2 ms (27.4×) | 5.0 ms (0.78×) | 7.0 ms (1.09×) | 14.6 ms (2.28×) | 793.2 µs | 6.4 ms |
+| lookup | 150.3 ms (2.37×) | 1.55 s (30.1×) | 49.7 ms (0.96×) | 11.6 ms (0.23×) | 13.8 ms (0.27×) | 63.5 ms | 51.5 ms |
+| check_hit | 4.6 ms (12.2×) | 1.9 µs (0.00×) | 327.4 µs (0.52×) | 625.6 µs (0.98×) | 801.7 µs (1.26×) | 379.7 µs | 635.2 µs |
+| check_miss | 9.3 ms (26.5×) | 1.9 µs (0.00×) | 450.8 µs (0.71×) | 1.0 ms (1.62×) | 817.2 µs (1.29×) | 352.7 µs | 632.4 µs |
+| bulk_100 | 29.6 ms (22.3×) | 4.6 ms (2.74×) | 1.6 ms (0.97×) | 3.4 ms (1.98×) | 11.2 ms (6.62×) | 1.3 ms | 1.7 ms |
+| subjects_one | 9.2 ms (24.8×) | 2.6 µs (0.00×) | 472.3 µs (0.72×) | 986.1 µs (1.51×) | 629.4 µs (0.97×) | 373.3 µs | 651.8 µs |
+| toggle_grant | 125.3 ms (148×) | 152.9 ms (26.7×) | 1.8 ms (0.32×) | 1.9 ms (0.32×) | 3.1 ms (0.55×) | 844.4 µs | 5.7 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=100000/density=10/path=direct: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [151.373, 1381.964, 66.935, 15.623, 17.564, 48.045, 45.485]
+    bar [150.255, 1553.067, 49.653, 11.622, 13.830, 63.466, 51.528]
 ```
 
 ```mermaid
@@ -390,26 +390,26 @@ xychart-beta
     title "scale/resources=100000/density=10/path=direct: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [4.871, 0.002, 0.355, 0.542, 0.735, 0.356, 0.588]
+    bar [4.636, 0.002, 0.327, 0.626, 0.802, 0.380, 0.635]
 ```
 
 ## scale/resources=100000/density=90/path=direct
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 948.1 ms (1.46×) | 1.80 s (2.80×) | 585.5 ms (0.91×) | 160.7 ms (0.25×) | 261.2 ms (0.41×) | 651.6 ms | 640.2 ms |
-| check_hit | 5.8 ms (17.7×) | 1.6 µs (0.00×) | 363.6 µs (0.62×) | 574.7 µs (0.98×) | 771.1 µs (1.31×) | 325.1 µs | 588.9 µs |
-| check_miss | 12.0 ms (37.0×) | 1.5 µs (0.00×) | 465.2 µs (0.78×) | 948.4 µs (1.58×) | 775.4 µs (1.29×) | 324.6 µs | 600.1 µs |
-| bulk_100 | 30.2 ms (0.09×) | 42.3 ms (29.7×) | 1.6 ms (1.14×) | 3.2 ms (2.22×) | 3.9 ms (2.73×) | 346.2 ms | 1.4 ms |
-| subjects_one | 11.6 ms (33.5×) | 2.1 µs (0.00×) | 420.1 µs (0.70×) | 883.6 µs (1.48×) | 669.2 µs (1.12×) | 346.6 µs | 596.9 µs |
-| toggle_grant | 150.3 ms (187×) | 172.6 ms (14.1×) | 7.8 ms (0.63×) | 5.0 ms (0.41×) | 19.2 ms (1.56×) | 803.0 µs | 12.3 ms |
+| lookup | 1.08 s (1.51×) | 1.90 s (2.50×) | 401.9 ms (0.53×) | 100.7 ms (0.13×) | 173.7 ms (0.23×) | 714.9 ms | 761.1 ms |
+| check_hit | 5.3 ms (15.0×) | 1.9 µs (0.00×) | 312.6 µs (0.49×) | 622.2 µs (0.97×) | 804.4 µs (1.26×) | 352.2 µs | 640.6 µs |
+| check_miss | 10.8 ms (30.7×) | 1.9 µs (0.00×) | 463.7 µs (0.72×) | 1.0 ms (1.56×) | 806.9 µs (1.25×) | 350.8 µs | 644.6 µs |
+| bulk_100 | 28.4 ms (21.0×) | 39.5 ms (23.8×) | 1.7 ms (1.04×) | 3.3 ms (1.97×) | 3.9 ms (2.37×) | 1.4 ms | 1.7 ms |
+| subjects_one | 10.9 ms (27.9×) | 2.3 µs (0.00×) | 450.6 µs (0.70×) | 987.1 µs (1.52×) | 621.8 µs (0.96×) | 389.9 µs | 648.3 µs |
+| toggle_grant | 154.1 ms (180×) | 156.5 ms (44.2×) | 1.9 ms (0.54×) | 1.8 ms (0.51×) | 2.9 ms (0.83×) | 854.4 µs | 3.5 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=100000/density=90/path=direct: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [948.076, 1795.055, 585.536, 160.666, 261.167, 651.568, 640.183]
+    bar [1080.988, 1902.963, 401.919, 100.744, 173.676, 714.920, 761.114]
 ```
 
 ```mermaid
@@ -417,26 +417,26 @@ xychart-beta
     title "scale/resources=100000/density=90/path=direct: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [5.761, 0.002, 0.364, 0.575, 0.771, 0.325, 0.589]
+    bar [5.279, 0.002, 0.313, 0.622, 0.804, 0.352, 0.641]
 ```
 
 ## scale/resources=100000/density=10/path=team
 
 | op | memory | memory+index | postgres | postgres+closure | postgres+sets | spicedb-memdb | spicedb-postgres |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| lookup | 223.3 ms (4.45×) | 1.50 s (29.2×) | 69.3 ms (1.34×) | 16.7 ms (0.32×) | 16.9 ms (0.33×) | 50.2 ms | 51.5 ms |
-| check_hit | 8.8 ms (27.0×) | 1.8 µs (0.00×) | 482.8 µs (0.83×) | 604.4 µs (1.03×) | 827.6 µs (1.42×) | 327.0 µs | 584.0 µs |
-| check_miss | 9.4 ms (26.4×) | 1.6 µs (0.00×) | 512.4 µs (0.86×) | 945.4 µs (1.59×) | 853.2 µs (1.43×) | 357.8 µs | 596.3 µs |
-| bulk_100 | 36.6 ms (0.11×) | 4.2 ms (2.98×) | 1.8 ms (1.29×) | 4.0 ms (2.84×) | 8.6 ms (6.14×) | 346.5 ms | 1.4 ms |
-| subjects_one | 9.6 ms (27.2×) | 2.2 µs (0.00×) | 384.5 µs (0.64×) | 983.1 µs (1.63×) | 625.6 µs (1.04×) | 351.3 µs | 602.2 µs |
-| toggle_team_edge | 115.9 ms (148×) | 154.3 ms (5.77×) | 14.0 ms (0.52×) | 83.4 ms (3.12×) | 110.3 ms (4.13×) | 784.1 µs | 26.7 ms |
+| lookup | 257.2 ms (4.93×) | 1.65 s (28.7×) | 51.1 ms (0.89×) | 10.7 ms (0.19×) | 13.4 ms (0.23×) | 52.2 ms | 57.6 ms |
+| check_hit | 8.7 ms (24.4×) | 2.0 µs (0.00×) | 480.5 µs (0.76×) | 611.3 µs (0.97×) | 824.1 µs (1.31×) | 355.1 µs | 631.4 µs |
+| check_miss | 9.2 ms (26.0×) | 2.0 µs (0.00×) | 459.5 µs (0.74×) | 988.5 µs (1.59×) | 839.4 µs (1.35×) | 355.7 µs | 621.1 µs |
+| bulk_100 | 35.4 ms (27.6×) | 4.5 ms (2.66×) | 1.8 ms (1.07×) | 4.8 ms (2.81×) | 9.2 ms (5.42×) | 1.3 ms | 1.7 ms |
+| subjects_one | 9.3 ms (24.6×) | 2.4 µs (0.00×) | 447.7 µs (0.69×) | 974.1 µs (1.50×) | 637.7 µs (0.98×) | 378.3 µs | 649.5 µs |
+| toggle_team_edge | 133.5 ms (159×) | 136.2 ms (38.8×) | 1.9 ms (0.54×) | 82.6 ms (23.5×) | 83.4 ms (23.8×) | 837.6 µs | 3.5 ms |
 
 ```mermaid
 xychart-beta
     title "scale/resources=100000/density=10/path=team: lookup (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [223.342, 1504.452, 69.271, 16.672, 16.903, 50.216, 51.514]
+    bar [257.194, 1652.320, 51.111, 10.712, 13.377, 52.183, 57.593]
 ```
 
 ```mermaid
@@ -444,6 +444,6 @@ xychart-beta
     title "scale/resources=100000/density=10/path=team: check_hit (ms/op)"
     x-axis ["memory", "memory+index", "postgres", "postgres+closure", "postgres+sets", "spicedb-memdb", "spicedb-postgres"]
     y-axis "ms/op"
-    bar [8.838, 0.002, 0.483, 0.604, 0.828, 0.327, 0.584]
+    bar [8.668, 0.002, 0.480, 0.611, 0.824, 0.355, 0.631]
 ```
 
