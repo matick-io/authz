@@ -1,0 +1,57 @@
+---
+schema: |-
+  // Wildcards through every set operator.
+  definition user {}
+
+  definition doc {
+      relation everyone: user:* | user
+      relation staff: user
+      relation banned: user
+      permission everyone_but_banned = everyone - banned
+      permission staff_only = everyone & staff
+      permission not_everyone = staff - everyone
+      permission union = everyone + staff
+  }
+relationships: |-
+  doc:d#everyone@user:*
+  doc:d#staff@user:s1
+  doc:d#staff@user:s2
+  doc:d#banned@user:s2
+  doc:d#banned@user:b1
+  doc:e#everyone@user:e1
+  doc:e#staff@user:s1
+assertions:
+  assertTrue:
+    - "doc:d#everyone_but_banned@user:anyone"
+    - "doc:d#staff_only@user:s1"
+    - "doc:e#not_everyone@user:s1"
+    - "doc:e#everyone_but_banned@user:e1"
+    - "doc:d#everyone_but_banned@user:anyone"
+    - "doc:d#everyone_but_banned@user:e1"
+    - "doc:e#everyone_but_banned@user:e1"
+    - "doc:d#staff_only@user:s1"
+    - "doc:e#not_everyone@user:s1"
+    - "doc:d#union@user:s1"
+    - "doc:e#union@user:s1"
+  assertFalse:
+    - "doc:d#everyone_but_banned@user:s2"
+    - "doc:d#everyone_but_banned@user:b1"
+    - "doc:d#staff_only@user:anyone"
+    - "doc:d#not_everyone@user:s1"
+    - "doc:e#everyone_but_banned@user:anyone"
+    - "doc:e#staff_only@user:s1"
+validation:
+  "doc:d#everyone_but_banned":
+    - "[user:* - {user:b1, user:s2}] is <doc:d#everyone_but_banned>"
+  "doc:d#staff_only":
+    - "[user:s1] is <doc:d#staff_only>"
+    - "[user:s2] is <doc:d#staff_only>"
+  "doc:d#union":
+    - "[user:*] is <doc:d#union>"
+  "doc:e#everyone_but_banned":
+    - "[user:e1] is <doc:e#everyone_but_banned>"
+  "doc:e#not_everyone":
+    - "[user:s1] is <doc:e#not_everyone>"
+  "doc:e#union":
+    - "[user:e1] is <doc:e#union>"
+    - "[user:s1] is <doc:e#union>"

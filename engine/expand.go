@@ -82,6 +82,8 @@ func (e *expander) exprTree(ctx context.Context, res authz.ObjectRef, permission
 	switch n := x.(type) {
 	case *schema.ComputedUserset:
 		return e.tree(ctx, res, n.Relation, depth+1)
+	case *schema.Nil:
+		return &authz.PermissionTree{Resource: res, Relation: permission, Operation: authz.TreeLeaf}, nil
 	case *schema.Arrow:
 		node := &authz.PermissionTree{Resource: res, Relation: permission, Operation: authz.TreeUnion}
 		ts, err := e.relationTuples(ctx, res, n.Relation)

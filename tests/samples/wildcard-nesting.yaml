@@ -1,0 +1,77 @@
+---
+schema: |-
+  // engine-only: SpiceDB refuses a schema in which a wildcard is reachable through a userset ("wildcard relations cannot be transitively included")
+  //
+  // The engine admits such a schema and lets the wildcard flow through
+  // usersets, nested usersets and arrows, still admitting users only, never a
+  // userset subject.
+  definition user {}
+
+  definition team {
+      relation member: user | user:* | team#member
+  }
+
+  definition doc {
+      relation parent: doc
+      relation viewer: user | team#member
+      relation banned: user | team#member
+      permission view = (viewer + parent->view) - banned
+  }
+relationships: |-
+  team:everyone#member@user:*
+  team:nested#member@team:everyone#member
+  team:staff#member@user:alice
+  team:banned_all#member@user:*
+  doc:via_team#viewer@team:everyone#member
+  doc:via_nested#viewer@team:nested#member
+  doc:child#parent@doc:via_team
+  doc:child#banned@user:bob
+  doc:staffdoc#viewer@team:staff#member
+  doc:locked#viewer@team:everyone#member
+  doc:locked#banned@team:banned_all#member
+assertions:
+  assertTrue:
+    # the wildcard inside a team reaches every user, also through a nested team
+    - "team:everyone#member@user:zed"
+    - "team:nested#member@user:zed"
+    # and from there into documents, through a userset, nested usersets, an arrow
+    - "doc:via_team#view@user:zed"
+    - "doc:via_nested#view@user:zed"
+    - "doc:child#view@user:zed"
+    - "doc:locked#view@team:everyone#member"
+    - "doc:child#view@user:zed"
+    - "doc:via_nested#view@user:zed"
+    - "doc:via_team#view@user:zed"
+    - "doc:child#view@user:alice"
+    - "doc:staffdoc#view@user:alice"
+    - "doc:via_nested#view@user:alice"
+    - "doc:via_team#view@user:alice"
+    - "doc:via_nested#view@user:bob"
+    - "doc:via_team#view@user:bob"
+    - "doc:child#view@team:everyone#member"
+    - "doc:locked#view@team:everyone#member"
+    - "doc:via_nested#view@team:everyone#member"
+    - "doc:via_team#view@team:everyone#member"
+  assertFalse:
+    - "doc:child#view@user:bob"
+    # a wildcard never admits a userset subject, however it is reached
+    - "doc:via_team#view@team:staff#member"
+    - "doc:via_nested#view@team:staff#member"
+    # a wildcard inside a banned team bans every user, not the viewing team itself
+    - "doc:locked#view@user:zed"
+validation:
+  "doc:child#view":
+    - "[user:* - {user:bob}] is <doc:child#view>"
+  "doc:locked#view":
+    - "[team:everyone#member] is <doc:locked#view>"
+  "doc:via_nested#view":
+    - "[user:*] is <doc:via_nested#view>"
+    - "[team:everyone#member] is <doc:via_nested#view>"
+    - "[team:nested#member] is <doc:via_nested#view>"
+  "doc:via_team#view":
+    - "[user:*] is <doc:via_team#view>"
+    - "[team:everyone#member] is <doc:via_team#view>"
+  "team:nested#member":
+    - "[user:*] is <team:nested#member>"
+    - "[team:everyone#member] is <team:nested#member>"
+    - "[team:nested#member] is <team:nested#member>"

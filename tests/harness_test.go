@@ -10,9 +10,10 @@ import (
 
 	"github.com/matick-io/authz"
 	"github.com/matick-io/authz/datastore/memory"
-	"github.com/matick-io/authz/datastore/postgres"
 	"github.com/matick-io/authz/engine"
-	index "github.com/matick-io/authz/materialize/postgres"
+	"github.com/matick-io/authz/materialize"
+	"github.com/matick-io/authz/postgres"
+	"github.com/matick-io/authz/postgres/index"
 	"github.com/matick-io/authz/schema"
 )
 
@@ -74,6 +75,17 @@ func truncatePostgres(tb testing.TB, p *pgxpool.Pool) {
 func datastores(tb testing.TB) []datastoreKind {
 	tb.Helper()
 	kinds := []datastoreKind{{name: "memory", open: func(testing.TB, *schema.Schema) (authz.Datastore, []engine.Option) { return memory.New(), nil }}}
+	// AI: the memory datastore with its index, materialize.Snapshot rebuilt on
+	// change: the reference implementation of every index query, run through
+	// every suite and compared with the walk without a database.
+	kinds = append(kinds, datastoreKind{name: "memory+index", indexed: true, open: func(tb testing.TB, sch *schema.Schema) (authz.Datastore, []engine.Option) {
+		ds := memory.New()
+		idx, err := memory.NewIndex(ds, sch, materialize.Materializable(sch)...)
+		if err != nil {
+			tb.Fatal(err)
+		}
+		return ds, idx.Options()
+	}})
 	p := postgresPool(tb)
 	if p == nil {
 		return kinds
@@ -83,30 +95,22 @@ func datastores(tb testing.TB) []datastoreKind {
 			truncatePostgres(tb, p)
 			return postgres.New(p), nil
 		}},
-		datastoreKind{name: "postgres+closure", indexed: true, open: func(tb testing.TB, _ *schema.Schema) (authz.Datastore, []engine.Option) {
+		datastoreKind{name: "postgres+closure", indexed: true, open: func(tb testing.TB, sch *schema.Schema) (authz.Datastore, []engine.Option) {
 			truncatePostgres(tb, p)
-			idx, err := index.New()
+			a, err := index.Attach(p, sch, index.WithPermissionSets(sch))
 			if err != nil {
 				tb.Fatal(err)
 			}
-			return postgres.New(p, postgres.WithHook(idx.Hook())), []engine.Option{engine.WithNestingIndex(idx)}
+			return a.Datastore, a.Options
 		}},
 		datastoreKind{name: "postgres+sets", indexed: true, open: func(tb testing.TB, sch *schema.Schema) (authz.Datastore, []engine.Option) {
 			truncatePostgres(tb, p)
-			idx, err := index.New(index.WithPermissionSets(sch, index.Materializable(sch)...))
+			a, err := index.Attach(p, sch)
 			if err != nil {
 				tb.Fatal(err)
 			}
-			return postgres.New(p, postgres.WithHook(idx.Hook())), []engine.Option{engine.WithNestingIndex(idx), engine.WithPermissionIndex(idx)}
+			return a.Datastore, a.Options
 		}},
 	)
 	return kinds
-}
-
-func TestSamples(t *testing.T) {
-	for _, kind := range datastores(t) {
-		t.Run(kind.name, func(t *testing.T) {
-			RunAllSamples(t, "samples", func(t *testing.T, sch *schema.Schema) (authz.Datastore, []engine.Option) { return kind.open(t, sch) })
-		})
-	}
 }

@@ -1,0 +1,72 @@
+---
+schema: |-
+  // Object ids at the edge of the grammar: every punctuation the grammar
+  // allows, upper case kept distinct from lower case, digits only, and ids at
+  // the length people paste from other systems.
+  definition user {}
+
+  definition doc {
+      relation viewer: user | user:*
+      permission view = viewer
+  }
+relationships: |-
+  doc:a/b/c#viewer@user:x/y
+  doc:pipe|id#viewer@user:u|1
+  doc:eq=id#viewer@user:u=1
+  doc:plus+id#viewer@user:u+1
+  doc:dash-id#viewer@user:u-1
+  doc:under_score#viewer@user:u_1
+  doc:MixedCase#viewer@user:UPPER
+  doc:0123#viewer@user:007
+  doc:0123#viewer@user:7
+  doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#viewer@user:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  doc:everyone#viewer@user:*
+assertions:
+  assertTrue:
+    - "doc:a/b/c#view@user:x/y"
+    - "doc:pipe|id#view@user:u|1"
+    - "doc:eq=id#view@user:u=1"
+    - "doc:plus+id#view@user:u+1"
+    - "doc:dash-id#view@user:u-1"
+    - "doc:under_score#view@user:u_1"
+    # case is significant
+    - "doc:MixedCase#view@user:UPPER"
+    # digits are text: 007 and 7 are different users
+    - "doc:0123#view@user:007"
+    - "doc:0123#view@user:7"
+    - "doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#view@user:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    # the ids come back exactly as written
+    - "doc:a/b/c#view@user:x/y"
+    - "doc:everyone#view@user:x/y"
+    - "doc:everyone#view@user:u|1"
+    - "doc:pipe|id#view@user:u|1"
+    - "doc:eq=id#view@user:u=1"
+    - "doc:everyone#view@user:u=1"
+    - "doc:everyone#view@user:u+1"
+    - "doc:plus+id#view@user:u+1"
+    - "doc:dash-id#view@user:u-1"
+    - "doc:everyone#view@user:u-1"
+    - "doc:MixedCase#view@user:UPPER"
+    - "doc:everyone#view@user:UPPER"
+    - "doc:0123#view@user:007"
+    - "doc:everyone#view@user:007"
+  assertFalse:
+    - "doc:a/b/c#view@user:x"
+    - "doc:a/b#view@user:x/y"
+    - "doc:mixedcase#view@user:UPPER"
+    - "doc:MixedCase#view@user:upper"
+    - "doc:0123#view@user:07"
+    - "doc:123#view@user:007"
+    - "doc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#view@user:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+validation:
+  "doc:0123#view":
+    - "[user:007] is <doc:0123#view>"
+    - "[user:7] is <doc:0123#view>"
+  "doc:a/b/c#view":
+    - "[user:x/y] is <doc:a/b/c#view>"
+  "doc:eq=id#view":
+    - "[user:u=1] is <doc:eq=id#view>"
+  "doc:everyone#view":
+    - "[user:*] is <doc:everyone#view>"
+  "doc:pipe|id#view":
+    - "[user:u|1] is <doc:pipe|id#view>"

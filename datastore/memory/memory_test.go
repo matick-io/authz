@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/matick-io/authz"
-	"github.com/matick-io/authz/datastore/datastoretest"
 	"github.com/matick-io/authz/datastore/memory"
+	"github.com/matick-io/authz/internal/datastoretest"
 )
 
 func TestConformance(t *testing.T) {

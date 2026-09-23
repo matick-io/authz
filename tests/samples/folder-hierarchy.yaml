@@ -1,0 +1,69 @@
+---
+schema: |-
+  // Arrows that recurse: a folder inherits from its parent, however deep.
+  definition user {}
+
+  definition folder {
+      relation parent: folder
+      relation owner: user
+      relation viewer: user
+      permission view = viewer + owner + parent->view
+      permission edit = owner + parent->edit
+  }
+
+  definition document {
+      relation parent: folder
+      relation viewer: user
+      permission view = viewer + parent->view
+  }
+relationships: |-
+  folder:root#owner@user:root_owner
+  folder:root#viewer@user:root_viewer
+  folder:a#parent@folder:root
+  folder:a#viewer@user:a_viewer
+  folder:b#parent@folder:a
+  folder:c#parent@folder:b
+  folder:c#owner@user:c_owner
+  document:deep#parent@folder:c
+  document:deep#viewer@user:doc_viewer
+  document:loose#viewer@user:doc_viewer
+assertions:
+  assertTrue:
+    - "document:deep#view@user:root_owner"
+    - "document:deep#view@user:root_viewer"
+    - "document:deep#view@user:a_viewer"
+    - "document:deep#view@user:c_owner"
+    - "document:deep#view@user:doc_viewer"
+    - "folder:c#edit@user:root_owner"
+    - "folder:c#edit@user:c_owner"
+    - "folder:a#view@user:root_viewer"
+    - "folder:b#view@user:root_viewer"
+    - "folder:c#view@user:root_viewer"
+    - "folder:root#view@user:root_viewer"
+    - "folder:c#edit@user:c_owner"
+    - "folder:a#edit@user:root_owner"
+    - "folder:b#edit@user:root_owner"
+    - "folder:c#edit@user:root_owner"
+    - "folder:root#edit@user:root_owner"
+    - "document:deep#view@user:a_viewer"
+    - "document:deep#view@user:doc_viewer"
+    - "document:loose#view@user:doc_viewer"
+  assertFalse:
+    - "document:loose#view@user:root_owner"
+    - "folder:c#edit@user:a_viewer"
+    - "folder:a#edit@user:c_owner"
+validation:
+  "document:deep#view":
+    - "[user:a_viewer] is <document:deep#view>"
+    - "[user:c_owner] is <document:deep#view>"
+    - "[user:doc_viewer] is <document:deep#view>"
+    - "[user:root_owner] is <document:deep#view>"
+    - "[user:root_viewer] is <document:deep#view>"
+  "document:loose#view":
+    - "[user:doc_viewer] is <document:loose#view>"
+  "folder:c#edit":
+    - "[user:c_owner] is <folder:c#edit>"
+    - "[user:root_owner] is <folder:c#edit>"
+  "folder:root#view":
+    - "[user:root_owner] is <folder:root#view>"
+    - "[user:root_viewer] is <folder:root#view>"

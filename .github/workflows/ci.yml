@@ -33,10 +33,20 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+      # AI: a real SpiceDB beside the tests, so the samples, the scenarios
+      # and the differential rounds hold the engine to the reference
+      # implementation's answers, not only to its own.
+      - name: Start SpiceDB
+        run: |
+          docker run -d --name spicedb -p 50051:50051 authzed/spicedb:latest serve --grpc-preshared-key ci --datastore-engine memory
+          for i in $(seq 1 30); do docker logs spicedb 2>&1 | grep -q "grpc server started" && break; sleep 1; done
       - name: Vet every module
-        run: go vet ./... ./datastore/postgres/... ./dsl/... ./materialize/... ./tests/...
-      - name: Test every module, Postgres suites included
-        run: go test ./... ./datastore/postgres/... ./dsl/... ./materialize/... ./tests/... -count=1
+        run: go vet ./... ./postgres/... ./tests/...
+      - name: Test every module, Postgres suites and SpiceDB conformance included
+        env:
+          AUTHZ_SPICEDB: spicedb=127.0.0.1:50051
+          AUTHZ_SPICEDB_KEY: ci
+        run: go test ./... ./postgres/... ./tests/... -count=1
 
   bench:
     needs: test
@@ -59,8 +69,52 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+      # AI: two SpiceDBs run beside the engine so every kind of ours has a
+      # like-for-like column: one on SpiceDB's in-memory datastore against our
+      # memory store, one on Postgres, in its own database on the same server
+      # as ours, against our Postgres kinds.
+      - name: Start SpiceDB on its in-memory datastore
+        run: |
+          docker run -d --name spicedb-memdb -p 50051:50051 authzed/spicedb:latest serve --grpc-preshared-key ci --datastore-engine memory
+          for i in $(seq 1 30); do docker logs spicedb-memdb 2>&1 | grep -q "grpc server started" && break; sleep 1; done
+      - name: Start SpiceDB on Postgres
+        run: |
+          docker run --rm --network host postgres:16 psql postgres://authz:authz@localhost:5432/authz_test -c 'create database spicedb'
+          URI='postgres://authz:authz@localhost:5432/spicedb?sslmode=disable'
+          docker run --rm --network host authzed/spicedb:latest migrate head --datastore-engine postgres --datastore-conn-uri "$URI"
+          docker run -d --name spicedb-postgres --network host authzed/spicedb:latest serve --grpc-preshared-key ci --grpc-addr :50052 --datastore-engine postgres --datastore-conn-uri "$URI"
+          for i in $(seq 1 30); do docker logs spicedb-postgres 2>&1 | grep -q "grpc server started" && break; sleep 1; done
       - name: Run the scenario benchmarks
-        run: go test ./tests/ -run '^$' -bench BenchmarkScenarios -benchmem -count 1 | tee bench.txt
+        env:
+          AUTHZ_SPICEDB: spicedb-memdb=127.0.0.1:50051,spicedb-postgres=127.0.0.1:50052
+          AUTHZ_SPICEDB_KEY: ci
+        run: go test ./tests/ -run '^$' -bench BenchmarkScenarios -benchmem -benchtime 300ms -count 1 -timeout 90m | tee bench.txt
+      # AI: benchstat is the standard comparison; benchreport lays the same
+      # numbers out per scenario with Mermaid charts GitHub renders itself.
+      - name: Compare the engines
+        run: |
+          go install golang.org/x/perf/cmd/benchstat@latest
+          mkdir -p report
+          benchstat -col /kind bench.txt | tee report/compare.txt
+          go run ./tests/cmd/benchreport bench.txt > report/compare.md
+          cp bench.txt report/bench.txt
+          {
+            echo '## Engine comparison (benchstat, columns are kinds)'
+            echo
+            echo '```'
+            cat report/compare.txt
+            echo '```'
+            echo
+            cat report/compare.md
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish the comparison to gh-pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./report
+          destination_dir: compare
+          keep_files: true
       # AI: github-action-benchmark keeps the history on the gh-pages branch and
       # comments on a pull request when an op slows past the threshold. It is
       # the standard tool for this and needs no code of ours.

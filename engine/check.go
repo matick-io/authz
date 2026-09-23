@@ -2,10 +2,10 @@ package engine
 
 import (
 	"context"
-
 	"fmt"
-	"github.com/matick-io/authz"
+	"math"
 
+	"github.com/matick-io/authz"
 	"github.com/matick-io/authz/schema"
 )
 
@@ -32,14 +32,26 @@ func (s *Service) CheckPermission(ctx context.Context, resource authz.ObjectRef,
 
 // CheckBulkPermissions answers every request at one snapshot. A request that
 // fails validation carries its error in its result; the others still answer.
+//
+// AI: requests that differ only in the resource id are answered together
+// (see checkMany), so a page of resources costs one walk per distinct
+// (type, permission, subject), not one per item. The tuple cache and the
+// memo are shared across the batch; the memo is sound to share since it
+// keeps no answer that rested on a question still open (see frames).
 func (s *Service) CheckBulkPermissions(ctx context.Context, requests []authz.CheckPermissionRequest) ([]authz.CheckPermissionResult, error) {
 	results := make([]authz.CheckPermissionResult, len(requests))
 	for i, req := range requests {
 		results[i].Request = req
 		results[i].Err = req.Validate()
 	}
+	type group struct {
+		typ, permission string
+		subject         authz.SubjectRef
+	}
 	err := s.ds.View(ctx, func(r authz.Reader) error {
 		res := s.newResolver(r)
+		items := map[group][]int{}
+		var order []group
 		for i := range results {
 			if results[i].Err != nil {
 				continue
@@ -49,12 +61,29 @@ func (s *Service) CheckBulkPermissions(ctx context.Context, requests []authz.Che
 				results[i].Err = err
 				continue
 			}
-			// AI: the tuple cache is shared across the batch, the memo is not:
-			// a cycle cut in one question must not answer another.
-			res.memo = map[string]memoEntry{}
-			results[i].HasPermission, results[i].Err = res.check(ctx, req.Resource, req.Permission, req.Subject, 0)
-			if results[i].Err != nil && ctx.Err() != nil {
-				return ctx.Err()
+			g := group{req.Resource.Type, req.Permission, req.Subject}
+			if _, seen := items[g]; !seen {
+				order = append(order, g)
+			}
+			items[g] = append(items[g], i)
+		}
+		for _, g := range order {
+			ids := make([]string, 0, len(items[g]))
+			for _, i := range items[g] {
+				ids = append(ids, results[i].Request.Resource.ID)
+			}
+			found, err := res.checkMany(ctx, g.typ, ids, g.permission, g.subject, 0)
+			if err != nil {
+				if ctx.Err() != nil {
+					return ctx.Err()
+				}
+				for _, i := range items[g] {
+					results[i].Err = err
+				}
+				continue
+			}
+			for _, i := range items[g] {
+				_, results[i].HasPermission = found[results[i].Request.Resource.ID]
 			}
 		}
 		return nil
@@ -79,11 +108,56 @@ type resolver struct {
 	maxDepth int
 	tuples   map[string][]authz.Relationship
 	memo     map[string]memoEntry
+	stack    frames
 }
 
 type memoEntry struct {
 	done   bool
 	result bool
+	index  int // the frame answering this question while it is open
+}
+
+// frames tracks the resolution stack so that memoisation stays sound under
+// data cycles, after Tarjan's low-link. AI: an open question re-entered from
+// below answers provisionally (false, or the empty set). That is right for
+// the open question itself, whose own evaluation still explores every other
+// path, but wrong for the questions in between: their answers rest on the
+// provisional one, and were they cached, a later branch of the same
+// resolution, an exclusion say, would read a partial answer as final. So a
+// frame records the lowest open frame its subtree depended on, and a result
+// is kept only when that is no lower than the frame itself.
+type frames struct {
+	open int // frames on the stack
+	low  int // the lowest open frame the current subtree depended on
+}
+
+// enter opens a frame and returns its index and the enclosing frame's low.
+func (s *frames) enter() (index, outerLow int) {
+	if s.open == 0 {
+		s.low = math.MaxInt
+	}
+	index, outerLow = s.open, s.low
+	s.open++
+	s.low = index
+	return index, outerLow
+}
+
+// hit records a dependency on the open frame at index.
+func (s *frames) hit(index int) {
+	if index < s.low {
+		s.low = index
+	}
+}
+
+// leave closes the frame at index and reports whether its result is final,
+// then folds its dependencies into the enclosing frame.
+func (s *frames) leave(index, outerLow int) (final bool) {
+	s.open--
+	final = s.low >= index
+	if outerLow < s.low {
+		s.low = outerLow
+	}
+	return final
 }
 
 func (s *Service) newResolver(r authz.Reader) *resolver {
@@ -117,15 +191,17 @@ func (c *resolver) check(ctx context.Context, res authz.ObjectRef, relation stri
 	key := res.String() + "#" + relation + "@" + subject.String()
 	if e, ok := c.memo[key]; ok {
 		if !e.done {
+			c.stack.hit(e.index)
 			return false, nil
 		}
 		return e.result, nil
 	}
-	c.memo[key] = memoEntry{}
+	index, outerLow := c.stack.enter()
+	c.memo[key] = memoEntry{index: index}
 	result, err := c.checkUncached(ctx, res, relation, subject, depth)
-	if err != nil {
+	if final := c.stack.leave(index, outerLow); err != nil || !final {
 		delete(c.memo, key)
-		return false, err
+		return result, err
 	}
 	c.memo[key] = memoEntry{done: true, result: result}
 	return result, nil
@@ -229,6 +305,8 @@ func (c *resolver) checkRelationIndexed(ctx context.Context, res authz.ObjectRef
 
 func (c *resolver) eval(ctx context.Context, res authz.ObjectRef, e schema.Expr, subject authz.SubjectRef, depth int) (bool, error) {
 	switch n := e.(type) {
+	case *schema.Nil:
+		return false, nil
 	case *schema.ComputedUserset:
 		return c.check(ctx, res, n.Relation, subject, depth+1)
 	case *schema.Arrow:

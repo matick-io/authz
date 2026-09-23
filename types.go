@@ -70,6 +70,10 @@ func ParseRelationship(s string) (Relationship, error) {
 	if err != nil {
 		return Relationship{}, err
 	}
+	// SpiceDB writes a subject without a relation as user:x#... in places.
+	if subjRel == "..." {
+		subjRel = ""
+	}
 	r := Relationship{Resource: resource, Relation: rel, Subject: SubjectRef{Object: subject, Relation: subjRel}}
 	return r, r.Validate()
 }
@@ -290,6 +294,10 @@ type NestingIndex interface {
 	// userset that holds any of the named subjects directly or through
 	// nesting. A WildcardID among subjectIDs matches wildcard grants.
 	NestedResourceIDs(ctx context.Context, r Reader, subjectType string, subjectIDs []string, subjectRelation, resourceType, relation string) ([]string, error)
+	// NestedResourceIDsAmong is NestedResourceIDs restricted to the resource
+	// ids in among: which of them hold any of the named subjects. It is how a
+	// bulk check asks one question about many resources at once.
+	NestedResourceIDsAmong(ctx context.Context, r Reader, subjectType string, subjectIDs []string, subjectRelation, resourceType, relation string, among []string) ([]string, error)
 }
 
 // PermissionIndex precomputes whole permissions: for each resource and each
@@ -313,6 +321,10 @@ type PermissionIndex interface {
 	// ResourcesWithPermission returns, sorted, the ids of every resourceType on
 	// which subject holds the materialised permission.
 	ResourcesWithPermission(ctx context.Context, r Reader, resourceType, permission string, subject SubjectRef) ([]string, error)
+	// ResourcesWithPermissionAmong is ResourcesWithPermission restricted to
+	// the resource ids in among, for a bulk check: which of them the subject
+	// holds the permission on, sorted.
+	ResourcesWithPermissionAmong(ctx context.Context, r Reader, resourceType, permission string, subject SubjectRef, among []string) ([]string, error)
 	// SubjectsWithPermission returns, sorted, the ids of every subject of the
 	// given type and relation that holds the materialised permission on
 	// resource.
@@ -321,15 +333,21 @@ type PermissionIndex interface {
 
 var (
 	nameRe     = regexp.MustCompile(`^[a-z]([a-z0-9_]{0,62}[a-z0-9])?$`)
+	typeNameRe = regexp.MustCompile(`^([a-z]([a-z0-9_]{0,62}[a-z0-9])?/)*[a-z]([a-z0-9_]{0,62}[a-z0-9])?$`)
 	objectIDRe = regexp.MustCompile(`^[a-zA-Z0-9/_|\-=+]+$`)
 )
 
 // MaxObjectIDLength is the longest object id accepted, as in SpiceDB.
 const MaxObjectIDLength = 1024
 
-// ValidName reports whether s is a legal object type, relation or permission
-// name: lowercase, digits and underscores, starting with a letter, 1-64 chars.
+// ValidName reports whether s is a legal relation or permission name:
+// lowercase, digits and underscores, starting with a letter, 1-64 chars.
 func ValidName(s string) bool { return nameRe.MatchString(s) }
+
+// ValidTypeName reports whether s is a legal object type name: a name as
+// ValidName has it, optionally under namespaces separated by '/', as in
+// SpiceDB (acme/user).
+func ValidTypeName(s string) bool { return typeNameRe.MatchString(s) }
 
 // ValidObjectID reports whether s is a legal object id (the SpiceDB charset).
 func ValidObjectID(s string) bool {
@@ -338,7 +356,7 @@ func ValidObjectID(s string) bool {
 
 // Validate checks the type and id are well formed.
 func (o ObjectRef) Validate() error {
-	if !ValidName(o.Type) {
+	if !ValidTypeName(o.Type) {
 		return fmt.Errorf("%w: object type %q", ErrInvalidArgument, o.Type)
 	}
 	if !ValidObjectID(o.ID) {
@@ -350,7 +368,7 @@ func (o ObjectRef) Validate() error {
 // Validate checks the subject is well formed; a wildcard may carry no relation.
 func (s SubjectRef) Validate() error {
 	if s.Object.ID == WildcardID {
-		if !ValidName(s.Object.Type) {
+		if !ValidTypeName(s.Object.Type) {
 			return fmt.Errorf("%w: subject type %q", ErrInvalidArgument, s.Object.Type)
 		}
 		if s.Relation != "" {
@@ -381,7 +399,7 @@ func (r Relationship) Validate() error {
 
 // Validate checks the filter is well formed; ResourceType is required.
 func (f RelationshipFilter) Validate() error {
-	if !ValidName(f.ResourceType) {
+	if !ValidTypeName(f.ResourceType) {
 		return fmt.Errorf("%w: filter resource type %q", ErrInvalidArgument, f.ResourceType)
 	}
 	if f.ResourceID != "" && !ValidObjectID(f.ResourceID) {
@@ -391,7 +409,7 @@ func (f RelationshipFilter) Validate() error {
 		return fmt.Errorf("%w: filter relation %q", ErrInvalidArgument, f.Relation)
 	}
 	if f.Subject != nil {
-		if !ValidName(f.Subject.Type) {
+		if !ValidTypeName(f.Subject.Type) {
 			return fmt.Errorf("%w: filter subject type %q", ErrInvalidArgument, f.Subject.Type)
 		}
 		if f.Subject.ID != "" && f.Subject.ID != WildcardID && !ValidObjectID(f.Subject.ID) {

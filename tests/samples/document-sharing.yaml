@@ -1,0 +1,83 @@
+---
+schema: |-
+  // The classic document-sharing model: organisations, folders, documents.
+  definition user {}
+
+  definition organization {
+      relation member: user
+      relation admin: user
+      permission can_admin = admin
+  }
+
+  definition folder {
+      relation owner: user
+      relation parent: folder
+      relation viewer: user | user:* | organization#member
+      permission can_view = viewer + owner + parent->can_view
+      permission can_share = owner + parent->can_share
+  }
+
+  definition document {
+      relation parent: folder
+      relation owner: user
+      relation viewer: user | organization#member
+      permission can_view = viewer + owner + parent->can_view
+      permission can_share = owner + parent->can_share
+  }
+relationships: |-
+  organization:acme#member@user:anne
+  organization:acme#member@user:beth
+  organization:acme#admin@user:beth
+  folder:shared#viewer@organization:acme#member
+  folder:shared#owner@user:owen
+  folder:sub#parent@folder:shared
+  folder:public#viewer@user:*
+  document:plan#parent@folder:sub
+  document:plan#viewer@user:vic
+  document:memo#parent@folder:public
+  document:memo#owner@user:owen
+  document:secret#owner@user:sec
+assertions:
+  assertTrue:
+    - "document:plan#can_view@user:anne"
+    - "document:plan#can_view@user:vic"
+    - "document:plan#can_view@user:owen"
+    - "document:plan#can_share@user:owen"
+    - "document:memo#can_view@user:sec"
+    - "document:memo#can_share@user:owen"
+    - "organization:acme#can_admin@user:beth"
+    - "document:memo#can_view@user:anne"
+    - "document:plan#can_view@user:anne"
+    - "document:memo#can_view@user:sec"
+    - "document:secret#can_view@user:sec"
+    - "document:memo#can_share@user:owen"
+    - "document:plan#can_share@user:owen"
+    - "folder:public#can_view@user:anne"
+    - "folder:shared#can_view@user:anne"
+    - "folder:sub#can_view@user:anne"
+    - "folder:public#can_view@user:owen"
+    - "folder:shared#can_view@user:owen"
+    - "folder:sub#can_view@user:owen"
+    - "folder:shared#can_share@user:owen"
+    - "folder:sub#can_share@user:owen"
+    # a wildcard admits users, never a userset: public is not reachable as a set
+    - "folder:shared#can_view@organization:acme#member"
+    - "folder:sub#can_view@organization:acme#member"
+  assertFalse:
+    - "document:plan#can_view@user:sec"
+    - "document:plan#can_share@user:anne"
+    - "document:secret#can_view@user:anne"
+    - "organization:acme#can_admin@user:anne"
+validation:
+  "document:memo#can_view":
+    - "[user:*] is <document:memo#can_view>"
+  "document:plan#can_view":
+    - "[user:anne] is <document:plan#can_view>"
+    - "[user:beth] is <document:plan#can_view>"
+    - "[user:owen] is <document:plan#can_view>"
+    - "[user:vic] is <document:plan#can_view>"
+    - "[organization:acme#member] is <document:plan#can_view>"
+  "document:secret#can_view":
+    - "[user:sec] is <document:secret#can_view>"
+  "folder:sub#can_share":
+    - "[user:owen] is <folder:sub#can_share>"

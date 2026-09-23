@@ -53,11 +53,15 @@ type Permission struct {
 func (*Relation) member()   {}
 func (*Permission) member() {}
 
-// Expr is a permission rewrite node: ComputedUserset, Arrow or SetOp.
+// Expr is a permission rewrite node: ComputedUserset, Arrow, SetOp or Nil.
 type Expr interface{ expr() }
 
 // ComputedUserset references a relation or permission on the same object.
 type ComputedUserset struct{ Relation string }
+
+// Nil is the empty set, SpiceDB's `nil`: a permission nobody holds, or a
+// branch that contributes nothing.
+type Nil struct{}
 
 // Arrow walks Relation's subjects and evaluates Target on each of them.
 type Arrow struct {
@@ -83,6 +87,10 @@ const (
 func (*ComputedUserset) expr() {}
 func (*Arrow) expr()           {}
 func (*SetOp) expr()           {}
+func (*Nil) expr()             {}
+
+// Nothing is the empty set (see Nil).
+func Nothing() Expr { return &Nil{} }
 
 // Error reports a validation failure, or a parse failure with its source
 // position when it comes from the dsl module.
@@ -98,10 +106,13 @@ func (e *Error) Error() string {
 	return fmt.Sprintf("schema: line %d col %d: %s", e.Line, e.Col, e.Msg)
 }
 
-// NameRe is the shape of an object type, relation or permission name:
-// lowercase letters, digits and underscores, starting with a letter, at most
-// 64 characters.
+// NameRe is the shape of a relation or permission name: lowercase letters,
+// digits and underscores, starting with a letter, at most 64 characters.
 var NameRe = regexp.MustCompile(`^[a-z]([a-z0-9_]{0,62}[a-z0-9])?$`)
+
+// TypeNameRe is the shape of an object type name: a name as NameRe has it,
+// optionally under namespaces separated by '/', as in SpiceDB (acme/user).
+var TypeNameRe = regexp.MustCompile(`^([a-z]([a-z0-9_]{0,62}[a-z0-9])?/)*[a-z]([a-z0-9_]{0,62}[a-z0-9])?$`)
 
 // Def declares an object type with its relations and permissions.
 func Def(name string, members ...Member) *Definition {
@@ -153,8 +164,8 @@ func ExclusionOf(left, right Expr) Expr { return &SetOp{Op: Exclusion, Children:
 func Build(defs ...*Definition) (*Schema, error) {
 	s := &Schema{Definitions: map[string]*Definition{}}
 	for _, d := range defs {
-		if !NameRe.MatchString(d.Name) {
-			return nil, &Error{Msg: fmt.Sprintf("definition name %q must be lowercase letters, digits and underscores, starting with a letter, at most 64 characters", d.Name)}
+		if !TypeNameRe.MatchString(d.Name) {
+			return nil, &Error{Msg: fmt.Sprintf("definition name %q must be lowercase letters, digits and underscores, starting with a letter, at most 64 characters per namespace segment", d.Name)}
 		}
 		if _, dup := s.Definitions[d.Name]; dup {
 			return nil, &Error{Msg: fmt.Sprintf("definition %q declared twice", d.Name)}
@@ -360,6 +371,8 @@ func (s *Schema) validateExpr(d *Definition, perm string, e Expr) error {
 		if !found {
 			return &Error{Msg: fmt.Sprintf("permission %s#%s: arrow %s->%s: no subject type of %s defines %q", d.Name, perm, n.Relation, n.Target, n.Relation, n.Target)}
 		}
+	case *Nil:
+		return nil
 	case *SetOp:
 		switch {
 		case n.Op == Exclusion && len(n.Children) != 2:

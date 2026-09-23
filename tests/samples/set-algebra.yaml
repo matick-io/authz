@@ -1,0 +1,132 @@
+---
+schema: |-
+  // Intersection and exclusion at every level: through usersets, on either
+  // side of an arrow, and nested inside each other. A ban at the parent must
+  // not reach a grant made on the child itself.
+  definition user {}
+
+  definition team {
+      relation member: user | team#member
+  }
+
+  definition folder {
+      relation owner: user | team#member
+      relation viewer: user | team#member
+      relation banned: user | team#member
+      permission view = (viewer + owner) - banned
+      permission edit = owner - banned
+  }
+
+  definition doc {
+      relation parent: folder
+      relation viewer: user | team#member
+      relation editor: user | team#member
+      relation banned: user | team#member
+      relation flagged: user
+      permission view = (viewer + parent->view) - banned
+      permission edit = editor & parent->edit
+      permission both = viewer & editor
+      permission review = (viewer - banned) - (flagged - editor)
+      permission unblocked = viewer - parent->banned
+      permission chained = viewer - banned - flagged
+  }
+relationships: |-
+  team:a#member@user:alice
+  team:a#member@user:bob
+  team:b#member@user:bob
+  team:b#member@user:carol
+  team:banned#member@user:dave
+  team:banned#member@team:b#member
+  folder:f#owner@user:alice
+  folder:f#viewer@team:a#member
+  folder:f#viewer@team:b#member
+  folder:f#viewer@user:dave
+  folder:f#banned@team:banned#member
+  doc:d1#parent@folder:f
+  doc:d1#viewer@user:bob
+  doc:d1#editor@user:alice
+  doc:d1#editor@user:bob
+  doc:d2#parent@folder:f
+  doc:d2#viewer@team:a#member
+  doc:d2#editor@team:b#member
+  doc:d2#banned@user:alice
+  doc:d3#viewer@user:erin
+  doc:d3#viewer@user:frank
+  doc:d3#viewer@user:gina
+  doc:d3#banned@user:erin
+  doc:d3#flagged@user:frank
+  doc:d3#flagged@user:gina
+  doc:d3#editor@user:frank
+assertions:
+  assertTrue:
+    # exclusion through a nested userset: the banned team contains team b
+    - "folder:f#view@user:alice"
+    - "folder:f#edit@user:alice"
+    # exclusion at the userset level: team a stays, team b is banned as a whole
+    - "folder:f#view@team:a#member"
+    # a ban at the parent does not reach a grant on the child
+    - "doc:d1#view@user:bob"
+    - "doc:d1#view@user:alice"
+    # intersection with an arrow
+    - "doc:d1#edit@user:alice"
+    - "doc:d1#edit@user:alice"
+    - "doc:d2#view@user:bob"
+    - "doc:d2#both@user:bob"
+    # nested exclusions: (viewer - banned) - (flagged - editor)
+    - "doc:d3#review@user:frank"
+    - "doc:d3#review@user:frank"
+    # lookups across the set algebra
+    - "doc:d1#view@user:bob"
+    - "doc:d2#view@user:bob"
+    - "doc:d1#view@user:alice"
+    - "folder:f#view@user:alice"
+    - "doc:d1#view@team:a#member"
+    - "doc:d2#view@team:a#member"
+  assertFalse:
+    - "folder:f#view@user:bob"
+    - "folder:f#view@user:carol"
+    - "folder:f#view@user:dave"
+    - "folder:f#view@team:b#member"
+    - "doc:d1#view@user:dave"
+    - "doc:d1#edit@user:bob"
+    - "doc:d2#edit@user:bob"
+    # exclusion on the child of an inherited grant
+    - "doc:d2#view@user:alice"
+    - "doc:d2#both@team:a#member"
+    - "doc:d3#review@user:gina"
+    - "doc:d3#review@user:erin"
+    - "doc:d3#chained@user:frank"
+    - "doc:d3#chained@user:gina"
+    - "doc:d3#chained@user:erin"
+    # exclusion by an arrow to a relation
+    - "doc:d1#unblocked@user:bob"
+validation:
+  "doc:d1#chained":
+    - "[user:bob] is <doc:d1#chained>"
+  "doc:d1#edit":
+    - "[user:alice] is <doc:d1#edit>"
+  "doc:d1#view":
+    - "[user:alice] is <doc:d1#view>"
+    - "[user:bob] is <doc:d1#view>"
+  "doc:d2#both":
+    - "[user:bob] is <doc:d2#both>"
+  "doc:d2#unblocked":
+    - "[user:alice] is <doc:d2#unblocked>"
+    - "[team:a#member] is <doc:d2#unblocked>"
+  "doc:d2#view":
+    - "[user:bob] is <doc:d2#view>"
+    - "[team:a#member] is <doc:d2#view>"
+  "doc:d3#review":
+    - "[user:frank] is <doc:d3#review>"
+  "doc:d3#unblocked":
+    - "[user:erin] is <doc:d3#unblocked>"
+    - "[user:frank] is <doc:d3#unblocked>"
+    - "[user:gina] is <doc:d3#unblocked>"
+  "doc:d3#view":
+    - "[user:frank] is <doc:d3#view>"
+    - "[user:gina] is <doc:d3#view>"
+  "folder:f#edit":
+    - "[user:alice] is <folder:f#edit>"
+  "folder:f#view":
+    - "[user:alice] is <folder:f#view>"
+    - "[team:a#member] is <folder:f#view>"

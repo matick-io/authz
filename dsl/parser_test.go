@@ -104,7 +104,6 @@ func TestParseErrors(t *testing.T) {
 		"unterminated":              `definition user {} /* open`,
 		"unexpected character":      `definition user { $ }`,
 		"expected 'definition'":     `relation a: user`,
-		"'nil' permissions":         `definition user {} definition d { permission p = nil }`,
 		"expected ':'":              `definition user {} definition d { relation a user }`,
 	}
 	for want, src := range cases {
