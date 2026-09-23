@@ -33,6 +33,12 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+      - name: Formatted
+        run: test -z "$(gofmt -l .)"
+      - name: Module files tidy
+        run: |
+          go mod tidy && (cd tests && go mod tidy)
+          git diff --exit-code -- go.mod go.sum tests/go.mod tests/go.sum
       # AI: a real SpiceDB beside the tests, so the samples, the scenarios
       # and the differential rounds hold the engine to the reference
       # implementation's answers, not only to its own.

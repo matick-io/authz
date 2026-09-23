@@ -55,15 +55,6 @@ func open(t *testing.T, pool *pgxpool.Pool, opts ...Option) *Datastore {
 	return ds
 }
 
-func mustRel(t *testing.T, s string) authz.Relationship {
-	t.Helper()
-	r, err := authz.ParseRelationship(s)
-	if err != nil {
-		t.Fatal(err)
-	}
-	return r
-}
-
 func TestConformance(t *testing.T) {
 	pool := openPool(t)
 	datastoretest.Run(t, func(t *testing.T) authz.Datastore {
@@ -143,21 +134,21 @@ func TestHook(t *testing.T) {
 		}
 		return nil
 	}))
-	if err := ds.Transact(ctx, func(w authz.Writer) error { return w.Create(ctx, mustRel(t, "project:p#member@user:a")) }); err != nil {
+	if err := ds.Transact(ctx, func(w authz.Writer) error { return w.Create(ctx, rel(t, "project:p#member@user:a")) }); err != nil {
 		t.Fatal(err)
 	}
 	if len(seen) != 1 || seen[0].Revision == 0 || len(seen[0].Updates) != 1 {
 		t.Fatalf("hook saw %+v", seen)
 	}
 	// A transaction that changes nothing runs no hook.
-	if err := ds.Transact(ctx, func(w authz.Writer) error { return w.Touch(ctx, mustRel(t, "project:p#member@user:a")) }); err != nil {
+	if err := ds.Transact(ctx, func(w authz.Writer) error { return w.Touch(ctx, rel(t, "project:p#member@user:a")) }); err != nil {
 		t.Fatal(err)
 	}
 	if len(seen) != 1 {
 		t.Fatalf("hook ran for a no-op write: %+v", seen)
 	}
 	fail = true
-	err := ds.Transact(ctx, func(w authz.Writer) error { return w.Create(ctx, mustRel(t, "project:p#member@user:b")) })
+	err := ds.Transact(ctx, func(w authz.Writer) error { return w.Create(ctx, rel(t, "project:p#member@user:b")) })
 	if !errors.Is(err, veto) {
 		t.Fatalf("veto: %v", err)
 	}
@@ -208,7 +199,7 @@ func TestTransactInCommitsWithTheHost(t *testing.T) {
 		}
 		return n
 	}
-	grant := func(w authz.Writer) error { return w.Create(ctx, mustRel(t, "project:p#member@user:a")) }
+	grant := func(w authz.Writer) error { return w.Create(ctx, rel(t, "project:p#member@user:a")) }
 
 	// The host rolls back: the grant, the change and the hook's row all go.
 	tx, err := pool.Begin(ctx)
@@ -287,7 +278,7 @@ func TestTransactInCommitsWithTheHost(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := ds.TransactIn(ctx, tx, func(w authz.Writer) error { return w.Touch(ctx, mustRel(t, "project:p#member@user:a")) }); err != nil {
+	if err := ds.TransactIn(ctx, tx, func(w authz.Writer) error { return w.Touch(ctx, rel(t, "project:p#member@user:a")) }); err != nil {
 		t.Fatal(err)
 	}
 	if err := tx.Commit(ctx); err != nil {

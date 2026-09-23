@@ -53,89 +53,29 @@ over the core, and a `cmd` module building a standalone server from `api` and
 ## Embedding
 
 ```go
-import (
-    "github.com/jackc/pgx/v5/pgxpool"
-
-    "github.com/matick-io/authz"
-    "github.com/matick-io/authz/schema/dsl"
-    "github.com/matick-io/authz/engine"
-    "github.com/matick-io/authz/datastore/postgres"
-)
-
-sch, err := dsl.Parse(`
-definition user {}
-
-definition team {
-    relation member: user | team#member
-}
-
-definition project {
-    relation owner: user
-    relation member: user | team#member
-    relation viewer: user | user:*
-    permission view = member + owner + viewer
-    permission edit = owner
-}
-`)
-
-pool, _ := pgxpool.New(ctx, databaseURL)
-if err := postgres.Migrate(ctx, pool); err != nil { ... } // or your deploy step, see docs/getting-started.md
-
-// The datastore carries its index: nested usersets and materialisable
-// permissions answer in one query each. Without WithIndex the engine walks.
-ds, err := postgres.New(pool, postgres.WithIndex(sch))
-svc, err := engine.New(ds, sch)
-if err := postgres.Check(ctx, pool); err != nil { ... }  // the database is at postgres.SchemaVersion
-if err := svc.ValidateStored(ctx); err != nil { ... }   // the stored grants still fit the schema
-
-err = svc.WriteRelationships(ctx, []authz.RelationshipUpdate{
-    {Operation: authz.OperationCreate, Relationship: mustParse("project:p1#member@team:core#member")},
-    {Operation: authz.OperationCreate, Relationship: mustParse("team:core#member@user:alice")},
-})
+sch, err := dsl.Parse(schemaText)                        // or schema.Build, in Go
+if err := postgres.Migrate(ctx, pool); err != nil { ... } // or your deploy step
+ds, err := postgres.New(pool, postgres.WithIndex(sch))   // the datastore with its index
+svc, err := engine.New(ds, sch)                          // finds the index on the datastore
+if err := svc.ValidateStored(ctx); err != nil { ... }    // the stored grants still fit the schema
 
 ok, err := svc.CheckPermission(ctx,
     authz.ObjectRef{Type: "project", ID: "p1"}, "view",
     authz.SubjectRef{Object: authz.ObjectRef{Type: "user", ID: "alice"}})
-
-ids, err := svc.LookupResources(ctx, "project", "view",
-    authz.SubjectRef{Object: authz.ObjectRef{Type: "user", ID: "alice"}}, 0)
 ```
 
 The schema is code: `dsl.Parse` reads the SpiceDB DSL and `schema.Build`
 builds the same value without a parser. An engine is built for one schema;
 changing it means building a new engine, after `ValidateStored` says the
-grants already stored still fit.
+grants already stored still fit. `authz.ParseRelationship` reads the SpiceDB
+tuple form, `type:id#relation@type:id[#relation]`, and `Relationship.String`
+writes it. For tests, `memory.New()` is a datastore with the same contract
+and no database, and `memory.WithIndex(sch)` gives it an index.
 
-`authz.ParseRelationship` reads the SpiceDB tuple form,
-`type:id#relation@type:id[#relation]`, and `Relationship.String` writes it.
-
-For tests, `memory.New()` is a datastore with the same contract and no
-database, and `memory.WithIndex(sch)` gives it an index.
-
-`postgres.Migrations` is every table the datastore and its index need, as
-numbered goose migrations, one file today. `postgres.Migrate` applies it with goose and records
-the versions in `public.authz_migration`; a deploy step can drive `postgres.NewMigrator`
-up and down instead, or hand the same files to a goose of its own under
-`postgres.MigrationTable`. `postgres.Check` refuses a database that is not at
-`postgres.SchemaVersion`. [docs/getting-started.md](docs/getting-started.md)
-puts it together, including the view an application keeps over the permission
-sets so its SQL never names an authz table.
-
-### A grant commits with the row it protects
-
-```go
-tx, err := pool.Begin(ctx)
-defer tx.Rollback(ctx)
-// ... insert the application row ...
-err = ds.TransactIn(ctx, tx, func(w authz.Writer) error {
-    return svc.WriteRelationshipsIn(ctx, w, updates)
-})
-// ... tx.Commit(ctx)
-```
-
-`TransactIn` does everything a write does, the change log and the index
-included, inside the transaction you hand it. Call it last: the change log's
-lock is held until the transaction ends.
+[docs/getting-started.md](docs/getting-started.md) is the walkthrough:
+migrations from your deploy step, the checks at boot, a grant written in the
+transaction of the row it protects, and the view an application keeps over
+the permission sets so its SQL never names an authz table.
 
 ## The API, next to SpiceDB's
 
@@ -261,3 +201,7 @@ gh-pages branch.
 
 - The `api` module, wire-compatible with SpiceDB v1 where the feature exists.
 - Version tags once something external pins one.
+
+## License
+
+Apache-2.0; see [LICENSE](LICENSE).

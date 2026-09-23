@@ -12,7 +12,7 @@
 // Snapshot, an index that answers from a copy of the relationships, which is
 // the reference every datastore's own index is held to and the index of the
 // memory datastore. A datastore adds storage, incremental maintenance inside
-// its own transactions, and native queries; see postgres/index.
+// its own transactions, and native queries; see datastore/postgres.
 package materialize
 
 import (

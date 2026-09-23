@@ -1,7 +1,7 @@
 // Package tests holds the validation files (samples/ and corpus/), the
 // engine tests that need the DSL, the conformance tables, and the
-// benchmarks. It is the one module that may depend on everything; the core
-// stays dependency-free.
+// benchmarks. It is the module that may depend on everything, the SpiceDB
+// client included, so that the library does not.
 package tests
 
 import (
